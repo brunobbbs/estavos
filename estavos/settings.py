@@ -1,8 +1,8 @@
-
+# -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 import os
 from django.utils.translation import ugettext_lazy as _
-
+from decouple import config, Csv
 
 ######################
 # MEZZANINE SETTINGS #
@@ -90,7 +90,7 @@ USE_MODELTRANSLATION = False
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[], cast=Csv())
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -106,11 +106,11 @@ USE_TZ = True
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = "en"
+LANGUAGE_CODE = "pt-BR"
 
 # Supported languages
 LANGUAGES = (
-    ('en', _('English')),
+    ('pt-BR', _(u'Português')),
 )
 
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
@@ -286,22 +286,6 @@ OPTIONAL_APPS = (
     PACKAGE_NAME_FILEBROWSER,
     PACKAGE_NAME_GRAPPELLI,
 )
-
-##################
-# LOCAL SETTINGS #
-##################
-
-# Allow any settings to be defined in local_settings.py which should be
-# ignored in your version control system allowing for settings to be
-# defined per machine.
-
-# Instead of doing "from .local_settings import *", we use exec so that
-# local_settings has full access to everything defined in this module.
-
-f = os.path.join(PROJECT_APP_PATH, "local_settings.py")
-if os.path.exists(f):
-    exec(open(f, "rb").read())
-
 
 ####################
 # DYNAMIC SETTINGS #
