@@ -160,6 +160,7 @@
 
 </div> <!-- /Header wrapper -->
 
+{% block home %}
 <!-- Container Tile & Breadcrumbs -->
 <div class="fullsize">
 
@@ -211,42 +212,44 @@
     {% endnevercache %}
 </div> <!-- / Messages -->
 
+{% block all_content %}
 <div class="container">
 
     <div class="row">
-        {% block all_content %}
 
-            {% block left_wrapper %}
-            <div class="col-md-{% block left_column_size %}2{% endblock %} left">
-                {% block left_panel %}
-                <div class="sidebar">
-                    <div class="sidebar-widget animation fadeInUp">
-                        <ul class="fa-ul list-divider">
-                        {% page_menu "pages/menus/tree.html" %}
-                        </ul>
-                    </div>
+        {% block left_wrapper %}
+        <div class="col-md-{% block left_column_size %}2{% endblock %} left">
+            {% block left_panel %}
+            <div class="sidebar">
+                <div class="sidebar-widget animation fadeInUp">
+                    <ul class="fa-ul list-divider">
+                    {% page_menu "pages/menus/tree.html" %}
+                    </ul>
                 </div>
-                {% endblock %}
             </div>
             {% endblock %}
-
-            {% block main_wrapper %}
-            <div class="col-md-{% block main_column_size %}7{% endblock %} middle">
-                {% block main %}{% endblock %}
-            </div>
-            {% endblock %}
-
-            {% block right_wrapper %}
-            <div class="col-md-{% block right_column_size %}3{% endblock %} right">
-                {% block right_panel %}
-                {% endblock %}
-            </div>
-            {% endblock %}
-
+        </div>
         {% endblock %}
+
+        {% block main_wrapper %}
+        <div class="col-md-{% block main_column_size %}7{% endblock %} middle">
+            {% block main %}{% endblock %}
+        </div>
+        {% endblock %}
+
+        {% block right_wrapper %}
+        <div class="col-md-{% block right_column_size %}3{% endblock %} right">
+            {% block right_panel %}
+            {% endblock %}
+        </div>
+        {% endblock %}
+
     </div>
 
 </div>
+{% endblock %}
+
+{% endblock home %}
 
 </div> <!-- / Main Container -->
 
@@ -310,7 +313,7 @@
 	<!-- Footer Bottom Container -->
     <div class="footer-bottom">
 
-    <div class="fullsize container"> <!-- Container -->
+    <div class="container"> <!-- Container -->
 
         <div class="row">
   			<div class="col-md-6 col-md-push-6">
