@@ -1,196 +1,230 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block home %}
+
+    
 <!-- Slider Container -->
 <div class="slider-wrapper">
 
-<div class="parallax-wrapper parallax-background11" data-stellar-background-ratio="0.3" >
-
-        <div class="parallax-wrapper padding-medium">
-        <div class="container">
-
-        <div class="row">
-
-            <div class="col-md-7">
-
+    <div class="fullwidthbanner-container">
+            <div class="fullwidthbanner">
+                <ul>
+                    <li data-transition="slotslide-horizontal" data-slotamount="5" data-masterspeed="700" >
+                        <img src="{% static 'img/theme/revolution/dummy.png' %}"
+                             alt="slider1-bg"
+                             data-lazyload="{% static 'img/slider/home-slider-1.jpg' %}"
+                             data-bgposition="bottom center"
+                             data-kenburns="on"
+                             data-duration="9000"
+                             data-ease="Linear.easeNone"
+                             data-bgfit="110"
+                             data-bgfitend="100"
+                             data-bgpositionend="top center">
+                        <div class="caption very-large-strong color-default bg-color-white customin customout start"
+                             data-x="center"
+                             data-y="200"
+                             data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+                             data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                             data-speed="1000"
+                             data-start="500"
+                             data-easing="Back.easeInOut"
+                             data-endspeed="300" >
+                            Curso de Xadrez para Iniciantes
+                        </div>
+                        <div class="caption big-light color-white customin customout"
+                            data-x="center"
+                            data-y="290"
+                            data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                            data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                            data-start="1200"
+                            data-speed="600"
+                            data-easing="Linear.easeNone"
+                            data-endspeed="600"
+                            data-endeasing="Linear.easeNone">
+                            <strong>Para você que quer exercitar a mente e tornar-se mais inteligente!</strong>
+                        </div>
+                        <div class="caption big-light color-white bg-color-default customin customout"
+                            data-x="center"
+                            data-y="360"
+                            data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                            data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                            data-start="1800"
+                            data-speed="600"
+                            data-easing="Linear.easeNone"
+                            data-endspeed="600"
+                            data-endeasing="Linear.easeNone">
+                            Turmas para crianças e adultos!
+                        </div>
+                        <div class="caption customin customout start"
+                             data-x="center"
+                             data-y="450"
+                             data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+                             data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                             data-speed="1000"
+                             data-start="2000"
+                             data-easing="Back.easeInOut"
+                             data-endspeed="300">
+                            <button class="btn btn-lg btn-white btn-border">QUERO SABER MAIS!</button>
+                        </div>
+                    </li>
+                    <li data-transition="slotslide-vertical" data-slotamount="5" data-masterspeed="700" >
+                        <img src="{% static 'img/theme/revolution/dummy.png' %}"
+                             alt="slider3-bg"
+                             data-lazyload="{% static 'img/slider/home-slider-2.jpg' %}"
+                             data-bgposition="center right"
+                             data-kenburns="on"
+                             data-duration="9000"
+                             data-ease="Linear.easeNone"
+                             data-bgfit="116"
+                             data-bgfitend="100"
+                             data-bgpositionend="center left">
+                        <div class="caption very-large-strong color-white randomrotate"
+                             data-x="center"
+                             data-y="230"
+                             data-speed="900"
+                             data-start="800"
+                             data-easing="Power4.easeOut"
+                             data-endspeed="600"
+                             data-endeasing="Power0.easeIn">
+                            CLUBE DE XADREZ
+                        </div>
+                        <div class="caption medium-light text-center bg-color-default color-white randomrotate"
+                             data-x="center"
+                             data-y="310"
+                             data-speed="900"
+                             data-start="1000"
+                             data-easing="Power4.easeOut"
+                             data-endspeed="600"
+                             data-endeasing="Power0.easeIn">
+                            Para atletas de todos os níveis que desejam praticar<br/>
+                            e evoluir com um de nossos experientes instrutores!
+                        </div>
+                        <div class="caption customin customout start"
+                             data-x="center"
+                             data-y="400"
+                             data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+                             data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                             data-speed="1000"
+                             data-start="2000"
+                             data-easing="Back.easeInOut"
+                             data-endspeed="300">
+                            <button class="btn btn-lg btn-white btn-border">QUERO SABER MAIS!</button>
+                        </div>
+                        <div class="caption very-large-strong color-white fade"
+                             data-x="center"
+                             data-y="100"
+                             data-speed="900"
+                             data-start="1200"
+                             data-easing="Power4.easeOut"
+                             data-endspeed="600"
+                             data-endeasing="Power0.easeIn">
+                            <img src="{% static 'img/slider/knight-chess-icon.png' %}" width="130" height="130" alt="ESTAVOS">
+                        </div>
+                    </li>
+                    <li data-transition="parallaxtotop" data-slotamount="5" data-masterspeed="700">
+                        <img src="{% static 'img/theme/revolution/dummy.png' %}"
+                             alt="slider2-bg"
+                             data-lazyload="{% static 'img/slider/home-slider-3.jpg' %}"
+                             data-bgposition="center center"
+                             data-kenburns="on"
+                             data-duration="8000"
+                             data-ease="Linear.easeNone"
+                             data-bgfit="110"
+                             data-bgfitend="100"
+                             data-bgpositionend="center center">
+                        <div class="caption very-large-light color-white customin customout start"
+                            data-x="center"
+                            data-y="center"
+                            data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+                            data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                            data-speed="1000"
+                            data-start="800"
+                            data-easing="Back.easeInOut"
+                            data-endspeed="300">
+                            <strong>Especialistas no Esporte dos Reis</strong>
+                        </div>
+                        <div class="caption medium-strong color-white skewfromtop"
+                            data-x="center"
+                            data-y="390"
+                            data-speed="400"
+                            data-start="3800"
+                            data-easing="Cube.easeOut"
+                            data-endspeed="300"
+                            data-endeasing="Power1.easeIn">
+                            Nós amamos Xadrez e você também vai amar!
+                        </div>
+                        <div class="caption medium-strong color-white text-center bg-color-default skewfromleft"
+                            data-x="200"
+                            data-y="150"
+                            data-speed="400"
+                            data-start="1200"
+                            data-easing="Cube.easeOut"
+                            data-endspeed="300"
+                            data-endeasing="Power1.easeIn">
+                            Escolas
+                        </div>
+                        <div class="caption medium-strong color-white bg-color-purple lft"
+                            data-x="center"
+                            data-y="100"
+                            data-speed="400"
+                            data-start="1600"
+                            data-easing="Cube.easeOut"
+                            data-endspeed="300"
+                            data-endeasing="Power1.easeIn">
+                            Condomínios
+                        </div>
+                        <div class="caption medium-strong color-white bg-color-orange skewfromright"
+                            data-x="right"
+                            data-hoffset="-204"
+                            data-y="150"
+                            data-speed="400"
+                            data-start="2000"
+                            data-easing="Cube.easeOut"
+                            data-endspeed="300"
+                            data-endeasing="Power1.easeIn">
+                            Aulas particulares
+                        </div>
+                        <div class="caption medium-strong color-white bg-color-info skewfromright"
+                            data-x="right"
+                            data-hoffset="-204"
+                            data-y="bottom"
+                            data-voffset="-150"
+                            data-speed="400"
+                            data-start="2400"
+                            data-easing="Cube.easeOut"
+                            data-endspeed="300"
+                            data-endeasing="Power1.easeIn">
+                            Torneios
+                        </div>
+                        <div class="caption medium-strong color-white bg-color-success lfb"
+                            data-x="center"
+                            data-y="bottom"
+                            data-voffset="-75"
+                            data-speed="400"
+                            data-start="2800"
+                            data-easing="Cube.easeOut"
+                            data-endspeed="300"
+                            data-endeasing="Power1.easeIn">
+                            Arbitragem
+                        </div>
+                        <div class="caption medium-strong color-white bg-color-danger skewfromleft"
+                            data-x="200"
+                            data-y="bottom"
+                            data-voffset="-150"
+                            data-speed="400"
+                            data-start="3200"
+                            data-easing="Cube.easeOut"
+                            data-endspeed="300"
+                            data-endeasing="Power1.easeIn">
+                            Consultoria
+                        </div>
+                    </li>
+                </ul>
+                <div class="tp-bannertimer tp-bottom"></div>
             </div>
-
-            <div class="col-md-5">
-                <div class="blank-spacer margin-top30 margin-bottom30"></div>
-                <div class="panel">
-                    <div class="panel-body bg-color-white transparent">
-                        <h3 class="heading-double title-color text-center"><span>Make your Reservation<br/><small>3rd Night Free till the end of February!</small></span></h3>
-                        <form>
-                            <div class="form-group">
-                              <label>Select your Room</label>
-                                <select class="form-control input-lg">
-                                    <option>Single Room</option>
-                                    <option>Double Room</option>
-                                    <option>Luxury Room</option>
-                                    <option>Suite</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                      <label>Please select the day you will arrived:</label>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <select class="form-control">
-                                            <option>Month</option>
-                                            <option>January</option>
-                                            <option>February</option>
-                                            <option>March</option>
-                                            <option>April</option>
-                                            <option>May</option>
-                                            <option>June</option>
-                                            <option>July</option>
-                                            <option>August</option>
-                                            <option>September</option>
-                                            <option>October</option>
-                                            <option>November</option>
-                                            <option>December</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <select class="form-control">
-                                            <option>Day</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
-                                            <option>7</option>
-                                            <option>8</option>
-                                            <option>9</option>
-                                            <option>10</option>
-                                            <option>11</option>
-                                            <option>12</option>
-                                            <option>13</option>
-                                            <option>14</option>
-                                            <option>15</option>
-                                            <option>16</option>
-                                            <option>17</option>
-                                            <option>18</option>
-                                            <option>19</option>
-                                            <option>20</option>
-                                            <option>21</option>
-                                            <option>22</option>
-                                            <option>23</option>
-                                            <option>24</option>
-                                            <option>25</option>
-                                            <option>26</option>
-                                            <option>27</option>
-                                            <option>28</option>
-                                            <option>29</option>
-                                            <option>30</option>
-                                            <option>31</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <select class="form-control">
-                                            <option>Year</option>
-                                            <option>2014</option>
-                                            <option>2015</option>
-                                            <option>2016</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                      <label>Please select the departure day:</label>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <select class="form-control">
-                                            <option>Month</option>
-                                            <option>January</option>
-                                            <option>February</option>
-                                            <option>March</option>
-                                            <option>April</option>
-                                            <option>May</option>
-                                            <option>June</option>
-                                            <option>July</option>
-                                            <option>August</option>
-                                            <option>September</option>
-                                            <option>October</option>
-                                            <option>November</option>
-                                            <option>December</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <select class="form-control">
-                                            <option>Day</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
-                                            <option>7</option>
-                                            <option>8</option>
-                                            <option>9</option>
-                                            <option>10</option>
-                                            <option>11</option>
-                                            <option>12</option>
-                                            <option>13</option>
-                                            <option>14</option>
-                                            <option>15</option>
-                                            <option>16</option>
-                                            <option>17</option>
-                                            <option>18</option>
-                                            <option>19</option>
-                                            <option>20</option>
-                                            <option>21</option>
-                                            <option>22</option>
-                                            <option>23</option>
-                                            <option>24</option>
-                                            <option>25</option>
-                                            <option>26</option>
-                                            <option>27</option>
-                                            <option>28</option>
-                                            <option>29</option>
-                                            <option>30</option>
-                                            <option>31</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <select class="form-control">
-                                            <option>Year</option>
-                                            <option>2014</option>
-                                            <option>2015</option>
-                                            <option>2016</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <input id="exampleFullName" class="form-control input-lg" type="text" placeholder="Name">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input id="exampleYourEmail" class="form-control input-lg" type="email" placeholder="Email">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <button class="btn btn-primary btn-lg aligncenter" type="submit">MAKE RESERVATION</button>
-                            </div>
-                        </form>
-                        <p class="text-center">By signing up you agree our <a>Terms and Privacy Policy</a></p>
-                    </div>
-                </div>
-                <div class="blank-spacer margin-top20 margin-bottom20"></div>
-            </div>
-
-        </div>
-
-        </div>
     </div>
-</div>
 
 </div>
 <!-- /Slider Container -->
@@ -198,170 +232,210 @@
 <!-- Main Container -->
 <div class="main-wrapper">
 
+    <div class="fullsize fullsize-background"> <!-- Full Size Container -->
+		<div class=" container container-inner">
+
+		<div class="row">
+
+        	<div class="col-sm-6 col-md-3">
+				<div class="service-block sb-default">
+                	<div class="service-block-icon text-center animation bounceIn animation-active">
+						<div class="icon-wrapper icon-full-round fa-2x bg-color-default">
+							<i class="fa fa-th-large color-white"></i>
+						</div>
+                    </div>
+                    <div class="service-block-title text-center">
+            			<p>Curso de Xadrez para Iniciantes</p>
+                    </div>
+                    <div class="service-block-content text-center">
+                		<p>Aprenda Xadrez em apenas 8 encontros! Muito mais do que o básico, conheça as técnicas usadas
+                            pelos campeões para sair na frente de seus adversários!</p>
+                    	<a class="link-icon" href="#">Saiba mais <i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        	<div class="col-sm-6 col-md-3">
+				<div class="service-block sb-success">
+                	<div class="service-block-icon text-center animation bounceIn animation-active">
+						<div class="icon-wrapper icon-full-round fa-2x bg-color-success">
+							<i class="fa fa-flag-checkered color-white"></i>
+						</div>
+                    </div>
+                    <div class="service-block-title text-center">
+            			<p>Clube de Xadrez</p>
+                    </div>
+                    <div class="service-block-content text-center">
+                		<p>Se você já sabe o básico de Xadrez e quer <strong>evoluir</strong>, aqui é o lugar!</p>
+                        <p>Venha praticar e aprender com os melhores!</p>
+                        <p>Encontros livres para prática e de estudo com campeões!</p>
+                    	<a class="link-icon success" href="#">Saiba mais <i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+         	<div class="col-sm-6 col-md-3">
+				<div class="service-block sb-orange">
+                	<div class="service-block-icon text-center animation bounceIn animation-active">
+						<div class="icon-wrapper icon-full-round fa-2x bg-color-orange">
+							<i class="fa fa-home color-white"></i>
+						</div>
+                    </div>
+                    <div class="service-block-title text-center">
+            			<p>Aulas Particulares</p>
+                    </div>
+                    <div class="service-block-content text-center">
+                		<p>Conheça nosso <strong><em>Coaching</em></strong> de Xadrez!</p>
+                        <p>Aqui nós vamos avaliar seu nível, selecionar o melhor instrutor de acordo com seus objetivos
+                            e montar um plano de estudo personalizado.</p>
+                        <p>Nosso compromisso é com seu aprendizado!</p>
+                    	<a class="link-icon orange" href="#">Saiba mais <i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+         	<div class="col-sm-6 col-md-3">
+				<div class="service-block sb-purple">
+                	<div class="service-block-icon text-center animation bounceIn animation-active">
+						<div class="icon-wrapper icon-full-round fa-2x bg-color-purple">
+							<i class="fa fa-puzzle-piece color-white"></i>
+						</div>
+                    </div>
+                    <div class="service-block-title text-center">
+            			<p>Xadrez na Escola</p>
+                    </div>
+                    <div class="service-block-content text-center">
+                		<p>Por mais que você tente não consegue fazer o Xadrez "pegar" na sua escola?</p>
+                        <p>Nós fazemos por você! A ESTAVOS possui um método exclusivo para implantar a cultura do Xadrez na sua escola!</p>
+                    	<a class="link-icon purple" href="#">Saiba mais <i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+		</div>
+
+        </div>
+    </div>
+
 	<div class="container container-inner">
 		<div class="row">
 
 			<div class="col-md-8 col-md-offset-2">
-                <h2 class="title-small text-center title-color animation fadeInDownBig">Your Perfect Getaway</h2>
-                <p class="text-center lead">Whether it is your annual holiday vacation, a romantic weekend getaway or just a mid-week escape from
-Boston or New York, the Miami Plaza Hotel has a lot to offer.</p>
+                <div class="hr-icon"><hr><i class="fa fa-users icon-divider color-default animation fadeInUp"></i></div>
+                <h2 class="title-small text-center title-color animation fadeInDownBig">Xadrez para todos!</h2>
+                <p class="text-center lead">O Xadrez muda mentes, mentes transformam o mundo!</p>
+                <p class="text-center lead">Qual o seu perfil? Temos certeza que o Xadrez pode ajudar você!</p>
 			</div>
 
-        	<div class="col-md-4">
-				<div class="service-block sb-border sb-default animation fadeInUp">
-                	<div class="service-block-icon text-center">
-						<div class="icon-wrapper icon-border-radius fa-3x color-default">
-							<i class="fa fa-building-o"></i>
-						</div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="service-block sb-border sb-success animation fadeInUp">
+                        <div class="service-block-icon text-center">
+                            <div class="icon-wrapper icon-border-round fa-3x color-success">
+                                <i class="fa fa-level-up"></i>
+                            </div>
+                        </div>
+                        <div class="service-block-title text-center">
+                            <p>Sou pai e quero desenvolver o potencial do meu filho</p>
+                        </div>
+                        <div class="service-block-content text-center">
+                            <p>Mesmo se dedicando aos estudos seu filho sofre com baixo rendimento escolar,
+                                déficit de atenção ou dificuldade de concentração?</p>
+                            <p>Ou seu filho possui um desempenho acima da média?</p>
+                            <p>Em ambos os casos o Xadrez pode ajudá-lo a desenvolver seu potencial</p>
+                            <!--<a href="#" class="link-icon success">Saiba mais <i class="fa fa-angle-right"></i></a>-->
+                        </div>
                     </div>
-                    <div class="service-block-title text-center">
-            			<p>1. Accomodation</p>
-                    </div>
-                    <div class="service-block-content text-center">
-                		<p>Integer rhoncus auctor eros at viverra. Donec ornare mi quis nulla euismod volutpat.Curabitur eleifend mi eget tincidunt porta.</p>
-                    	<a href="#" class="link-icon">Read More <i class="fa fa-angle-right"></i></a>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="service-block sb-border sb-warning animation fadeInUp">
+                        <div class="service-block-icon text-center">
+                            <div class="icon-wrapper icon-border-radius fa-3x color-warning">
+                                <i class="fa fa-book"></i>
+                            </div>
+                        </div>
+                        <div class="service-block-title text-center">
+                            <p>Sou jovem e quero estar preparado para o vestibular</p>
+                        </div>
+                        <div class="service-block-content text-center">
+                            <p>Durante uma prova de vestibular, nós lidamos com pressões de tempo, resultado, concentrarção,
+                            memória, dentre outros.</p>
+                            <p>O Xadrez pode ajudar você a se preparar para momentos como esse, em que é exigido de nosso cérebro
+                            grandes esforços para realização de uma tarefa.</p>
+                            <!--<a href="#" class="link-icon warning">Saiba mais <i class="fa fa-angle-right"></i></a>-->
+                        </div>
                     </div>
                 </div>
             </div>
 
-        	<div class="col-md-4">
-				<div class="service-block sb-border sb-default animation fadeInUp">
-                	<div class="service-block-icon text-center">
-						<div class="icon-wrapper icon-border-radius fa-3x color-default">
-							<i class="fa fa-cutlery"></i>
-						</div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="service-block sb-border sb-orange animation fadeInUp">
+                        <div class="service-block-icon text-center">
+                            <div class="icon-wrapper icon-border-radius fa-3x color-orange">
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="service-block-title text-center">
+                            <p>Sou adulto e quero destaque profissional ou passar em concursos</p>
+                        </div>
+                        <div class="service-block-content text-center">
+                            <p>Mesmo com muito estudo você ainda tem dificuldades para memorizar conteúdos,
+                                raciocionar com agilidade ou se concentrar?</p>
+                            <p>O Xadrez trabalha habilidades como atenção, concentração, raciocínio lógico, memória,
+                                organização de ideias, tomada de decisões, autocontrole, disciplina, perseverança, dentre outras.</p>
+                            <p>APRENDA conosco e mude sua vida!</p>
+                            <!--<a href="#" class="link-icon orange">Saiba mais <i class="fa fa-angle-right"></i></a>-->
+                        </div>
                     </div>
-                    <div class="service-block-title text-center">
-            			<p>2. Food and Drink</p>
-                    </div>
-                    <div class="service-block-content text-center">
-                		<p>Integer rhoncus auctor eros at viverra. Donec ornare mi quis nulla euismod volutpat.Curabitur eleifend mi eget tincidunt porta.</p>
-                    	<a href="#" class="link-icon">Read More <i class="fa fa-angle-right"></i></a>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="service-block sb-border sb-default animation fadeInUp">
+                        <div class="service-block-icon text-center">
+                            <div class="icon-wrapper icon-border-radius fa-3x color-default">
+                                <i class="fa fa-heart"></i>
+                            </div>
+                        </div>
+                        <div class="service-block-title text-center">
+                            <p>Estou na terceira idade e quero manter minha mente ativa e me prevenir contra o Alzheimer</p>
+                        </div>
+                        <div class="service-block-content text-center">
+                            <p>
+                                <a href="https://www.nia.nih.gov/alzheimers/publication/2012-2013-alzheimers-disease-progress-report/assessing-risk-factors-cognitive/#cognitive"
+                                   target="_blank">Pesquisas apontam</a> que para manter o cérebro saudável é recomendável praticar atividades
+                            intelectualmente estimulantes tal como o Xadrez.</p>
+                            <p>A ESTAVOS conta com cursos regulares de Xadrez para Iniciantes, Clube para prática e Aulas particulares</p>
+                            <p><strong>O Xadrez é a ginástica da inteligência!</strong></p>
+                            <!--<a href="#" class="link-icon">Saiba mais <i class="fa fa-angle-right"></i></a>-->
+                        </div>
                     </div>
                 </div>
             </div>
 
-         	<div class="col-md-4">
-				<div class="service-block sb-border sb-default animation fadeInUp">
-                	<div class="service-block-icon text-center">
-						<div class="icon-wrapper icon-border-radius fa-3x color-default">
-							<i class="fa fa-bullhorn"></i>
-						</div>
-                    </div>
-                    <div class="service-block-title text-center">
-            			<p>3. Events</p>
-                    </div>
-                    <div class="service-block-content text-center">
-                		<p>Integer rhoncus auctor eros at viverra. Donec ornare mi quis nulla euismod volutpat.Curabitur eleifend mi eget tincidunt porta.</p>
-                    	<a href="#" class="link-icon">Read More <i class="fa fa-angle-right"></i></a>
-                    </div>
-                </div>
-            </div>
 
 		</div>
     </div>
 
-    <div class="fullsize padding-none"> <!-- Container Full Size -->
+    <div class="container container-inner"> <!-- Container -->
 
-		<div class="parallax-wrapper parallax-background12" data-stellar-background-ratio="0.3" >
-
-			<div class="parallax-wrapper padding-large">
-        		<div class="container">
-
-				<div class="row">
-        			<div class="col-md-12">
-
-						<div class="row">
-
-                        	<div class="col-md-7">
-
-                            	<div class="blank-spacer margin-top10 margin-bottom10"></div>
-								<div class="flex-video vimeo animation fadeInUp">
-									<iframe src="http://player.vimeo.com/video/46632171?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="1280" height="720"></iframe>
-	                        	</div>
-                                <div class="blank-spacer margin-top10 margin-bottom10"></div>
-
-							</div>
-
-                        	<div class="col-md-5">
-
-                            	<div class="blank-spacer margin-top20 margin-bottom20"></div>
-								<h1 class="title-small color-white text-right animation fadeInLeft">Watch Video Tour</h1>
-                                <p class="lead text-right color-white animation fadeInRightBig"><strong>SmartOn</strong> Turpis venenatis at laoreet. Etiam lorem nulla fuviverra minim sed metus egestas sapien conseto actetuer ac etiam. Donec ornare mi quis nulla euismod volutpat.Curabitur eleifend mi eget tincidunt porta.</p>
-                                <div class="blank-spacer margin-top30 margin-bottom30"></div>
-
-							</div>
-
-						</div>
-
-                    </div>
-				</div>
-
-                </div>
-			</div>
-
-		</div>
-
-    </div><!-- /Container Full Size-->
-
-	<div class="container container-inner">
 		<div class="row">
+			<div class="col-md-12">
+				<h2 class="title-color heading-single text-center"><span>Nossos parceiros <br><small>Gente como a gente, que ama e luta pelo Xadrez!</small></span></h2>
 
-			<div class="col-md-8 col-md-offset-2">
-                <h2 class="title-small text-center title-color animation fadeInDownBig">Amazing Accomodations</h2>
-                <p class="text-center lead">Find your favorite room and enjoy your gateway! Donec ornare mi quis nulla euismod volutpat.Curabitur eleifend mi eget tincidunt porta.
-</p>
+                <div class="col-md-offset-3">
+                    <div id="gallery-container" class="simple-gallery">
+                        <a href="http://www.sistemafibra.org.br/sesi/" target="_blank" class="am-wrapper" style="width: 154px; height: 118px; margin: 0px;"><img src="{% static 'img/partners/logo-sesi.jpg' %}" alt="SESI - Serviço Social da Indústria" style="display: inline; width: 154px; height: 118px; left: 0px; top: 0px;" class="montage"></a>
+                        <a href="http://ascadexadrez.wix.com/ascade" target="_blank" class="am-wrapper" style="width: 154px; height: 118px; margin: 0px;"><img src="{% static 'img/partners/logo-ascade.jpg' %}" alt="" style="display: inline; width: 154px; height: 118px; left: 0px; top: 0px;" class="montage"></a>
+                        <a href="http://www.ligabrasileiradexadrez.com.br/" target="_blank" class="am-wrapper" style="width: 154px; height: 118px; margin: 0px;"><img src="{% static 'img/partners/logo-lbx.jpg' %}" alt="" style="display: inline; width: 154px; height: 118px; left: 0px; top: 0px;" class="montage"></a>
+                        <a href="http://www.fbx.org.br/" target="_blank" class="am-wrapper" style="width: 154px; height: 118px; margin: 0px;"><img src="{% static 'img/partners/logo-fbx.jpg' %}" alt="" style="display: inline; width: 154px; height: 118px; left: 0px; top: 0px;" class="montage"></a>
+                    </div>
+                </div>
+
 			</div>
+        </div>
 
-        	<div class="col-md-4">
-				<div class="service-block sb-default animation fadeInLeft">
-					<img alt="" class="img-responsive img-thumbnail img-rounded shadow-drop-medium aligncenter" src="img/demo/converting/deluxe.jpg">
-                    <h4 class="title-color">Deluxe Room</h4>
-                    <div class="service-block-content">
-                		<p>Integer rhoncus auctor eros at viverra. Donec ornare mi quis nulla euismod volutpat.Curabitur eleifend mi eget tincidunt porta.</p>
-                    </div>
-					<ul class="fa-ul list-inline">
-						<li><i class="fa-li fa fa-caret-right"></i>Kingsize Bed</li>
-                        <li><i class="fa-li fa fa-caret-right"></i>Hotspot and TV Cable</li>
-                        <li><i class="fa-li fa fa-caret-right"></i>SeaSide View</li>
-                        <li><i class="fa-li fa fa-caret-right"></i>Free Lunch and Dinner</li>
-					</ul>
-                </div>
-            </div>
-
-        	<div class="col-md-4">
-				<div class="service-block sb-default animation fadeInUp">
-					<img alt="" class="img-responsive img-thumbnail img-rounded shadow-drop-medium aligncenter" src="img/demo/converting/luxury.jpg">
-                    <h4 class="title-color">Luxury Room</h4>
-                    <div class="service-block-content">
-                		<p>Integer rhoncus auctor eros at viverra. Donec ornare mi quis nulla euismod volutpat.Curabitur eleifend mi eget tincidunt porta.</p>
-                    </div>
-					<ul class="fa-ul list-inline">
-						<li><i class="fa-li fa fa-caret-right"></i>Kingsize Bed</li>
-                        <li><i class="fa-li fa fa-caret-right"></i>Hotspot and TV Cable</li>
-                        <li><i class="fa-li fa fa-caret-right"></i>Sea View</li>
-                        <li><i class="fa-li fa fa-caret-right"></i>Free Lunch and Dinner</li>
-					</ul>
-                </div>
-            </div>
-
-         	<div class="col-md-4">
-				<div class="service-block sb-default animation fadeInRight">
-					<img alt="" class="img-responsive img-thumbnail img-rounded shadow-drop-medium aligncenter" src="img/demo/converting/family.jpg">
-                    <h4 class="title-color">Family Apartment</h4>
-                    <div class="service-block-content">
-                		<p>Integer rhoncus auctor eros at viverra. Donec ornare mi quis nulla euismod volutpat.Curabitur eleifend mi eget tincidunt porta.</p>
-                    </div>
-					<ul class="fa-ul list-inline">
-						<li><i class="fa-li fa fa-caret-right"></i>1 Queens Bed, 2 Single Bed</li>
-                        <li><i class="fa-li fa fa-caret-right"></i>2 Rooms connected</li>
-                        <li><i class="fa-li fa fa-caret-right"></i>Hotspot and TV Cable</li>
-                        <li><i class="fa-li fa fa-caret-right"></i>Sea View</li>
-					</ul>
-                </div>
-            </div>
-
-		</div>
     </div>
 
 </div>
