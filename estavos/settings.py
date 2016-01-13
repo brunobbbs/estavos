@@ -86,9 +86,6 @@ PAGE_MENU_TEMPLATES = (
 USE_MODELTRANSLATION = False
 
 
-# Site title
-SITE_TITLE = u'Academia ESTAVOS'
-
 ########################
 # MAIN DJANGO SETTINGS #
 ########################
