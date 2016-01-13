@@ -235,16 +235,12 @@
         {% endblock %}
 
         {% block main_wrapper %}
-        <div class="col-md-{% block main_column_size %}7{% endblock %} middle">
+        <div class="col-md-{% block main_column_size %}10{% endblock %} middle">
             {% block main %}{% endblock %}
         </div>
         {% endblock %}
 
         {% block right_wrapper %}
-        <div class="col-md-{% block right_column_size %}3{% endblock %} right">
-            {% block right_panel %}
-            {% endblock %}
-        </div>
         {% endblock %}
 
     </div>
