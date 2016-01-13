@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
 <meta name="description" content="{% block meta_description %}{% endblock %}">
-<title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
+<title>{% block meta_title %}Aulas de Xadrez em Brasília - DF{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
 <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
 
 {% ifinstalled mezzanine.blog %}
@@ -38,6 +38,9 @@
 
     <!-- Color CSS -->
     <link href="{% static 'css/colors/color-default.css' %}" rel="stylesheet">
+
+    <!-- Custom -->
+    <link href="{% static 'css/custom-details.css' %}" rel="stylesheet">
 
 
     <!-- Google Fonts -->
@@ -269,7 +272,7 @@
 
 		<div class="row">
 
-        	<div class="col-md-4">
+        	<div class="col-md-3">
             	<div class="footer-widget">
             		<h3>Sobre nós</h3>
                     <p class="lead">"<em>Nossa missão é levar o Xadrez para todas as pessoas!</em>"</p>
@@ -278,7 +281,7 @@
        			</div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-3">
             	<div class="footer-widget">
             		<h3>Contato</h3>
                 	<p>Entre em contato agora mesmo conosco! Estamos à disposição para lhe atender.</p>
@@ -291,14 +294,23 @@
        			</div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-3">
             	<div class="footer-widget">
-            		<h3>Siga-nos nas Redes Sociais</h3>
+            		<h3>ESTAVOS na Rede!</h3>
                     <ul class="footer-social list-inline">
                         <li><a href="https://www.facebook.com/EstavosOficial" target="_blank"><div class="icon-wrapper icon-border-round fa-2x"><i class="fa fa-facebook"></i></div></a></li>
                         <li><a href="https://twitter.com/AcademiaEstavos" target="_blank"><div class="icon-wrapper icon-border-round fa-2x"><i class="fa fa-twitter"></i></div></a></li>
                         <li><a href="https://plus.google.com/+EstavosOficial" target="_blank"><div class="icon-wrapper icon-border-round fa-2x"><i class="fa fa-google-plus"></i></div></a></li>
                         <li><a href="https://www.instagram.com/academiaestavos/" target="_blank"><div class="icon-wrapper icon-border-round fa-2x"><i class="fa fa-instagram"></i></div></a></li>
+                    </ul>
+            	</div>
+            </div>
+
+            <div class="col-md-3">
+            	<div class="footer-widget">
+            		<h3>Navegação</h3>
+                    <ul class="fa-ul footer-navigation">
+                        {% page_menu "pages/menus/footer.html" %}
                     </ul>
             	</div>
             </div>
@@ -365,7 +377,7 @@
 	<!-- Lightbox -->
 	<script src="{% static 'js/themejs/jquery.lightbox.min.js' %}" type="text/javascript"></script>
 
-    <!-- include jQuery + carouFredSel plugin -->
+    <!-- include jQuery + carouFredSel plugin -->Aulas em condomínios
 	<script type="text/javascript" src="{% static 'js/themejs/jquery.carouFredSel-6.2.1-packed.js' %}"></script>
 
 	<!-- optionally include helper plugins -->
