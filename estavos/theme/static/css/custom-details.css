@@ -9,3 +9,11 @@
 .footer-navigation li a:hover {
     color: #085B41;
 }
+
+.editable-original {
+    margin-bottom: 2em;
+}
+
+.modal-footer .btn + .btn {
+    margin-bottom: 10px;
+}
