@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block meta_title %}Curso de Xadrez para Iniciantes{% endblock %}
+
+{% block all_content %}
+
+<!-- Main Container -->
+<div class="main-wrapper">
+
+    <div class="fullsize fullsize-background"> <!-- Full Size Container -->
+		<div class=" container container-inner">
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- Title -->
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h1 class="title-color heading-single text-center"><span>Curso de Xadrez para Iniciantes!</span></h1>
+                            <p class="lead text-center">Seja o próximo campeão! Matricule-se já no curso <strong>APRENDA</strong> da Academia ESTAVOS!</p>
+                            <a class="btn btn-primary center-block" data-toggle="modal" data-target="#saibamais">
+                                Saiba mais <i class="pl-10 fa fa-info"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- /Title -->
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="saibamais" tabindex="-1" role="dialog" aria-labelledby="saibaMais" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
+                                    <h4 class="modal-title" id="saibaMais">Curso de Xadrez para Iniciantes</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <ul class="list-icons">
+                                        <li><i class="icon-check"></i> A próxima turma tem início em Fev/2016.</li>
+                                        <li><i class="icon-check"></i> 2 Turmas! Uma para adultos e outra para crianças</li>
+                                        <li><i class="icon-check"></i> O pai que se matricula junto com o filho paga meia! Isso mesmo! Ganha <strong>50% de desconto!</strong></li>
+                                        <li><i class="icon-check"></i> O curso acontece no <strong>Núcleo de Xadrez do Clube ASCADE</strong> - Setor de Clubes Sul - trecho 2</li>
+                                        <li><i class="icon-check"></i> O <strong>APRENDA</strong> é composto de <strong>8 aulas</strong>, todas acontecem aos sábados pela manhã.</li>
+                                        <li><i class="icon-check"></i> Nós oferecemos até 2 (duas) reposições de aula <strong>GRÁTIS!</strong> Assim mesmo que haja algum imprevisto você não perde nada!</li>
+                                        <li><i class="icon-check"></i> Você ainda ganha um <strong>certificado exclusivo</strong> ao final do curso!</li>
+                                    </ul>
+                                    <p><strong>Está esperando o que para se inscrever? Estamos esperando por você!</strong></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal"><i class="icon-check"></i> Continuar navegando</button>
+                                    <a href="#" class="btn btn-sm btn-primary">Quero me inscrever!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Modal -->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
