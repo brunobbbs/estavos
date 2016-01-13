@@ -1,0 +1,11 @@
+.footer-navigation li {
+    margin-bottom: 0 !important;
+}
+
+.footer-navigation li a {
+    color: #4B9948;
+}
+
+.footer-navigation li a:hover {
+    color: #085B41;
+}
