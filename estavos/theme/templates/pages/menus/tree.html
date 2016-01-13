@@ -4,22 +4,24 @@
 {% if page_branch_in_menu %}
 
       {% for page in page_branch %}
-      {% if not has_home and page.is_primary and forloop.first %}
-      <li{% if on_home %} class="active"{% endif %} id="tree-menu-home">
-        <a href="{% url "home" %}"><i class="fa-li fa fa-chevron-circle-right"></i>{% trans "Home" %}</a>
-      </li>
-      {% endif %}
+{#      {% if not has_home and page.is_primary and forloop.first %}#}
+{#      <li{% if on_home %} class="active"{% endif %} id="tree-menu-home">#}
+{#        <a href="{% url "home" %}"><i class="fa-li fa fa-chevron-circle-right"></i>{% trans "Home" %}</a>#}
+{#      </li>#}
+{#      {% endif %}#}
       {% if page.in_menu %}
-      <li class="
-        {% if page.is_current %} active{% endif %}
-        {% if page.is_current_or_ascendant %} active-branch{% endif %}
-        " id="tree-menu-{{ page.html_id }}">
-        <i class="fa-li fa fa-chevron-circle-right"></i>
-        <a href="{{ page.get_absolute_url }}">{{ page.title }}</a>
-        {# wrap the next line with 'if page.is_current_or_ascendant' #}
-        {# to only show child pages in the menu for the current page #}
-        {% if page.has_children_in_menu %}<ul>{% page_menu page %}</ul>{% endif %}
-      </li>
+          {% if page.is_current_or_ascendant or not page.is_primary %}
+              <li class="
+                {% if page.is_current %} active{% endif %}
+                {% if page.is_current_or_ascendant %} active-branch{% endif %}
+                " id="tree-menu-{{ page.html_id }}">
+                <i class="fa-li fa fa-chevron-circle-right"></i>
+                <a href="{{ page.get_absolute_url }}">{{ page.title }}</a>
+                {# wrap the next line with 'if page.is_current_or_ascendant' #}
+                {# to only show child pages in the menu for the current page #}
+                {% if page.has_children_in_menu %}<ul>{% page_menu page %}</ul>{% endif %}
+              </li>
+          {% endif %}
       {% endif %}
       {% endfor %}
 
