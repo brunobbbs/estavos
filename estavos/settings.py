@@ -111,7 +111,7 @@ LANGUAGE_CODE = "pt-BR"
 
 # Supported languages
 LANGUAGES = (
-    ('pt-BR', _(u'Português')),
+    ('pt-br', _('Brazilian Portuguese')),
 )
 
 # secret_key
