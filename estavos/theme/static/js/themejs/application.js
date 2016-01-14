@@ -143,7 +143,7 @@ gfx(document).ready(function(){
 	Carousel
 -------------------------------------------------- */
 
-
+//
 //gfx(function() {
 //
 //	gfx('.latest-work').carouFredSel({
@@ -561,7 +561,7 @@ gfx(window).load(function(){ var pageLoading = gfx("#page-preloader"); setTimeou
 
 gfx(function(){
 gfx(window).scroll(function(e){ 
-  console.log('called');
+  //console.log('called');
       $el = gfx('.header-bottom'); 
       if (gfx(this).scrollTop() > 400 && $el.css('position') != 'fixed'){ 
         gfx('.header-bottom').css({'position': 'fixed', 'top': '0px', 'opacity':'0'}).animate({opacity:1},600).addClass('visible');;
