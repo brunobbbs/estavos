@@ -1,3 +1,5 @@
 Mezzanine==4.0.1
 dj-database-url==0.3.0
 python-decouple==3.0
+gunicorn==19.4.5
+psycopg2==2.6.1
