@@ -48,7 +48,7 @@
                         <h3 class="portfolio-title">{{ gallery.title }}<span class="fa fa-plus-square"></span></h3>
                     </div>
                     <div class="portfolio-toggle" style="display:none;">
-                        <p>{{ gallery.description }}</p>
+                        <p>{{ gallery.description|safe }}</p>
                         <a class="btn btn-sm btn-primary" href="{{ gallery.url }}">Veja mais fotos <i class="fa fa-share fa-margin-left"></i></a>
                     </div>
                 </div>
