@@ -19,7 +19,7 @@
     <a title="{{ image.description }}"
        rel="#image-{{ image.id }}"
        href="{{ image.file.url }}">
-        <img alt="{{ image.description }}" src="{{ MEDIA_URL }}{% thumbnail image.file 131 75 %}">
+        <img alt="{{ image.description }}" src="{{ MEDIA_URL }}{% thumbnail image.file 650 500 %}">
     </a>
 {% endfor %}
 {% endwith %}
