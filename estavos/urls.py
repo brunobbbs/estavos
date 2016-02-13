@@ -7,6 +7,8 @@ from django.contrib import admin
 from mezzanine.core.views import direct_to_template
 from mezzanine.conf import settings
 
+from estavos.theme.views import EventosView
+
 
 admin.autodiscover()
 
@@ -62,6 +64,10 @@ urlpatterns += patterns('',
     # page tree in the admin if it was installed.
 
     # url("^$", "mezzanine.blog.views.blog_post_list", name="home"),
+
+    # SPECIFIC THEME URLS
+    # ===================
+    url('^eventos/$', EventosView.as_view(), name='eventos'),
 
     # MEZZANINE'S URLS
     # ----------------

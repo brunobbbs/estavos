@@ -222,9 +222,9 @@ ul#filters li{ padding:0;}
 .portfolio-like .portfolio-like-icon { font-size:24px;}
 
 /*portfolio toggle */
-.portfolio-info-toggle{background-color: #20A5E8;  padding:10px;  margin: 0 !important; position:relative;}
+.portfolio-info-toggle{background-color: #4B9948;  padding:10px;  margin: 0 !important; position:relative;}
 .portfolio-info-toggle:after, .portfolio-info-toggle:before { bottom: 100%; border: solid transparent; content: " "; height: 0; width: 0; position: absolute; pointer-events: none; }
-.portfolio-info-toggle:after { border-color: rgba(0, 0, 0, 0); border-bottom-color: #20A5E8; border-width: 8px; left: 47%;}
+.portfolio-info-toggle:after { border-color: rgba(0, 0, 0, 0); border-bottom-color: #4B9948; border-width: 8px; left: 47%;}
 .portfolio-info-toggle p{ color:#fff; margin-bottom:0;}
 .portfolio-info-toggle a{ color:#fff; opacity:1; filter:alpha(opacity=100); /* For IE8 and earlier */}
 .portfolio-info-toggle a:hover{ color:#fff; opacity:0.6; filter:alpha(opacity=60); /* For IE8 and earlier */}
