@@ -2,9 +2,10 @@
 *.pyo
 .DS_Store
 .coverage
-/static
+static/
 .estavos/
 .idea
 .env
-/public
-/uploads
+public/
+uploads/
+media/

@@ -1,0 +1,34 @@
+{% extends "pages/page.html" %}
+
+{% load mezzanine_tags staticfiles %}
+
+{% block extra_css %}
+
+{% endblock extra_css %}
+
+{% block main %}
+{{ block.super }}
+
+{% editable page.gallery.content %}
+{{ page.gallery.content|richtext_filters|safe }}
+{% endeditable %}
+
+<div class="simple-gallery lightbox-gallery" id="gallery-container">
+{% with page.gallery.images.all as images %}
+{% for image in images %}
+    <a title="{{ image.description }}"
+       rel="#image-{{ image.id }}"
+       href="{{ image.file.url }}">
+        <img alt="{{ image.description }}" src="{{ MEDIA_URL }}{% thumbnail image.file 131 75 %}">
+    </a>
+{% endfor %}
+{% endwith %}
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+  <!-- PhotoMontage -->
+	<script type="text/javascript" src="{% static 'js/themejs/jquery.montage.min.js' %}"></script>
+{% endblock %}
