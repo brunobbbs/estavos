@@ -1,0 +1,131 @@
+{% load blog_tags keyword_tags mezzanine_tags i18n %}
+
+{% block blog_recent_posts %}
+{% blog_recent_posts 5 as recent_posts %}
+{% if recent_posts %}
+
+    <div class="sidebar-widget animation fadeInUp">
+    <h4 class="widget-title"><span>{% trans "Recent Posts" %}</span></h4>
+    <!-- tabs top -->
+    <div class="tabs sidebar-tabs">
+        <ul id="tab" class="nav nav-tabs">
+            <li class="active"><a href="#recents" data-toggle="tab">Últimos</a></li>
+            <!--<li><a href="#comments" data-toggle="tab">Comments</a></li>-->
+        </ul>
+        <div id="tab-content" class="tab-content">
+            <div id="recents" class="tab-pane active in">
+                <ul class="recent-posts">
+                    {% for recent_post in recent_posts %}
+                    <li class="clearfix">
+                    {% spaceless %}
+                        {% if settings.BLOG_USE_FEATURED_IMAGE and recent_post.featured_image %}
+                        <div class="recent-post-image">
+                            <img src="{{ MEDIA_URL }}{% thumbnail recent_post.featured_image 70 50 %}">
+                        </div>
+                        {% endif %}
+                        <div class="recent-post-content">
+                            <div class="recent-post-title">
+                                <a href="{{ recent_post.get_absolute_url }}">{{ recent_post.title }}</a>
+                            </div>
+                            <div class="recent-post-meta">
+                                <span class="meta-date">{{ recent_post.publish_date|date:"d/m/Y" }}</span>
+                            </div>
+                        </div>
+                    {% endspaceless %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- /tabs -->
+
+{% endif %}
+{% endblock %}
+
+{% block blog_categories %}
+{% blog_categories as categories %}
+{% if categories %}
+
+    <!-- sidebar widget -->
+    <div class="sidebar-widget animation fadeInUp">
+        <h4 class="widget-title"><span>{% trans "Categories" %}</span></h4>
+        <ul class="fa-ul list-divider">
+            {% for category in categories %}
+                <li><a href="{% url "blog_post_list_category" category.slug %}">
+                    <i class="fa-li fa fa-chevron-circle-right"></i>{{ category }} <span>({{ category.post_count }})</span></a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <!-- /sidebar widget -->
+
+{% endif %}
+{% endblock %}
+
+{% block blog_keywords %}
+{% keywords_for blog.blogpost as tags %}
+{% if tags %}
+
+    <!-- sidebar widget -->
+    <div class="sidebar-widget animation fadeInUp">
+        <h4 class="widget-title"><span>{% trans "Tags" %}</span></h4>
+        <div class="tags">
+            {% for tag in tags %}
+                <a href="{% url "blog_post_list_tag" tag.slug %}"
+                   class="tag-weight-{{ tag.weight }}">{{ tag }}</a>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- /sidebar widget -->
+
+{% endif %}
+{% endblock %}
+
+{% block blog_months %}
+{% blog_months as months %}
+{% if months %}
+
+    <!-- sidebar widget -->
+    <div class="sidebar-widget animation fadeInUp">
+        <h4 class="widget-title"><span>{% trans "Archive" %}</span></h4>
+        <ul class="fa-ul list-divider">
+            {% for month in months %}
+                {% ifchanged month.date.year %}
+                    {% if not forloop.first %}</ul>{% endif %}
+                    <h6>{{ month.date.year }}</h6><ul class="list-unstyled">
+                {% endifchanged %}
+                <li><a href="{% url "blog_post_list_month" year=month.date.year month=month.date.month %}">
+                    <i class="fa-li fa fa-chevron-circle-right"></i>{{ month.date|date:"F" }} <span>({{ month.post_count }})</span></a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <!-- /sidebar widget -->
+
+{% endif %}
+{% endblock %}
+
+{% block blog_feeds %}
+    <!-- sidebar widget -->
+    <div class="sidebar-widget animation fadeInUp">
+        <h4 class="widget-title"><span>{% trans "Feeds" %}</span></h4>
+        {% if tag %}
+            <a href="{% url "blog_post_feed_tag" tag.slug "rss" %}">{% trans "RSS" %}</a> /
+            <a href="{% url "blog_post_feed_tag" tag.slug "atom" %}">{% trans "Atom" %}</a>
+        {% endif %}
+        {% if category %}
+            <a href="{% url "blog_post_feed_category" category.slug "rss" %}">{% trans "RSS" %}</a> /
+            <a href="{% url "blog_post_feed_category" category.slug "atom" %}">{% trans "Atom" %}</a>
+        {% endif %}
+        {% if author %}
+            <a href="{% url "blog_post_feed_author" author.username "rss" %}">{% trans "RSS" %}</a> /
+            <a href="{% url "blog_post_feed_author" author.username "atom" %}">{% trans "Atom" %}</a>
+        {% endif %}
+        {% if not tag and not category and not author %}
+            <a href="{% url "blog_post_feed" "rss" %}">{% trans "RSS" %}</a> /
+            <a href="{% url "blog_post_feed" "atom" %}">{% trans "Atom" %}</a>
+        {% endif %}
+    </div>
+{% endblock %}
