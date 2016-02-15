@@ -284,6 +284,13 @@ OPTIONAL_APPS = (
     PACKAGE_NAME_GRAPPELLI,
 )
 
+######################
+# DISQUS INTEGRATION #
+######################
+
+COMMENTS_DISQUS_SHORTNAME = 'estavos'
+
+
 ####################
 # DYNAMIC SETTINGS #
 ####################

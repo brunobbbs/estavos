@@ -22,78 +22,173 @@
 <li class="active">{{ blog_post.title }}</li>
 {% endblock %}
 
-{% block main %}
+{% block left_wrapper %}{% endblock left_wrapper %}
 
-{% block blog_post_detail_postedby %}
-{% editable blog_post.publish_date %}
-<h6 class="post-meta">
-    {% trans "Posted by" %}:
-    {% with blog_post.user as author %}
-    <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
-    {% endwith %}
-    {% blocktrans with sometime=blog_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}
-</h6>
-{% endeditable %}
-{% endblock %}
-{% block blog_post_detail_commentlink %}
-<p>
-    {% if blog_post.allow_comments %}
-        {% if settings.COMMENTS_DISQUS_SHORTNAME %}
-            (<a href="{{ blog_post.get_absolute_url }}#disqus_thread"
-                data-disqus-identifier="{% disqus_id_for blog_post %}">{% spaceless %}
-                {% trans "Comments" %}
-            {% endspaceless %}</a>)
-        {% else %}(<a href="#comments">{% spaceless %}
-            {% blocktrans count comments_count=blog_post.comments_count %}{{ comments_count }} comment{% plural %}{{ comments_count }} comments{% endblocktrans %}
-            {% endspaceless %}</a>)
+{% block main_wrapper %}
+
+<div class="col-md-9">
+
+    <div class="blog-post post-format-standard">
+
+        {% block blog_post_detail_featured_image %}
+            {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
+                <div class="post-media">
+                    <div class="image-overlay">
+                        <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 1225 550 %}">
+                        <div class="overlay-fade">
+                            <a href="{{ MEDIA_URL }}{{ blog_post.featured_image }}" data-lightbox="image"><i class="icon-overlay fa fa-search-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        <div class="post-format"></div>
+
+        <div class="post-info">
+            <h3 class="post-title"><a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a></h3>
+            {% block blog_post_detail_postedby %}
+            {% editable blog_post.publish_date %}
+            <ul class="list-inline post-meta-info">
+                {% with blog_post.user as author %}
+                <li class="meta-author">
+                    <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
+                </li>
+                {% endwith %}
+                <li class="meta-date">
+                    {% blocktrans with sometime=blog_post.cccccccccccccccccccccc %}{{ sometime }}{% endblocktrans %}
+                </li>
+                <li class="meta-comments">
+                    <a href="#comments">{% blocktrans count comments_count=blog_post.comments_count %}{{ comments_count }} comentário{% plural %}{{ comments_count }} comentários{% endblocktrans %}</a>
+                </li>
+            </ul>
+            {% endeditable %}
+            {% endblock %}
+        </div>
+
+        <div class="post-content">
+            {% block blog_post_detail_content %}
+            {% editable blog_post.content %}
+                {{ blog_post.content|richtext_filters|safe }}
+            {% endeditable %}
+            {% endblock %}
+        </div>
+
+        <hr />
+
+        {% block blog_post_detail_keywords %}
+        {% keywords_for blog_post as tags %}
+        {% if tags %}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="tags">
+                        {% spaceless %}
+                            {% for tag in tags %}
+                            <a href="{% url "blog_post_list_tag" tag.slug %}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        {% endspaceless %}
+                    </div>
+                </div>
+            </div>
         {% endif %}
-    {% endif %}
-</p>
-{% endblock %}
+        {% endblock %}
 
-{% block blog_post_detail_featured_image %}
-{% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
-<p><img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 600 0 %}"></p>
-{% endif %}
-{% endblock %}
+        <br />
 
-{% if settings.COMMENTS_DISQUS_SHORTNAME %}
-{% include "generic/includes/disqus_counts.html" %}
-{% endif %}
+        {% block blog_post_detail_sharebuttons %}
+        {% set_short_url_for blog_post %}
+        <h3 class="heading-single"><span>Compartilhe com seus amigos!</span></h3>
+        <ul class="list-inline">
+            <li>
+                <a class="tooltip-on white"
+                   title="{% trans "Share on Facebook" %}"
+                   href="http://facebook.com/sharer.php?u={{ request.build_absolute_uri }}&amp;t={{ blog_post.title|urlencode }}">
+                    <div class="icon-wrapper icon-full-radius bg-color-default"><i class="fa fa-facebook"></i></div>
+                </a>
+            </li>
+            <li>
+                <a class="tooltip-on white"
+                   title="{% trans "Share on Twitter" %}"
+                   href="http://twitter.com/home?status={{ blog_post.short_url|urlencode }}%20{{ blog_post.title|urlencode }}">
+                    <div class="icon-wrapper icon-full-radius bg-color-info"><i class="fa fa-twitter"></i></div>
+                </a>
+            </li>
+        </ul>
+        {% endblock %}
 
-{% block blog_post_detail_content %}
-{% editable blog_post.content %}
-{{ blog_post.content|richtext_filters|safe }}
-{% endeditable %}
-{% endblock %}
+        {% block blog_post_detail_related_posts %}
+        {% if related_posts %}
+        <!-- related posts -->
+        <div class="related-posts">
+            <div class="related-icon"></div>
+            <h3 class="heading-single"><span>{% trans 'Related posts' %}</span></h3>
+            <div class="row">
+                {% for post in related_posts %}
+                <div class="col-md-4 col-sm-4">
+                    {% if settings.BLOG_USE_FEATURED_IMAGE and post.featured_image %}
+                        <div class="related-post-media">
+                            <img alt="" class="img-thumbnail" src="{{ MEDIA_URL }}{% thumbnail post.featured_image 550 403 %}" width="550" height="403">
+                        </div>
+                    {% endif %}
+                    <div class="related-post-content">
+                        <div class="related-post-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></div>
+                        <div class="related-post-meta"><span class="meta-date">{{ post.publish_date|date:"d/m/Y" }}</span></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <!-- /related posts -->
+        {% endif %}
+        {% endblock %}
 
-{% block blog_post_detail_keywords %}
-{% keywords_for blog_post as tags %}
-{% if tags %}
-{% spaceless %}
-<ul class="list-inline tags">
-    <li>{% trans "Tags" %}:</li>
-    {% for tag in tags %}
-    <li><a href="{% url "blog_post_list_tag" tag.slug %}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}</li>
-    {% endfor %}
-</ul>
-{% endspaceless %}
-{% endif %}
-{% endblock %}
+        {% block blog_post_detail_commentlink %}
+        {% if blog_post.allow_comments %}
+        <div class="comments-post">
+            <div class="comments-icon"></div>
+            <h3 class="heading-single"><span>Participe de nossa comunidade</span></h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="comments-list">
+                        <p>
+                            {% if settings.COMMENTS_DISQUS_SHORTNAME %}
+                                (<a href="{{ blog_post.get_absolute_url }}#disqus_thread"
+                                    data-disqus-identifier="{% disqus_id_for blog_post %}">{% spaceless %}
+                                    {% trans "Comments" %}
+                                {% endspaceless %}</a>)
+                            {% else %}(<a href="#comments">{% spaceless %}
+                                {% blocktrans count comments_count=blog_post.comments_count %}{{ comments_count }} comment{% plural %}{{ comments_count }} comments{% endblocktrans %}
+                                {% endspaceless %}</a>)
+                            {% endif %}
+                        </p>
+                        {% block blog_post_detail_comments %}
+                        {% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endblock %}
 
-{% block blog_post_detail_rating %}
-<div class="panel panel-default rating">
-    <div class="panel-body">
-    {% rating_for blog_post %}
     </div>
-</div>
-{% endblock %}
 
-{% block blog_post_detail_sharebuttons %}
-{% set_short_url_for blog_post %}
-<a class="btn btn-sm share-twitter" target="_blank" href="http://twitter.com/home?status={{ blog_post.short_url|urlencode }}%20{{ blog_post.title|urlencode }}">{% trans "Share on Twitter" %}</a>
-<a class="btn btn-sm share-facebook" target="_blank" href="http://facebook.com/sharer.php?u={{ request.build_absolute_uri }}&amp;t={{ blog_post.title|urlencode }}">{% trans "Share on Facebook" %}</a>
-{% endblock %}
+</div>
+
+{% endblock main_wrapper %}
+
+{% block right_wrapper %}
+    <div class="col-md-3">
+    {% include "blog/includes/filter_panel.html" %}
+    </div>
+{% endblock right_wrapper %}
+
+{% block extra_js %}
+{% if settings.COMMENTS_DISQUS_SHORTNAME %}
+    {% include "generic/includes/disqus_counts.html" %}
+{% endif %}
+{% endblock extra_js %}
+
 
 {% block blog_post_previous_next %}
 <ul class="pager">
@@ -112,23 +207,4 @@
 {% endif %}
 {% endwith %}
 </ul>
-{% endblock %}
-
-{% block blog_post_detail_related_posts %}
-{% if related_posts %}
-<div id="related-posts">
-<h3>{% trans 'Related posts' %}</h3>
-<ul class="list-unstyled">
-{% for post in related_posts %}
-     <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
-{% endfor %}
-</ul>
-</div>
-{% endif %}
-{% endblock %}
-
-{% block blog_post_detail_comments %}
-{% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
-{% endblock %}
-
 {% endblock %}

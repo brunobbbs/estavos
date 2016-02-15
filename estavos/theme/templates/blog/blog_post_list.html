@@ -133,9 +133,16 @@
                                         {{ blog_post.publish_date|date:"d/m/Y" }}
                                     </li>
                                     <li class="meta-comments">
-                                        <a href="{{ blog_post.get_absolute_url }}#comments">
-                                            {% blocktrans count comments_count=blog_post.comments_count %}{{ comments_count }} commentário{% plural %}{{ comments_count }} commentários{% endblocktrans %}
-                                        </a>
+                                        {% if settings.COMMENTS_DISQUS_SHORTNAME %}
+                                            <a href="{{ blog_post.get_absolute_url }}#disqus_thread"
+                                                data-disqus-identifier="{% disqus_id_for blog_post %}">
+                                                {% trans "Comments" %}
+                                            </a>
+                                            {% else %}
+                                            <a href="{{ blog_post.get_absolute_url }}#comments">
+                                                {% blocktrans count comments_count=blog_post.comments_count %}{{ comments_count }} comentário{% plural %}{{ comments_count }} comentários{% endblocktrans %}
+                                            </a>
+                                        {% endif %}
                                     </li>
                                     <li class="meta-tags">
                                         {% keywords_for blog_post as tags %}
@@ -184,3 +191,10 @@
     {% include "blog/includes/filter_panel.html" %}
     </div>
 {% endblock right_wrapper %}
+
+
+{% block extra_js %}
+{% if settings.COMMENTS_DISQUS_SHORTNAME %}
+    {% include "generic/includes/disqus_counts.html" %}
+{% endif %}
+{% endblock extra_js %}
