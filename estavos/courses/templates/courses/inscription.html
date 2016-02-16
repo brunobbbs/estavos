@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}Inscrição{% endblock title %}
 
 {% block main %}
@@ -117,7 +119,7 @@
     <!-- /Pricing table -->
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8">
 
             <div class="service-block sb-border sb-success">
                 <div class="service-block-icon text-center">
@@ -182,9 +184,18 @@
 
     <div class="row">
         <div class="col-md-12">
-            <p>Após o preenchimento do formulário acima você receberá um email do PagSeguro para confirmação de inscrição.</p>
+            <p><strong>Após o preenchimento do formulário acima você receberá um email do PagSeguro para confirmação de inscrição.</strong></p>
             <p>Em caso de dúvidas estamos à disposição para atendê-lo.</p>
         </div>
     </div>
 
 {% endblock main %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'courses/js/jquery.mask.min.js' %}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#id_birth').mask('00/00/0000');
+        });
+    </script>
+{% endblock extra_js %}

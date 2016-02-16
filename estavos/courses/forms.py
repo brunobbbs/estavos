@@ -60,6 +60,6 @@ class InscriptionForm(forms.Form):
     birth = forms.DateField(
         label=_('Data de nascimento'),
         widget=forms.DateInput(
-            attrs={'class': 'form-control', 'placeholder': 'Informe a data de nascimento do aluno'}
+            attrs={'class': 'form-control', 'placeholder': 'Informe a data de nascimento do aluno Formato: dd/mm/aaaa'}
         )
     )

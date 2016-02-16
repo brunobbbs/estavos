@@ -438,8 +438,9 @@
 
     <!-- Load Scripts -->
 	<script src="{% static 'js/themejs/application.js' %}"></script>
-{% block extra_js %}{% endblock %}
-{% endcompress %}
+
+    {% block extra_js %}{% endblock %}
+    {% endcompress %}
 
 </body>
 </html>
