@@ -56,7 +56,7 @@
                 </li>
                 {% endwith %}
                 <li class="meta-date">
-                    {% blocktrans with sometime=blog_post.cccccccccccccccccccccc %}{{ sometime }}{% endblocktrans %}
+                    {{ blog_post.publish_date|date:"d/m/Y" }}
                 </li>
                 <li class="meta-comments">
                     <a href="#comments">{% blocktrans count comments_count=blog_post.comments_count %}{{ comments_count }} comentário{% plural %}{{ comments_count }} comentários{% endblocktrans %}</a>
