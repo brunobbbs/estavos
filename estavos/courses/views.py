@@ -1,9 +1,11 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, FormView
+from estavos.courses.forms import InscriptionForm
 
 
-class CourseHome(TemplateView):
+class Home(TemplateView):
     template_name = 'courses/index.html'
 
 
-class CourseInscription(TemplateView):
+class Inscription(FormView):
     template_name = 'courses/inscription.html'
+    form_class = InscriptionForm

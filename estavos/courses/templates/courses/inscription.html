@@ -8,7 +8,16 @@
         <div class="col-md-12">
             <div class="alert alert-info fade in">
                 <a aria-hidden="true" data-dismiss="alert" class="close"><i class="fa fa-times"></i></a>
-                O curso APRENDA tem início no dia <strong>20 de Fevereiro de 2016</strong>
+                O curso APRENDA <strong>unidade Plano Piloto (ASCADE)</strong> tem início no dia <strong>20 de Fevereiro de 2016</strong>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-info fade in">
+                <a aria-hidden="true" data-dismiss="alert" class="close"><i class="fa fa-times"></i></a>
+                O curso APRENDA <strong>unidade Águas Claras (Kumon Av. das Castanheiras)</strong> tem início no dia <strong>12 de Março de 2016</strong>
             </div>
         </div>
     </div>
@@ -56,7 +65,7 @@
                                 <div class="icon-wrapper icon-border-round fa-2x">
                                     <i class="fa fa-star"></i>
                                 </div>
-                                <p>2º Aluno / Sócio ASCADE</p>
+                                <p>Desconto exclusivo para parceiros*</p>
                             </li>
                             <li class="pricing-value color-default">
                                 <p class="period">3 parcelas iguais de</p>
@@ -65,6 +74,7 @@
                             </li>
                             <li>
                                 <ul class="pricing-options">
+                                    <li>* Desconto especial para <span class="color-default">alunos do Kumon Águas Claras Av. das Castanheiras e sócios ASCADE</span></li>
                                     <li>Desconto de <span class="color-default">20%!</span></li>
                                     <li>Turmas para <span class="color-default">adultos e crianças</span></li>
                                     <li>Entrega de <span class="color-default">certificados</span></li>
@@ -106,14 +116,69 @@
         </div>
     <!-- /Pricing table -->
 
-    <iframe src="https://docs.google.com/forms/d/1RnwupwmPa3fK6iLuRSRTU70wnZs1JmEIpfkDZTgpSEs/viewform?embedded=true"
-            width="760"
-            height="650"
-            frameborder="0"
-            marginheight="0"
-            marginwidth="0">
-        Carregando…
-    </iframe>
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="service-block sb-border sb-success">
+                <div class="service-block-icon text-center">
+                    <div class="icon-wrapper icon-border-round fa-3x color-success">
+                        <i class="fa fa-check"></i>
+                    </div>
+                </div>
+                <div class="service-block-title">
+                    <p class="text-center"><strong>Inscrição</strong></p>
+                </div>
+                <div class="service-block-content">
+                    <form action="" method="post">
+                        {% csrf_token %}
+
+                        <!-- responsável -->
+                        <h4 class="title-color heading-single text-center"><span>Dados do responsável</span></h4>
+                        <div class="form-group">
+                            <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+                            {{ form.name }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.phone.id_for_label }}">{{ form.phone.label }}</label>
+                            {{ form.phone }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+                            {{ form.email }}
+                        </div>
+
+                        <!-- curso -->
+                        <h4 class="title-color heading-single text-center"><span>Escolha do curso</span></h4>
+                        <div class="form-group">
+                            <label for="{{ form.place.id_for_label }}">{{ form.place.label }}</label>
+                            <p class="help-block">{{ form.place.help_text }}</p>
+                            {{ form.place }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.klass.id_for_label }}">{{ form.klass.label }}</label>
+                            <p class="help-block">{{ form.klass.help_text }}</p>
+                            {{ form.klass }}
+                        </div>
+
+                        <!-- aluno -->
+                        <h4 class="title-color heading-single text-center"><span>Dados do aluno</span></h4>
+                        <div class="form-group">
+                            <label for="{{ form.student.id_for_label }}">{{ form.student.label }}</label>
+                            {{ form.student }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.birth.id_for_label }}">{{ form.birth.label }}</label>
+                            <p class="help-block">{{ form.birth.help_text }}</p>
+                            {{ form.birth }}
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Efetuar inscrição</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-md-12">
