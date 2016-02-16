@@ -220,6 +220,7 @@ INSTALLED_APPS = (
     'django_extensions',
     # "mezzanine.accounts",
     # "mezzanine.mobile",
+    'estavos.courses',
 )
 
 # List of processors used by RequestContext to populate the context.

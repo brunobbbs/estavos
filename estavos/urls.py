@@ -8,6 +8,7 @@ from mezzanine.core.views import direct_to_template
 from mezzanine.conf import settings
 
 from estavos.theme.views import EventosView
+from estavos.courses.views import CourseHome, CourseInscription
 
 
 admin.autodiscover()
@@ -67,7 +68,8 @@ urlpatterns += patterns('',
 
     # SPECIFIC THEME URLS
     # ===================
-    url('^eventos/$', EventosView.as_view(), name='eventos'),
+    url(r'^eventos/$', EventosView.as_view(), name='eventos'),
+    url(r'^curso-de-xadrez/', include('estavos.courses.urls', namespace='courses')),
 
     # MEZZANINE'S URLS
     # ----------------
