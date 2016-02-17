@@ -134,44 +134,71 @@
                     <form action="" method="post">
                         {% csrf_token %}
 
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger">
+                                {{ form.non_field_errors }}
+                            </div>
+                        {% endif %}
+
                         <!-- responsável -->
                         <h4 class="title-color heading-single text-center"><span>Dados do responsável</span></h4>
-                        <div class="form-group">
-                            <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+                        <div class="form-group {% if form.name.errors %}has-error{% endif %}">
+                            <label for="{{ form.name.id_for_label }}" class="control-label">{{ form.name.label }}</label>
                             {{ form.name }}
+                            {% if form.name.errors %}
+                                <span class="help-block color-danger">{{ form.name.errors.as_text }}</span>
+                            {% endif %}
                         </div>
-                        <div class="form-group">
-                            <label for="{{ form.phone.id_for_label }}">{{ form.phone.label }}</label>
+                        <div class="form-group {% if form.phone.errors %}has-error{% endif %}">
+                            <label for="{{ form.phone.id_for_label }}" class="control-label">{{ form.phone.label }}</label>
                             {{ form.phone }}
+                            {% if form.phone.errors %}
+                                <span class="help-block color-danger">{{ form.phone.errors.as_text }}</span>
+                            {% endif %}
                         </div>
-                        <div class="form-group">
-                            <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+                        <div class="form-group {% if form.email.errors %}has-error{% endif %}">
+                            <label for="{{ form.email.id_for_label }}" class="control-label">{{ form.email.label }}</label>
                             {{ form.email }}
+                            {% if form.email.errors %}
+                                <span class="help-block color-danger">{{ form.email.errors.as_text }}</span>
+                            {% endif %}
                         </div>
 
                         <!-- curso -->
                         <h4 class="title-color heading-single text-center"><span>Escolha do curso</span></h4>
-                        <div class="form-group">
-                            <label for="{{ form.place.id_for_label }}">{{ form.place.label }}</label>
+                        <div class="form-group {% if form.place.errors %}has-error{% endif %}">
+                            <label for="{{ form.place.id_for_label }}" class="control-label">{{ form.place.label }}</label>
                             <p class="help-block">{{ form.place.help_text }}</p>
                             {{ form.place }}
+                            {% if form.place.errors %}
+                                <span class="help-block color-danger">{{ form.place.errors.as_text }}</span>
+                            {% endif %}
                         </div>
-                        <div class="form-group">
-                            <label for="{{ form.klass.id_for_label }}">{{ form.klass.label }}</label>
+                        <div class="form-group {% if form.klass.errors %}has-error{% endif %}">
+                            <label for="{{ form.klass.id_for_label }}" class="control-label">{{ form.klass.label }}</label>
                             <p class="help-block">{{ form.klass.help_text }}</p>
                             {{ form.klass }}
+                            {% if form.klass.errors %}
+                                <span class="help-block color-danger">{{ form.klass.errors.as_text }}</span>
+                            {% endif %}
                         </div>
 
                         <!-- aluno -->
                         <h4 class="title-color heading-single text-center"><span>Dados do aluno</span></h4>
-                        <div class="form-group">
-                            <label for="{{ form.student.id_for_label }}">{{ form.student.label }}</label>
+                        <div class="form-group {% if form.student.errors %}has-error{% endif %}">
+                            <label for="{{ form.student.id_for_label }}" class="control-label">{{ form.student.label }}</label>
                             {{ form.student }}
+                            {% if form.student.errors %}
+                                <span class="help-block color-danger">{{ form.student.errors.as_text }}</span>
+                            {% endif %}
                         </div>
-                        <div class="form-group">
-                            <label for="{{ form.birth.id_for_label }}">{{ form.birth.label }}</label>
+                        <div class="form-group {% if form.birth.errors %}has-error{% endif %}">
+                            <label for="{{ form.birth.id_for_label }}" class="control-label">{{ form.birth.label }}</label>
                             <p class="help-block">{{ form.birth.help_text }}</p>
                             {{ form.birth }}
+                            {% if form.birth.errors %}
+                                <span class="help-block color-danger">{{ form.birth.errors.as_text }}</span>
+                            {% endif %}
                         </div>
 
                         <button type="submit" class="btn btn-primary">Efetuar inscrição</button>

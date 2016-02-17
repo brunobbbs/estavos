@@ -1,0 +1,29 @@
+Olá {{ inscription.name }}, tudo bem?
+
+Informamos que as pré-inscrição do aluno(a) {{ inscription.student }} no curso APRENDA foi realizada com sucesso.
+
+Você fez a pré-inscrição no curso APRENDA da unidade {{ inscription.place }} na turma de {{ inscription.klass }}.
+
+Caso tenha alguma informação errada, por favor entre em contato e solicite correção.
+
+Você receberá em breve um email do PagSeguro, uma plataforma segura de pagamentos online da UOL, com o valor do curso para confirmação da inscrição.
+
+Você poderá pagar em até 3x iguais sem juros ou em até 12x além de boleto bancário.
+
+Também aceitamos pagamento via transferência bancária para nossa conta em:
+
+Caixa Econômica Federal
+Agência: 1803
+Cc: 227-8
+Op: 003
+Estavos Organizadora de Eventos Desportivos
+
+​Qualquer dúvida estamos à disposição.
+
+Atenciosamente,​
+​--
+Bruno Barbosa
+ESTAVOS​ - Academia de Jogos​
+http://estavos.com
+contato@estavos.com
+(61) 8121-7870

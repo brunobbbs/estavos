@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django import forms
+from django.core import mail
+from django.template.loader import render_to_string
 from django.utils.translation import ugettext as _
 
 
@@ -63,3 +65,8 @@ class InscriptionForm(forms.Form):
             attrs={'class': 'form-control', 'placeholder': 'Informe a data de nascimento do aluno Formato: dd/mm/aaaa'}
         )
     )
+
+    def send_mail(self, subject, from_, to, template_name, context):
+        body = render_to_string(template_name, context)
+        mail.send_mail(subject, body, from_, [from_, to])
+
