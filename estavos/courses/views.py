@@ -25,6 +25,8 @@ class Inscription(FormView):
             'place': places[data['place']],
             'klass': classes[data['klass']]
         })
+
+        # Email de confirmação para o cliente
         form.send_mail(
             subject='Pré-Inscrição no Curso de Xadrez para Iniciantes realizada',
             from_=settings.DEFAULT_FROM_EMAIL,
@@ -32,6 +34,16 @@ class Inscription(FormView):
             template_name='courses/inscription_email.txt',
             context={'inscription': data}
         )
+
+        # Email para equipe ESTAVOS
+        form.send_mail(
+            subject='Nova inscrição do APRENDA recebida',
+            from_=settings.DEFAULT_FROM_EMAIL,
+            to='contato@estavos.com',
+            template_name='courses/inscription_estavos_email.txt',
+            context={'inscription': data}
+        )
+
         return super(Inscription, self).form_valid(form)
 
 

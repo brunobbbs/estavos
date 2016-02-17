@@ -37,7 +37,7 @@ class InscriptionPostValid(TestCase):
 
 
     def test_send_inscription_mail(self):
-        self.assertEqual(1, len(mail.outbox))
+        self.assertEqual(2, len(mail.outbox))
 
 
 class InscriptionPostInvalid(TestCase):
