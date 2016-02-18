@@ -68,5 +68,5 @@ class InscriptionForm(forms.Form):
 
     def send_mail(self, subject, from_, to, template_name, context):
         body = render_to_string(template_name, context)
-        mail.send_mail(subject, body, from_, [from_, to])
+        mail.send_mail(subject, body, from_, [to, ])
 
