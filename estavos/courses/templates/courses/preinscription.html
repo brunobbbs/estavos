@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<p>Olá {{ inscription.name }}, tudo bem?</p>
+
+<p>Informamos que as pré-inscrição do aluno(a) {{ inscription.student }} no curso APRENDA foi realizada com sucesso.</p>
+
+<p>Você fez a pré-inscrição no curso APRENDA da unidade {{ inscription.place }} na turma de {{ inscription.klass }}.</p>
+
+<p>Caso tenha alguma informação errada, por favor entre em contato e solicite correção.</p>
+
+<p>Você receberá em breve um email do PagSeguro, uma plataforma segura de pagamentos online da UOL, com o valor do curso para confirmação da inscrição.</p>
+
+<p>Você poderá pagar em até 3x iguais sem juros ou em até 12x além de boleto bancário.</p>
+
+<p>Também aceitamos pagamento via transferência bancária para nossa conta em:</p>
+
+<p>Caixa Econômica Federal <br />
+Agência: 1803 <br />
+Cc: 227-8 <br />
+Op: 003 <br />
+Estavos Organizadora de Eventos Desportivos</p>
+
+<p>​Qualquer dúvida estamos à disposição.</p>
+
+<p>Atenciosamente,​</p>
+<p>​-- <br />
+Bruno Barbosa <br />
+ESTAVOS​ - Academia de Jogos​ <br />
+http://estavos.com <br />
+contato@estavos.com <br />
+(61) 8121-7870</p>
+
+{% endblock main %}

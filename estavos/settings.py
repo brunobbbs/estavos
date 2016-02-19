@@ -218,6 +218,7 @@ INSTALLED_APPS = (
     "mezzanine.galleries",
     # "mezzanine.twitter",
     'django_extensions',
+    'test_without_migrations',
     # "mezzanine.accounts",
     # "mezzanine.mobile",
     'estavos.courses',

@@ -15,7 +15,7 @@ class Home(TemplateView):
 class Inscription(FormView):
     template_name = 'courses/inscription_form.html'
     form_class = InscriptionForm
-    success_url = reverse_lazy('courses:thanks')
+    success_url = reverse_lazy('courses:preinscription')
 
     def form_valid(self, form):
         data = form.cleaned_data
@@ -47,5 +47,5 @@ class Inscription(FormView):
         return super(Inscription, self).form_valid(form)
 
 
-def thanks(request):
-    return HttpResponse('ok')
+class PreInscription(TemplateView):
+    template_name = 'courses/preinscription.html'
