@@ -25,7 +25,12 @@ class Inscription(models.Model):
     klass = models.CharField('Turma', max_length=8, choices=KLASS)
     student = models.CharField('Aluno', max_length=150)
     birth = models.DateField('Data de nascimento')
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField('Inscrição realizada em', auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'inscrição'
+        verbose_name_plural = 'inscrições'
+        ordering = ('-created_at', )
 
     def __str__(self):
         return self.name
