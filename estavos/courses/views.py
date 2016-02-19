@@ -2,29 +2,26 @@
 from __future__ import unicode_literals
 
 from django.conf import settings
-from django.core.urlresolvers import reverse_lazy
-from django.http import HttpResponse
-from django.views.generic import TemplateView, FormView
+from django.shortcuts import resolve_url as r
+from django.views.generic import TemplateView, CreateView
 from estavos.courses.forms import InscriptionForm
+from estavos.courses.models import Inscription
 
 
 class Home(TemplateView):
     template_name = 'courses/index.html'
 
 
-class Inscription(FormView):
+class InscriptionView(CreateView):
     template_name = 'courses/inscription_form.html'
     form_class = InscriptionForm
-    success_url = reverse_lazy('courses:preinscription')
+    model = Inscription
+
+    def get_success_url(self):
+        return r('courses:preinscription')
 
     def form_valid(self, form):
         data = form.cleaned_data
-        places = dict(form.PLACES)
-        classes = dict(form.KLASS)
-        data.update({
-            'place': places[data['place']],
-            'klass': classes[data['klass']]
-        })
 
         # Email de confirmação para o cliente
         form.send_mail(
@@ -44,7 +41,7 @@ class Inscription(FormView):
             context={'inscription': data}
         )
 
-        return super(Inscription, self).form_valid(form)
+        return super(InscriptionView, self).form_valid(form)
 
 
 class PreInscription(TemplateView):

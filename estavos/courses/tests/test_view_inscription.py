@@ -1,9 +1,8 @@
-import unittest
-
 from django.core import mail
 from django.shortcuts import resolve_url as r
 from django.test import TestCase
 from estavos.courses.forms import InscriptionForm
+from estavos.courses.models import Inscription
 
 
 class InscriptionsGet(TestCase):
@@ -35,9 +34,11 @@ class InscriptionPostValid(TestCase):
         """Valid POST should redirect to thanks page"""
         self.assertRedirects(self.resp, r('courses:preinscription'))
 
-
     def test_send_inscription_mail(self):
         self.assertEqual(2, len(mail.outbox))
+
+    def test_save_inscription(self):
+        self.assertTrue(Inscription.objects.exists())
 
 
 class InscriptionPostInvalid(TestCase):
@@ -47,3 +48,10 @@ class InscriptionPostInvalid(TestCase):
     def test_post(self):
         """Invalid POST should not redirect"""
         self.assertEqual(200, self.resp.status_code)
+
+    def test_form_has_errors(self):
+        form = self.resp.context['form']
+        self.assertTrue(form.errors)
+
+    def test_not_save_inscription(self):
+        self.assertFalse(Inscription.objects.exists())
