@@ -26,13 +26,13 @@ class InscriptionsGet(TestCase):
 class InscriptionPostValid(TestCase):
     def setUp(self):
         # ['name', 'phone', 'email', 'place', 'klass', 'student', 'birth']
-        data = dict(name='Bruno Barbosa', phone='(61) 2222-2222', email='bsbruno1@gmail.com', place='ascade',
+        data = dict(name='Bruno Barbosa', phone='(61) 2222-2222', email='bsbruno1@gmail.com', place='kumon',
                     klass='adults', student='Ana Beatriz', birth='2009-09-01')
         self.resp = self.client.post(r('courses:inscription'), data)
 
     def test_post(self):
         """Valid POST should redirect to thanks page"""
-        self.assertRedirects(self.resp, r('courses:preinscription'))
+        self.assertRedirects(self.resp, r('courses:preinscription', 1))
 
     def test_send_inscription_mail(self):
         self.assertEqual(2, len(mail.outbox))

@@ -14,17 +14,17 @@ class Inscription(models.Model):
     )
 
     PLACES = (
-        ('ascade', _('Núcleo de Xadrez do clube ASCADE')),
-        ('kumon', _('Kumon Águas Claras - Avenida das Castanheiras'))
+        ('kumon', _('Kumon Águas Claras - Avenida das Castanheiras - Início 12/03/2016')),
+        # ('ascade', _('Núcleo de Xadrez do clube ASCADE - Início 20/02/2016')),
     )
 
-    name = models.CharField(max_length=150)
-    phone = models.CharField(max_length=15)
-    email = models.EmailField()
-    place = models.CharField(max_length=6, choices=PLACES)
-    klass = models.CharField(max_length=8, choices=KLASS)
-    student = models.CharField(max_length=150)
-    birth = models.DateField()
+    name = models.CharField('Nome', max_length=150)
+    phone = models.CharField('Telefone', max_length=15)
+    email = models.EmailField('Email')
+    place = models.CharField('Local', max_length=6, choices=PLACES)
+    klass = models.CharField('Turma', max_length=8, choices=KLASS)
+    student = models.CharField('Aluno', max_length=150)
+    birth = models.DateField('Data de nascimento')
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

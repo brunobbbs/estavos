@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.conf import settings
 from django.shortcuts import resolve_url as r
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, DetailView
 from estavos.courses.forms import InscriptionForm
 from estavos.courses.models import Inscription
 
@@ -18,7 +18,7 @@ class InscriptionView(CreateView):
     model = Inscription
 
     def get_success_url(self):
-        return r('courses:preinscription')
+        return r('courses:preinscription', self.object.pk)
 
     def form_valid(self, form):
         data = form.cleaned_data
@@ -44,5 +44,6 @@ class InscriptionView(CreateView):
         return super(InscriptionView, self).form_valid(form)
 
 
-class PreInscription(TemplateView):
+class PreInscription(DetailView):
     template_name = 'courses/preinscription.html'
+    model = Inscription

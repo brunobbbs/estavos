@@ -2,34 +2,30 @@
 
 {% block main %}
 
+<h2>Pré-inscrição: Curso de Xadrez para Iniciantes</h2>
+
 <p>Olá {{ inscription.name }}, tudo bem?</p>
 
-<p>Informamos que as pré-inscrição do aluno(a) {{ inscription.student }} no curso APRENDA foi realizada com sucesso.</p>
+<p>Informamos que as pré-inscrição do aluno(a) <strong>{{ inscription.student }}</strong> no curso APRENDA foi realizada com sucesso.</p>
 
-<p>Você fez a pré-inscrição no curso APRENDA da unidade {{ inscription.place }} na turma de {{ inscription.klass }}.</p>
+<p>Você fez a pré-inscrição no curso APRENDA da unidade <strong>{{ inscription.get_place_display }}</strong> na turma de <strong>{{ inscription.get_klass_display }}</strong>.</p>
 
 <p>Caso tenha alguma informação errada, por favor entre em contato e solicite correção.</p>
 
 <p>Você receberá em breve um email do PagSeguro, uma plataforma segura de pagamentos online da UOL, com o valor do curso para confirmação da inscrição.</p>
 
-<p>Você poderá pagar em até 3x iguais sem juros ou em até 12x além de boleto bancário.</p>
+<p>Você poderá pagar em até <strong>3x iguais sem juros</strong> ou em até 12x além de boleto bancário.</p>
 
-<p>Também aceitamos pagamento via transferência bancária para nossa conta em:</p>
+<p>Também aceitamos pagamento via depósito ou transferência bancária para nossa conta em:</p>
 
-<p>Caixa Econômica Federal <br />
-Agência: 1803 <br />
-Cc: 227-8 <br />
-Op: 003 <br />
-Estavos Organizadora de Eventos Desportivos</p>
+<p><strong>Caixa Econômica Federal</strong> <br />
+<strong>Agência</strong>: 1803 <br />
+<strong>Conta corrente</strong>: 227-8 <br />
+<strong>Op</strong>: 003 <br />
+<strong>Estavos Organizadora de Eventos Desportivos e Academia de Jogos e Esportes Mentais LTDA.</strong></p>
 
-<p>​Qualquer dúvida estamos à disposição.</p>
+<p>Após o depósito é necessário enviar o comprovante para o email <strong>contato@estavos.com</strong></p>
 
-<p>Atenciosamente,​</p>
-<p>​-- <br />
-Bruno Barbosa <br />
-ESTAVOS​ - Academia de Jogos​ <br />
-http://estavos.com <br />
-contato@estavos.com <br />
-(61) 8121-7870</p>
+<p>​Qualquer dúvida estamos à disposição para lhe atender através de nossos <a href="/contato/">canais de contato</a>.</p>
 
 {% endblock main %}

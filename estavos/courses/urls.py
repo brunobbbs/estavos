@@ -4,5 +4,5 @@ from estavos.courses.views import Home, PreInscription, InscriptionView
 urlpatterns = [
     url(r'^$', Home.as_view(), name='home'),
     url(r'inscricao/$', InscriptionView.as_view(), name='inscription'),
-    url(r'inscricao/concluido/$', PreInscription.as_view(), name='preinscription'),
+    url(r'inscricao/concluido/(?P<pk>\d+)/$', PreInscription.as_view(), name='preinscription'),
 ]
