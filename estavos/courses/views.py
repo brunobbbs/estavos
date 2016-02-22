@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.conf import settings
 from django.shortcuts import resolve_url as r
 from django.views.generic import TemplateView, CreateView, DetailView
 from estavos.courses.forms import InscriptionForm
