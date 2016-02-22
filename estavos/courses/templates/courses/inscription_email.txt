@@ -2,7 +2,7 @@ Olá {{ inscription.name }}, tudo bem?
 
 Informamos que as pré-inscrição do aluno(a) {{ inscription.student }} no curso APRENDA foi realizada com sucesso.
 
-Você fez a pré-inscrição no curso APRENDA da unidade {{ inscription.get_place_display }} na turma de {{ inscription.get_klass_display }}.
+Você fez a pré-inscrição no curso APRENDA da unidade KUMON AGUAS CLARAS na turma de CRIANÇAS.
 
 Caso tenha alguma informação errada, por favor entre em contato e solicite correção.
 

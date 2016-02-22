@@ -25,8 +25,8 @@ class InscriptionsGet(TestCase):
 
 class InscriptionPostValid(TestCase):
     def setUp(self):
-        data = dict(name='Bruno Barbosa', phone='(61) 2222-2222', email='bsbruno1@gmail.com', place='kumon',
-                    klass='children', student='Ana Beatriz', birth='01/09/2009')
+        data = dict(name='Bruno Barbosa', phone='(61) 2222-2222', email='bsbruno1@gmail.com',
+                    student='Ana Beatriz', birth='01/09/2009')
         self.resp = self.client.post(r('courses:inscription'), data)
 
     def test_post(self):

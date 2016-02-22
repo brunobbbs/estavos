@@ -69,25 +69,6 @@
                             {% endif %}
                         </div>
 
-                        <!-- curso -->
-                        <h4 class="title-color heading-single text-center"><span>Escolha do curso</span></h4>
-                        <div class="form-group {% if form.place.errors %}has-error{% endif %}">
-                            <label for="{{ form.place.id_for_label }}" class="control-label">{{ form.place.label }}</label>
-                            <p class="help-block">{{ form.place.help_text }}</p>
-                            {{ form.place }}
-                            {% if form.place.errors %}
-                                <span class="help-block color-danger">{{ form.place.errors.as_text }}</span>
-                            {% endif %}
-                        </div>
-                        <div class="form-group {% if form.klass.errors %}has-error{% endif %}">
-                            <label for="{{ form.klass.id_for_label }}" class="control-label">{{ form.klass.label }}</label>
-                            <p class="help-block">{{ form.klass.help_text }}</p>
-                            {{ form.klass }}
-                            {% if form.klass.errors %}
-                                <span class="help-block color-danger">{{ form.klass.errors.as_text }}</span>
-                            {% endif %}
-                        </div>
-
                         <!-- aluno -->
                         <h4 class="title-color heading-single text-center"><span>Dados do aluno</span></h4>
                         <div class="form-group {% if form.student.errors %}has-error{% endif %}">

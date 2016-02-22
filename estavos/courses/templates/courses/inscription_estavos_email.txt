@@ -8,8 +8,8 @@ Telefone: {{ inscription.phone }}
 Email: {{ inscription.email }}
 
 Dados do curso:
-Local: {{ inscription.get_place_display }}
-Turma: {{ inscription.get_klass_display }}
+Local: KUMON AGUAS CLARAS
+Turma: CRIANÇAS
 
 Dados do aluno:
 Aluno: {{ inscription.student }}

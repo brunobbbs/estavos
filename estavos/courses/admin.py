@@ -3,9 +3,9 @@ from estavos.courses.models import Inscription
 
 
 class InscriptionAdmin(admin.ModelAdmin):
-    list_display = ('name', 'phone', 'email', 'place', 'klass', 'student')
+    list_display = ('name', 'phone', 'email', 'student')
     search_fields = ('name', 'student', 'email', 'phone')
-    list_filter = ('created_at', 'place', 'klass')
+    list_filter = ('created_at', )
     date_hierarchy = 'created_at'
 
 

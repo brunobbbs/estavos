@@ -13,8 +13,6 @@ class InscriptionModelTest(TestCase):
             name='Bruno Barbosa',
             phone='(61) 2222-2222',
             email='bruno@email.com',
-            place='ascade',
-            klass='children',
             student='Ana Beatriz',
             birth=date(2009, 1, 1)
         )

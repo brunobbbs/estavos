@@ -9,8 +9,8 @@ from estavos.courses.models import Inscription
 class PreInscriptionViewGet(TestCase):
     def setUp(self):
         self.obj = Inscription.objects.create(
-            name='Bruno Barbosa', phone='(61) 2222-2222', email='bsbruno1@gmail.com', place='kumon',
-            klass='children', student='Ana Beatriz', birth='2009-09-01'
+            name='Bruno Barbosa', phone='(61) 2222-2222', email='bsbruno1@gmail.com',
+            student='Ana Beatriz', birth='2009-09-01'
         )
         self.resp = self.client.get(r('courses:preinscription', 1))
 
@@ -22,6 +22,6 @@ class PreInscriptionViewGet(TestCase):
         self.assertTemplateUsed(self.resp, 'courses/preinscription.html')
 
     def test_html(self):
-        contents = [self.obj.name, self.obj.get_place_display(), self.obj.get_klass_display(), self.obj.student]
+        contents = [self.obj.name, 'KUMON AGUAS CLARAS', 'CRIANÇAS', self.obj.student]
         for expected in contents:
             self.assertContains(self.resp, expected)

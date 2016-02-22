@@ -7,5 +7,5 @@ class InscriptionFormTest(TestCase):
         self.form = InscriptionForm()
 
     def test_form_has_fields(self):
-        expected = ['name', 'phone', 'email', 'place', 'klass', 'student', 'birth']
+        expected = ['name', 'phone', 'email', 'student', 'birth']
         self.assertSequenceEqual(expected, list(self.form.fields))

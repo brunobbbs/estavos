@@ -12,13 +12,11 @@ class InscriptionForm(forms.ModelForm):
 
     class Meta:
         model = Inscription
-        fields = ('name', 'phone', 'email', 'place', 'klass', 'student', 'birth')
+        fields = ('name', 'phone', 'email', 'student', 'birth')
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Informe seu nome')}),
             'phone': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Informe um telefone de contato')}),
             'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': _('Enviaremos informações adicionais sobre a inscrição por email')}),
-            'place': forms.Select(attrs={'class': 'form-control'}),
-            'klass': forms.Select(attrs={'class': 'form-control'}),
             'student': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Qual o nome do aluno?')}),
             'birth': forms.DateInput(attrs={'class': 'form-control', 'placeholder': _('Informe a data de nascimento do aluno Formato: dd/mm/aaaa')}),
         }
