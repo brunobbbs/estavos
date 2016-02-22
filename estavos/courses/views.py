@@ -12,7 +12,6 @@ class Home(TemplateView):
 
 
 class InscriptionView(CreateView):
-    template_name = 'courses/inscription_form.html'
     form_class = InscriptionForm
     model = Inscription
 
