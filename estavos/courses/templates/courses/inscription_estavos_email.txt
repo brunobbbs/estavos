@@ -8,8 +8,8 @@ Telefone: {{ inscription.phone }}
 Email: {{ inscription.email }}
 
 Dados do curso:
-Local: {{ inscription.place }}
-Turma: {{ inscription.klass }}
+Local: {{ inscription.get_place_display }}
+Turma: {{ inscription.get_klass_display }}
 
 Dados do aluno:
 Aluno: {{ inscription.student }}

@@ -20,29 +20,6 @@ class InscriptionView(CreateView):
     def get_success_url(self):
         return r('courses:preinscription', self.object.pk)
 
-    def form_valid(self, form):
-        data = form.cleaned_data
-
-        # Email de confirmação para o cliente
-        form.send_mail(
-            subject='Pré-Inscrição no Curso de Xadrez para Iniciantes realizada',
-            from_=settings.DEFAULT_FROM_EMAIL,
-            to=data['email'],
-            template_name='courses/inscription_email.txt',
-            context={'inscription': data}
-        )
-
-        # Email para equipe ESTAVOS
-        form.send_mail(
-            subject='Nova inscrição do APRENDA recebida',
-            from_=settings.DEFAULT_FROM_EMAIL,
-            to='contato@estavos.com',
-            template_name='courses/inscription_estavos_email.txt',
-            context={'inscription': data}
-        )
-
-        return super(InscriptionView, self).form_valid(form)
-
 
 class PreInscription(DetailView):
     template_name = 'courses/preinscription.html'
