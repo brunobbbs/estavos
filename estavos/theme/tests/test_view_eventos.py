@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-import unittest
-
 from django.test import TestCase
 from mezzanine.galleries.models import Gallery
-from mezzanine.pages.models import  RichTextPage
 from mezzanine.generic.models import AssignedKeyword, Keyword
+from mezzanine.pages.models import  RichTextPage
 
 
 class EventosGet(TestCase):

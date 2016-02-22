@@ -219,10 +219,12 @@
 {% endblock main %}
 
 {% block extra_js %}
-    <script type="text/javascript" src="{% static 'courses/js/jquery.mask.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'courses/js/jquery.mask.js' %}"></script>
+    <script type="text/javascript" src="{% static 'courses/js/phone-mask.js' %}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#id_birth').mask('00/00/0000');
+{#            $('#id_birth').mask('00/00/0000');#}
+{#            $('#id_phone').mask(PhoneMaskBehavior, phoneOptions);#}
         });
     </script>
 {% endblock extra_js %}
