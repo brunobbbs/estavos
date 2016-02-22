@@ -10,7 +10,7 @@ class Inscription(models.Model):
 
     KLASS = (
         ('children', _('Crianças')),
-        ('adults', _('Adultos'))
+        # ('adults', _('Adultos'))
     )
 
     PLACES = (

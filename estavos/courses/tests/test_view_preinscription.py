@@ -10,7 +10,7 @@ class PreInscriptionViewGet(TestCase):
     def setUp(self):
         self.obj = Inscription.objects.create(
             name='Bruno Barbosa', phone='(61) 2222-2222', email='bsbruno1@gmail.com', place='kumon',
-            klass='adults', student='Ana Beatriz', birth='2009-09-01'
+            klass='children', student='Ana Beatriz', birth='2009-09-01'
         )
         self.resp = self.client.get(r('courses:preinscription', 1))
 
