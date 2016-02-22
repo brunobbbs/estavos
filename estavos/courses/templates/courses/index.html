@@ -26,7 +26,7 @@
                                 <a class="btn btn-default" data-toggle="modal" data-target="#saibamais">
                                     Saiba mais <i class="pl-10 fa fa-info"></i>
                                 </a>
-                                <a class="btn btn-primary" href="/curso-de-xadrez/inscricao/">
+                                <a class="btn btn-primary" href="{% url 'courses:inscription' %}">
                                     Quero me inscrever <i class="pl-10 fa fa-check"></i>
                                 </a>
                             </p>
@@ -44,11 +44,11 @@
                                 </div>
                                 <div class="modal-body">
                                     <ul class="list-icons">
-                                        <li><i class="icon-check"></i> A próxima turma tem início em 20/Fev/2016.</li>
-                                        <li><i class="icon-check"></i> 2 Turmas! Uma para adultos e outra para crianças</li>
+                                        <li><i class="icon-check"></i> A próxima turma tem início em 12/Mar/2016.</li>
+                                        <li><i class="icon-check"></i> Turmas para adultos e crianças</li>
                                         <li><i class="icon-check"></i> O pai que se matricula junto com o filho paga meia! Isso mesmo! Ganha <strong>50% de desconto!</strong></li>
-                                        <li><i class="icon-check"></i> O curso acontece no <strong>Núcleo de Xadrez do Clube ASCADE</strong> - Setor de Clubes Sul - trecho 2</li>
-                                        <li><i class="icon-check"></i> O <strong>APRENDA</strong> é composto de <strong>8 aulas</strong>, todas acontecem aos sábados pela manhã.</li>
+                                        <li><i class="icon-check"></i> Unidades no <strong>Plano Piloto (Brasília)</strong> e <strong>Águas Claras</strong>.</li>
+                                        <li><i class="icon-check"></i> O <strong>APRENDA</strong> é composto de <strong>8 aulas</strong>, com duração de 1h30 cada..</li>
                                         <li><i class="icon-check"></i> Nós oferecemos até <strong>1 (uma)</strong> reposição de aula <strong>GRÁTIS!</strong> Assim mesmo que haja algum imprevisto você não perde nada!</li>
                                         <li><i class="icon-check"></i> Você ainda ganha um <strong>certificado exclusivo</strong> ao final do curso!</li>
                                     </ul>
@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-sm btn-default" data-dismiss="modal"><i class="icon-check"></i> Continuar navegando</button>
-                                    <a href="/curso-de-xadrez/inscricao/" class="btn btn-sm btn-primary">Quero me inscrever!</a>
+                                    <a href="{% url 'courses:inscription' %}" class="btn btn-sm btn-primary">Quero me inscrever!</a>
                                 </div>
                             </div>
                         </div>
@@ -178,9 +178,8 @@
 								</div>
 								<div class="panel-collapse collapse in" id="collapseZero">
 									<div class="panel-body">
-                    					<p>A próxima turma do curso APRENDA tem início em <strong>20 de Fevereiro de 2016</strong> (Sábado).</p>
-                                        <p>Todas as aulas acontecem aos sábados pela manhã.
-                                            <a href="ementa/" title="Ementa do Curso de Xadrez para Iniciantes">Confira a ementa completa</a>.</p>
+                    					<p>A próxima turma do curso APRENDA tem início em <strong>12 de Março de 2016</strong> (Sábado).</p>
+                                        <p><a href="/curso-de-xadrez/ementa/" title="Ementa do Curso de Xadrez para Iniciantes">Confira a ementa completa</a>.</p>
 									</div>
 								</div>
 							</div>
@@ -194,10 +193,13 @@
 								</div>
 								<div class="panel-collapse collapse" id="collapseZeroOne">
 									<div class="panel-body">
+                                        <h4>ASCADE</h4>
                     					<p>A <strong>turma Kids</strong> acontece de 09h00 às 10h30</p>
                     					<p>A <strong>turma dos adultos</strong> acontece de 10h45 às 12h15</p>
                                         <p><strong>Obs</strong>: Enquanto os adultos estão em aula nós disponibilizamos um monitor
                                         para ficar com as crianças. Assim você pode fazer o curso junto com seu filho e sem preocupação!</p>
+                                        <h4>Kumon Águas Claras - Unidade Av. das Castanheiras</h4>
+                                        <p>A <strong>turma Kids</strong> acontece de 14h00 às 15h30</p>
 									</div>
 								</div>
 							</div>
@@ -226,8 +228,10 @@
 								</div>
 								<div class="panel-collapse collapse" id="collapseTwo">
 									<div class="panel-body">
-										<p>O curso acontece no <strong>Núcleo de Xadrez do clube ASCADE</strong></p>
+										<p><strong>Núcleo de Xadrez do clube ASCADE</strong></p>
                                         <p><i class="fa fa-map-marker"></i> SCES Trecho 2, Conjunto 10, Lote 18 - Asa Sul, Brasília - DF</p>
+                                        <p><strong>Kumon Águas Claras - Unidade Av. das Castanheiras</strong></p>
+                                        <p><i class="fa fa-map-marker"></i> Av. das Castanheiras, 820. Ed. Big Center, sala 504. Próximo ao BigBox</p>
 									</div>
 								</div>
 							</div>
@@ -297,9 +301,9 @@
 
         	<div class="col-md-12">
             	<h1 class="text-center title-color">Inscrições abertas!</h1>
-            	<p class="text-center lead">Faça agora sua inscrição no <a href="/curso-de-xadrez/inscricao/">Curso de Xadrez para Iniciantes</a>
+            	<p class="text-center lead">Faça agora sua inscrição no <a href="{% url 'courses:inscription' %}">Curso de Xadrez para Iniciantes</a>
                     e entenda porque o Xadrez é sucesso a milênios!</p>
-                <p class="text-center"><a href="/curso-de-xadrez/inscricao/" class="btn btn-primary btn-lg">Quero me inscrever<i class="fa fa-share fa-margin-left"></i></a></p>
+                <p class="text-center"><a href="{% url 'courses:inscription' %}" class="btn btn-primary btn-lg">Quero me inscrever<i class="fa fa-share fa-margin-left"></i></a></p>
             </div>
 
         </div>
