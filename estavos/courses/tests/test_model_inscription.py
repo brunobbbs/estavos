@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from datetime import datetime
+from datetime import datetime, date
 
 from django.test import TestCase
 
@@ -16,7 +16,7 @@ class InscriptionModelTest(TestCase):
             place='ascade',
             klass='children',
             student='Ana Beatriz',
-            birth='2009-01-01'
+            birth=date(2009, 1, 1)
         )
         self.obj.save()
 
@@ -25,6 +25,9 @@ class InscriptionModelTest(TestCase):
 
     def test_created_at(self):
         self.assertIsInstance(self.obj.created_at, datetime)
+
+    def test_birth(self):
+        self.assertIsInstance(self.obj.birth, date)
 
     def test_str(self):
         self.assertEqual('Bruno Barbosa', str(self.obj))

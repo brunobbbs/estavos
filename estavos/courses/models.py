@@ -6,6 +6,23 @@ from django.utils.translation import ugettext_lazy as _
 
 
 @python_2_unicode_compatible
+class Course(models.Model):
+    name = models.CharField(max_length=150)
+    place = models.CharField(max_length=100)
+    start_date = models.DateField()
+    classes = models.CharField(max_length=15)
+    is_active = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = 'curso'
+        verbose_name_plural = 'cursos'
+        ordering = ('start_date', )
+
+    def __str__(self):
+        return '{} - {}'.format(self.name, self.start_date.strftime('%d/%m/%Y'))
+
+
+@python_2_unicode_compatible
 class Inscription(models.Model):
 
     KLASS = (
