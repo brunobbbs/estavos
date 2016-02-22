@@ -133,6 +133,10 @@ SITE_ID = 1
 # to load the internationalization machinery.
 USE_I18N = True
 
+DATE_INPUT_FORMATS = (
+    "%d/%m/%Y", "%d/%m/%y"
+)
+
 AUTHENTICATION_BACKENDS = ("mezzanine.core.auth_backends.MezzanineBackend",)
 
 # The numeric mode to set newly-uploaded files to. The value should be
