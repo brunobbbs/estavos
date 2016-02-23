@@ -1,6 +1,6 @@
 Olá equipe!
 
-Recebemos uma nova inscrição do curso APRENDA. Segue os detalhes:
+Recebemos uma nova inscrição do {{ inscription.course.name }}. Segue os detalhes:
 
 Dados do cliente:
 Nome: {{ inscription.name }}
@@ -8,8 +8,8 @@ Telefone: {{ inscription.phone }}
 Email: {{ inscription.email }}
 
 Dados do curso:
-Local: KUMON AGUAS CLARAS
-Turma: CRIANÇAS
+Local: {{ inscription.course.place }}
+Turma: {{ inscription.course.classes }}
 
 Dados do aluno:
 Aluno: {{ inscription.student }}
