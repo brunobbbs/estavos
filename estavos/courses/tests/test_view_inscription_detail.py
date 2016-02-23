@@ -31,6 +31,6 @@ class InscriptionDetailGet(TestCase):
         self.assertTemplateUsed(self.resp, 'courses/inscription_detail.html')
 
     def test_html(self):
-        contents = [self.obj.name, self.course.place, self.course.classes, self.obj.student]
+        contents = [self.obj.name, self.course.place, self.obj.student]
         for expected in contents:
             self.assertContains(self.resp, expected)
