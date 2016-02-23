@@ -31,6 +31,6 @@ class PreInscriptionViewGet(TestCase):
         self.assertTemplateUsed(self.resp, 'courses/preinscription.html')
 
     def test_html(self):
-        contents = [self.obj.name, 'KUMON AGUAS CLARAS', 'CRIANÇAS', self.obj.student]
+        contents = [self.obj.name, self.course.place, self.course.classes, self.obj.student]
         for expected in contents:
             self.assertContains(self.resp, expected)

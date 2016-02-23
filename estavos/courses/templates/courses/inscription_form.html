@@ -7,17 +7,17 @@
 {% block main %}
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8">
             <div class="alert alert-info fade in">
                 <a aria-hidden="true" data-dismiss="alert" class="close"><i class="fa fa-times"></i></a>
-                O curso APRENDA <strong>unidade Águas Claras (Kumon Av. das Castanheiras)</strong> tem início no dia <strong>12 de Março de 2016</strong>
+                O {{ course.name }} (<strong>{{ course.place }}</strong>) tem início em <strong>{{ course.start_date|date:"d/m/Y" }}</strong>
             </div>
         </div>
     </div>
 
     <!-- Title -->
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8">
             <h1 class="title-color heading-single text-center"><span>Curso de Xadrez para Iniciantes!</span></h1>
         </div>
     </div>

@@ -33,6 +33,11 @@ class InscriptionsGet(TestCase):
         form = self.resp.context['form']
         self.assertIsInstance(form, InscriptionForm)
 
+    def test_context(self):
+        """course instance should exists in context"""
+        course = self.resp.context['course']
+        self.assertIsInstance(course, Course)
+
 
 class InscriptionGetInvalid(TestCase):
     def setUp(self):
@@ -46,6 +51,10 @@ class InscriptionGetInvalid(TestCase):
 
     def test_inactive_course_should_redirect_to_courses_list(self):
         self.assertEqual(302, self.resp.status_code)
+
+    def test_redirect(self):
+        """inactive course should redirects to courses list page"""
+        self.assertRedirects(self.resp, r('courses:list'))
 
 
 
