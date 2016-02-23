@@ -1,6 +1,6 @@
 Olá {{ inscription.name }}, tudo bem?
 
-Informamos que as pré-inscrição do aluno(a) {{ inscription.student }} no {{ inscription.course.name }} foi realizada com sucesso.
+Informamos que a pré-inscrição do aluno(a) {{ inscription.student }} no {{ inscription.course.name }} foi realizada com sucesso.
 
 Você fez a pré-inscrição para unidade {{ inscription.course.place }}.
 
