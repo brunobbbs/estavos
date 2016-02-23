@@ -1,13 +1,24 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+from datetime import date
+
 from django.core import mail
 from django.shortcuts import resolve_url as r
 from django.test import TestCase
 from estavos.courses.forms import InscriptionForm
-from estavos.courses.models import Inscription
+from estavos.courses.models import Inscription, Course
 
 
 class InscriptionsGet(TestCase):
     def setUp(self):
-        self.resp = self.client.get(r('courses:inscription', 1))
+        self.course = Course.objects.create(
+            name='Curso APRENDA #3',
+            place='Kumon Águas Claras - Av. das Castanheiras',
+            start_date=date(2016, 03, 12),
+            is_active=True
+        )
+        self.resp = self.client.get(r('courses:inscription', self.course.pk))
 
     def test_get(self):
         self.assertEqual(200, self.resp.status_code)
@@ -23,11 +34,32 @@ class InscriptionsGet(TestCase):
         self.assertIsInstance(form, InscriptionForm)
 
 
+class InscriptionGetInvalid(TestCase):
+    def setUp(self):
+        self.obj = Course.objects.create(
+            name='Curso APRENDA #2',
+            place='Núcleo de Xadrez do clube ASCADE',
+            start_date=date(2016, 02, 20),
+            is_active=False
+        )
+        self.resp = self.client.get(r('courses:inscription', self.obj.pk))
+
+    def test_inactive_course_should_redirect_to_courses_list(self):
+        self.assertEqual(302, self.resp.status_code)
+
+
+
 class InscriptionPostValid(TestCase):
     def setUp(self):
+        self.course = Course.objects.create(
+            name='Curso APRENDA #3',
+            place='Kumon Águas Claras - Av. das Castanheiras',
+            start_date=date(2016, 03, 12),
+            is_active=True
+        )
         data = dict(name='Bruno Barbosa', phone='(61) 2222-2222', email='bsbruno1@gmail.com',
                     student='Ana Beatriz', birth='01/09/2009')
-        self.resp = self.client.post(r('courses:inscription', 1), data)
+        self.resp = self.client.post(r('courses:inscription', self.course.pk), data)
 
     def test_post(self):
         """Valid POST should redirect to thanks page"""
@@ -42,7 +74,13 @@ class InscriptionPostValid(TestCase):
 
 class InscriptionPostInvalid(TestCase):
     def setUp(self):
-        self.resp = self.client.post(r('courses:inscription', 1), {})
+        self.course = Course.objects.create(
+            name='Curso APRENDA #3',
+            place='Kumon Águas Claras - Av. das Castanheiras',
+            start_date=date(2016, 03, 12),
+            is_active=True
+        )
+        self.resp = self.client.post(r('courses:inscription', self.course.pk), {})
 
     def test_post(self):
         """Invalid POST should not redirect"""

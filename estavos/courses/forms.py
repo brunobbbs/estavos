@@ -13,6 +13,7 @@ class InscriptionForm(forms.ModelForm):
     class Meta:
         model = Inscription
         fields = ('name', 'phone', 'email', 'student', 'birth')
+        exclude = ('course', )
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Informe seu nome')}),
             'phone': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Informe um telefone de contato')}),
@@ -45,6 +46,8 @@ class InscriptionForm(forms.ModelForm):
             template_name='courses/inscription_estavos_email.txt',
             context={'inscription': obj}
         )
+
         if commit:
             obj.save()
+
         return obj

@@ -2,6 +2,10 @@ from django.contrib import admin
 from estavos.courses.models import Inscription, Course
 
 
+class InscriptionInline(admin.TabularInline):
+    model = Inscription
+
+
 class InscriptionAdmin(admin.ModelAdmin):
     list_display = ('name', 'phone', 'email', 'student')
     search_fields = ('name', 'student', 'email', 'phone')
@@ -13,6 +17,7 @@ class CourseAdmin(admin.ModelAdmin):
     list_display = ('name', 'place', 'start_date', 'classes', 'is_active')
     list_filter = ('start_date', )
     date_hierarchy = 'start_date'
+    inlines = (InscriptionInline, )
 
 
 admin.site.register(Inscription, InscriptionAdmin)

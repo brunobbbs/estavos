@@ -35,6 +35,7 @@ class Inscription(models.Model):
     student = models.CharField('Aluno', max_length=150)
     birth = models.DateField('Data de nascimento')
     created_at = models.DateTimeField('Inscrição realizada em', auto_now_add=True)
+    course = models.ForeignKey('courses.Course', verbose_name='Curso', related_name='inscriptions')
 
     class Meta:
         verbose_name = 'inscrição'

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import resolve_url as r
+from django.shortcuts import resolve_url as r, redirect
 from django.views.generic import TemplateView, CreateView, DetailView, ListView
 from estavos.courses.forms import InscriptionForm
 from estavos.courses.models import Inscription, Course
@@ -17,6 +17,19 @@ class InscriptionView(CreateView):
 
     def get_success_url(self):
         return r('courses:preinscription', self.object.pk)
+    
+    def dispatch(self, request, *args, **kwargs):
+        # If course is inactive, redirect to courses list page
+        self.course = Course.objects.get(pk=self.kwargs['course_id'])
+        if not self.course.is_active:
+            return redirect('courses:list')
+
+        return super(InscriptionView, self).dispatch(request, *args, **kwargs)
+    
+    def get_form(self, form_class=None):
+        form = super(InscriptionView, self).get_form(form_class)
+        form.instance.course = self.course
+        return form
 
 
 class PreInscription(DetailView):
