@@ -75,7 +75,7 @@ class InscriptionPostValid(TestCase):
 
     def test_post(self):
         """Valid POST should redirect to thanks page"""
-        self.assertRedirects(self.resp, r('courses:preinscription', 1))
+        self.assertEqual(302, self.resp.status_code)
 
     def test_send_inscription_mail(self):
         self.assertEqual(2, len(mail.outbox))

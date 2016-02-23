@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from django.shortcuts import resolve_url as r
 from datetime import date
 
 from django.test import TestCase

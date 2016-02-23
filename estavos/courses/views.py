@@ -16,7 +16,7 @@ class InscriptionView(CreateView):
     model = Inscription
 
     def get_success_url(self):
-        return r('courses:preinscription', self.object.pk)
+        return r('courses:inscription_detail', self.object.slug)
 
     def _get_course(self):
         course = getattr(self, 'course', None)
@@ -43,8 +43,8 @@ class InscriptionView(CreateView):
         return form
 
 
-class PreInscription(DetailView):
-    template_name = 'courses/preinscription.html'
+class InscriptionDetail(DetailView):
+    template_name = 'courses/inscription_detail.html'
     model = Inscription
 
 

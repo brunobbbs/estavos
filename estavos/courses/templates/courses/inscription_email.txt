@@ -2,7 +2,7 @@ Olá {{ inscription.name }}, tudo bem?
 
 Informamos que as pré-inscrição do aluno(a) {{ inscription.student }} no {{ inscription.course.name }} foi realizada com sucesso.
 
-Você fez a pré-inscrição para unidade {{ inscription.course.place }} na turma de {{ inscription.course.classes }}.
+Você fez a pré-inscrição para unidade {{ inscription.course.place }}.
 
 Caso tenha alguma informação errada, por favor entre em contato e solicite correção.
 

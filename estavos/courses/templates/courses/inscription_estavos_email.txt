@@ -9,7 +9,6 @@ Email: {{ inscription.email }}
 
 Dados do curso:
 Local: {{ inscription.course.place }}
-Turma: {{ inscription.course.classes }}
 
 Dados do aluno:
 Aluno: {{ inscription.student }}

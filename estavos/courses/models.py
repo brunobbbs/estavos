@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from django.shortcuts import resolve_url as r
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-from django.utils.translation import ugettext_lazy as _
+from estavos.utils.slug import unique_slugify
 
 
 @python_2_unicode_compatible
@@ -31,6 +32,7 @@ class Inscription(models.Model):
     birth = models.DateField('Data de nascimento')
     created_at = models.DateTimeField('Inscrição realizada em', auto_now_add=True)
     course = models.ForeignKey('courses.Course', verbose_name='Curso', related_name='inscriptions')
+    slug = models.SlugField(unique=True)
 
     class Meta:
         verbose_name = 'inscrição'
@@ -39,3 +41,12 @@ class Inscription(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, **kwargs):
+        import uuid
+        slug = uuid.uuid4().get_hex()
+        unique_slugify(self, slug)
+        super(Inscription, self).save(**kwargs)
+
+    def get_absolute_url(self):
+        return r('courses:inscription_detail', slug=self.slug)
