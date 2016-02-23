@@ -26,7 +26,7 @@
                                 <a class="btn btn-default" data-toggle="modal" data-target="#saibamais">
                                     Saiba mais <i class="pl-10 fa fa-info"></i>
                                 </a>
-                                <a class="btn btn-primary" href="{% url 'courses:inscription' %}">
+                                <a class="btn btn-primary" href="{% url 'courses:list' %}">
                                     Quero me inscrever <i class="pl-10 fa fa-check"></i>
                                 </a>
                             </p>
@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-sm btn-default" data-dismiss="modal"><i class="icon-check"></i> Continuar navegando</button>
-                                    <a href="{% url 'courses:inscription' %}" class="btn btn-sm btn-primary">Quero me inscrever!</a>
+                                    <a href="{% url 'courses:list' %}" class="btn btn-sm btn-primary">Quero me inscrever!</a>
                                 </div>
                             </div>
                         </div>
@@ -301,9 +301,9 @@
 
         	<div class="col-md-12">
             	<h1 class="text-center title-color">Inscrições abertas!</h1>
-            	<p class="text-center lead">Faça agora sua inscrição no <a href="{% url 'courses:inscription' %}">Curso de Xadrez para Iniciantes</a>
+            	<p class="text-center lead">Faça agora sua inscrição no <a href="{% url 'courses:list' %}">Curso de Xadrez para Iniciantes</a>
                     e entenda porque o Xadrez é sucesso a milênios!</p>
-                <p class="text-center"><a href="{% url 'courses:inscription' %}" class="btn btn-primary btn-lg">Quero me inscrever<i class="fa fa-share fa-margin-left"></i></a></p>
+                <p class="text-center"><a href="{% url 'courses:list' %}" class="btn btn-primary btn-lg">Quero me inscrever<i class="fa fa-share fa-margin-left"></i></a></p>
             </div>
 
         </div>

@@ -7,7 +7,7 @@ from estavos.courses.models import Inscription
 
 class InscriptionsGet(TestCase):
     def setUp(self):
-        self.resp = self.client.get(r('courses:inscription'))
+        self.resp = self.client.get(r('courses:inscription', 1))
 
     def test_get(self):
         self.assertEqual(200, self.resp.status_code)
@@ -27,7 +27,7 @@ class InscriptionPostValid(TestCase):
     def setUp(self):
         data = dict(name='Bruno Barbosa', phone='(61) 2222-2222', email='bsbruno1@gmail.com',
                     student='Ana Beatriz', birth='01/09/2009')
-        self.resp = self.client.post(r('courses:inscription'), data)
+        self.resp = self.client.post(r('courses:inscription', 1), data)
 
     def test_post(self):
         """Valid POST should redirect to thanks page"""
@@ -42,7 +42,7 @@ class InscriptionPostValid(TestCase):
 
 class InscriptionPostInvalid(TestCase):
     def setUp(self):
-        self.resp = self.client.post(r('courses:inscription'), {})
+        self.resp = self.client.post(r('courses:inscription', 1), {})
 
     def test_post(self):
         """Invalid POST should not redirect"""

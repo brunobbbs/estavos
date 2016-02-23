@@ -12,11 +12,11 @@ class Course(models.Model):
         ('adults', _('Adultos'))
     )
 
-    name = models.CharField(max_length=150)
-    place = models.CharField(max_length=100)
-    start_date = models.DateField()
-    classes = models.CharField(max_length=15, choices=CLASSES)
-    is_active = models.BooleanField(default=False)
+    name = models.CharField('Nome', max_length=150)
+    place = models.CharField('Local', max_length=100)
+    start_date = models.DateField('Data de início')
+    classes = models.CharField('Turmas', max_length=15, choices=CLASSES)
+    is_active = models.BooleanField('Ativo?', default=False)
 
     class Meta:
         verbose_name = 'curso'

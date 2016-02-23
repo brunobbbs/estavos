@@ -2,9 +2,9 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import resolve_url as r
-from django.views.generic import TemplateView, CreateView, DetailView
+from django.views.generic import TemplateView, CreateView, DetailView, ListView
 from estavos.courses.forms import InscriptionForm
-from estavos.courses.models import Inscription
+from estavos.courses.models import Inscription, Course
 
 
 class Home(TemplateView):
@@ -22,3 +22,8 @@ class InscriptionView(CreateView):
 class PreInscription(DetailView):
     template_name = 'courses/preinscription.html'
     model = Inscription
+
+
+class CoursesListView(ListView):
+    model = Course
+    queryset = Course.objects.filter(is_active=True)
