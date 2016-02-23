@@ -7,15 +7,10 @@ from django.utils.translation import ugettext_lazy as _
 
 @python_2_unicode_compatible
 class Course(models.Model):
-    CLASSES = (
-        ('children', _('Crianças')),
-        ('adults', _('Adultos'))
-    )
-
     name = models.CharField('Nome', max_length=150)
     place = models.CharField('Local', max_length=100)
     start_date = models.DateField('Data de início')
-    classes = models.CharField('Turmas', max_length=15, choices=CLASSES)
+    classes = models.CharField('Turmas', max_length=50)
     is_active = models.BooleanField('Ativo?', default=False)
 
     class Meta:

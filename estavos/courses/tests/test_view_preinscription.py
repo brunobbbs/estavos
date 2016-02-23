@@ -14,7 +14,7 @@ class PreInscriptionViewGet(TestCase):
             name='Curso APRENDA #3',
             place='Kumon Águas Claras - Av. das Castanheiras',
             start_date=date(2016, 03, 12),
-            classes='children',
+            classes='Crianças',
             is_active=True
         )
         self.obj = Inscription.objects.create(

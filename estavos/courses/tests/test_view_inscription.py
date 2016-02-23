@@ -16,6 +16,7 @@ class InscriptionsGet(TestCase):
             name='Curso APRENDA #3',
             place='Kumon Águas Claras - Av. das Castanheiras',
             start_date=date(2016, 03, 12),
+            classes='Crianças',
             is_active=True
         )
         self.resp = self.client.get(r('courses:inscription', self.course.pk))
@@ -45,6 +46,7 @@ class InscriptionGetInvalid(TestCase):
             name='Curso APRENDA #2',
             place='Núcleo de Xadrez do clube ASCADE',
             start_date=date(2016, 02, 20),
+            classes='Crianças, Adultos',
             is_active=False
         )
         self.resp = self.client.get(r('courses:inscription', self.obj.pk))
@@ -64,6 +66,7 @@ class InscriptionPostValid(TestCase):
             name='Curso APRENDA #3',
             place='Kumon Águas Claras - Av. das Castanheiras',
             start_date=date(2016, 03, 12),
+            classes='Crianças',
             is_active=True
         )
         data = dict(name='Bruno Barbosa', phone='(61) 2222-2222', email='bsbruno1@gmail.com',
@@ -87,6 +90,7 @@ class InscriptionPostInvalid(TestCase):
             name='Curso APRENDA #3',
             place='Kumon Águas Claras - Av. das Castanheiras',
             start_date=date(2016, 03, 12),
+            classes='Crianças',
             is_active=True
         )
         self.resp = self.client.post(r('courses:inscription', self.course.pk), {})

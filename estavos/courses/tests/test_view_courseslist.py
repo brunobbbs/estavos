@@ -14,12 +14,14 @@ class CoursesListGet(TestCase):
             name='Curso APRENDA #2',
             place='Núcleo de Xadrez do Clube ASCADE',
             start_date=date(2016, 02, 20),
+            classes='Crianças',
             is_active=False
         )
         self.course = Course.objects.create(
             name='Curso APRENDA #3',
             place='Kumon Águas Claras - Av. das Castanheiras',
             start_date=date(2016, 03, 12),
+            classes='Crianças',
             is_active=True
         )
         self.resp = self.client.get(r('courses:list'))
