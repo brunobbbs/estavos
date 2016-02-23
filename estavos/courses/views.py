@@ -11,7 +11,7 @@ class Home(TemplateView):
     template_name = 'courses/index.html'
 
 
-class InscriptionView(CreateView):
+class InscriptionCreate(CreateView):
     form_class = InscriptionForm
     model = Inscription
 
@@ -30,21 +30,20 @@ class InscriptionView(CreateView):
         if not course.is_active:
             return redirect('courses:list')
 
-        return super(InscriptionView, self).dispatch(request, *args, **kwargs)
+        return super(InscriptionCreate, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
-        kwargs = super(InscriptionView, self).get_context_data(**kwargs)
+        kwargs = super(InscriptionCreate, self).get_context_data(**kwargs)
         kwargs['course'] = self._get_course()
         return kwargs
     
     def get_form(self, form_class=None):
-        form = super(InscriptionView, self).get_form(form_class)
+        form = super(InscriptionCreate, self).get_form(form_class)
         form.instance.course = self.course
         return form
 
 
 class InscriptionDetail(DetailView):
-    template_name = 'courses/inscription_detail.html'
     model = Inscription
 
 

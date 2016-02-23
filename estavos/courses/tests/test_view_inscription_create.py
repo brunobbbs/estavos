@@ -10,7 +10,7 @@ from estavos.courses.forms import InscriptionForm
 from estavos.courses.models import Inscription, Course
 
 
-class InscriptionsGet(TestCase):
+class InscriptionGet(TestCase):
     def setUp(self):
         self.course = Course.objects.create(
             name='Curso APRENDA #3',
