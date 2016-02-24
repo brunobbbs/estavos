@@ -5,3 +5,7 @@ EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
 EMAIL_HOST=localhost
 EMAIL_PORT=25
 EMAIL_USE_TLS=False
+PAGSEGURO_EMAIL=seu@email.com
+PAGSEGURO_TOKEN=hdjfa232
+PAGSEGURO_SANDBOX=True
+PAGSEGURO_LOG_IN_MODEL=True

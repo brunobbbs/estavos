@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block main %}
 
 <h2>Pré-inscrição: Curso de Xadrez para Iniciantes</h2>
@@ -12,9 +14,7 @@
 
 <p>Caso tenha alguma informação errada, por favor entre em contato e solicite correção.</p>
 
-<p>Você receberá em breve um email do PagSeguro, uma plataforma segura de pagamentos online da UOL, com o valor do curso para confirmação da inscrição.</p>
-
-<p>Você poderá pagar em até <strong>3x iguais sem juros</strong> ou em até 12x além de boleto bancário.</p>
+<p>O curso tem o valor total de R$ 449,70 e você poderá pagar em até <strong>3x iguais sem juros de 149,90</strong> ou em até 12x além de boleto bancário.</p>
 
 <p>Também aceitamos pagamento via depósito ou transferência bancária para nossa conta em:</p>
 
@@ -27,5 +27,11 @@
 <p>Após o depósito é necessário enviar o comprovante para o email <strong>contato@estavos.com</strong></p>
 
 <p>​Qualquer dúvida estamos à disposição para lhe atender através de nossos <a href="/contato/">canais de contato</a>.</p>
+
+<p><a class="btn btn-orange btn-lg margin-top20" href="/checkout/pagamento/">
+    Efetuar pagamento e confirmar inscrição! <i class="fa fa-share fa-margin-left"></i>
+</a></p>
+
+<p><img src="{% static 'courses/pagseguro_formas_pagamento.png' %}" alt="Pagseguro - Site 100% Seguro" /></p>
 
 {% endblock main %}

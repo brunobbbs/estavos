@@ -224,6 +224,7 @@ INSTALLED_APPS = (
     # "mezzanine.twitter",
     'django_extensions',
     'test_without_migrations',
+    'pagseguro',
     # "mezzanine.accounts",
     # "mezzanine.mobile",
     'estavos.courses.apps.CoursesAppConfig',
@@ -308,6 +309,16 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+######################
+# Pagseguro settings #
+######################
+
+PAGSEGURO_EMAIL = config('PAGSEGURO_EMAIL')
+PAGSEGURO_TOKEN = config('PAGSEGURO_TOKEN')
+PAGSEGURO_SANDBOX = config('PAGSEGURO_SANDBOX', cast=bool)
+PAGSEGURO_LOG_IN_MODEL = config('PAGSEGURO_LOG_IN_MODEL', cast=bool) # se o valor for True, os checkouts e transações vão ser logadas no database.
+
 
 
 ####################

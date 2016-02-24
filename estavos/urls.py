@@ -62,6 +62,10 @@ urlpatterns += patterns('',
 
     # url("^$", "mezzanine.blog.views.blog_post_list", name="home"),
 
+    # PAGSEGURO INTEGRATION
+    # =====================
+    url(r'^retorno/pagseguro/', include('pagseguro.urls')),
+
     # SPECIFIC THEME URLS
     # ===================
     url(r'^eventos/$', EventosView.as_view(), name='eventos'),
