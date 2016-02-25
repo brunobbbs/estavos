@@ -1,2 +1,5 @@
 python-targets:
   - 2
+pylint:
+  disable:
+    - old-style-class

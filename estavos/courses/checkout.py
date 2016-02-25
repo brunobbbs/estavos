@@ -9,10 +9,10 @@ from pagseguro.api import PagSeguroItem, PagSeguroApi
 class PagseguroCheckout(RedirectView):
 
     def get_object(self, slug):
-        object = getattr(self, 'object', None)
-        if not object:
-            self.object = get_object_or_404(Inscription, slug=slug)
-        return self.object
+        obj = getattr(self, 'obj', None)
+        if not obj:
+            self.obj = get_object_or_404(Inscription, slug=slug)
+        return self.obj
 
     def pagseguro(self, inscription):
         item = PagSeguroItem(

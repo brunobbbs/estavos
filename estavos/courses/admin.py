@@ -22,3 +22,4 @@ class CourseAdmin(admin.ModelAdmin):
 
 admin.site.register(Inscription, InscriptionAdmin)
 admin.site.register(Course, CourseAdmin)
+f
