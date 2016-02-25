@@ -3,3 +3,5 @@ python-targets:
 pylint:
   disable:
     - old-style-class
+ignore-paths:
+  - migrations/

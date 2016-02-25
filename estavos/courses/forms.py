@@ -23,8 +23,8 @@ class InscriptionForm(forms.ModelForm):
         }
 
     def send_mail(self, subject, from_, to, template_name, context):
-         body = render_to_string(template_name, context)
-         mail.send_mail(subject, body, from_, [to, ])
+        body = render_to_string(template_name, context)
+        mail.send_mail(subject, body, from_, [to, ])
 
     def save(self, commit=True):
         obj = super(InscriptionForm, self).save(commit=False)
