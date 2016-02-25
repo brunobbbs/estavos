@@ -3,5 +3,6 @@ python-targets:
 pylint:
   disable:
     - old-style-class
+    - too-many-arguments
 ignore-paths:
   - migrations/
