@@ -6,8 +6,6 @@ Você fez a pré-inscrição para unidade {{ inscription.course.place }}.
 
 Caso tenha alguma informação errada, por favor entre em contato e solicite correção.
 
-Você receberá em breve um email do PagSeguro, uma plataforma segura de pagamentos online da UOL, com o valor do curso para confirmação da inscrição.
-
 Você poderá pagar em até 3x iguais sem juros ou em até 12x além de boleto bancário.
 
 Também aceitamos pagamento via transferência bancária para nossa conta em:
