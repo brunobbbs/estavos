@@ -6,6 +6,14 @@
 
 {% block main %}
 
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-warning" role="alert">
+                <p>{{ message.as_text }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+
     <h2>Cursos com matrículas abertas</h2>
 
     <table class="table table-hover">
