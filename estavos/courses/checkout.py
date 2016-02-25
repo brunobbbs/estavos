@@ -8,6 +8,8 @@ from pagseguro.api import PagSeguroItem, PagSeguroApi
 
 class PagseguroCheckout(RedirectView):
 
+    permanent = False
+
     def get_object(self, slug):
         obj = getattr(self, 'obj', None)
         if not obj:

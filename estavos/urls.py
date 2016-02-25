@@ -70,6 +70,7 @@ urlpatterns += patterns('',
     # ===================
     url(r'^eventos/$', EventosView.as_view(), name='eventos'),
     url(r'^curso-de-xadrez/', include('estavos.courses.urls', namespace='courses')),
+    url(r'^area-do-instrutor/atividades/', include('estavos.activities.urls', namespace='activities')),
 
     # MEZZANINE'S URLS
     # ----------------

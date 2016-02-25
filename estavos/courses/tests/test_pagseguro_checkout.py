@@ -28,4 +28,4 @@ class PagseguroCheckoutRedirect(TestCase):
 
     def test_get(self):
         resp = self.client.get(r('courses:checkout', self.obj.slug))
-        self.assertEqual(301, resp.status_code)
+        self.assertEqual(302, resp.status_code)
