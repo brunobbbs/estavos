@@ -228,6 +228,7 @@ INSTALLED_APPS = (
     # "mezzanine.accounts",
     # "mezzanine.mobile",
     'estavos.courses.apps.CoursesAppConfig',
+    'estavos.activities.apps.ActivitiesAppConfig',
 )
 
 # List of processors used by RequestContext to populate the context.
