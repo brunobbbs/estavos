@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+
+from decimal import Decimal
+
 from django.shortcuts import resolve_url as r
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
@@ -13,6 +16,7 @@ class Course(models.Model):
     start_date = models.DateField('Data de início')
     classes = models.CharField('Turmas', max_length=50)
     is_active = models.BooleanField('Ativo?', default=False)
+    price = models.DecimalField('Preço', max_digits=6, decimal_places=2, default=Decimal('449.70'))
 
     class Meta:
         verbose_name = 'curso'

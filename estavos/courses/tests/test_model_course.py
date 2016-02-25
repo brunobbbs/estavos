@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+
+from decimal import Decimal
+
 from django.shortcuts import resolve_url as r
 from datetime import date
 
@@ -14,6 +17,7 @@ class CourseModelTest(TestCase):
             place='Kumon Águas Claras - Av. das Castanheiras',
             start_date=date(2016, 03, 12),
             classes='Crianças',
+            price=Decimal('449.70'),
             is_active=True
         )
         self.obj.save()

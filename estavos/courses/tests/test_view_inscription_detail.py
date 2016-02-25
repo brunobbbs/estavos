@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 
 from datetime import date
 
+from decimal import Decimal
+
 from django.shortcuts import resolve_url as r
 from django.test import TestCase
 from estavos.courses.models import Inscription, Course
@@ -15,7 +17,8 @@ class InscriptionDetailGet(TestCase):
             place='Kumon Águas Claras - Av. das Castanheiras',
             start_date=date(2016, 03, 12),
             classes='Crianças',
-            is_active=True
+            is_active=True,
+            price=Decimal('449.70')
         )
         self.obj = Inscription.objects.create(
             name='Bruno Barbosa', phone='(61) 2222-2222', email='bsbruno1@gmail.com',

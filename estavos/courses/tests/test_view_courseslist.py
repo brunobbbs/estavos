@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 
 from datetime import date
 
+from decimal import Decimal
+
 from django.test import TestCase
 from django.shortcuts import resolve_url as r
 from estavos.courses.models import Course
@@ -15,14 +17,16 @@ class CoursesListGet(TestCase):
             place='Núcleo de Xadrez do Clube ASCADE',
             start_date=date(2016, 02, 20),
             classes='Crianças',
-            is_active=False
+            is_active=False,
+            price=Decimal('449.70')
         )
         self.course = Course.objects.create(
             name='Curso APRENDA #3',
             place='Kumon Águas Claras - Av. das Castanheiras',
             start_date=date(2016, 03, 12),
             classes='Crianças',
-            is_active=True
+            is_active=True,
+            price=Decimal('449.70')
         )
         self.resp = self.client.get(r('courses:list'))
 

@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 
 from datetime import date
 
+from decimal import Decimal
+
 from django.core import mail
 from django.shortcuts import resolve_url as r
 from django.test import TestCase
@@ -17,7 +19,8 @@ class InscriptionGet(TestCase):
             place='Kumon Águas Claras - Av. das Castanheiras',
             start_date=date(2016, 03, 12),
             classes='Crianças',
-            is_active=True
+            is_active=True,
+            price=Decimal('449.70')
         )
         self.resp = self.client.get(r('courses:inscription', self.course.pk))
 
@@ -47,7 +50,8 @@ class InscriptionGetInvalid(TestCase):
             place='Núcleo de Xadrez do clube ASCADE',
             start_date=date(2016, 02, 20),
             classes='Crianças, Adultos',
-            is_active=False
+            is_active=False,
+            price=Decimal('449.70')
         )
         self.resp = self.client.get(r('courses:inscription', self.obj.pk))
 
