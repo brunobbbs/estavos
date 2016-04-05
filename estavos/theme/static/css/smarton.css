@@ -671,8 +671,9 @@ box-shadow:         none;
 .menu-separator .main-navigation ul.sm li:first-child { border-left:none;}
 .menu-separator .main-navigation ul.sm li:last-child { border-right:none;}	
 @media (max-width: 800px) {
-.menu-separator .main-navigation ul.sm li { border:none;}	}		
-}	
+  .menu-separator .main-navigation ul.sm li { border:none;}
+}
+
 /* End Separator Style===================*/
 
 /* Navigation Radius Style
