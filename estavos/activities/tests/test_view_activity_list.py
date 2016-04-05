@@ -16,11 +16,25 @@ class ActivityListGet(TestCase):
             value=Decimal('50.00')
         )
 
+        admin = get_user_model().objects.create_superuser(
+            username='admin',
+            email='admin@email.com',
+            password='123456',
+        )
+
         user = get_user_model().objects.create_user(
-            email='bruno@email.com',
             username='bruno',
+            email='bruno@email.com',
             first_name='Bruno',
             last_name='Barbosa',
+            password='123456',
+        )
+
+        user2 = get_user_model().objects.create_user(
+            username='hugo',
+            email='hugo@email.com',
+            first_name='Hugo',
+            last_name='Ribeiro',
             password='123456',
         )
 
@@ -33,7 +47,16 @@ class ActivityListGet(TestCase):
             duration=1
         )
 
-        self.client.login(username='bruno', password='123456')
+        Activity.objects.create(
+            description='Fabio Alexandre - 02/08',
+            date=date(2016, 4, 1),
+            transport=Decimal('8.00'),
+            partner=user2,
+            category=category,
+            duration=1
+        )
+
+        self.client.login(username='hugo', password='123456')
         self.resp = self.client.get(r('activities:list'))
 
     def test_get(self):
@@ -47,5 +70,13 @@ class ActivityListGet(TestCase):
     def test_template(self):
         self.assertTemplateUsed('activities/activity_list.html')
 
-    def test_queryset(self):
+    def test_partner_view(self):
+        """partner can view only your own activities"""
         self.assertEqual(1, len(self.resp.context['object_list']))
+
+    def test_admin_view(self):
+        """admin can view all user activities"""
+        self.client.logout()
+        self.client.login(username='admin', password='123456')
+        resp = self.client.get(r('activities:list'))
+        self.assertEqual(2, len(resp.context['object_list']))

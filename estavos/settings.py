@@ -225,7 +225,7 @@ INSTALLED_APPS = (
     'django_extensions',
     'test_without_migrations',
     'pagseguro',
-    # "mezzanine.accounts",
+    "mezzanine.accounts",
     # "mezzanine.mobile",
     'estavos.courses.apps.CoursesAppConfig',
     'estavos.activities.apps.ActivitiesAppConfig',
@@ -326,6 +326,14 @@ PAGSEGURO_LOG_IN_MODEL = config('PAGSEGURO_LOG_IN_MODEL', cast=bool) # se o valo
 ####################
 
 GOOGLE_ANALYTICS_ID = config('GOOGLE_ANALYTICS_ID', default='')
+
+
+#####################
+# ACCOUNTS SETTINGS #
+#####################
+
+ACCOUNTS_VERIFICATION_REQUIRED = True
+ACCOUNTS_APPROVAL_REQUIRED = True
 
 
 ####################
