@@ -321,6 +321,12 @@ PAGSEGURO_SANDBOX = config('PAGSEGURO_SANDBOX', cast=bool)
 PAGSEGURO_LOG_IN_MODEL = config('PAGSEGURO_LOG_IN_MODEL', cast=bool) # se o valor for True, os checkouts e transações vão ser logadas no database.
 
 
+####################
+# GOOGLE ANALYTICS #
+####################
+
+GOOGLE_ANALYTICS_ID = config('GOOGLE_ANALYTICS_ID', default='')
+
 
 ####################
 # DYNAMIC SETTINGS #
