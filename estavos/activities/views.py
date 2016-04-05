@@ -12,3 +12,5 @@ class ActivityListView(LoginRequiredMixin, ListView):
         if user.is_authenticated() and not user.is_superuser:
             qs = qs.filter(partner=user)
         return qs
+
+    # TODO: Implements month filtering and total per month
