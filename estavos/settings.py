@@ -109,11 +109,11 @@ USE_TZ = True
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = "pt_BR"
+LANGUAGE_CODE = "pt-BR"
 
 # Supported languages
 LANGUAGES = (
-    ('pt-br', _('Brazilian Portuguese')),
+    ('pt_BR', _('Brazilian Portuguese')),
 )
 
 # secret_key
