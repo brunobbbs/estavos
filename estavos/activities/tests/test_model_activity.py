@@ -36,3 +36,7 @@ class ActivityModelTest(TestCase):
 
     def test_str(self):
         self.assertEqual('Gustavo Medeiros - 01/08', str(self.obj))
+
+    def test_subtotal(self):
+        """subtotal must returns a result of category value and activity transporte times activity duration"""
+        self.assertEqual(Decimal('108.00'), self.obj.sub_total())
