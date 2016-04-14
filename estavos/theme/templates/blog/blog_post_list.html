@@ -162,7 +162,7 @@
                     <div class="post-content">
                         {% block blog_post_list_post_content %}
                             {% editable blog_post.content %}
-                                {{ blog_post.description_from_content|safe }}
+                                {{ blog_post.description }}
                             {% endeditable %}
                         {% endblock %}
                     </div>
