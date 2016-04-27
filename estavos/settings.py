@@ -109,11 +109,11 @@ USE_TZ = True
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = "pt_BR"
+LANGUAGE_CODE = "pt-BR"
 
 # Supported languages
 LANGUAGES = (
-    ('pt-br', _('Brazilian Portuguese')),
+    ('pt_BR', _('Brazilian Portuguese')),
 )
 
 # secret_key
@@ -225,7 +225,7 @@ INSTALLED_APPS = (
     'django_extensions',
     'test_without_migrations',
     'pagseguro',
-    # "mezzanine.accounts",
+    "mezzanine.accounts",
     # "mezzanine.mobile",
     'estavos.courses.apps.CoursesAppConfig',
     'estavos.activities.apps.ActivitiesAppConfig',
@@ -320,6 +320,20 @@ PAGSEGURO_TOKEN = config('PAGSEGURO_TOKEN')
 PAGSEGURO_SANDBOX = config('PAGSEGURO_SANDBOX', cast=bool)
 PAGSEGURO_LOG_IN_MODEL = config('PAGSEGURO_LOG_IN_MODEL', cast=bool) # se o valor for True, os checkouts e transações vão ser logadas no database.
 
+
+####################
+# GOOGLE ANALYTICS #
+####################
+
+GOOGLE_ANALYTICS_ID = config('GOOGLE_ANALYTICS_ID', default='')
+
+
+#####################
+# ACCOUNTS SETTINGS #
+#####################
+
+ACCOUNTS_VERIFICATION_REQUIRED = True
+ACCOUNTS_APPROVAL_REQUIRED = True
 
 
 ####################

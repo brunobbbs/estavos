@@ -32,7 +32,7 @@ Description: A Beautiful, Professional and Multipurpose Theme Made by FourGrafx<
 	background-color:rgb(0,0,0); 
 	background-color: rgba(0,0,0, .8); /* Works on all modern browsers */}
 
-body { font-family: 'Raleway',Helvetica,Arial,sans-serif; font-size: 14px; font-weight:300; line-height: 1.5; color: #6c6c6c; background-color: #ffffff;}
+body { font-family: 'Raleway',Helvetica,Arial,sans-serif; font-size: 14px; font-weight:300; line-height: 1.5; color: #333; background-color: #ffffff;}
 
 a{	-webkit-transition: all 0.3s ease-in-out;  -moz-transition: all 0.3s ease-in-out;  -o-transition: all 0.3s ease-in-out;	-ms-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out; -webkit-transform: translate3d(0,0,0);}
 	
@@ -67,7 +67,7 @@ a.danger:hover{color:#cc0000;}
 /* #Typography 
 ================================================== */
 
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { color:#848494;}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { color:#333;}
 h1, .h1 {font:300 40px/42px 'Raleway',Helvetica,Arial,sans-serif; margin:0 0 20px;}
 h2, .h2 {font:300 34px/38px 'Raleway',Helvetica,Arial,sans-serif; margin:0 0 20px;}
 h3, .h3 {font:300 28px/32px 'Raleway',Helvetica,Arial,sans-serif; margin:0 0 20px;}
@@ -671,8 +671,9 @@ box-shadow:         none;
 .menu-separator .main-navigation ul.sm li:first-child { border-left:none;}
 .menu-separator .main-navigation ul.sm li:last-child { border-right:none;}	
 @media (max-width: 800px) {
-.menu-separator .main-navigation ul.sm li { border:none;}	}		
-}	
+  .menu-separator .main-navigation ul.sm li { border:none;}
+}
+
 /* End Separator Style===================*/
 
 /* Navigation Radius Style
