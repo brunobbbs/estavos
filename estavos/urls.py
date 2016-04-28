@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.conf.urls import patterns, include, url
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
-from estavos.theme.views import EventosView
+from estavos.theme.views import GaleriaView
 from mezzanine.conf import settings
 from mezzanine.core.views import direct_to_template
 
@@ -68,7 +68,7 @@ urlpatterns += patterns('',
 
     # SPECIFIC THEME URLS
     # ===================
-    url(r'^eventos/$', EventosView.as_view(), name='eventos'),
+    url(r'^galeria/$', GaleriaView.as_view(), name='galeria'),
     url(r'^curso-de-xadrez/', include('estavos.courses.urls', namespace='courses')),
     url(r'^area-do-instrutor/', include('estavos.activities.urls', namespace='activities')),
 

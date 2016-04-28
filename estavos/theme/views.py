@@ -2,12 +2,12 @@ from django.views.generic import TemplateView
 from mezzanine.pages.models import RichTextPage
 
 
-class EventosView(TemplateView):
-    template_name = 'pages/eventos.html'
+class GaleriaView(TemplateView):
+    template_name = 'pages/galeria.html'
 
     def get_context_data(self, **kwargs):
-        kwargs = super(EventosView, self).get_context_data(**kwargs)
-        evento = RichTextPage.objects.get(slug='eventos')
+        kwargs = super(GaleriaView, self).get_context_data(**kwargs)
+        evento = RichTextPage.objects.get(slug='galeria')
         kwargs['page'] = evento
         kwargs['galleries'] = self.galleries(evento)
         return kwargs

@@ -7,9 +7,9 @@ from mezzanine.generic.models import AssignedKeyword, Keyword
 from mezzanine.pages.models import  RichTextPage
 
 
-class EventosGet(TestCase):
+class GaleriaGet(TestCase):
     def setUp(self):
-        data = dict(title='Eventos', content='Eventos da Academia ESTAVOS')
+        data = dict(title='Galeria', content='Galeria de Fotos da Academia ESTAVOS')
         self.evento = RichTextPage.objects.create(**data)
         self._create_keywords()
 
@@ -18,7 +18,7 @@ class EventosGet(TestCase):
         self.child = Gallery.objects.create(**gallery_data)
         self.child.keywords.add(AssignedKeyword(keyword=t))
 
-        self.resp = self.client.get('/eventos/')
+        self.resp = self.client.get('/galeria/')
 
     def _create_keywords(self):
         s, _ = Keyword.objects.get_or_create(title="simultaneas")
@@ -33,7 +33,7 @@ class EventosGet(TestCase):
         self.assertEqual(200, self.resp.status_code)
 
     def test_template(self):
-        self.assertTemplateUsed(self.resp, 'pages/eventos.html')
+        self.assertTemplateUsed(self.resp, 'pages/galeria.html')
 
     def test_keywords(self):
         KEYWORDS = (
@@ -66,5 +66,5 @@ class EventosGet(TestCase):
         gallery = self.resp.context['galleries'][0]
         self.assertEqual('Torneios', gallery['title'])
         self.assertEqual('Torneios da ESTAVOS', gallery['description'])
-        self.assertEqual('/eventos/torneios/', gallery['url'])
+        self.assertEqual('/galeria/torneios/', gallery['url'])
         self.assertIn('torneios', gallery['keyword'])
