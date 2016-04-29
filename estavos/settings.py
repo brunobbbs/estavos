@@ -230,6 +230,7 @@ INSTALLED_APPS = (
     'estavos.courses.apps.CoursesAppConfig',
     'estavos.activities.apps.ActivitiesAppConfig',
     'estavos.categorylink',
+    'estavos.setup',
 )
 
 # List of processors used by RequestContext to populate the context.
@@ -341,6 +342,12 @@ ACCOUNTS_APPROVAL_REQUIRED = True
 # ADMINS #
 ##########
 ADMINS = (('Bruno Barbosa', 'bruno@estavos.com'), )
+
+###########
+# PROFILE #
+###########
+
+AUTH_PROFILE_MODULE = 'setup.UserProfile'
 
 
 ####################
