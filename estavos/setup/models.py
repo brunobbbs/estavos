@@ -13,4 +13,4 @@ class UserProfile(models.Model):
     photo = models.ImageField(upload_to='users/', blank=True, null=True)
 
     def __str__(self):
-        return '{0} {1}'.format(self.user.first_name, self.user.last_name)
+        return self.user.get_full_name()
