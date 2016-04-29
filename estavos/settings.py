@@ -337,6 +337,12 @@ ACCOUNTS_VERIFICATION_REQUIRED = True
 ACCOUNTS_APPROVAL_REQUIRED = True
 
 
+##########
+# ADMINS #
+##########
+ADMINS = (('Bruno Barbosa', 'bruno@estavos.com'), )
+
+
 ####################
 # DYNAMIC SETTINGS #
 ####################
