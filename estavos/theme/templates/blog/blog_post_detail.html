@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load mezzanine_tags comment_tags keyword_tags rating_tags i18n disqus_tags %}
+{% load staticfiles %}
 
 {% block meta_title %}{{ blog_post.meta_title }}{% endblock %}
 
@@ -114,6 +115,46 @@
         {% endblock %}
 
         <br />
+
+        <div class="author-box">
+            <div class="panel">
+                <div class="panel-body">
+                    {# The custom profile doesn't works correctly, then it is temporarily hardcoded #}
+                    {% with blog_post.user as author %}
+                        {% with "img/blog/"|add:author.username|add:"-estavos.jpg" as author_photo %}
+                            <div class="author-avatar">
+                                <img src="{% static author_photo %}" alt="">
+                            </div>
+                        {% endwith %}
+                    <div class="author-info">
+                        <h4 class="heading-single"><span>{{ author.get_full_name|default:author.username }}</span></h4>
+                        {% if author.username == 'hugo' %}
+                        <p>Hugo Leonardo Ribeiro joga Xadrez desde as categorias de base. Professor, Treinador,
+                            Arbitro Regional e competidor, dedica sua vida a retribuir pelo Xadrez tudo de bom que o
+                            Xadrez trouxe a sua vida. Acredita que o Xadrez pode ser mais que uma ferramenta pedagógica,
+                            é um agente transformador de vidas e mentes humanas</p>
+                        <div class="author-social">
+                            <ul class="list-inline">
+
+                            </ul>
+                        </div>
+                        {% endif %}
+                        {% if author.username == 'bruno' %}
+                        <p>Bruno Barbosa é Analista de Sistemas, blogueiro, amante do Xadrez e empreendedor no ramo
+                            esportivo. Apaixonado por tecnologia, pretende facilitar o acesso do milenar Esporte dos
+                            Reis para todas as pessoas, fato que inspirou a <a href="/quem-somos/">missão da Academia
+                                ESTAVOS</a>.</p>
+                        <div class="author-social">
+                            <ul class="list-inline">
+
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endwith %}
+                </div>
+            </div>
+        </div>
 
         {% block blog_post_detail_sharebuttons %}
         {% set_short_url_for blog_post %}
