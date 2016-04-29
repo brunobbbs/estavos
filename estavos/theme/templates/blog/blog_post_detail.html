@@ -1,6 +1,5 @@
 {% extends "base.html" %}
-{% load mezzanine_tags comment_tags keyword_tags rating_tags i18n disqus_tags %}
-{% load staticfiles %}
+{% load mezzanine_tags comment_tags keyword_tags rating_tags i18n disqus_tags staticfiles %}
 
 {% block meta_title %}{{ blog_post.meta_title }}{% endblock %}
 
@@ -105,7 +104,7 @@
                     <div class="tags">
                         {% spaceless %}
                             {% for tag in tags %}
-                            <a href="{% url "blog_post_list_tag" tag.slug %}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+                            <a href="{% url "blog_post_list_tag" tag.slug %}">{{ tag }}</a>
                             {% endfor %}
                         {% endspaceless %}
                     </div>
