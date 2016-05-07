@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Newsletter Mente Evoluída{% endblock title %}
+{% block meta_title %}Mente Evoluída{% endblock meta_title %}
+
+{% block main %}
+
+<!-- Title -->
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="title-color heading-single text-center"><span>Mente Evoluída - Fique antenado sobre tudo de Xadrez</span></h1>
+        </div>
+    </div>
+    <!-- /Title -->
+
+    <div class="row">
+      <div class="col-md-12">
+        <form action="." method="post" class="form form-horizontal">
+          {% csrf_token %}
+          {{ form.as_p }}
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+          </div>
+
+          <script>
+            document.getElementById("{{ form.email.auto_id }}").focus();
+          </script>
+        </form>
+      </div>
+    </div>
+
+{% endblock main %}
+
