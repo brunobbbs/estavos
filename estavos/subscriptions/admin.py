@@ -1,3 +1,9 @@
 from django.contrib import admin
+from estavos.subscriptions.models import Subscription
 
-# Register your models here.
+
+class SubscriptionAdmin(admin.ModelAdmin):
+    list_display = ('first_name', 'email', 'is_active')
+
+
+admin.site.register(Subscription, SubscriptionAdmin)
