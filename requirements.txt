@@ -8,3 +8,4 @@ django-test-without-migrations==0.4
 pytz
 django-pagseguro2==1.0.12
 django-braces==1.8.1
+django-newsletter-subscription==0.3.0
