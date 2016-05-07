@@ -3,9 +3,12 @@ from __future__ import unicode_literals
 from django.conf.urls import patterns, include, url
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
+from estavos.subscriptions.models import Subscription
 from estavos.theme.views import GaleriaView
 from mezzanine.conf import settings
 from mezzanine.core.views import direct_to_template
+from newsletter_subscription.backend import ModelBackend
+from newsletter_subscription.urls import newsletter_subscriptions_urlpatterns
 
 admin.autodiscover()
 
@@ -66,10 +69,21 @@ urlpatterns += patterns('',
     # =====================
     url(r'^retorno/pagseguro/', include('pagseguro.urls')),
 
+    # NEWSLETTER
+    # ==========
+    url(r'^newsletter/',
+        include(newsletter_subscriptions_urlpatterns(
+            backend=ModelBackend(Subscription),
+        ))
+    ),
+
     # SPECIFIC THEME URLS
     # ===================
     url(r'^galeria/$', GaleriaView.as_view(), name='galeria'),
     url(r'^curso-de-xadrez/', include('estavos.courses.urls', namespace='courses')),
+
+    # CUSTOM APPS
+    # ===========
     url(r'^area-do-instrutor/', include('estavos.activities.urls', namespace='activities')),
 
     # MEZZANINE'S URLS
