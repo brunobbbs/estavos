@@ -230,6 +230,7 @@ INSTALLED_APPS = (
     'estavos.courses.apps.CoursesAppConfig',
     'estavos.activities.apps.ActivitiesAppConfig',
     'estavos.categorylink',
+    'estavos.leads',
 )
 
 # List of processors used by RequestContext to populate the context.
