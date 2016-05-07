@@ -5,7 +5,7 @@ from django.test import TestCase
 from estavos.subscriptions.models import Subscription
 
 
-class LeadModelTest(TestCase):
+class SubscriptionModelTest(TestCase):
 
     def test_create(self):
         Subscription.objects.create(
