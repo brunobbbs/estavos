@@ -104,7 +104,7 @@
         	<div class="col-md-8">
 
             	<div class="logo">
-                	<a href="{% url "home" %}"><img src="{% static 'img/theme/logo-estavos.png' %}" width="300" height="81" alt="ESTAVOS Logo"></a>
+                	<a href="{% url "home" %}"><img src="{% static 'img/theme/logo-estavos.png' %}" width="300" height="81" alt="ESTAVOS Logo" /></a>
                 </div>
 
 			</div>
@@ -178,6 +178,8 @@
 </div> <!-- /Header wrapper -->
 
 {% block home %}
+
+{% block special_header %}
 <!-- Container Tile & Breadcrumbs -->
 <div class="fullsize">
 
@@ -201,6 +203,7 @@
     </div>
 
 </div> <!-- /Container Tile & Breadcrumbs -->
+{% endblock special_header %}
 
 </div> <!-- / page-wrapper -->
 
