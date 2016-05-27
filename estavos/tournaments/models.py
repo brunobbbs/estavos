@@ -13,9 +13,14 @@ class Tournament(models.Model):
     active = models.BooleanField('Ativo?')
     place = models.CharField('Local', max_length=50)
     url = models.URLField('Link da página do evento')
+    slug = models.SlugField(unique=True)
 
     def __str__(self):
         return self.title
+
+    def save(self, **kwargs):
+        unique_slugify(self, self.title)
+        super(Tournament, self).save(**kwargs)
 
 
 class Inscription(models.Model):

@@ -26,3 +26,6 @@ class TournamentModelTest(TestCase):
 
     def test_str(self):
         self.assertEqual('IRT Brasiliense de Xadrez Amador 2016', str(self.tournament))
+
+    def test_slug(self):
+        self.assertTrue(self.tournament.slug)
