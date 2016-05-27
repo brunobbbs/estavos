@@ -6,6 +6,7 @@ from estavos.utils.slug import unique_slugify
 
 class Tournament(models.Model):
     title = models.CharField('Nome do evento', max_length=100)
+    description = models.TextField('Descrição', blank=True)
     start_date = models.DateField('Data de início')
     end_date = models.DateField('Data de término')
     inscriptions_date_limit = models.DateTimeField('Data limite para inscrições')
