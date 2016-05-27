@@ -35,5 +35,5 @@ class InscriptionModelTest(TestCase):
     def test_str(self):
         self.assertEqual('Bruno Barbosa', str(self.inscription))
 
-    def test_inscription_uid(self):
+    def test_inscription_slug(self):
         self.assertTrue(self.inscription.slug)
