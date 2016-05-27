@@ -14,3 +14,16 @@ class Tournament(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Inscription(models.Model):
+    tournament = models.ForeignKey('tournaments.Tournament', related_name='inscriptions')
+    name = models.CharField('Nome completo', max_length=100)
+    email = models.EmailField()
+    birth = models.DateField('Data de nascimento')
+    id_cbx = models.CharField('ID CBX', max_length=7)
+    id_fide = models.CharField('ID FIDE', max_length=7, blank=True)
+    phone = models.CharField('Telefone', max_length=15)
+
+    def __str__(self):
+        return self.name
