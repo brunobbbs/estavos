@@ -231,6 +231,7 @@ INSTALLED_APPS = (
     'estavos.activities.apps.ActivitiesAppConfig',
     'estavos.categorylink',
     'estavos.subscriptions',
+    'estavos.tournaments',
 )
 
 # List of processors used by RequestContext to populate the context.
