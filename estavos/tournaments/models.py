@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.db import models
+from estavos.utils.slug import unique_slugify
 
 
 class Tournament(models.Model):
@@ -23,8 +24,15 @@ class Inscription(models.Model):
     birth = models.DateField('Data de nascimento')
     id_cbx = models.CharField('ID CBX', max_length=7)
     id_fide = models.CharField('ID FIDE', max_length=7, blank=True)
-    phone = models.CharField('Telefone', max_length=15)
+    phone = models.CharField('Telefone', max_length=15, blank=True)
     confirmed = models.BooleanField('Confirmado?', default=False)
+    slug = models.SlugField('Cod. Inscrição', max_length=32, unique=True)
 
     def __str__(self):
         return self.name
+
+    def save(self, **kwargs):
+        import uuid
+        slug = uuid.uuid4().get_hex()
+        unique_slugify(self, slug)
+        super(Inscription, self).save(**kwargs)

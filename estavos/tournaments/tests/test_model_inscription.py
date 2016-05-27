@@ -27,7 +27,6 @@ class InscriptionModelTest(TestCase):
             id_cbx='39035',
             id_fide='',
             phone='(61) 9999-9999',
-            confirmed=True
         )
 
     def test_create(self):
@@ -35,3 +34,6 @@ class InscriptionModelTest(TestCase):
 
     def test_str(self):
         self.assertEqual('Bruno Barbosa', str(self.inscription))
+
+    def test_inscription_uid(self):
+        self.assertTrue(self.inscription.slug)
