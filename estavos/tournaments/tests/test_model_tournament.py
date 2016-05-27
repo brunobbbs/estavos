@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import unittest
 from datetime import datetime, date
 
+from django.shortcuts import resolve_url as r
 from django.test import TestCase
 from estavos.tournaments.models import Tournament
 
@@ -18,7 +20,6 @@ class TournamentModelTest(TestCase):
             inscriptions_date_limit=datetime(2016, 06, 16, 20, 30, 00),
             active=True,
             place='Venâncio Shopping',
-            url='http://estavos.com/torneios/irt-brasiliense-de-xadrez-amador-2016-sub-2200/'
         )
 
     def test_create(self):
@@ -29,3 +30,7 @@ class TournamentModelTest(TestCase):
 
     def test_slug(self):
         self.assertTrue(self.tournament.slug)
+
+    def test_get_absolute_url(self):
+        url = r('tournaments:detail', self.tournament.pk)
+        self.assertEqual(url, self.tournament.get_absolute_url())

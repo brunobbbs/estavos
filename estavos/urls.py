@@ -81,6 +81,7 @@ urlpatterns += patterns('',
     # ===================
     url(r'^galeria/$', GaleriaView.as_view(), name='galeria'),
     url(r'^curso-de-xadrez/', include('estavos.courses.urls', namespace='courses')),
+    url(r'^torneios/', include('estavos.tournaments.urls', namespace='tournaments')),
 
     # CUSTOM APPS
     # ===========
