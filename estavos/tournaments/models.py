@@ -24,6 +24,7 @@ class Inscription(models.Model):
     id_cbx = models.CharField('ID CBX', max_length=7)
     id_fide = models.CharField('ID FIDE', max_length=7, blank=True)
     phone = models.CharField('Telefone', max_length=15)
+    confirmed = models.BooleanField('Confirmado?', default=False)
 
     def __str__(self):
         return self.name

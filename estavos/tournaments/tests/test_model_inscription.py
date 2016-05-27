@@ -26,7 +26,8 @@ class InscriptionModelTest(TestCase):
             birth=date(1989, 12, 18),
             id_cbx='39035',
             id_fide='',
-            phone='(61) 9999-9999'
+            phone='(61) 9999-9999',
+            confirmed=True
         )
 
     def test_create(self):
