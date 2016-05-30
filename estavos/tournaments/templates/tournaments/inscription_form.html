@@ -1,0 +1,64 @@
+<form action="{% url 'tournaments:inscription_new' 1 %}" method="post">
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+        <div class="alert alert-danger">
+            {{ form.non_field_errors }}
+        </div>
+    {% endif %}
+
+    <div class="form-group {% if form.name.errors %}has-error {% endif %}{% if form.birth.errors %}has-error{% endif %}">
+        <div class="row">
+            <div class="col-xs-8">
+                <label for="{{ form.name.id_for_label }}" class="control-label">{{ form.name.label }}</label>
+                {{ form.name }}
+                {% if form.name.errors %}
+                    <span class="help-block color-danger">{{ form.name.errors.as_text }}</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="form-group {% if form.email.errors %}has-error {% endif %}{% if form.phone.errors %}has-error{% endif %}">
+        <div class="row">
+            <div class="col-xs-4">
+                <label for="{{ form.email.id_for_label }}" class="control-label">{{ form.email.label }}</label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <span class="help-block color-danger">{{ form.email.errors.as_text }}</span>
+                {% endif %}
+            </div>
+            <div class="col-xs-4">
+                <label for="{{ form.birth.id_for_label }}" class="control-label">{{ form.birth.label }}</label>
+                {{ form.birth }}
+                {% if form.birth.errors %}
+                    <span class="help-block color-danger">{{ form.birth.errors.as_text }}</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="form-group {% if form.id_cbx.errors %}has-error {% endif %}{% if form.id_fide.errors %}has-error{% endif %}">
+        <div class="row">
+            <div class="col-xs-4">
+                <label for="{{ form.phone.id_for_label }}" class="control-label">{{ form.phone.label }}</label>
+                {{ form.phone }}
+                {% if form.phone.errors %}
+                    <span class="help-block color-danger">{{ form.phone.errors.as_text }}</span>
+                {% endif %}
+            </div>
+            <div class="col-xs-2">
+                <label for="{{ form.id_cbx.id_for_label }}" class="control-label">{{ form.id_cbx.label }}</label>
+                {{ form.id_cbx }}
+                {% if form.id_cbx.errors %}
+                    <span class="help-block color-danger">{{ form.id_cbx.errors.as_text }}</span>
+                {% endif %}
+            </div>
+            <div class="col-xs-2">
+                <label for="{{ form.id_fide.id_for_label }}" class="control-label">{{ form.id_fide.label }}</label>
+                {{ form.id_fide }}
+                {% if form.id_fide.errors %}
+                    <span class="help-block color-danger">{{ form.id_fide.errors.as_text }}</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <input class="btn btn-primary" type="submit" value="Fazer inscrição" />
+</form>

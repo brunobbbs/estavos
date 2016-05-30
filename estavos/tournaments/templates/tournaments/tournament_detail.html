@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-testee
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block meta_title %}{{ object.title }}{% endblock meta_title %}
+
+{% block main %}
+<h2>{{ object.title }}</h2>
+
+<ul>
+    {% if object.description %}
+    <li>{{ object.description }}</li>
+    {% endif %}
+    <li>Período: {{ object.start_date|date:"d/m/Y" }} a {{ object.end_date|date:"d/m/Y" }}</li>
+    <li>Limite para inscrições: {{ object.inscriptions_date_limit|date:"d/m/Y" }}</li>
+    <li>Local: {{ object.place }}</li>
+    <li>Página do evento: {{ object.url }}</li>
+    {% if object.active %}
+    <li><a href="{% url 'tournaments:inscription_new' object.pk %}" title="inscrições no evento">
+        Clique aqui para se inscrever no evento</a>
+    </li>
+    {% endif %}
+</ul>
+{% endblock main %}

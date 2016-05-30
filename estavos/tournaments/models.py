@@ -10,8 +10,8 @@ from django.shortcuts import resolve_url as r
 class Tournament(models.Model):
     title = models.CharField('Nome do evento', max_length=100)
     description = models.TextField('Descrição', blank=True)
-    start_date = models.DateField('Data de início')
-    end_date = models.DateField('Data de término')
+    start_date = models.DateTimeField('Início')
+    end_date = models.DateTimeField('Previsão de término')
     inscriptions_date_limit = models.DateTimeField('Data limite para inscrições')
     active = models.BooleanField('Ativo?')
     place = models.CharField('Local', max_length=50)
@@ -32,7 +32,7 @@ class Tournament(models.Model):
 @python_2_unicode_compatible
 class Inscription(models.Model):
     tournament = models.ForeignKey('tournaments.Tournament', related_name='inscriptions')
-    name = models.CharField('Nome completo', max_length=100)
+    name = models.CharField('Nome', max_length=100)
     email = models.EmailField()
     birth = models.DateField('Data de nascimento')
     id_cbx = models.CharField('ID CBX', max_length=7)

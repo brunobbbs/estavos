@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block meta_title %}Inscrição: {{ tournament.title }}{% endblock meta_title %}
+
+{% block main %}
+    <h4 class="title-color heading-single text-center"><span>Inscrição: {{ tournament.title }}</span></h4>
+    {% include 'tournaments/inscription_form.html' %}
+{% endblock main %}

@@ -1,5 +1,10 @@
-from django.views.generic import ListView, DetailView
-from estavos.tournaments.models import Tournament
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+from django.core.urlresolvers import reverse
+from django.views.generic import ListView, DetailView, CreateView
+from estavos.tournaments.forms import InscriptionModelForm
+from estavos.tournaments.models import Tournament, Inscription
 
 
 class TournamentListView(ListView):
@@ -15,3 +20,39 @@ class TournamentListView(ListView):
 
 class TournamentDetail(DetailView):
     model = Tournament
+
+
+class InscriptionCreate(CreateView):
+    model = Inscription
+    form_class = InscriptionModelForm
+    template_name = 'tournaments/inscription_new.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs = super(InscriptionCreate, self).get_context_data(**kwargs)
+        tournament_id = self.kwargs['tournament']
+        tournament = Tournament.objects.get(pk=tournament_id)
+        kwargs['tournament'] = tournament
+        return kwargs
+
+    def get_success_url(self):
+        tournament = self.kwargs['tournament']
+        return reverse(
+            'tournaments:inscription_detail',
+            kwargs={'tournament': tournament, 'slug': self.object.slug}
+        )
+
+    def form_valid(self, form):
+        tournament = Tournament.objects.get(pk=self.kwargs['tournament'])
+        form.instance.tournament = tournament
+        return super(InscriptionCreate, self).form_valid(form)
+
+
+class InscriptionDetail(DetailView):
+    model = Inscription
+    template_name = 'tournaments/inscription_detail.html'
+
+    def get_queryset(self):
+        qs = super(InscriptionDetail, self).get_queryset()
+        tournament = self.kwargs['tournament']
+        qs = qs.filter(tournament=tournament)
+        return qs

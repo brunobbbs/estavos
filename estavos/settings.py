@@ -107,6 +107,8 @@ TIME_ZONE = 'America/Sao_Paulo'
 # If you set this to True, Django will use timezone-aware datetimes.
 USE_TZ = True
 
+USE_L10N = True
+
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = "pt-BR"

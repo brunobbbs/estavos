@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block meta_title %}Pré-inscrição: NOME_DO_EVENTO{% endblock meta_title %}
+
+{% block main %}
+    <h2>Pré-Inscrição realizada com sucesso.</h2>
+
+    <p>Parabéns NOME_DO_ATLETA, sua pré inscrição no NOME_DO_EVENTO foi realizada com sucesso.</p>
+    <p>O identificador único de sua inscrição é: UID_INSCRICAO</p>
+    <p>Guarde esse código, ele pode ser útil para resolver assuntos relacionados à sua inscrição.</p>
+    <p>Para confirmar sua inscrição você deve fazer o depósito da taxa de inscrição na conta bancária a seguir e
+    enviar o comprovante para o email <strong>torneios@estavos.com</strong>.</p>
+    <p>O evento tem início no dia DATA_DO_EVENTO as HORA_DO_EVENTO, mas recomendamos que chegue com pelo menos
+    15 minutos de antecedência</p>
+    <p>Nosso evento acontece no LOCAL_DO_EVENTO</p>
+    <p>Qualquer dúvida estamos à disposição através de nossos canais de <a href="http://estavos.com/contato/">contato</a></p>
+
+{% endblock main %}
