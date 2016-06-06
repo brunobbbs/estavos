@@ -29,13 +29,13 @@
         <tbody>
             {% for object in object_list %}
             <tr>
-                <td>{{ object.title }}</td>
+                <td><a href="{{ object.url }}" title="{{ object.title }}">{{ object.title }}</a></td>
                 <td>{{ object.start_date|date:"d/m/Y" }} a {{ object.end_date|date:"d/m/Y" }}</td>
                 <td>{{ object.place }}</td>
                 <td>
-                    <a href="{{ object.url }}" title="{{ object.title }}"
+                    <a href="{% url 'tournaments:inscription_new' object.pk %}" title="Inscrição: {{ object.title }}"
                        class="btn btn-primary">
-                        Acessar página do evento
+                        Inscrição
                     </a>
                 </td>
             </tr>
