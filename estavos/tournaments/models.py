@@ -36,7 +36,7 @@ class Inscription(models.Model):
     email = models.EmailField()
     birth = models.DateField('Data de nascimento')
     id_cbx = models.CharField('ID CBX', max_length=7)
-    id_fide = models.CharField('ID FIDE', max_length=7, blank=True)
+    id_fide = models.CharField('ID FIDE', max_length=10, blank=True)
     phone = models.CharField('Telefone', max_length=15, blank=True)
     confirmed = models.BooleanField('Confirmado?', default=False)
     slug = models.SlugField('Cod. Inscrição', max_length=32, unique=True)

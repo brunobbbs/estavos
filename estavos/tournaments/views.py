@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.contrib import messages
 from django.core.urlresolvers import reverse
+from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView, CreateView
-from estavos.tournaments.forms import InscriptionModelForm
+from estavos.tournaments.forms import InscriptionModelForm, InscriptionForm
 from estavos.tournaments.models import Tournament, Inscription
 
 
@@ -18,14 +20,19 @@ class TournamentListView(ListView):
         return kwargs
 
 
-class TournamentDetail(DetailView):
-    model = Tournament
-
-
 class InscriptionCreate(CreateView):
     model = Inscription
     form_class = InscriptionModelForm
     template_name = 'tournaments/inscription_new.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        tournament_id = self.kwargs['tournament']
+        tournament = Tournament.objects.get(pk=tournament_id)
+        if not tournament.active:
+            messages.info(request, 'O torneio que você tentou acessar não está ativo.')
+            return redirect('tournaments:list')
+        else:
+            return super(InscriptionCreate, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         kwargs = super(InscriptionCreate, self).get_context_data(**kwargs)
@@ -45,6 +52,15 @@ class InscriptionCreate(CreateView):
         tournament = Tournament.objects.get(pk=self.kwargs['tournament'])
         form.instance.tournament = tournament
         return super(InscriptionCreate, self).form_valid(form)
+
+
+class TournamentDetail(DetailView):
+    model = Tournament
+
+    def get_context_data(self, **kwargs):
+        kwargs = super(TournamentDetail, self).get_context_data(**kwargs)
+        kwargs['form'] = InscriptionForm()
+        return kwargs
 
 
 class InscriptionDetail(DetailView):

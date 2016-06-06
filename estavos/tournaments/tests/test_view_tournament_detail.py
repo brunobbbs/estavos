@@ -20,8 +20,11 @@ class TournamentDetailTest(TestCase):
             place='Venâncio Shopping',
             url='http://estavos.com/torneios/irt-brasiliense-de-xadrez-amador-2016-sub-2200/'
         )
+        self.resp = self.client.get(r('tournaments:detail', self.obj.slug))
 
     def test_get(self):
-        resp = self.client.get(r('tournaments:detail', self.obj.pk))
-        # resp = self.client.get('/torneios/irt-brasiliense-de-xadrez-amador-2016')
-        self.assertEqual(200, resp.status_code)
+        self.assertEqual(200, self.resp.status_code)
+
+    def test_context(self):
+        """tournament page must have an inscription form"""
+        self.assertIn('form', self.resp.context)

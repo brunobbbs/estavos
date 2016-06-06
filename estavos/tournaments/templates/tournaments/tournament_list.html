@@ -7,14 +7,6 @@
 
 {% block main %}
 
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-info" role="alert">
-                <p>{{ message.as_text }}</p>
-            </div>
-        {% endfor %}
-    {% endif %}
-
     <h2>Torneios ativos</h2>
 
     <table class="table table-hover">
@@ -29,7 +21,7 @@
         <tbody>
             {% for object in object_list %}
             <tr>
-                <td><a href="{{ object.url }}" title="{{ object.title }}">{{ object.title }}</a></td>
+                <td><a href="{{ object.url }}" title="{{ object.title }}"><strong>{{ object.title }}</strong></a></td>
                 <td>{{ object.start_date|date:"d/m/Y" }} a {{ object.end_date|date:"d/m/Y" }}</td>
                 <td>{{ object.place }}</td>
                 <td>

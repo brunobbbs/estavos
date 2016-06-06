@@ -1,3 +1,4 @@
+{% load static %}
 <form action="{% url 'tournaments:inscription_new' 1 %}" method="post">
     {% csrf_token %}
     {% if form.non_field_errors %}
@@ -6,9 +7,9 @@
         </div>
     {% endif %}
 
-    <div class="form-group {% if form.name.errors %}has-error {% endif %}{% if form.birth.errors %}has-error{% endif %}">
+    <div class="form-group {% if form.name.errors %}has-error {% endif %}{% if form.name.errors %}has-error{% endif %}">
         <div class="row">
-            <div class="col-xs-8">
+            <div class="col-xs-10">
                 <label for="{{ form.name.id_for_label }}" class="control-label">{{ form.name.label }}</label>
                 {{ form.name }}
                 {% if form.name.errors %}
@@ -17,16 +18,16 @@
             </div>
         </div>
     </div>
-    <div class="form-group {% if form.email.errors %}has-error {% endif %}{% if form.phone.errors %}has-error{% endif %}">
+    <div class="form-group {% if form.email.errors %}has-error {% endif %}{% if form.birth.errors %}has-error{% endif %}">
         <div class="row">
-            <div class="col-xs-4">
+            <div class="col-xs-5">
                 <label for="{{ form.email.id_for_label }}" class="control-label">{{ form.email.label }}</label>
                 {{ form.email }}
                 {% if form.email.errors %}
                     <span class="help-block color-danger">{{ form.email.errors.as_text }}</span>
                 {% endif %}
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-5">
                 <label for="{{ form.birth.id_for_label }}" class="control-label">{{ form.birth.label }}</label>
                 {{ form.birth }}
                 {% if form.birth.errors %}
@@ -37,7 +38,7 @@
     </div>
     <div class="form-group {% if form.id_cbx.errors %}has-error {% endif %}{% if form.id_fide.errors %}has-error{% endif %}">
         <div class="row">
-            <div class="col-xs-4">
+            <div class="col-xs-6">
                 <label for="{{ form.phone.id_for_label }}" class="control-label">{{ form.phone.label }}</label>
                 {{ form.phone }}
                 {% if form.phone.errors %}

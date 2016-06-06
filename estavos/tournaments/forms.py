@@ -8,6 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 
 class InscriptionForm(forms.Form):
     name = forms.CharField(
+        label='Nome',
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control',
@@ -24,6 +25,7 @@ class InscriptionForm(forms.Form):
         ),
     )
     birth = forms.DateField(
+        label='Data de nascimento',
         widget=forms.DateInput(
             attrs={
                 'class': 'form-control',
@@ -32,6 +34,7 @@ class InscriptionForm(forms.Form):
         ),
     )
     phone = forms.CharField(
+        label='Telefone',
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control',
@@ -40,18 +43,20 @@ class InscriptionForm(forms.Form):
         ),
     )
     id_cbx = forms.CharField(
+        label='ID CBX',
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': '(obrigatório)'
+                'placeholder': 'obrigatório'
             }
         ),
     )
     id_fide = forms.CharField(
+        label='ID FIDE',
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': '(se tiver =))'
+                'placeholder': 'se tiver'
             }
         ),
     )

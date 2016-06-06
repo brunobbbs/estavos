@@ -1,22 +1,604 @@
 {% extends 'base.html' %}
 
+{% load static pages_tags %}
+
+{% block title %}{{ object.title }}{% endblock title %}
+
 {% block meta_title %}{{ object.title }}{% endblock meta_title %}
 
-{% block main %}
-<h2>{{ object.title }}</h2>
 
-<ul>
-    {% if object.description %}
-    <li>{{ object.description }}</li>
-    {% endif %}
-    <li>Período: {{ object.start_date|date:"d/m/Y" }} a {{ object.end_date|date:"d/m/Y" }}</li>
-    <li>Limite para inscrições: {{ object.inscriptions_date_limit|date:"d/m/Y" }}</li>
-    <li>Local: {{ object.place }}</li>
-    <li>Página do evento: {{ object.url }}</li>
-    {% if object.active %}
-    <li><a href="{% url 'tournaments:inscription_new' object.pk %}" title="inscrições no evento">
-        Clique aqui para se inscrever no evento</a>
-    </li>
-    {% endif %}
-</ul>
-{% endblock main %}
+{% block special_header %}
+<div class="fullsize">
+  <div data-stellar-background-ratio="0.2"
+       class="page-header fancy-header parallax-wrapper parallax-background-irt-brasiliense-amador"
+       style="background-position: 0% -195.84px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="page-title">{{ object.title }}</h1>
+          <h2 class="page-subtitle">{{ object.description }}</h2>
+          <ol class="breadcrumb">
+            {% spaceless %}
+              {% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
+            {% endspaceless %}
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock special_header %}
+
+
+{% block all_content %}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="container container-inner">
+          <div class="row">
+            <div class="col-md-">
+              <img src="{% static 'img/torneios/titulo-campeao-brasiliense-xadrez-amador-2016.jpg' %}"
+                   class="img-thumbnail img-responsive"
+                   alt="Valendo título de Campeão Brasiliense de Xadrez Amador 2016">
+            </div>
+          </div>
+        </div>
+
+        <div class="container container-inner">
+          <div class="row">
+            <div class="col-md-8">
+              <h2 class="title-color heading-single text-center" id="inscricao"><span><strong>Inscreva-se</strong></span></h2>
+              <p>Para se inscrever, preencha o formulário abaixo:</p>
+              {% include 'tournaments/inscription_form.html' %}
+
+              <p>Após o preenchimento do formulário acima, você poderá escolher se deseja, efetuar o pagamento via
+              depósito, transferência bancária, cartão de crédito ou boleto.</p>
+
+              <img src="https://stc.pagseguro.uol.com.br/public/img/banners/pagamento/avista_estatico_550_70.gif"
+                   alt="Logotipos de meios de pagamento do PagSeguro"
+                   title="Este site aceita pagamentos com Bradesco, Itaú, Banco do Brasil, Banrisul, Banco HSBC,
+                   saldo em conta PagSeguro e boleto.">
+
+              <p><strong>No caso de pagamentos via depósito/transferência, para confirmar a inscrição, é necessário
+                  enviar o comprovante de depósito para torneios@estavos.com</strong>.</p>
+            </div>
+            <div class="col-md-4">
+              <!-- sidebar -->
+              <div class="sidebar">
+
+                <div class="sidebar-widget">
+                  <h3 class="title-color"><strong>Objetivos</strong></h3>
+                  <ul class="fa-ul">
+                    <li><i class="fa-li fa fa-check color-default"></i> Declarar o <strong>Campeão Brasiliense de Xadrez Amador 2016</strong>;</li>
+                    <li><i class="fa-li fa fa-check color-default"></i> Classificar <strong>02 jogadores</strong> (os dois melhores classificados federados pelo Distrito Federal) para a final
+                    do <strong>Campeonato Brasiliense Absoluto de Xadrez 2016</strong>;</li>
+                  </ul>
+                </div>
+
+                <div class="sidebar-widget">
+                  <h4 class="box-icon-title margin-top20 margin-bottom20">
+                    <span class="icon-wrapper icon-border-round color-default"><i class="fa fa-calendar"></i></span>
+                    Quando?
+                  </h4>
+                  <p>O campeonato acontece nos dias <strong>17, 18 e 19 de Junho de 2016</strong></p>
+                </div>
+
+                <div class="sidebar-widget">
+                  <h4 class="box-icon-title margin-top20 margin-bottom20">
+                    <span class="icon-wrapper icon-border-round color-default"><i class="fa fa-map-marker"></i></span>
+                    Onde?
+                  </h4>
+                  <p><a href="http://www.venancioshopping.com.br/" title="Venâncio Shopping">Venâncio Shopping</a> - Piso P2 (2ºSS)</p>
+                </div>
+
+                <div class="sidebar-widget">
+                  <h4 class="box-icon-title margin-top20 margin-bottom20">
+                    <span class="icon-wrapper icon-border-round color-default"><i class="fa fa-file-text-o"></i></span>
+                    Regulamento
+                  </h4>
+                  <a href="https://drive.google.com/file/d/0Bw4yZQsk46i1Zk1oRlNxUnZ4OUk/view?usp=sharing"
+                     class="btn btn-primary" target="_blank"><i class="fa fa-download"></i> Download do regulamento</a>
+                </div>
+
+              </div>
+              <!-- /sidebar -->
+            </div>
+          </div>
+        </div>
+
+        <div class="container container-inner">
+          <!-- Premiação -->
+          <h2 class="title-color heading-single text-center"><span><strong>Premiação</strong></span></h2>
+          <div class="row">
+              <div class="col-md-4">
+                <div class="service-block sb-orange">
+                  <div class="service-block-icon text-center">
+                    <div class="icon-wrapper icon-border-round fa-3x color-orange">
+                      <i class="fa fa-star"></i>
+                    </div>
+                  </div>
+                  <div class="service-block-title">
+                    <p class="text-center">Título de Campeão Brasiliense 2016 u2200</p>
+                  </div>
+                  <div class="service-block-content">
+                    <p class="text-center">Torneio válido para o título de <strong>Campeão Brasiliense de Xadrez Amador 2016</strong></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="service-block sb-default">
+                  <div class="service-block-icon text-center">
+                    <div class="icon-wrapper icon-border-round fa-3x color-default">
+                      <i class="fa fa-sitemap"></i>
+                    </div>
+                  </div>
+                  <div class="service-block-title">
+                    <p class="text-center">2 Vagas para a final do Campeonato Brasiliense Absoluto de Xadrez 2016</strong></p>
+                  </div>
+                  <div class="service-block-content">
+                    <p class="text-center">Os dois primeiros colocados levam uma vaga cada para a Final do <strong>Campeonato Brasiliense de Xadrez Absoluto 2016</strong></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="service-block sb-purple">
+                  <div class="service-block-icon text-center">
+                    <div class="icon-wrapper icon-border-round fa-3x color-purple">
+                      <i class="fa fa-trophy"></i>
+                    </div>
+                  </div>
+                  <div class="service-block-title">
+                    <p class="text-center">Troféus e Medalhas</p>
+                  </div>
+                  <div class="service-block-content">
+                    <p class="text-center">Premiação <strong>até o 10º colocado</strong> e ainda premiação especial para <strong>melhor feminino,
+                      sub-18, sub-12, melhor jogador com rating abaixo de 2000 e melhor jogador sem rating</strong>!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+                <h3 class="title-color heading-single text-center"><span><strong>Veja o que preparamos para vocês!</strong></span></h3>
+                <div class="col-md-4">
+                    <a href="{% static 'img/torneios/trofeu-campeao-irt-brasiliense-2016.jpg' %}"
+                       title="Um lindo troféu de 35cm para o campeão, troféus semelhantes para os segundo e terceiro colocados além da melhor participação feminina!"
+                       data-lightbox="image" class="">
+                        <img src="{% static 'img/torneios/trofeu-campeao-irt-brasiliense-2016.jpg' %}" class="img-responsive thumbnail" alt="">
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="{% static 'img/torneios/medalhas-categorias-irt-brasiliense-2016.jpg' %}"
+                       title="Premiação especial para o melhor rating abaixo de 2000, sub-18, sub-12 e melhor jogador sem rating!"
+                       data-lightbox="image" class="">
+                        <img src="{% static 'img/torneios/medalhas-categorias-irt-brasiliense-2016.jpg' %}" class="img-responsive thumbnail" alt="">
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="{% static 'img/torneios/medalhas-irt-brasiliense-2016-4-10.jpg' %}"
+                       title="Premiação em medalhas até o décimo colocado."
+                       data-lightbox="image" class="">
+                        <img src="{% static 'img/torneios/medalhas-irt-brasiliense-2016-4-10.jpg' %}" class="img-responsive thumbnail" alt="">
+                    </a>
+                </div>
+            </div>
+          <!-- /Premiação -->
+        </div>
+
+        <!-- Inscrições -->
+        <div class="container container-inner">
+          <div class="row">
+            <div class="col-md-12">
+              <h2 class="title-color heading-single text-center"><span><strong>Inscrições</strong></span></h2>
+
+                <ul class="pricing-table pricing-columns-3">
+                  <li class="pricing-plan">
+                    <ul class="pricing-container">
+                      <li class="pricing-title">
+                        <div class="icon-wrapper icon-border-round fa-2x">
+                          <i class="fa fa-ticket"></i>
+                        </div>
+                        <p>1º Lote</p>
+                      </li>
+                      <li class="pricing-value">
+                        <p class="value"><span>R$</span>25 / <span>R$</span>50</p>
+                        <p class="period"><s>até 23h59 do dia 05/06/2016 (domingo)</s></p>
+                        <p class="period">Inscrições no 1º lote encerradas.</p>
+                      </li>
+                      <br />
+                      <p>Meia inscrição: Menores de 18 anos, mulheres e pessoas comprovadamente de baixa renda.</p>
+                    </ul>
+                  </li>
+                  <li class="pricing-plan">
+                    <ul class="pricing-container">
+                      <li class="pricing-title bg-color-default">
+                        <div class="icon-wrapper icon-border-round fa-2x">
+                          <i class="fa fa-ticket"></i>
+                        </div>
+                        <p>2º Lote</p>
+                      </li>
+                      <li class="pricing-value">
+                        <p class="value color-default"><span>R$</span>30 / <span>R$</span>60</p>
+                        <p class="period">até 20h30 do dia 16/06/2016</p>
+                      </li>
+                      <br />
+                      <p>Meia inscrição: Menores de 18 anos, mulheres e pessoas comprovadamente de baixa renda.</p>
+                      <li class="pricing-btn"><a href="{% url 'tournaments:inscription_new' object.pk %}" class="btn btn-default btn-lg">Inscreva-se</a></li>
+                    </ul>
+                  </li>
+                  <li class="pricing-plan">
+                    <ul class="pricing-container">
+                      <li class="pricing-title">
+                        <div class="icon-wrapper icon-border-round fa-2x">
+                          <i class="fa fa-ticket"></i>
+                        </div>
+                        <p>No local</p>
+                      </li>
+                      <li class="pricing-value">
+                        <p class="value"><span>R$</span>60</p>
+                        <p class="period">até 18h30 do dia 17/06/2016</p>
+                      </li>
+                      <br />
+                      <p>Inscrições no local não possuem "meia inscrição".</p>
+                    </ul>
+                  </li>
+                </ul> <!-- End ul#plans -->
+            </div>
+          </div>
+        </div>
+
+        <div class="container container-inner">
+          <div class="row">
+            <div class="col-md-6">
+              <h2 class="title-color heading-single text-center"><span><strong>Programação</strong></span></h2>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th colspan="2">17 de Junho de 2016</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>18h30</td>
+                    <td>Congresso Técnico</td>
+                  </tr>
+                  <tr>
+                    <td>18h45</td>
+                    <td>Emparceiramento da 1º rodada</td>
+                  </tr>
+                  <tr>
+                    <td>19h00</td>
+                    <td>1º rodada</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="blank-spacer padding-small"></div>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th colspan="2">18 de Junho de 2016</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>10h00</td>
+                    <td>2º rodada</td>
+                  </tr>
+                  <tr>
+                    <td>15h00</td>
+                    <td>3º rodada</td>
+                  </tr>
+                  <tr>
+                    <td>19h00</td>
+                    <td>4º rodada</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="blank-spacer padding-small"></div>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th colspan="2">19 de Junho de 2016</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>09h00</td>
+                    <td>5º rodada</td>
+                  </tr>
+                  <tr>
+                    <td>13h00</td>
+                    <td>6º rodada</td>
+                  </tr>
+                  <tr>
+                    <td>16h20</td>
+                    <td>Premiação</td>
+                  </tr>
+                  <tr>
+                    <td>16h45</td>
+                    <td>Encerramento</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="col-md-6">
+              <h2 class="title-color heading-single text-center"><span><strong>Informações gerais</strong></span></h2>
+
+              <div id="accordion" class="panel-group accordion">
+                <div class="panel">
+                    <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a href="#collapseOne" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed-icon">
+                        <small>Sistema de disputa</small>
+                      </a>
+                    </h4>
+                  </div>
+                  <div class="panel-collapse in" id="collapseOne" style="height: auto;">
+                    <div class="panel-body">
+                      <p>Sistema suíço em 6 rodadas</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a href="#collapseTwo" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed-icon collapsed">
+                        <small>Ritmo de jogo</small>
+                      </a>
+                    </h4>
+                  </div>
+                  <div class="panel-collapse collapse" id="collapseTwo" style="height: 0px;">
+                    <div class="panel-body">
+                      <p><strong>60′ KO + 30″ de bonus por lance no relógio digital</strong> (preferência) ou
+                        <strong>90' KO no relógio mecânico</strong></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                    <a href="#collapseSeven" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed collapsed-icon">
+                      <small>Participação</small>
+                    </a>
+                    </h4>
+                  </div>
+                  <div class="panel-collapse collapse" id="collapseSeven">
+                    <div class="panel-body">
+                      <p>Poderão participar <strong>todos os atletas com ou sem rating FIDE</strong> cadastrados na CBX. Os atletas
+                        deverão estar em dia com a
+                        <a href="http://www.cbx.org.br/Jogadores.aspx?nm=&no=&fi=&uf=DF"
+                           title="Consulta anuidade CBX" target="_blank">
+                          anuidade CBX
+                        </a>, e para os que possuem rating FIDE, este não pode ultrapassar
+                        a barreira dos 2200 pontos.</p>
+
+                        <p>
+                            <strong>
+                                <a href="http://estavos.com/blog/o-que-e-o-cadastro-de-jogadores-cbx-e-como-fazer/"
+                                   title="como fazer o cadastro de jogador CBX">
+                                    Saiba o que é ou como fazer o cadastro de jogador CBX
+                                </a>
+                            </strong>
+                        </p>
+                    </div>
+                  </div>
+              </div>
+                <div class="panel">
+                    <div class="panel-heading">
+                    <h4 class="panel-title">
+                    <a href="#collapseThree" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed collapsed-icon">
+                      <small>Equipe de arbitragem</small>
+                    </a>
+                    </h4>
+                  </div>
+                  <div class="panel-collapse collapse" id="collapseThree">
+                    <div class="panel-body">
+                      <ul>
+                        <li><strong>AN</strong> Westerley Batista Campos</li>
+                        <li><strong>AR</strong> Hugo Leonardo J. Ribeiro Alves</li>
+                        <li><strong>AA</strong> Bruno Barbosa Bernardo da Silva</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                    <a href="#collapseFour" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed collapsed-icon">
+                      <small>Chess-Results</small>
+                    </a>
+                    </h4>
+                  </div>
+                  <div class="panel-collapse collapse" id="collapseFour">
+                    <div class="panel-body">
+                      <p>
+                        <a href="http://chess-results.com/tnr224892.aspx?lan=10&wi=821&turdet=YES" target="_blank"
+                           title="IRT Brasiliense de Xadrez Amador 2016 - Chess-Results">
+                        <strong>Acompanhe a relação de inscritos e demais informações do torneio no Chess-Results.</strong>
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              <div class="panel">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                  <a href="#collapseFive" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed collapsed-icon">
+                    <small>Como chegar</small>
+                  </a>
+                  </h4>
+                </div>
+                <div class="panel-collapse collapse" id="collapseFive">
+                  <div class="panel-body">
+                    <iframe style="border: 0;"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.160478293476!2d-47.89486528514481!3d-15.795489989050582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3aef5b363915%3A0x664043907f15a04d!2sShopping+Ven%C3%A2ncio+2000!5e0!3m2!1spt-BR!2sbr!4v1463539600363"
+                            width="600" height="450" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+                  </div>
+                </div>
+              </div>
+              <div class="panel">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                  <a href="#collapseSix" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed collapsed-icon">
+                    <small>Observações</small>
+                  </a>
+                  </h4>
+                </div>
+                <div class="panel-collapse collapse" id="collapseSix">
+                  <div class="panel-body">
+                    <ul>
+                      <li>A inscrição no torneio implica na aceitação do regulamento do mesmo.</li>
+                      <li>Desistências não geram devolução de valor pago.</li>
+                      <li>Jogador que pagar e não enviar comprovante não será emparceirado na primeira rodada.</li>
+                      <li>Haverá possibilidade de BYE Ausente na primeira rodada.</li>
+                      <li>Jogadores com bandeira FIDE e/ou ID FIDE de outros países [que não o Brasil] ou federados
+                        em outros estados que não o Distrito Federal tem direito aos prêmios, mas não tem direito ao
+                        título de Campeão Brasiliense Amador.</li>
+                      <li>A partir do limite total de 80 atletas as inscrições estarão sujeitas a disponibilidade de espaço.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="panel">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                  <a href="#collapseEight" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed collapsed-icon">
+                    <small>Divulgue!</small>
+                  </a>
+                  </h4>
+                </div>
+                <div class="panel-collapse collapse" id="collapseEight">
+                  <div class="panel-body">
+                    <a href="https://drive.google.com/file/d/0Bw4yZQsk46i1Tkhpdl83anNnZHM/view?usp=sharing" target="_blank">
+                      <img src="{% static 'img/torneios/banner-irt-brasiliense-xadrez-amador-2016-500-707.jpg' %}"
+                           alt="Banner IRT Brasiliense de Xadrez Amador 2016" width="500" height="707">
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container container-inner">
+		<div class="row">
+		  <div class="col-md-8 col-md-offset-2">
+        <div class="text-center"><img src="{% static 'img/logo-estavos-2.png' %}" alt="Academia ESTAVOS"></div>
+        <div class="blank-spacer margin-bottom10"></div>
+      </div>
+    </div>
+		<div class="row">
+		  <div class="col-md-8 col-md-offset-2">
+        <h1 class="title-color text-center">Venha disputar o título de <strong>Campeão Brasiliense de Xadrez sub-2200</strong>. Faltam poucos dias!</h1>
+      </div>
+    </div>
+	</div>
+
+  <div class="fullsize padding-none"> <!-- Container Full Size -->
+    <div class="parallax-wrapper parallax-background-irt-brasiliense-amador" data-stellar-background-ratio="0.2" >
+      <div class="parallax-wrapper padding-medium">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="countdown-irt color-white" data-date="2016-06-17 18:30:00"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /Container Full Size-->
+
+  <div class="container container-inner"><!-- Container -->
+
+    <div class="row">
+
+      <div class="col-md-4">
+        <div class="service-block sb-default">
+          <div class="service-block-icon text-center">
+            <img src="{% static 'img/logo-estavos-2.png' %}" height="150" alt="logo ESTAVOS" />
+          </div>
+          <div class="service-block-title">
+            <p class="text-center"><strong>Organização</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="service-block sb-default">
+          <div class="service-block-icon text-center">
+            <img src="{% static 'img/torneios/logo-fbx.jpg' %}" height="150" alt="logo FBX" />
+          </div>
+          <div class="service-block-title">
+            <p class="text-center"><strong>Realização</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="service-block sb-default">
+          <div class="service-block-icon text-center">
+            <img src="{% static 'img/torneios/venancio-logo.jpg' %}" height="150" alt="logo Venâncio Shopping" />
+          </div>
+          <div class="service-block-title">
+            <p class="text-center"><strong>Apoio</strong></p>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+{% endblock all_content %}
+
+{% block extra_js %}
+
+<script type="text/javascript" src="{% static 'js/jquery.mask.js' %}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#id_birth').mask('00/00/0000');
+    });
+</script>
+
+  <!-- Timer -->
+	<script type="text/javascript" src="{% static 'js/themejs/TimeCircles.js' %}"></script>
+  <script>
+    jQuery(".countdown-irt").TimeCircles({
+      start: true, // determines whether or not TimeCircles should start immediately.
+      refresh_interval: 0.1, // determines how frequently TimeCircles is updated.
+      count_past_zero: true, // This option is only really useful for when counting down. What it does is either give you the option to stop the timer, or start counting up after you've hit the predefined date (or your stopwatch hits zero).
+      circle_bg_color: "#fff", // determines the color of the background circle.
+      use_background: true, // sets whether any background circle should be drawn at all.
+      fg_width: 0.05, //  sets the width of the foreground circle.
+      bg_width: 0.1, // sets the width of the backgroundground circle.
+      time: { //  a group of options that allows you to control the options of each time unit independently.
+        Days: {
+          show: true,
+          text: "Dias",
+          color: "#20a5e8"
+        },
+        Hours: {
+          show: true,
+          text: "Horas",
+          color: "#20a5e8"
+        },
+        Minutes: {
+          show: true,
+          text: "Minutos",
+          color: "#20a5e8"
+        },
+        Seconds: {
+          show: true,
+          text: "Segundos",
+          color: "#20a5e8"
+        }
+      }
+    })
+  </script>
+{% endblock extra_js %}
