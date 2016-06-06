@@ -11,13 +11,13 @@ class InscriptionInline(admin.TabularInline):
 class InscriptionAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'birth', 'phone', 'id_cbx', 'id_fide', 'confirmed')
     search_fields = ('name', 'email', 'id_cbx', 'id_fide')
+    list_filter = ('confirmed', 'tournament')
 
 
 class TournamentAdmin(admin.ModelAdmin):
     list_display = ('title', 'start_date', 'end_date', 'inscriptions_date_limit',
                     'place', 'active')
     list_filter = ('start_date', 'end_date', 'active')
-    date_hierarchy = 'start_date'
     inlines = (InscriptionInline, )
     prepopulated_fields = {'slug': ('title',), }
 
