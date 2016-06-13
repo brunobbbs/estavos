@@ -2,8 +2,11 @@
 from __future__ import unicode_literals
 
 from django import forms
+from django.core import mail
+from django.template.loader import render_to_string
 from estavos.tournaments.models import Inscription
 from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
 
 
 class InscriptionForm(forms.Form):
@@ -105,3 +108,7 @@ class InscriptionModelForm(forms.ModelForm):
                 }
             ),
         }
+
+    def _send_mail(self, subject, to, template_name, context, from_=settings.DEFAULT_FROM_EMAIL):
+        body = render_to_string(template_name, context)
+        mail.send_mail(subject, body, from_, [from_, to])

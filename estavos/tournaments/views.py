@@ -51,6 +51,18 @@ class InscriptionCreate(CreateView):
     def form_valid(self, form):
         tournament = Tournament.objects.get(pk=self.kwargs['tournament'])
         form.instance.tournament = tournament
+        form._send_mail(
+            'Pré-inscrição: {0}'.format(form.instance.tournament),
+            form.instance.email,
+            'tournaments/inscription_email.txt',
+            {'inscription': form.instance}
+        )
+        form._send_mail(
+            'Nova inscrição: {0}'.format(form.instance.tournament),
+            'torneios@estavos.com',
+            'tournaments/inscription_admin_email.txt',
+            {'inscription': form.instance}
+        )
         return super(InscriptionCreate, self).form_valid(form)
 
 

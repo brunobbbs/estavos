@@ -3,6 +3,8 @@
 {% block meta_title %}Pré-inscrição: {{ inscription.tournament }}{% endblock meta_title %}
 
 {% block main %}
+
+    {% if not inscription.confirmed %}
     <h2>Pré-Inscrição realizada com sucesso.</h2>
 
     <p>Olá {{ inscription.name }}, tudo bem?</p>
@@ -72,4 +74,37 @@
        title="Voltar para página do evento">
         Voltar para página do evento
     </a>
+
+    {% else %}
+
+        <h2>Inscrição confirmada!</h2>
+
+        <p>Olá {{ inscription.name }}, tudo bem?</p>
+        <p>Sua inscrição no {{ inscription.tournament }} foi realizada com sucesso e está confirmada!</p>
+
+        <h3>O evento</h3>
+        <p>O evento tem início no dia
+            <strong>
+            {{ inscription.tournament.start_date|date:"d/m/Y" }} às {{ inscription.tournament.start_date|date:"H:m" }},
+            </strong>
+            mas recomendamos que chegue com pelo menos 30 minutos de antecedência.</p>
+
+        <p>Nosso evento acontece no {{ inscription.tournament.place }}.</p>
+        
+        <p>Confira a lista completa de inscritos na página do torneio no
+            <a href="http://chess-results.com/tnr224892.aspx?lan=10&wi=821&turdet=YES"
+               target="_blank" title="Página do {{ inscription.tournament }} no chess-results">Chess-Results</a></p>
+
+        <p>Qualquer dúvida estamos à disposição através de nossos <a href="http://estavos.com/contato/" title="contato">
+            canais de atendimento</a></p>
+
+        <p><strong>Estamos esperando por você!</strong></p>
+
+        <a class="btn btn-default"
+           href="{% url 'tournaments:detail' inscription.tournament.slug %}"
+           title="Voltar para página do evento">
+            Voltar para página do evento
+        </a>
+        
+    {% endif %}
 {% endblock main %}

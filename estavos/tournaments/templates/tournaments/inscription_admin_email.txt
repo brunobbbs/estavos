@@ -1,0 +1,13 @@
+Olá pessoal,
+
+Recebemos uma nova inscrição no {{ inscription.tournament }}
+
+O atleta é o {{ inscription.name }}
+
+Próximos passos:
+
+1. Confirmar se o pagamento foi feito via pagseguro;
+2. Verificar se o pagamento foi feito via depósito/transferência bancária;
+3. Confirmar anuidade do atleta na CBX: http://www.cbx.org.br/Jogadores.aspx?nm=&no={{ inscription.id_cbx }}&fi=&uf=
+
+Att,

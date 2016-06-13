@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from datetime import date, datetime
 
+from django.core import mail
 from django.shortcuts import resolve_url as r
 from django.test import TestCase
 from estavos.tournaments.forms import InscriptionModelForm
@@ -63,8 +64,6 @@ class NewInscriptionPostValidTest(TestCase):
             place='Venâncio Shopping',
             url='http://estavos.com/torneios/irt-brasiliense-de-xadrez-amador-2016-sub-2200/'
         )
-
-    def test_post(self):
         data = {
             'name': 'Bruno Barbosa',
             'email': 'bruno@email.com',
@@ -72,5 +71,11 @@ class NewInscriptionPostValidTest(TestCase):
             'id_cbx': '39035',
             'id_fide': ''
         }
-        resp = self.client.post(r('tournaments:inscription_new', self.tournament.pk), data)
-        self.assertEqual(302, resp.status_code)
+        self.resp = self.client.post(r('tournaments:inscription_new', self.tournament.pk), data)
+
+    def test_post(self):
+        self.assertEqual(302, self.resp.status_code)
+
+    def test_send_email(self):
+        """after inscription, user must receive a pre-inscription message"""
+        self.assertTrue(mail.outbox)
