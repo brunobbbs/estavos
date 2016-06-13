@@ -1,0 +1,33 @@
+Olá {{ inscription.name }}, tudo bem?
+
+Recebemos seu pedido de pré-inscrição no {{ inscription.tournament }}.
+
+-> Cadastro de jogador CBX:
+É importante observar que como este é um evento oficial da Confederação Brasileira de Xadrez e da Federação Internacional de Xadrez, é
+obrigatório que você tenha o cadastro de jogador CBX e esteja em dia com a anuidade desta instituição.
+
+* Para saber o que é o cadastro de jogador CBX e como fazer, veja o tutorial em nosso blog: http://estavos.com/blog/o-que-e-o-cadastro-de-jogadores-cbx-e-como-fazer/
+* Para consultar seu cadastro no site da CBX acesse o endereço: http://www.cbx.org.br/Jogadores.aspx?nm=&no={{ inscription.id_cbx }}&fi=&uf=
+
+
+-> Confirmação de inscrição:
+Para confirmar sua inscrição você deve fazer o depósito da taxa de inscrição na conta bancária a seguir e enviar o comprovante para o email torneios@estavos.com
+
+Caixa Econômica Federal
+Ag: 1803
+Cc: 227-8
+Op: 003
+ESTAVOS Organizadora de Eventos Desportivos
+CNPJ: 18.157.637/0001-51
+
+Caso deseje efetuar o pagamento online via cartão de crédito ou boleto bancário, solicite o link para pagamento enviando email para torneios@estavos.com
+
+Após o pagamento você receberá a confirmação de inscrição em até 24h.
+
+Qualquer dúvida estamos à disposição.
+
+Atenciosamente,
+
+Bruno Barbosa
+Academia ESTAVOS
+www.estavos.com
