@@ -39,6 +39,7 @@ class InscriptionCreate(CreateView):
         tournament_id = self.kwargs['tournament']
         tournament = Tournament.objects.get(pk=tournament_id)
         kwargs['tournament'] = tournament
+        kwargs['object'] = tournament
         return kwargs
 
     def get_success_url(self):
