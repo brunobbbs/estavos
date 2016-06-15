@@ -20,6 +20,24 @@ class InscriptionsControlViewTest(TestCase):
             place='Venâncio Shopping',
             url='http://estavos.com/torneios/irt-brasiliense-de-xadrez-amador-2016-sub-2200/'
         )
+        tournament2 = Tournament.objects.create(
+            title='Festival de Xadrez da Família',
+            start_date=date(2016, 07, 17),
+            end_date=date(2016, 07, 19),
+            inscriptions_date_limit=datetime(2016, 07, 16, 20, 30, 00),
+            active=True,
+            place='CCI Sênior',
+            url='http://estavos.com/torneios/'
+        )
+        Inscription.objects.create(
+            tournament=tournament2,
+            name='Bruno Barbosa',
+            email='email@test.com',
+            birth=date(1989, 12, 18),
+            id_cbx='39035',
+            id_fide='',
+            phone='(61) 9999-9999',
+        )
         Inscription.objects.create(
             tournament=tournament,
             name='Hugo Ribeiro',

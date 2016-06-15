@@ -91,13 +91,18 @@ class InscriptionDetail(DetailView):
 class InscriptionControlView(SuperuserRequiredMixin, ListView):
     model = Inscription
     template_name = 'tournaments/control/inscription_list.html'
-    queryset = Inscription.objects.filter(confirmed=False)
+
+    def dispatch(self, request, *args, **kwargs):
+        self.tournament = get_object_or_404(Tournament, pk=self.kwargs['tournament'], active=True)
+        return super(InscriptionControlView, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         kwargs = super(InscriptionControlView, self).get_context_data(**kwargs)
-        tournament = get_object_or_404(Tournament, pk=self.kwargs['tournament'], active=True)
-        kwargs['tournament'] = tournament
+        kwargs['tournament'] = self.tournament
         return kwargs
+
+    def get_queryset(self):
+        return Inscription.objects.filter(confirmed=False, tournament=self.tournament)
 
 
 class InscriptionControlConfirmView(SuperuserRequiredMixin, FormValidMessageMixin, FormView):
