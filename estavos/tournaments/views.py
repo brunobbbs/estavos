@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from braces.views import SuperuserRequiredMixin
 from django.contrib import messages
 from django.core.urlresolvers import reverse
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView
 from estavos.tournaments.forms import InscriptionModelForm, InscriptionForm
 from estavos.tournaments.models import Tournament, Inscription
@@ -85,3 +86,15 @@ class InscriptionDetail(DetailView):
         tournament = self.kwargs['tournament']
         qs = qs.filter(tournament=tournament)
         return qs
+
+
+class InscriptionControlView(SuperuserRequiredMixin, ListView):
+    model = Inscription
+    template_name = 'tournaments/control/inscription_list.html'
+    queryset = Inscription.objects.filter(confirmed=False)
+
+    def get_context_data(self, **kwargs):
+        kwargs = super(InscriptionControlView, self).get_context_data(**kwargs)
+        tournament = get_object_or_404(Tournament, pk=self.kwargs['tournament'], active=True)
+        kwargs['tournament'] = tournament
+        return kwargs
