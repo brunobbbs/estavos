@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+
 from datetime import datetime, date
 
 from django.contrib.auth import get_user_model
+from django.shortcuts import resolve_url as r
 from django.test import TestCase
 from estavos.tournaments.models import Inscription, Tournament
 
 
 class InscriptionsControlViewTest(TestCase):
     def setUp(self):
-        self.tournament = Tournament.objects.create(
+        tournament = Tournament.objects.create(
             title='IRT Brasiliense de Xadrez Amador 2016',
             start_date=date(2016, 06, 17),
             end_date=date(2016, 06, 19),
@@ -19,7 +21,7 @@ class InscriptionsControlViewTest(TestCase):
             url='http://estavos.com/torneios/irt-brasiliense-de-xadrez-amador-2016-sub-2200/'
         )
         Inscription.objects.create(
-            tournament=self.tournament,
+            tournament=tournament,
             name='Hugo Ribeiro',
             email='email@test.com',
             birth=date(1992, 03, 16),
@@ -28,7 +30,7 @@ class InscriptionsControlViewTest(TestCase):
             phone='(61) 9999-9999',
         )
         Inscription.objects.create(
-            tournament=self.tournament,
+            tournament=tournament,
             name='Bruno Barbosa',
             email='email@test.com',
             birth=date(1989, 12, 18),
@@ -45,7 +47,7 @@ class InscriptionsControlViewTest(TestCase):
             password='123456',
         )
         self.client.login(username='bruno', password='123456')
-        self.resp = self.client.get('/torneios/1/controle/inscricoes/')
+        self.resp = self.client.get(r('tournaments:inscriptions_control_list', tournament.pk))
 
     def test_get(self):
         self.assertEqual(200, self.resp.status_code)
@@ -61,7 +63,7 @@ class InscriptionsControlViewTest(TestCase):
 
 class InscriptionsControlInvalidGetTest(TestCase):
     def setUp(self):
-        Tournament.objects.create(
+        self.t_inactive = Tournament.objects.create(
             title='Festival de Xadrez da Família',
             start_date=date(2015, 11, 20),
             end_date=date(2015, 11, 20),
@@ -70,7 +72,7 @@ class InscriptionsControlInvalidGetTest(TestCase):
             place='Clube ESTAVOS - Brasília',
             url='http://estavos.com/torneios/'
         )
-        Tournament.objects.create(
+        self.t_active = Tournament.objects.create(
             title='I Aberto de Xadrez Classico LBX/ESTAVOS',
             start_date=date(2016, 11, 20),
             end_date=date(2016, 11, 20),
@@ -82,12 +84,12 @@ class InscriptionsControlInvalidGetTest(TestCase):
 
     def test_get_inactive_tournament(self):
         """view must works only for active tournaments"""
-        resp = self.client.get('/torneios/1/controle/inscricoes/')
+        resp = self.client.get(r('tournaments:inscriptions_control_list', self.t_inactive.pk))
         self.assertEqual(302, resp.status_code)
 
     def test_get_active_tournament_without_login(self):
         """view only can be accessed if user is logged"""
-        resp = self.client.get('/torneios/2/controle/inscricoes/')
+        resp = self.client.get(r('tournaments:inscriptions_control_list', self.t_active.pk))
         self.assertEqual(302, resp.status_code)
 
     def test_get_without_admin(self):
@@ -100,5 +102,5 @@ class InscriptionsControlInvalidGetTest(TestCase):
             password='123456',
         )
         self.client.login(username='bruno', password='123456')
-        resp = self.client.get('/torneios/2/controle/inscricoes/')
+        resp = self.client.get(r('tournaments:inscriptions_control_list', self.t_active.pk))
         self.assertEqual(302, resp.status_code)

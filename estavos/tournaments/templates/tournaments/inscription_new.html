@@ -4,5 +4,7 @@
 
 {% block main %}
     <h4 class="title-color heading-single text-center"><span>Inscrição: {{ tournament.title }}</span></h4>
-    {% include 'tournaments/inscription_form.html' %}
+    <form action="{% url 'tournaments:inscription_new' object.pk %}" method="post">
+        {% include 'tournaments/inscription_form.html' %}
+    </form>
 {% endblock main %}

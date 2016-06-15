@@ -1,0 +1,19 @@
+Olá Westerley, tudo bem?
+
+Recebemos nova inscrição no {{ tournament }}. Segue os dados:
+
+Nome completo: {{ inscription.name }}
+Data de nascimento: {{ inscription.birth }}
+ID CBX: {{ inscription.id_cbx }}
+ID FIDE: {{ inscription.id_fide|default:"" }}
+
+​​Solicito inclusão do jogador no torneio e atualização no Chess-Results.
+
+Qualquer dúvida chama aqui.
+
+Atenciosamente,
+--
+ESTAVOS​ - Academia de Jogos​
+www.estavos.com
+contato@estavos.com
+♟ Mente saudável, vida saudável

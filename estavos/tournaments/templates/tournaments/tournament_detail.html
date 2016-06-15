@@ -51,7 +51,9 @@
             <div class="col-md-8">
               <h2 class="title-color heading-single text-center" id="inscricao"><span><strong>Inscreva-se</strong></span></h2>
               <p>Para se inscrever, preencha o formulário abaixo:</p>
-              {% include 'tournaments/inscription_form.html' %}
+                <form action="{% url 'tournaments:inscription_new' object.pk %}" method="post">
+                    {% include 'tournaments/inscription_form.html' %}
+                </form>
 
               <p>Após o preenchimento do formulário acima, você poderá escolher se deseja, efetuar o pagamento via
               depósito, transferência bancária, cartão de crédito ou boleto.</p>

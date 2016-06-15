@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from braces.views import SuperuserRequiredMixin
+from braces.views import SuperuserRequiredMixin, FormValidMessageMixin
 from django.contrib import messages
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, reverse_lazy
 from django.shortcuts import redirect, get_object_or_404
-from django.views.generic import ListView, DetailView, CreateView
-from estavos.tournaments.forms import InscriptionModelForm, InscriptionForm
+from django.views.generic import ListView, DetailView, CreateView, FormView
+from estavos.tournaments.forms import InscriptionModelForm, InscriptionForm, ConfirmInscriptionForm
 from estavos.tournaments.models import Tournament, Inscription
 
 
@@ -98,3 +98,43 @@ class InscriptionControlView(SuperuserRequiredMixin, ListView):
         tournament = get_object_or_404(Tournament, pk=self.kwargs['tournament'], active=True)
         kwargs['tournament'] = tournament
         return kwargs
+
+
+class InscriptionControlConfirmView(SuperuserRequiredMixin, FormValidMessageMixin, FormView):
+    template_name = 'tournaments/control/confirm_inscription.html'
+    form_class = ConfirmInscriptionForm
+
+    def dispatch(self, request, *args, **kwargs):
+        self.tournament = get_object_or_404(Tournament, pk=self.kwargs['tournament'], active=True)
+        self.inscription = get_object_or_404(Inscription, pk=self.kwargs['pk'], confirmed=False)
+        return super(InscriptionControlConfirmView, self).dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        kwargs = super(InscriptionControlConfirmView, self).get_context_data(**kwargs)
+        kwargs['tournament'] = self.tournament
+        kwargs['inscription'] = self.inscription
+        return kwargs
+
+    def get_success_url(self):
+        return reverse('tournaments:inscriptions_control_list', kwargs={'tournament': self.tournament.pk})
+
+    def form_valid(self, form):
+        self.inscription.confirmed = True
+        self.inscription.save()
+        form._send_mail(
+            '{0}, Inscrição Confirmada! - {1}'.format(self.inscription.name, self.tournament),
+            [self.inscription.email],
+            'tournaments/control/inscription_confirmed_email.txt',
+            {'inscription': self.inscription, 'tournament': self.tournament}
+        )
+        form._send_mail(
+            'Inscrição {0} - {1}'.format(self.tournament, self.inscription.name),
+            ['westdfcampos@gmail.com', 'bruno@estavos.com', 'hugo@estavos.com'],
+            'tournaments/control/arbiter_message_email.txt',
+            {'inscription': self.inscription, 'tournament': self.tournament}
+        )
+        return super(InscriptionControlConfirmView, self).form_valid(form)
+
+    def get_form_valid_message(self):
+        return 'Inscrição do atleta {0} confirmada com sucesso.'.format(self.inscription.name)
+

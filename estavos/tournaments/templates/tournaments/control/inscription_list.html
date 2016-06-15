@@ -23,7 +23,14 @@
                        target="_blank">{{ object.id_cbx }}</a></td>
                 <td>{{ object.name }}</td>
                 <td>{{ object.birth }}</td>
-                <td><a href="#" class="btn btn-sm btn-primary"><i class="fa fa-check fa-margin-right"></i> Confirmar inscrição</a></td>
+                <td>
+                    <form method="post" action="{% url 'tournaments:inscriptions_control_confirm' tournament.pk object.pk %}">
+                        {% csrf_token %}
+                        <input type="hidden" value="{{ tournament.pk }}" name="tournament"/>
+                        <input type="hidden" value="{{ object.pk }}" name="inscription"/>
+                        <button type="submit" value="Confirmar inscrição" class="btn btn-sm btn-primary"><i class="fa fa-check fa-margin-right"></i> Confirmar inscrição</button>
+                    </form>
+                </td>
             </tr>
             {% endfor %}
         </tbody>

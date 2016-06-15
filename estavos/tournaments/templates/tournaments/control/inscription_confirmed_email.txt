@@ -1,0 +1,19 @@
+Olá {{ inscription.name }}, tudo bem?
+
+Sua inscrição no {{ tournament }} está confirmada!
+
+Lembramos que para participar do campeonato você precisa estar em dia com sua anuidade de jogador CBX: http://www.cbx.org.br/Jogadores.aspx?nm=&no={{ inscription.id_cbx }}&fi=&uf=
+Se você está em dia parabéns! Você já está apto a participar!
+
+O torneio acontece de {{ tournament.start_date|date:"d/m/Y" }} às {{ tournament.start_date|date:"H:i" }} a {{ tournament.end_date|date:"d/m/Y" }} no {{ tournament.place }}.
+
+Recomendamos chegar com pelo menos 15 minutos de antecedência.
+
+Mais informações na página: {{ tournament.url }}
+
+Bom torneio!
+
+​Abraços.​
+--
+Academia ESTAVOS
+torneios@estavos.com
