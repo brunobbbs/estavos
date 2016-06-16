@@ -38,13 +38,23 @@
 
         <div class="container container-inner">
           <div class="row">
-            <div class="col-md-">
+            <div class="col-md-12">
               <img src="{% static 'img/torneios/titulo-campeao-brasiliense-xadrez-amador-2016.jpg' %}"
                    class="img-thumbnail img-responsive"
                    alt="Valendo título de Campeão Brasiliense de Xadrez Amador 2016">
             </div>
           </div>
         </div>
+
+      {% if request.user.is_superuser %}
+        <div class="container container-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="well well-sm"><a href="{% url 'tournaments:inscriptions_control_list' object.pk %}"><strong>Gerenciar inscritos</strong></a></div>
+                </div>
+            </div>
+        </div>
+      {% endif %}
 
         <div class="container container-inner">
           <div class="row">
