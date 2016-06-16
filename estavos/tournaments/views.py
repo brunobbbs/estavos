@@ -99,6 +99,7 @@ class InscriptionControlView(SuperuserRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         kwargs = super(InscriptionControlView, self).get_context_data(**kwargs)
         kwargs['tournament'] = self.tournament
+        kwargs['confirmed_inscriptions'] = Inscription.objects.filter(confirmed=True, tournament=self.tournament)
         return kwargs
 
     def get_queryset(self):

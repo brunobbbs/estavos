@@ -3,7 +3,7 @@
 {% block meta_title %}Controle de inscrições: {{ tournament }}{% endblock meta_title %}
 
 {% block main %}
-    <h2 class="title-color heading-single text-center"><span>Lista de atletas com inscrições não confirmadas</span></h2>
+    <h2 class="title-color heading-single text-center"><span>Inscrições não confirmadas</span></h2>
 
     <p><strong>Evento:</strong> {{ tournament }}</p>
     <table class="table table-striped table-hover">
@@ -35,4 +35,34 @@
             {% endfor %}
         </tbody>
     </table>
+
+    <hr />
+
+    <h2 class="title-color heading-single text-center"><span>Inscrições confirmadas</span></h2>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>ID CBX</th>
+                <th>Atleta</th>
+                <th>Data de nascimento</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for object in confirmed_inscriptions %}
+            <tr>
+                <td><a href="http://www.cbx.org.br/Jogadores.aspx?nm=&no={{ object.id_cbx }}&fi=&uf="
+                       title="Consultar status do cadastro do jogador"
+                       target="_blank">{{ object.id_cbx }}</a></td>
+                <td>{{ object.name }}</td>
+                <td>{{ object.birth }}</td>
+                <td>
+
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
 {% endblock main %}
