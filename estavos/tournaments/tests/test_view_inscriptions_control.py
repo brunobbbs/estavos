@@ -73,6 +73,8 @@ class InscriptionsControlViewTest(TestCase):
     def test_tournament_context(self):
         """view must have a tournament context"""
         self.assertIn('tournament', self.resp.context)
+        # self.assertIn('num_confirmed', self.resp.context)
+        # self.assertIn('num_unconfirmed', self.resp.context)
 
     def test_unconfirmed_inscriptions(self):
         """view must return unconfirmed inscriptions"""

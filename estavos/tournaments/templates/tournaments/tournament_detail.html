@@ -59,23 +59,39 @@
         <div class="container container-inner">
           <div class="row">
             <div class="col-md-8">
-              <h2 class="title-color heading-single text-center" id="inscricao"><span><strong>Inscreva-se</strong></span></h2>
-              <p>Para se inscrever, preencha o formulário abaixo:</p>
-                <form action="{% url 'tournaments:inscription_new' object.pk %}" method="post">
-                    {% include 'tournaments/inscription_form.html' %}
-                </form>
+{#              <h2 class="title-color heading-single text-center" id="inscricao"><span><strong>Inscreva-se</strong></span></h2>#}
+{#              <p>Para se inscrever, preencha o formulário abaixo:</p>#}
+{#                <form action="{% url 'tournaments:inscription_new' object.pk %}" method="post">#}
+{#                    {% include 'tournaments/inscription_form.html' %}#}
+{#                </form>#}
+{##}
+{#              <p>Após o preenchimento do formulário acima, você poderá escolher se deseja, efetuar o pagamento via#}
+{#              depósito, transferência bancária, cartão de crédito ou boleto.</p>#}
+{##}
+{#              <img src="https://stc.pagseguro.uol.com.br/public/img/banners/pagamento/avista_estatico_550_70.gif"#}
+{#                   alt="Logotipos de meios de pagamento do PagSeguro"#}
+{#                   title="Este site aceita pagamentos com Bradesco, Itaú, Banco do Brasil, Banrisul, Banco HSBC,#}
+{#                   saldo em conta PagSeguro e boleto.">#}
+{##}
+{#              <p><strong>No caso de pagamentos via depósito/transferência, para confirmar a inscrição, é necessário#}
+{#                  enviar o comprovante de depósito para torneios@estavos.com</strong>.</p>#}
+{#            </div>#}
+            <h2 class="title-color heading-single text-center" id="inscricao"><span><strong>Inscrições apenas no local</strong></span></h2>
 
-              <p>Após o preenchimento do formulário acima, você poderá escolher se deseja, efetuar o pagamento via
-              depósito, transferência bancária, cartão de crédito ou boleto.</p>
+            <h4 class="text-center">Inscrições no local até às 18h30 do dia 17/06/2016</h4>
 
-              <img src="https://stc.pagseguro.uol.com.br/public/img/banners/pagamento/avista_estatico_550_70.gif"
-                   alt="Logotipos de meios de pagamento do PagSeguro"
-                   title="Este site aceita pagamentos com Bradesco, Itaú, Banco do Brasil, Banrisul, Banco HSBC,
-                   saldo em conta PagSeguro e boleto.">
+            <p><strong>Aceitamos cartões</strong></p>
+            <img src="https://stc.pagseguro.uol.com.br/public/img/banners/pagamento/avista_estatico_550_70.gif"
+               alt="Logotipos de meios de pagamento do PagSeguro"
+               title="Este site aceita pagamentos com Bradesco, Itaú, Banco do Brasil, Banrisul, Banco HSBC,
+               saldo em conta PagSeguro e boleto.">
 
-              <p><strong>No caso de pagamentos via depósito/transferência, para confirmar a inscrição, é necessário
-                  enviar o comprovante de depósito para torneios@estavos.com</strong>.</p>
+            <a href="{% static 'img/torneios/premiacao-completa-irt-brasiliense-xadrez-amador-2016.jpg' %}" title="Premiação do IRT Brasiliense de Xadrez Amador 2016" data-lightbox="image" class="">
+                <img src="{% static 'img/torneios/premiacao-completa-irt-brasiliense-xadrez-amador-2016.jpg' %}" class="img-responsive thumbnail" alt="">
+            </a>
+
             </div>
+
             <div class="col-md-4">
               <!-- sidebar -->
               <div class="sidebar">
@@ -236,7 +252,7 @@
                       </li>
                       <br />
                       <p>Meia inscrição: Menores de 18 anos, mulheres e pessoas comprovadamente de baixa renda.</p>
-                      <li class="pricing-btn"><a href="{% url 'tournaments:inscription_new' object.pk %}" class="btn btn-default btn-lg">Inscreva-se</a></li>
+{#                      <li class="pricing-btn"><a href="{% url 'tournaments:inscription_new' object.pk %}" class="btn btn-default btn-lg">Inscreva-se</a></li>#}
                     </ul>
                   </li>
                   <li class="pricing-plan">

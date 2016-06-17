@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import unittest
 from datetime import date, datetime
 
 from django.core import mail
@@ -51,6 +52,26 @@ class NewInscriptionGetInvalidTest(TestCase):
     def test_message(self):
         """ïnactive tournaments inscriptions must shows a message to user about it"""
         self.assertContains(self.resp, 'O torneio que você tentou acessar não está ativo.')
+
+
+class NewInscriptionDateLimit(TestCase):
+    def setUp(self):
+        self.tournament = Tournament.objects.create(
+            title='I Aberto LBX de Xadrez',
+            start_date=date(2016, 06, 17),
+            end_date=date(2016, 06, 19),
+            inscriptions_date_limit=datetime(2016, 6, 16, 20, 30, 0),
+            active=True,
+            place='Núcleo de Xadrez do Clube ASCADE',
+            url='http://www.estavos.com/'
+        )
+        self.resp = self.client.get(r('tournaments:inscription_new', self.tournament.pk), follow=True)
+
+    @unittest.skip('implements this test with mock')
+    def test_inscription_date_limit(self):
+        """after date limit, inscriptions doesn't more accepted"""
+        now = datetime.datetime(2016, 06, 17, 8, 0, 0)
+        self.assertRedirects(self.resp, r('tournaments:list'))
 
 
 class NewInscriptionPostValidTest(TestCase):

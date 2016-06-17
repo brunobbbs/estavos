@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from datetime import datetime
+
 from braces.views import SuperuserRequiredMixin, FormValidMessageMixin
 from django.contrib import messages
 from django.core.urlresolvers import reverse, reverse_lazy
@@ -29,6 +31,10 @@ class InscriptionCreate(CreateView):
     def dispatch(self, request, *args, **kwargs):
         tournament_id = self.kwargs['tournament']
         tournament = Tournament.objects.get(pk=tournament_id)
+        now = datetime.now()
+        # if now > tournament.inscriptions_date_limit:
+        #     messages.info(request, 'As inscrições desse torneio já se encerraram')
+        #     return redirect('tournaments:list')
         if not tournament.active:
             messages.info(request, 'O torneio que você tentou acessar não está ativo.')
             return redirect('tournaments:list')
