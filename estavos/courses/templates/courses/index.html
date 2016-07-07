@@ -177,7 +177,8 @@
 								</div>
 								<div class="panel-collapse collapse in" id="collapseZero">
 									<div class="panel-body">
-                              <p>Temos três turmas com matrículas abertas para início em Julho!</p>
+                              <p>Temos {{ num_open_classes }} turma{{ num_open_classes|pluralize:'s' }} com matrículas abertas!</p>
+                              <p><a href="{% url 'courses:list' %}">Inscreva-se agora</a> ou</p>
                               <p><a href="/curso-de-xadrez/ementa/" title="Ementa do Curso de Xadrez para Iniciantes">Confira a ementa completa</a>.</p>
 									</div>
 								</div>
@@ -305,40 +306,7 @@
 
         <div class="row">
           <div class="col-md-12">
-            <table class="table table-striped table-hover">
-              <thead>
-                <tr>
-                  <th>Curso</th>
-                  <th>Data</th>
-                  <th>Período</th>
-                  <th>Unidade</th>
-                  <th>Turmas</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>APRENDA #4</td>
-                  <td>05/07 a 28/07</td>
-                  <td>Terças e Quintas-feiras</td>
-                  <td>Plano Piloto (ASCADE)</td>
-                  <td>Crianças</td>
-                </tr>
-                <tr>
-                  <td>APRENDA #5</td>
-                  <td>09/07 a 27/08</td>
-                  <td>Sábados</td>
-                  <td>Plano Piloto (ASCADE)</td>
-                  <td>Adultos e Crianças</td>
-                </tr>
-                <tr>
-                  <td>APRENDA #6</td>
-                  <td>09/07 a 27/08</td>
-                  <td>Sábados</td>
-                  <td>Águas Claras (Kumon Av. Castanheiras)</td>
-                  <td>Crianças</td>
-                </tr>
-              </tbody>
-            </table>
+              {% include 'courses/_open_courses_table.html' %}
           </div>
         </div>
 

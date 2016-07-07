@@ -10,6 +10,13 @@ from estavos.courses.models import Inscription, Course
 class Home(TemplateView):
     template_name = 'courses/index.html'
 
+    def get_context_data(self, **kwargs):
+        kwargs = super(Home, self).get_context_data(**kwargs)
+        courses = Course.objects.filter(is_active=True)
+        kwargs['num_open_classes'] = courses.count()
+        kwargs['object_list'] = courses
+        return kwargs
+
 
 class InscriptionCreate(CreateView):
     form_class = InscriptionForm
