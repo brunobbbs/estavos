@@ -16,43 +16,6 @@
 
     <h2>Cursos com matrículas abertas</h2>
 
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>Curso</th>
-                <th>Local</th>
-                <th>Início</th>
-                <th>Turmas</th>
-                <th>Inscrição</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for object in object_list %}
-            <tr>
-                <td>{{ object.name }}</td>
-                <td>{{ object.place }}</td>
-                <td>{{ object.start_date|date:"d/m/Y" }}</td>
-                <td>{{ object.classes }}</td>
-                <td>
-                    <a class="btn btn-primary" href="{% url 'courses:inscription' object.pk %}">
-                        Inscrição <i class="pl-10 fa fa-check"></i>
-                    </a>
-                </td>
-            </tr>
-            {% empty %}
-                <tr>
-                    <td colspan="5">
-                        <p><strong>Nenhum curso com matrículas abertas no momento</strong></p>
-                        <p>Se você deseja aprender, ainda pode contar com nosso
-                            <a href="/aulas-particulares/" title="Aulas Particulares">
-                                <strong><em>coaching</em> personalizado em Xadrez</strong></a>.
-                        </p>
-                        <p>Se você já sabe jogar, conheça nosso 
-                            <a href="/clube-de-xadrez/" title="Clube de Xadrez"><strong>Clube de Xadrez</strong></a>!</p>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    {% include 'courses/_open_courses_table.html' %}
 
 {% endblock main %}
