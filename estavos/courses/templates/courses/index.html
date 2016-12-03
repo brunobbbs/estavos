@@ -21,7 +21,6 @@
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
                             <h1 class="title-color heading-single text-center"><span>Curso de Xadrez para Iniciantes!</span></h1>
-                            <p class="lead text-center">Aproveite! Inscrições abertas para a última turma do ano!</p>
                             <p class="lead text-center">Exercite sua inteligência! <strong>APRENDA</strong> o Esporte dos Reis em <strong>4 encontros!</strong></p>
                             <p class="text-center">
                                 <a class="btn btn-default" data-toggle="modal" data-target="#saibamais">
@@ -83,8 +82,8 @@
                 <p class="lead">Matricule-se no <strong>curso APRENDA</strong> e leve para casa
                     inteiramente <strong>grátis um lindo Jogo de Peças de Xadrez</strong>*!
                     Não é sorteio, matriculou -> ganhou!</p>
-                <p class="small">Não cumulativo, não é válido para o pai que se matricula junto com o filho
-                com desconto de 50%</p>
+                <p class="small">¹ Não cumulativo, não é válido para o pai que se matricula junto com o filho
+                <p class="small">² Válido para matrículas realizadas até 07/01/2017</p>
             </div>
             <div class="col-md-3">
                 <img src="{% static 'courses/img/jogo-de-pecas-xadrez-estavos.png' %}"
@@ -160,10 +159,10 @@
                                 	<span class="icon-wrapper icon-full-round bg-color-default"><i class="fa fa-calendar color-white"></i></span>
                                     Quando começa?
                                 </h3>
-                                <p>As próximas turmas tem início no dia <strong>05/11/2016</strong>. Escolha a ESTAVOS mais perto de você! <strong>Plano Piloto ou Águas Claras</strong>!</p>
+                                {% if next_course %}<p>A próxima turma tem início no dia <strong>{{ next_course.start_date|date:'d/m/Y' }}</strong>.{% endif %} Escolha a ESTAVOS mais perto de você! <strong>Plano Piloto ou Águas Claras</strong>!</p>
                                 <p>Temos {{ num_open_classes }} turma{{ num_open_classes|pluralize:'s' }} com matrículas abertas!</p>
-                                <p><a href="{% url 'courses:list' %}">Inscreva-se agora</a> ou</p>
-                                <p><a href="/curso-de-xadrez/ementa/" title="Ementa do Curso de Xadrez para Iniciantes">Confira a ementa completa</a>.</p>
+                                <p><strong><a href="{% url 'courses:list' %}">Inscreva-se agora</a></strong> ou</p>
+                                <p><strong><a href="/curso-de-xadrez/ementa/" title="Ementa do Curso de Xadrez para Iniciantes">Confira a ementa completa</a></strong>.</p>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-6">
@@ -173,7 +172,7 @@
                                 </h3>
                                 <p>Você está adquirindo evolução e saúde para sua mente ou de seu filho.</p>
                             	<p>Temos ofertas especiais para parceiros e pais que se matriculam junto com os filhos.</p>
-                                <p><a href="/curso-de-xadrez/precos/">Consulte nossa tabela de preços</a>.</p>
+                                <p><a href="/curso-de-xadrez/precos/"><strong>Consulte nossa tabela de preços</strong></a>.</p>
 							</div>
                         </div>
                     </div>
