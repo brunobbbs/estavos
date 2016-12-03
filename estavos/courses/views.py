@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import datetime
 from django.shortcuts import resolve_url as r, redirect
 from django.views.generic import TemplateView, CreateView, DetailView, ListView
 from estavos.courses.forms import InscriptionForm
@@ -15,6 +16,11 @@ class Home(TemplateView):
         courses = Course.objects.filter(is_active=True)
         kwargs['num_open_classes'] = courses.count()
         kwargs['object_list'] = courses
+
+        next_course = courses.filter(start_date__gt=datetime.date.today()).order_by('start_date')
+        if next_course:
+            next_course = next_course[0]
+        kwargs['next_course'] = next_course
         return kwargs
 
 
