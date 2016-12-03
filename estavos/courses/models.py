@@ -3,9 +3,10 @@ from __future__ import unicode_literals
 
 from decimal import Decimal
 
-from django.shortcuts import resolve_url as r
 from django.db import models
+from django.shortcuts import resolve_url as r
 from django.utils.encoding import python_2_unicode_compatible
+
 from estavos.utils.slug import unique_slugify
 
 
