@@ -38,7 +38,6 @@ class InscriptionCreate(CreateView):
         return self.course
 
     def dispatch(self, request, *args, **kwargs):
-        # If course is inactive, redirect to courses list page
         course = self._get_course()
         if not course.is_active:
             return redirect('courses:list')
@@ -49,7 +48,7 @@ class InscriptionCreate(CreateView):
         kwargs = super(InscriptionCreate, self).get_context_data(**kwargs)
         kwargs['course'] = self._get_course()
         return kwargs
-    
+
     def get_form(self, form_class=None):
         form = super(InscriptionCreate, self).get_form(form_class)
         form.instance.course = self.course
