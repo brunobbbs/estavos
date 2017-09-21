@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
 
     def gen_uuid(apps, schema_editor):
         for row in Inscription.objects.all():
-            row.slug = uuid.uuid4().get_hex()
+            row.slug = uuid.uuid4().hex
             row.save()
 
     operations = [

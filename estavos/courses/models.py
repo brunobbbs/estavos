@@ -49,7 +49,7 @@ class Inscription(models.Model):
 
     def save(self, **kwargs):
         import uuid
-        slug = uuid.uuid4().get_hex()
+        slug = uuid.uuid4().hex
         unique_slugify(self, slug)
         super(Inscription, self).save(**kwargs)
 
