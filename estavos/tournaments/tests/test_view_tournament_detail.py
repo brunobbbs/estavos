@@ -13,8 +13,8 @@ class TournamentDetailTest(TestCase):
         self.obj = Tournament.objects.create(
             title='IRT Brasiliense de Xadrez Amador 2016',
             description='Campeonato Brasiliense de Xadrez Amador 2016',
-            start_date=date(2016, 06, 17),
-            end_date=date(2016, 06, 19),
+            start_date=date(2016, 6, 17),
+            end_date=date(2016, 6, 19),
             inscriptions_date_limit=datetime(2016, 6, 16, 20, 30, 0),
             active=True,
             place='Venâncio Shopping',

@@ -15,7 +15,7 @@ class InscriptionModelTest(TestCase):
         course = Course.objects.create(
             name='Curso APRENDA #3',
             place='Kumon Águas Claras - Av. das Castanheiras',
-            start_date=date(2016, 03, 12),
+            start_date=date(2016, 3, 12),
             classes='Crianças',
             is_active=True,
             price=Decimal('449.70')

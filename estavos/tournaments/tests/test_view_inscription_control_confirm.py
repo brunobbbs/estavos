@@ -14,9 +14,9 @@ class InscriptionsControlConfirmGetTest(TestCase):
     def setUp(self):
         tournament = Tournament.objects.create(
             title='IRT Brasiliense de Xadrez Amador 2016',
-            start_date=date(2016, 06, 17),
-            end_date=date(2016, 06, 19),
-            inscriptions_date_limit=datetime(2016, 06, 16, 20, 30, 00),
+            start_date=date(2016, 6, 17),
+            end_date=date(2016, 6, 19),
+            inscriptions_date_limit=datetime(2016, 6, 16, 20, 30, 00),
             active=True,
             place='Venâncio Shopping',
             url='http://estavos.com/torneios/irt-brasiliense-de-xadrez-amador-2016-sub-2200/'
@@ -63,9 +63,9 @@ class InscriptionsControlConfirmPostValidTest(TestCase):
     def setUp(self):
         self.tournament = Tournament.objects.create(
             title='IRT Brasiliense de Xadrez Amador 2016',
-            start_date=date(2016, 06, 17),
-            end_date=date(2016, 06, 19),
-            inscriptions_date_limit=datetime(2016, 06, 16, 20, 30, 00),
+            start_date=date(2016, 6, 17),
+            end_date=date(2016, 6, 19),
+            inscriptions_date_limit=datetime(2016, 6, 16, 20, 30, 00),
             active=True,
             place='Venâncio Shopping',
             url='http://estavos.com/torneios/irt-brasiliense-de-xadrez-amador-2016-sub-2200/'
@@ -177,7 +177,7 @@ class InscriptionsControlConfirmInvalidGetTest(TestCase):
             tournament=self.t_active,
             name='Hugo Ribeiro',
             email='email@test.com',
-            birth=date(1992, 03, 16),
+            birth=date(1992, 3, 16),
             id_cbx='39037',
             id_fide='',
             phone='(61) 9999-9999',

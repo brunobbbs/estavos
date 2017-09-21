@@ -17,7 +17,7 @@ class InscriptionGet(TestCase):
         self.course = Course.objects.create(
             name='Curso APRENDA #3',
             place='Kumon Águas Claras - Av. das Castanheiras',
-            start_date=date(2016, 03, 12),
+            start_date=date(2016, 3, 12),
             classes='Crianças',
             is_active=True,
             price=Decimal('449.70')
@@ -48,7 +48,7 @@ class InscriptionGetInvalid(TestCase):
         self.obj = Course.objects.create(
             name='Curso APRENDA #2',
             place='Núcleo de Xadrez do clube ASCADE',
-            start_date=date(2016, 02, 20),
+            start_date=date(2016, 2, 20),
             classes='Crianças, Adultos',
             is_active=False,
             price=Decimal('449.70')
@@ -69,7 +69,7 @@ class InscriptionPostValid(TestCase):
         self.course = Course.objects.create(
             name='Curso APRENDA #3',
             place='Kumon Águas Claras - Av. das Castanheiras',
-            start_date=date(2016, 03, 12),
+            start_date=date(2016, 3, 12),
             classes='Crianças',
             is_active=True
         )
@@ -93,7 +93,7 @@ class InscriptionPostInvalid(TestCase):
         self.course = Course.objects.create(
             name='Curso APRENDA #3',
             place='Kumon Águas Claras - Av. das Castanheiras',
-            start_date=date(2016, 03, 12),
+            start_date=date(2016, 3, 12),
             classes='Crianças',
             is_active=True
         )

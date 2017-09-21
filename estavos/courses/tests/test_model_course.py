@@ -14,7 +14,7 @@ class CourseModelTest(TestCase):
         self.obj = Course.objects.create(
             name='Curso APRENDA #3',
             place='Kumon Águas Claras - Av. das Castanheiras',
-            start_date=date(2018, 01, 21),
+            start_date=date(2018, 1, 21),
             classes='Crianças',
             price=Decimal('449.70'),
             is_active=True

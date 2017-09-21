@@ -24,7 +24,7 @@ class ActivityModelTest(TestCase):
         )
         self.obj = Activity.objects.create(
             description='Gustavo Medeiros - 01/08',
-            date=date(2016, 02, 23),
+            date=date(2016, 2, 23),
             transport=Decimal('8.00'),
             partner=user,
             category=category,

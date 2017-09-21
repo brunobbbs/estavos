@@ -12,9 +12,9 @@ class InscriptionDoneTest(TestCase):
     def setUp(self):
         self.tournament = Tournament.objects.create(
             title='IRT Brasiliense de Xadrez Amador 2016',
-            start_date=date(2016, 06, 17),
-            end_date=date(2016, 06, 19),
-            inscriptions_date_limit=datetime(2016, 06, 16, 20, 30, 00),
+            start_date=date(2016, 6, 17),
+            end_date=date(2016, 6, 19),
+            inscriptions_date_limit=datetime(2016, 6, 16, 20, 30, 00),
             active=True,
             place='Venâncio Shopping',
             url='http://estavos.com/torneios/irt-brasiliense-de-xadrez-amador-2016-sub-2200/'
@@ -42,9 +42,9 @@ class InscriptionDoneTest(TestCase):
         """ïnscription detail view must return only tournament related inscriptions"""
         t2 = Tournament.objects.create(
             title='I Aberto de Brasília da LBX',
-            start_date=date(2016, 05, 26),
-            end_date=date(2016, 05, 28),
-            inscriptions_date_limit=datetime(2016, 05, 26, 00, 00, 00),
+            start_date=date(2016, 5, 26),
+            end_date=date(2016, 5, 28),
+            inscriptions_date_limit=datetime(2016, 5, 26, 00, 00, 00),
             active=True,
             place='ASCADE',
         )
