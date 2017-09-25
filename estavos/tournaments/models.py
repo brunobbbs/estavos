@@ -108,12 +108,13 @@ class Competitor(models.Model):
 
 class Inscription(models.Model):
     tournament = models.ForeignKey('tournaments.Tournament', related_name='inscriptions')
-    name = models.CharField('Nome', max_length=100)
+    name = models.CharField('Nome do responsável', max_length=100)
     email = models.EmailField()
     phone = models.CharField('Telefone', max_length=15, blank=True)
     confirmed = models.BooleanField('Confirmado?', default=False)
     slug = models.SlugField('Cod. Inscrição', max_length=32, unique=True)
     payment = models.ForeignKey('tournaments.Payment', blank=True, null=True, related_name='inscription')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Data/Hora inscrição')
 
     def __str__(self):
         return self.name
