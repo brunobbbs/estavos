@@ -33,6 +33,39 @@ class Tournament(models.Model):
         super(Tournament, self).save(**kwargs)
 
 
+class Payment(models.Model):
+    STATUS = (
+        ("1", "Aguardando pagamento"),
+        ("2", "Em análise"),
+        ("3", "Paga"),
+        ("4", "Disponível"),
+        ("5", "Em disputa"),
+        ("6", "Devolvida"),
+        ("7", "Cancelada"),
+    )
+
+    TYPE = (
+        ('1', 'PagSeguro'),
+        ('2', 'Depósito bancário/Transferência'),
+        ('3', 'Isenção')
+    )
+
+    paid = models.BooleanField('Pago?', default=False)
+    payment_type = models.CharField(
+        'Forma de pagamento',
+        max_length=1,
+        choices=TYPE,
+        default='1'
+    )
+    receipt = models.FileField(
+        upload_to='tournaments/receipts/',
+        verbose_name='Recibo',
+        blank=True,
+        null=True,
+    )
+    status = models.CharField(max_length=1, choices=STATUS, default='1')
+    transaction = models.CharField(max_length=100, blank=True)
+
 class Inscription(models.Model):
     tournament = models.ForeignKey('tournaments.Tournament', related_name='inscriptions')
     name = models.CharField('Nome', max_length=100)
@@ -43,6 +76,7 @@ class Inscription(models.Model):
     phone = models.CharField('Telefone', max_length=15, blank=True)
     confirmed = models.BooleanField('Confirmado?', default=False)
     slug = models.SlugField('Cod. Inscrição', max_length=32, unique=True)
+    payment = models.ForeignKey('tournaments.Payment', blank=True, null=True, related_name='inscription')
 
     def __str__(self):
         return self.name
