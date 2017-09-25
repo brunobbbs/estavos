@@ -25,10 +25,10 @@
                 <td>{{ object.start_date|date:"d/m/Y" }} a {{ object.end_date|date:"d/m/Y" }}</td>
                 <td>{{ object.place }}</td>
                 <td>
-{#                    <a href="{% url 'tournaments:inscription_new' object.pk %}" title="Inscrição: {{ object.title }}"#}
-{#                       class="btn btn-primary">#}
-{#                        Inscrição#}
-{#                    </a>#}
+                    <a href="{% url 'tournaments:inscription_new' object.pk %}" title="Inscrição: {{ object.title }}"
+                       class="btn btn-primary">
+                        Inscrição
+                    </a>
                 </td>
             </tr>
             {% empty %}
