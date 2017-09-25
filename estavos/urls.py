@@ -3,12 +3,14 @@ from __future__ import unicode_literals
 from django.conf.urls import include, url
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
-from estavos.subscriptions.models import Subscription
-from estavos.theme.views import GaleriaView
+from django.views.i18n import set_language
 from mezzanine.conf import settings
 from mezzanine.core.views import direct_to_template
 from newsletter_subscription.backend import ModelBackend
 from newsletter_subscription.urls import newsletter_subscriptions_urlpatterns
+
+from estavos.subscriptions.models import Subscription
+from estavos.theme.views import GaleriaView
 
 admin.autodiscover()
 
