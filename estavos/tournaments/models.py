@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 from django.db import models
 from estavos.utils.slug import unique_slugify
 from django.utils.encoding import python_2_unicode_compatible
 from django.shortcuts import resolve_url as r
 
 
-@python_2_unicode_compatible
 class Tournament(models.Model):
     title = models.CharField('Nome do evento', max_length=100)
     description = models.TextField('Descrição', blank=True)
@@ -29,7 +27,6 @@ class Tournament(models.Model):
         super(Tournament, self).save(**kwargs)
 
 
-@python_2_unicode_compatible
 class Inscription(models.Model):
     tournament = models.ForeignKey('tournaments.Tournament', related_name='inscriptions')
     name = models.CharField('Nome', max_length=100)
