@@ -66,13 +66,50 @@ class Payment(models.Model):
     status = models.CharField(max_length=1, choices=STATUS, default='1')
     transaction = models.CharField(max_length=100, blank=True)
 
+
+class Competitor(models.Model):
+    name = models.CharField('Nome do atleta', max_length=100)
+    birth = models.DateField('Data de nascimento')
+    id_lbx = models.CharField('ID LBX', max_length=7)
+    id_fide = models.CharField(
+        'ID FIDE',
+        max_length=10,
+        blank=True,
+        help_text='Opcional. Informe se tiver um ID FIDE.'
+    )
+    club = models.CharField(
+        'Escola/Clube',
+        blank=True,
+        max_length=100
+    )
+    inscription = models.ForeignKey('tournaments.Inscription', related_name='competitors')
+
+    def category(self):
+        if self.birth.year >= 2010:
+            return 'sub-07'
+
+        elif self.birth.year >= 2008 and self.birth.year <= 2009:
+            return 'sub-09'
+
+        elif self.birth.year >= 2005 and self.birth.year <= 2007:
+            return 'sub-12'
+
+        elif self.birth.year >= 2002 and self.birth.year <= 2004:
+            return 'sub-15'
+
+        elif self.birth.year >= 1999 and self.birth.year <= 2001:
+            return 'sub-18'
+
+        else:
+            return 'absoluto'
+
+    category.short_description = 'Categoria'
+
+
 class Inscription(models.Model):
     tournament = models.ForeignKey('tournaments.Tournament', related_name='inscriptions')
     name = models.CharField('Nome', max_length=100)
     email = models.EmailField()
-    birth = models.DateField('Data de nascimento')
-    id_cbx = models.CharField('ID CBX', max_length=7)
-    id_fide = models.CharField('ID FIDE', max_length=10, blank=True)
     phone = models.CharField('Telefone', max_length=15, blank=True)
     confirmed = models.BooleanField('Confirmado?', default=False)
     slug = models.SlugField('Cod. Inscrição', max_length=32, unique=True)
