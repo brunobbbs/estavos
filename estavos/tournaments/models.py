@@ -15,6 +15,12 @@ class Tournament(models.Model):
     place = models.CharField('Local', max_length=50)
     url = models.URLField('Link da página do evento', blank=True, null=True)
     slug = models.SlugField(unique=True)
+    price = models.DecimalField(
+        'Valor da inscrição',
+        max_digits=7,
+        decimal_places=2,
+        default='20.00'
+    )
 
     def __str__(self):
         return self.title
