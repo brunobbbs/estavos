@@ -91,7 +91,7 @@ class InscriptionModelForm(forms.ModelForm):
 
     class Meta:
         model = Inscription
-        fields = ('name', 'email', 'birth', 'phone', 'id_cbx', 'id_fide')
+        fields = ('name', 'email', 'phone')
         exclude = ('tournament', )
         widgets = {
             'name': forms.TextInput(
@@ -106,27 +106,10 @@ class InscriptionModelForm(forms.ModelForm):
                     'placeholder': _('Seu melhor email')
                 }
             ),
-            'birth': forms.DateInput(
-                attrs={'class': 'form-control',
-                       'placeholder': _('Ex.: DD/MM/AAAA')
-                       }
-            ),
             'phone': forms.TextInput(
                 attrs={
                     'class': 'form-control',
                     'placeholder': _('Seu melhor número')
-                }
-            ),
-            'id_cbx': forms.TextInput(
-                attrs={
-                    'class': 'form-control',
-                    'placeholder': _('(obrigatório)')
-                }
-            ),
-            'id_fide': forms.TextInput(
-                attrs={
-                    'class': 'form-control',
-                    'placeholder': _('(se tiver)')
                 }
             ),
         }
