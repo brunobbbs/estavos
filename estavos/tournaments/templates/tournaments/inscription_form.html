@@ -1,8 +1,14 @@
 {% load static %}
     {% csrf_token %}
+    {{ formset.management_form }}
     {% if form.non_field_errors %}
         <div class="alert alert-danger">
             {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+        {% if formset.errors %}
+        <div class="alert alert-danger">
+            {{ formset.non_form_errors }}
         </div>
     {% endif %}
 
@@ -17,7 +23,7 @@
             </div>
         </div>
     </div>
-    <div class="form-group {% if form.email.errors %}has-error {% endif %}{% if form.birth.errors %}has-error{% endif %}">
+    <div class="form-group {% if form.email.errors or form.phone.errors %}has-error{% endif %}">
         <div class="row">
             <div class="col-xs-5">
                 <label for="{{ form.email.id_for_label }}" class="control-label">{{ form.email.label }}</label>
@@ -27,37 +33,53 @@
                 {% endif %}
             </div>
             <div class="col-xs-5">
-                <label for="{{ form.birth.id_for_label }}" class="control-label">{{ form.birth.label }}</label>
-                {{ form.birth }}
-                {% if form.birth.errors %}
-                    <span class="help-block color-danger">{{ form.birth.errors.as_text }}</span>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-    <div class="form-group {% if form.id_cbx.errors %}has-error {% endif %}{% if form.id_fide.errors %}has-error{% endif %}">
-        <div class="row">
-            <div class="col-xs-6">
                 <label for="{{ form.phone.id_for_label }}" class="control-label">{{ form.phone.label }}</label>
                 {{ form.phone }}
                 {% if form.phone.errors %}
                     <span class="help-block color-danger">{{ form.phone.errors.as_text }}</span>
                 {% endif %}
             </div>
-            <div class="col-xs-2">
-                <label for="{{ form.id_cbx.id_for_label }}" class="control-label">{{ form.id_cbx.label }}</label>
-                {{ form.id_cbx }}
-                {% if form.id_cbx.errors %}
-                    <span class="help-block color-danger">{{ form.id_cbx.errors.as_text }}</span>
-                {% endif %}
-            </div>
-            <div class="col-xs-2">
-                <label for="{{ form.id_fide.id_for_label }}" class="control-label">{{ form.id_fide.label }}</label>
-                {{ form.id_fide }}
-                {% if form.id_fide.errors %}
-                    <span class="help-block color-danger">{{ form.id_fide.errors.as_text }}</span>
-                {% endif %}
-            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="form-group">
+        <div class="row">
+            <table class="table table-bordered table-striped">
+                {% for form in formset %}
+                    {% if forloop.first %}
+                        <thead>
+                            {% for field in form.visible_fields %}
+                                <th>{{ field.label }}</th>
+                            {% endfor %}
+                        </thead>
+                        <tbody>
+                    {% endif %}
+
+                    <tr>
+                        {% for field in form.visible_fields %}
+                            <td>
+                                {% if forloop.first %}
+                                    {% for hidden in form.hidden_fields %}
+                                        {{ hidden }}
+                                    {% endfor %}
+                                {% endif %}
+
+                                {% if field.errors %}
+                                <div class="alert alert-danger" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                    {{ field.errors.as_text }}
+                                </div>
+                                {% endif %}
+                                {{ field }}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                    {% if forloop.last %}
+                    </tbody>
+                    {% endif %}
+                {% endfor %}
+            </table>
+            <div class="formset-prefix" style="display:none" prefix="{{ formset.prefix }}"></div>
         </div>
     </div>
     <input class="btn btn-primary" type="submit" value="Fazer inscrição" />

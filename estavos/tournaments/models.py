@@ -120,7 +120,8 @@ class Inscription(models.Model):
         return self.name
 
     def save(self, **kwargs):
-        import uuid
-        slug = uuid.uuid4().hex
-        unique_slugify(self, slug)
+        if not self.slug:
+            import uuid
+            slug = uuid.uuid4().hex
+            self.slug = unique_slugify(self, slug)
         super(Inscription, self).save(**kwargs)

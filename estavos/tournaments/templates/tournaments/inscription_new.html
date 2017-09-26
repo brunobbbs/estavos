@@ -1,10 +1,16 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block meta_title %}Inscrição: {{ tournament.title }}{% endblock meta_title %}
 
 {% block main %}
     <h4 class="title-color heading-single text-center"><span>Inscrição: {{ tournament.title }}</span></h4>
-    <form action="{% url 'tournaments:inscription_new' object.pk %}" method="post">
+    <form action="{% url 'tournaments:inscription_new' object.pk %}" method="post" id="form-subscription">
         {% include 'tournaments/inscription_form.html' %}
     </form>
 {% endblock main %}
+
+{% block extra_js %}
+<script src="{% static 'js/jquery.formset.js' %}" type="text/javascript"></script>
+<script src="{% static 'tournaments/js/formset.config.js' %}" type="text/javascript"></script>
+{% endblock extra_js %}
