@@ -1,24 +1,126 @@
 {% extends 'base.html' %}
+{% load checkout %}
 
 {% block meta_title %}Pré-inscrição: {{ inscription.tournament }}{% endblock meta_title %}
 
 {% block main %}
 
-    {% if not inscription.confirmed %}
-    <h2>Pré-Inscrição realizada com sucesso.</h2>
+    <div class="row">
+        <div class="col-md-12">
+            {% if not inscription.confirmed %}
+            <h2>Pré-Inscrição realizada com sucesso.</h2>
 
-    <p>Olá {{ inscription.name }}, tudo bem?</p>
-    <p>Recebemos seu pedido de pré-inscrição no <strong>{{ inscription.tournament }}</strong>.</p>
-    <p>Lembramos que para participar do torneio, é obrigatório que o jogador esteja em dia com sua
-    <a href="http://www.cbx.org.br/Jogadores.aspx?nm=&no={{ inscription.id_cbx }}&fi=&uf="
-       title="Consulte o estado de sua anuidade CBX" target="_blank">anuidade de jogador CBX</a>.</p>
+            <p>Olá {{ inscription.name }}, tudo bem?</p>
+            <p>Recebemos seu pedido de pré-inscrição no <strong>{{ inscription.tournament }}</strong>.</p>
 
-    Caso não saiba o que é o cadastro de jogadores CBX</a>, nós explicamos!
-    <p>Veja em nosso blog <a href="http://estavos.com/blog/o-que-e-o-cadastro-de-jogadores-cbx-e-como-fazer/" target="_blank"
-       title="O que é o Cadastro de Jogadores CBX ou como fazer"><strong>O que é o cadastro de jogadores CBX e como fazer!</strong></a></p>
+            <p>Para confirmar sua inscrição você pode efetuar o pagamento da taxa via depósito/transferência, boleto ou utilizando
+            seu cartão de crédito em uma compra segura através da plataforma
+            <a href="https://pagseguro.uol.com.br/sobre_o_pagseguro.jhtml"
+               target="_blank">PagSeguro</a> do UOL.</p>
 
-    <p>Para confirmar sua inscrição você pode efetuar o pagamento da taxa via depósito/transferência, boleto ou utilizando
-    seu cartão de crédito em uma compra segura através da plataforma PagSeguro do UOL.</p>
+            <h4 class="title-color text-center"><span>Checkout</span></h4>
+            <table class="table">
+                <tr>
+                    <td>
+                        <dl>
+                            <dt>Responsável</dt>
+                            <dd>{{ inscription.name }}</dd>
+                        </dl>
+                    </td>
+                    <td>
+                        <dl>
+                            <dt>Email</dt>
+                            <dd>{{ inscription.email }}</dd>
+                        </dl>
+                    </td>
+                    <td>
+                        <dl>
+                            <dt>Telefone</dt>
+                            <dd>{{ inscription.phone }}</dd>
+                        </dl>
+                    </td>
+                    <td>
+                        <dl>
+                            <dt>Cod. Inscrição</dt>
+                            <dd>{{ inscription.slug }}</dd>
+                        </dl>
+                    </td>
+                </tr>
+            </table>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Competidor</th>
+                        <th>Data de Nascimento</th>
+                        <th>Categoria</th>
+                        <th>Clube</th>
+                        <th>Taxa de inscrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for insc in inscription.competitors.all %}
+                    <tr>
+                        <td>{{ insc.name }}</td>
+                        <td>{{ insc.birth|date:'d/m/Y' }}</td>
+                        <td>{{ insc.category }}</td>
+                        <td>{{ insc.club }}</td>
+                        <td>R$ {{ inscription.tournament.price }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Total: R$ {{ inscription|total }}</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Pagar online via PagSeguro</a>
+        </div>
+
+        <div class="col-md-4">
+
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#p_deposito">
+                Pagar via depósito em conta
+            </button>
+
+            <div class="modal fade" id="p_deposito" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Pagamento via depósito bancário</h4>
+                    </div>
+                    <div class="modal-body">
+                    <p>Nesta modalidade de pagamento, o responsável deverá efetuar o depósito na conta
+                    indicada abaixo e enviar uma cópia do comprovante de inscrição para <strong>torneios@estavos.com</strong></p>
+                    <p>
+                        <strong>Caixa Econômica Federal</strong><br />
+                        <strong>Agência</strong>: 1803 <br />
+                        <strong>Operação</strong>: 003 <br />
+                        <strong>Conta corrente</strong>: 227-8<br />
+                        <strong>Cnpj</strong>: 18.157.637/0001-51
+                    </p>
+                    <p>ESTAVOS - Academia de Jogos e Esportes Mentais LTDA. - ME</p>
+                    <p>Ao clicar em <strong>Confirmar</strong> no botão abaixo você
+                        será redirecionado para uma página de pré-confirmação</p>
+                    <p>A inscrição só será confirmada após envio do comprovante de pagamento.</p>
+                    <p>Em caso de dúvidas basta entrar em <a href="/contato">contato</a></p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn btn-primary">Confirmar</a>
+                        <a href="#" class="btn btn-default" data-dismiss="modal">Cancelar</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-md-12">
@@ -33,36 +135,10 @@
                     <hr />
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <a class="btn btn-primary btn-lg" href="https://pag.ae/bgQPB3" target="_blank">Pagar Inteira (R$ 60)</a>
-                </div>
-                <div class="col-md-4">
-                    <a class="btn btn-primary btn-lg" href="https://pag.ae/bkWtwM" target="_blank">Pagar Meia-Inscrição (R$ 30)</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <h4>Depósito/Transferência</h4>
-            <p>Para confirmar a inscrição nesta modalidade, você precisa fazer o depósito ou transferência da taxa de inscrição na conta bancária a seguir e
-            enviar o comprovante para o email <strong>torneios@estavos.com</strong>.</p>
-
-            <p><strong>Caixa Econômica Federal</strong></p>
-            <ul>
-                <li><strong>Ag</strong>: 1803</li>
-                <li><strong>Cc</strong>: 227-8</li>
-                <li><strong>Op</strong>: 003</li>
-                <li><strong>CNPJ</strong>: 18.157.637/0001-51</li>
-            </ul>
-            <p><strong>ESTAVOS Organizadora de Eventos Desportivos</strong></p>
         </div>
     </div>
 
-    <p><strong>Observação</strong>: Após o pagamento você receberá a confirmação de inscrição em até 24h.</p>
-
-    <h3>O evento</h3>
+    <h3 class="title-color heading-single text-center">O evento</h3>
     <p>O evento tem início no dia
         <strong>
         {{ inscription.tournament.start_date|date:"d/m/Y" }} às {{ inscription.tournament.start_date|date:"H:m" }},
@@ -77,7 +153,7 @@
     <p><strong>Estamos esperando por você!</strong></p>
 
     <a class="btn btn-default"
-       href="{% url 'tournaments:detail' inscription.tournament.slug %}"
+       href=""
        title="Voltar para página do evento">
         Voltar para página do evento
     </a>
@@ -87,7 +163,7 @@
         <h2>Inscrição confirmada!</h2>
 
         <p>Olá {{ inscription.name }}, tudo bem?</p>
-        <p>Sua inscrição no {{ inscription.tournament }} foi realizada com sucesso e está confirmada!</p>
+        <p>A(s) inscrição(ões) no {{ inscription.tournament }} foi(ram) realizada(s) com sucesso e está(ão) confirmada(s)!</p>
 
         <h3>O evento</h3>
         <p>O evento tem início no dia
@@ -97,7 +173,7 @@
             mas recomendamos que chegue com pelo menos 30 minutos de antecedência.</p>
 
         <p>Nosso evento acontece no {{ inscription.tournament.place }}.</p>
-        
+
         <p>Confira a lista completa de inscritos na página do torneio no
             <a href="http://chess-results.com/tnr224892.aspx?lan=10&wi=821&turdet=YES"
                target="_blank" title="Página do {{ inscription.tournament }} no chess-results">Chess-Results</a></p>
@@ -112,6 +188,6 @@
            title="Voltar para página do evento">
             Voltar para página do evento
         </a>
-        
+
     {% endif %}
 {% endblock main %}
