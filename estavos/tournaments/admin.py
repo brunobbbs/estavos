@@ -10,8 +10,8 @@ class InscriptionInline(admin.TabularInline):
 
 
 class InscriptionAdmin(ImportExportModelAdmin):
-    list_display = ('name', 'email', 'birth', 'phone', 'id_cbx', 'id_fide', 'confirmed')
-    search_fields = ('name', 'email', 'id_cbx', 'id_fide')
+    list_display = ('name', 'email', 'phone', 'confirmed')
+    search_fields = ('name', 'email')
     list_filter = ('confirmed', 'tournament')
 
 
