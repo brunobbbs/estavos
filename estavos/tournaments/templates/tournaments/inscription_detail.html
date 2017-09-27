@@ -174,9 +174,11 @@
 
         <p>Nosso evento acontece no {{ inscription.tournament.place }}.</p>
 
+        {% if inscription.tournament.chess_results %}
         <p>Confira a lista completa de inscritos na página do torneio no
-            <a href="http://chess-results.com/tnr224892.aspx?lan=10&wi=821&turdet=YES"
+            <a href="{{ inscription.tournament.chess_results }}"
                target="_blank" title="Página do {{ inscription.tournament }} no chess-results">Chess-Results</a></p>
+        {% endif %}
 
         <p>Qualquer dúvida estamos à disposição através de nossos <a href="http://estavos.com/contato/" title="contato">
             canais de atendimento</a></p>

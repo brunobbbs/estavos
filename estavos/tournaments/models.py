@@ -21,6 +21,7 @@ class Tournament(models.Model):
         decimal_places=2,
         default='20.00'
     )
+    chess_results = models.URLField('Link para o ChessResults', blank=True)
 
     def __str__(self):
         return self.title
