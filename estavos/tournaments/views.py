@@ -82,18 +82,6 @@ class InscriptionCreate(SuccessMessageMixin, SingleObjectMixin, FormView):
                     club=competitor['club'],
                     inscription=inscription,
                 )
-        # form._send_mail(
-        #     'Pré-inscrição: {0}'.format(form.instance.tournament),
-        #     form.instance.email,
-        #     'tournaments/inscription_email.txt',
-        #     {'inscription': form.instance}
-        # )
-        # form._send_mail(
-        #     'Nova inscrição: {0}'.format(form.instance.tournament),
-        #     'torneios@estavos.com',
-        #     'tournaments/inscription_admin_email.txt',
-        #     {'inscription': form.instance}
-        # )
         return super(InscriptionCreate, self).form_valid(form)
 
     def form_invalid(self, **kwargs):
