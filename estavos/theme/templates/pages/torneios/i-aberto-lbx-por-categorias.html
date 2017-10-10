@@ -1,0 +1,475 @@
+{% extends 'base.html' %}
+
+{% load static pages_tags %}
+
+{% block title %}I Aberto LBX por categorias - 2017{% endblock title %}
+
+{% block meta_title %}I Aberto LBX por categorias - 2017{% endblock meta_title %}
+
+
+{% block special_header %}
+<div class="fullsize">
+  <div data-stellar-background-ratio="0.2"
+       class="page-header fancy-header parallax-wrapper parallax-background-irt-brasiliense-amador"
+       style="background-position: 0% -195.84px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="page-title">I Aberto LBX por categorias - 2017</h1>
+          <ol class="breadcrumb">
+            {% spaceless %}
+              {% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
+            {% endspaceless %}
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock special_header %}
+
+
+{% block all_content %}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="container container-inner">
+          <div class="row">
+            <div class="col-md-">
+              <img src="{% static 'img/torneios/aberto-lbx-quem-sera-campeao.png' %}"
+                   class="img-thumbnail img-responsive"
+                   alt="Quem será o campeão 2017">
+            </div>
+          </div>
+        </div>
+
+        <div class="container container-inner">
+          <div class="row">
+            <div class="col-md-8">
+              <h2 class="title-color heading-single text-center" id="inscricao"><span><strong>Inscreva-se</strong></span></h2>
+              Faça sua pré inscrição clicando no botão ao lado:
+              <a href="https://goo.gl/forms/0MPkzYXP9vsLqPUI3" class="btn btn-primary" target="_blank">Efetuar inscrição online</a>
+              <p>Para confirmar sua inscrição, é necessário efetuar o depósito da taxa de inscrição na conta à seguir:</p>
+
+              <p><strong>Banco</strong>: Caixa Econômica Federal</p>
+              <ul>
+                <li><strong>Ag</strong>: 1803</li>
+                <li><strong>Cc</strong>: 227-8</li>
+                <li><strong>Op</strong>: 003</li>
+                <li><strong>CNPJ</strong>: 18.157.637/0001-51</li>
+                <li>ESTAVOS Academia de Jogos e Esportes Mentais LTDA. - ME</li>
+              </ul>
+
+              <p><strong>Enviar o comprovante de depósito para <a href="mailto:torneios@estavos.com">torneios@estavos.com</a></strong>.</p>
+            </div>
+            <div class="col-md-4">
+              <!-- sidebar -->
+              <div class="sidebar">
+
+                <div class="sidebar-widget">
+                  <h4 class="box-icon-title margin-top20 margin-bottom20">
+                    <span class="icon-wrapper icon-border-round color-default"><i class="fa fa-calendar"></i></span>
+                    Quando?
+                  </h4>
+                  <p>O campeonato acontece no dia <strong>28 de Outubro de 2017</strong></p>
+                </div>
+
+                <div class="sidebar-widget">
+                  <h4 class="box-icon-title margin-top20 margin-bottom20">
+                    <span class="icon-wrapper icon-border-round color-default"><i class="fa fa-map-marker"></i></span>
+                    Onde?
+                  </h4>
+                  <p>Colégio Objetivo - Rua 25, LT 3 - Águas Claras, Brasília - DF, 71917-180</p>
+                </div>
+
+                <div class="sidebar-widget">
+                  <h4 class="box-icon-title margin-top20 margin-bottom20">
+                    <span class="icon-wrapper icon-border-round color-default"><i class="fa fa-file-text-o"></i></span>
+                    Regulamento
+                  </h4>
+                  <a href="https://drive.google.com/file/d/0Bw4yZQsk46i1Sk5RR2lQQVQ1NEE/view?usp=sharing"
+                     class="btn btn-primary" target="_blank"><i class="fa fa-download"></i> Download do regulamento</a>
+                </div>
+
+              </div>
+              <!-- /sidebar -->
+            </div>
+          </div>
+        </div>
+
+        <div class="container container-inner">
+          <!-- Premiação -->
+          <h2 class="title-color heading-single text-center"><span><strong>Premiação</strong></span></h2>
+          <div class="row">
+              <div class="col-md-4">
+                <div class="service-block sb-purple">
+                  <div class="service-block-icon text-center">
+                    <div class="icon-wrapper icon-border-round fa-3x color-purple">
+                      <i class="fa fa-gift"></i>
+                    </div>
+                  </div>
+                  <div class="service-block-title">
+                    <p class="text-center">Troféus e Medalhas</p>
+                  </div>
+                  <div class="service-block-content">
+                    <p class="text-center">O torneio premiará todos jogadores <strong>até a 15º colocação</strong>, com troféu ou medalha!</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="service-block sb-default">
+                  <div class="service-block-icon text-center">
+                    <div class="icon-wrapper icon-border-round fa-3x color-default">
+                      <i class="fa fa-trophy"></i>
+                    </div>
+                  </div>
+                  <div class="service-block-title">
+                    <p class="text-center">Troféu para <strong>1º ao 5º de cada categoria</strong></p>
+                  </div>
+                  <div class="service-block-content">
+                    <p class="text-center">Os <strong>1º ao 5º de cada categoria</strong> vão levar para casa um lindo troféu do Aberto LBX por categorias 2017</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="service-block sb-warning">
+                  <div class="service-block-icon text-center">
+                    <div class="icon-wrapper icon-border-round fa-3x color-warning">
+                      <i class="fa fa-star"></i>
+                    </div>
+                  </div>
+                  <div class="service-block-title">
+                    <p class="text-center">Medalhas do 6º ao 15º</p>
+                  </div>
+                  <div class="service-block-content">
+                    <p class="text-center">O <strong>6º ao 15º de cada categoria</strong> também levam para casa uma medalha exclusiva do evento</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!-- /Premiação -->
+        </div>
+
+        <!-- Inscrições -->
+        <div class="container container-inner">
+          <div class="row">
+            <div class="col-md-12">
+              <h2 class="title-color heading-single text-center"><span><strong>Inscrições</strong></span></h2>
+
+                <ul class="pricing-table">
+                  <li class="pricing-plan">
+                    <ul class="pricing-container">
+                      <li class="pricing-title bg-color-default">
+                        <div class="icon-wrapper icon-border-round fa-2x">
+                          <i class="fa fa-ticket"></i>
+                        </div>
+                        <p>Valor único</p>
+                      </li>
+                      <li class="pricing-value">
+                        <p class="value color-default"><span>R$</span>20,00</p>
+                        <p class="period">Data limite para inscrições até 23h59 do dia 25/10/2017 (quarta-feira)</p>
+                      </li>
+                      <br />
+                      <li class="pricing-btn"><a href="https://goo.gl/forms/0MPkzYXP9vsLqPUI3" class="btn btn-default btn-lg">Inscreva-se</a></li>
+                    </ul>
+                  </li>
+                </ul> <!-- End ul#plans -->
+            </div>
+          </div>
+        </div>
+
+        <div class="container container-inner">
+          <div class="row">
+            <div class="col-md-6">
+              <h2 class="title-color heading-single text-center"><span><strong>Categorias</strong></span></h2>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Categoria</th>
+                    <th>Ano de nascimento</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Sub-07</td>
+                    <td>2010 em diante</td>
+                  </tr>
+                  <tr>
+                    <td>Sub-09</td>
+                    <td>2008 e 2009</td>
+                  </tr>
+                  <tr>
+                    <td>Sub-12</td>
+                    <td>2005, 2006 e 2007</td>
+                  </tr>
+                  <tr>
+                    <td>Sub-15</td>
+                    <td>2004, 2003 e 2002</td>
+                  </tr>
+                  <tr>
+                    <td>Sub-18</td>
+                    <td>1999,2000 e 2001</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="blank-spacer padding-small"></div>
+              <h2 class="title-color heading-single text-center"><span><strong>Cronograma</strong></span></h2>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th colspan="2">28 de Outubro de 2017</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>13h30 às 13h45</td>
+                    <td>Confirmação das Inscrições</td>
+                  </tr>
+                  <tr>
+                    <td>14h00</td>
+                    <td>Início do torneio</td>
+                  </tr>
+                  <tr>
+                    <td>Cerimônia de premiação e encerramento</td>
+                    <td>A premiação será realizada conforme forem encerrando as categorias</td>
+                  </tr>
+                  <tr>
+                    <td>18h00</td>
+                    <td>Encerramento do evento (previsão)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="col-md-6">
+              <h2 class="title-color heading-single text-center"><span><strong>Informações gerais</strong></span></h2>
+
+              <div id="accordion" class="panel-group accordion">
+              <div class="panel">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                    <a href="#collapseSeven" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed-icon">
+                      <small>Modalidade</small>
+                    </a>
+                    </h4>
+                  </div>
+                  <div class="panel-collapse in" id="collapseSeven">
+                    <div class="panel-body">
+                      <p>Xadrez rápido</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a href="#collapseOne" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed collapsed-icon">
+                        <small>Sistema de disputa</small>
+                      </a>
+                    </h4>
+                  </div>
+                  <div class="panel-collapse collapse" id="collapseOne" style="height: auto;">
+                    <div class="panel-body">
+                      <p>Sistema suíço em até 6 rodadas</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a href="#collapseTwo" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed-icon collapsed">
+                        <small>Ritmo de jogo</small>
+                      </a>
+                    </h4>
+                  </div>
+                  <div class="panel-collapse collapse" id="collapseTwo" style="height: 0px;">
+                    <div class="panel-body">
+                      <p>15 (quinze) minutos para cada jogador, nocaute</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                    <a href="#collapseFour" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed collapsed-icon">
+                      <small>Chess-Results</small>
+                    </a>
+                    </h4>
+                  </div>
+                  <div class="panel-collapse collapse" id="collapseFour">
+                    <div class="panel-body">
+                      <p>
+                        Em breve
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              <div class="panel">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                  <a href="#collapseFive" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed collapsed-icon">
+                    <small>Como chegar</small>
+                  </a>
+                  </h4>
+                </div>
+                <div class="panel-collapse collapse" id="collapseFive">
+                  <div class="panel-body">
+                      <iframe style="border: 0;"
+                              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3838.3362130216738!2d-48.03236068573912!3d-15.8389169890236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a326f5acf18d7%3A0xe3ecdd30ee43d158!2sCol%C3%A9gio+Objetivo+-+%C3%81guas+Claras!5e0!3m2!1spt-BR!2sbr!4v1507602017903"
+                              width="600" height="450" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+                  </div>
+                </div>
+              </div>
+              <div class="panel">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                  <a href="#collapseSix" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed collapsed-icon">
+                    <small>Observações</small>
+                  </a>
+                  </h4>
+                </div>
+                <div class="panel-collapse collapse" id="collapseSix">
+                  <div class="panel-body">
+                    <ul>
+                      <li>A inscrição no torneio implica na aceitação do regulamento do mesmo.</li>
+                      <li>Desistências não geram devolução de valor pago.</li>
+                      <li>Jogador que pagar e não enviar comprovante não será emparceirado na primeira rodada.</li>
+                      <li>A partir do limite total de 100 atletas as inscrições estarão sujeitas a disponibilidade de espaço.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="panel">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                  <a href="#collapseEight" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed collapsed-icon">
+                    <small>Divulgue!</small>
+                  </a>
+                  </h4>
+                </div>
+                <div class="panel-collapse collapse" id="collapseEight">
+                  <div class="panel-body">
+                    <a href="https://drive.google.com/file/d/0BwYmqXDYY40ZUzRsRDhQRmpXU3JMOWtUVlFubHUweXR4R19z/view?usp=sharing" target="_blank">
+                      <img src="{% static 'img/torneios/aberto-lbx-por-categorias-2017.jpg' %}"
+                           alt="Banner I Aberto LBX por categorias 2017" width="500" height="707">
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container container-inner">
+		<div class="row">
+		  <div class="col-md-8 col-md-offset-2">
+        <div class="text-center"><img src="{% static 'img/logo-estavos-2.png' %}" alt="Academia ESTAVOS"></div>
+        <div class="blank-spacer margin-bottom10"></div>
+      </div>
+    </div>
+		<div class="row">
+		  <div class="col-md-8 col-md-offset-2">
+        <h1 class="title-color text-center">Venha participar e se divertir no <strong>I Aberto LBX por categorias 2017</strong>. Faltam poucos dias!</h1>
+      </div>
+    </div>
+	</div>
+
+  <div class="fullsize padding-none"> <!-- Container Full Size -->
+    <div class="parallax-wrapper parallax-background-irt-brasiliense-amador" data-stellar-background-ratio="0.2" >
+      <div class="parallax-wrapper padding-medium">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="countdown-irt color-white" data-date="2017-10-28 08:30:00"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /Container Full Size-->
+
+  <div class="container container-inner"><!-- Container -->
+
+    <div class="row">
+
+      <div class="col-md-4">
+        <div class="service-block sb-default">
+          <div class="service-block-icon text-center">
+            <img src="{% static 'img/logo-estavos-2.png' %}" height="150" alt="logo ESTAVOS" />
+          </div>
+          <div class="service-block-title">
+            <p class="text-center"><strong>Realização</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="service-block sb-default">
+          <div class="service-block-icon text-center">
+            <img src="{% static 'img/torneios/logo-lbx.png' %}" height="150" alt="logo LBX" />
+          </div>
+          <div class="service-block-title">
+            <p class="text-center"><strong>Apoio</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="service-block sb-default">
+          <div class="service-block-icon text-center">
+            <img src="{% static 'img/torneios/logo-objetivo-aguas-claras-df.png' %}" height="150" alt="logo Colégio Objetivo - Águas Claras - DF" />
+          </div>
+          <div class="service-block-title">
+            <p class="text-center"><strong>Apoio</strong></p>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+{% endblock all_content %}
+
+{% block extra_js %}
+  <!-- Timer -->
+	<script type="text/javascript" src="{% static 'js/themejs/TimeCircles.js' %}"></script>
+  <script>
+    jQuery(".countdown-irt").TimeCircles({
+      start: true, // determines whether or not TimeCircles should start immediately.
+      refresh_interval: 0.1, // determines how frequently TimeCircles is updated.
+      count_past_zero: true, // This option is only really useful for when counting down. What it does is either give you the option to stop the timer, or start counting up after you've hit the predefined date (or your stopwatch hits zero).
+      circle_bg_color: "#fff", // determines the color of the background circle.
+      use_background: true, // sets whether any background circle should be drawn at all.
+      fg_width: 0.05, //  sets the width of the foreground circle.
+      bg_width: 0.1, // sets the width of the backgroundground circle.
+      time: { //  a group of options that allows you to control the options of each time unit independently.
+        Days: {
+          show: true,
+          text: "Dias",
+          color: "#20a5e8"
+        },
+        Hours: {
+          show: true,
+          text: "Horas",
+          color: "#20a5e8"
+        },
+        Minutes: {
+          show: true,
+          text: "Minutos",
+          color: "#20a5e8"
+        },
+        Seconds: {
+          show: true,
+          text: "Segundos",
+          color: "#20a5e8"
+        }
+      }
+    })
+  </script>
+{% endblock extra_js %}
