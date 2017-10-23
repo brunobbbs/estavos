@@ -65,7 +65,7 @@ class Payment(models.Model):
         null=True,
     )
     status = models.CharField(max_length=1, choices=STATUS, default='1')
-    transaction = models.CharField(max_length=100, blank=True)
+    transaction = models.CharField(max_length=150, blank=True)
 
 
 class Competitor(models.Model):
