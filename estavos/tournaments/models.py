@@ -126,3 +126,8 @@ class Inscription(models.Model):
             slug = uuid.uuid4().hex
             self.slug = unique_slugify(self, slug)
         super(Inscription, self).save(**kwargs)
+
+    def amount(self):
+        players = self.competitors.all().count()
+        price = self.tournament.price
+        return players * price
