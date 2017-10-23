@@ -10,10 +10,11 @@ from django.core.urlresolvers import reverse, reverse_lazy
 from django.shortcuts import redirect, get_object_or_404
 from django.views.generic import ListView, DetailView, FormView, TemplateView, RedirectView
 from estavos.tournaments.forms import InscriptionForm, CompetitorFormSet
-from estavos.tournaments.models import Tournament, Inscription, Competitor
+from estavos.tournaments.models import Tournament, Inscription, Competitor, Payment
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.detail import SingleObjectMixin
 from pagseguro.api import PagSeguroItem, PagSeguroApi
+from django.http import HttpResponseServerError
 
 
 class TournamentListView(ListView):
@@ -27,12 +28,42 @@ class TournamentListView(ListView):
         return kwargs
 
 
+class PagsguroPaymentDone(TemplateView):
+    template_name = 'tournaments/payment_done.html'
+
+    def get(self, request, *args, **kwargs):
+        pid = self.request.GET.get('pid')
+        pagseguro_api = PagSeguroApi()
+        data = pagseguro_api.get_transaction(pid)
+        if data['success']:
+            transaction = data['transaction']
+            payment = Payment(
+                status=transaction['status'],
+                transaction=transaction['code']
+            )
+            if transaction['status'] in ['3', '4']:
+                payment.paid = True
+            payment.save()
+            inscription = Inscription.objects.get(slug=transaction['reference'])
+            inscription.payment = payment
+            if payment.paid:
+                inscription.confirmed = True
+            inscription.save()
+            kwargs['inscription'] = inscription
+            context = self.get_context_data(**kwargs)
+            return self.render_to_response(context)
+        else:
+            logging.error('Falha na página de retorno do pagamento')
+            logging.error('Transação: {}'.format(pid))
+            return HttpResponseServerError()
+
+
 class PaymentView(SingleObjectMixin, RedirectView):
     model = Inscription
 
-    def get(self, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         self.object = self.get_object()
-        return super().get(*args, **kwargs)
+        return super().get(request, *args, **kwargs)
 
     def get_redirect_url(self, *args, **kwargs):
         inscription = PagSeguroItem(
@@ -44,7 +75,7 @@ class PaymentView(SingleObjectMixin, RedirectView):
         pagseguro_api = PagSeguroApi(reference=self.object.slug)
         pagseguro_api.add_item(inscription)
         data = pagseguro_api.checkout()
-        if data['status_code'] != 200:
+        if not data['success']:
             logging.error('Falha ao processar pagamento')
             logging.error('ID da inscrição: {}'.format(self.object.slug))
             messages.error(
