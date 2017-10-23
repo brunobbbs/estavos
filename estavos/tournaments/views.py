@@ -3,15 +3,17 @@ from __future__ import unicode_literals
 
 from datetime import datetime
 import uuid
+import logging
 from braces.views import SuperuserRequiredMixin, FormValidMessageMixin
 from django.contrib import messages
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.shortcuts import redirect, get_object_or_404
-from django.views.generic import ListView, DetailView, FormView, TemplateView
+from django.views.generic import ListView, DetailView, FormView, TemplateView, RedirectView
 from estavos.tournaments.forms import InscriptionForm, CompetitorFormSet
 from estavos.tournaments.models import Tournament, Inscription, Competitor
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.detail import SingleObjectMixin
+from pagseguro.api import PagSeguroItem, PagSeguroApi
 
 
 class TournamentListView(ListView):
@@ -23,6 +25,35 @@ class TournamentListView(ListView):
         inactive_tournaments = Tournament.objects.all().filter(active=False)
         kwargs['inactive_tournaments'] = inactive_tournaments
         return kwargs
+
+
+class PaymentView(SingleObjectMixin, RedirectView):
+    model = Inscription
+
+    def get(self, *args, **kwargs):
+        self.object = self.get_object()
+        return super().get(*args, **kwargs)
+
+    def get_redirect_url(self, *args, **kwargs):
+        inscription = PagSeguroItem(
+            id=self.object.pk,
+            description='Incrição no torneio: {}'.format(self.object.tournament.title),
+            quantity=self.object.competitors.all().count(),
+            amount=self.object.tournament.price
+        )
+        pagseguro_api = PagSeguroApi(reference=self.object.slug)
+        pagseguro_api.add_item(inscription)
+        data = pagseguro_api.checkout()
+        if data['status_code'] != 200:
+            logging.error('Falha ao processar pagamento')
+            logging.error('ID da inscrição: {}'.format(self.object.slug))
+            messages.error(
+                self.request,
+                'Houve um problema ao processar seu pagamento, ' \
+                'entre em contato se o problema persistir'
+            )
+            return reverse('tournaments:list')
+        return data['redirect_url']
 
 
 class InscriptionCreate(SuccessMessageMixin, SingleObjectMixin, FormView):
