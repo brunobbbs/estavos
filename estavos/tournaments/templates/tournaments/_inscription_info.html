@@ -1,0 +1,50 @@
+<table class="table">
+    <tr>
+        <td>
+            <dl>
+                <dt>Responsável</dt>
+                <dd>{{ inscription.name }}</dd>
+            </dl>
+        </td>
+        <td>
+            <dl>
+                <dt>Email</dt>
+                <dd>{{ inscription.email }}</dd>
+            </dl>
+        </td>
+        <td>
+            <dl>
+                <dt>Telefone</dt>
+                <dd>{{ inscription.phone }}</dd>
+            </dl>
+        </td>
+        <td>
+            <dl>
+                <dt>Cod. Inscrição</dt>
+                <dd>{{ inscription.slug }}</dd>
+            </dl>
+        </td>
+    </tr>
+</table>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Competidor</th>
+            <th>Data de Nascimento</th>
+            <th>Categoria</th>
+            <th>Clube</th>
+            <th>Taxa de inscrição</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for insc in inscription.competitors.all %}
+        <tr>
+            <td>{{ insc.name }}</td>
+            <td>{{ insc.birth|date:'d/m/Y' }}</td>
+            <td>{{ insc.category }}</td>
+            <td>{{ insc.club }}</td>
+            <td>R$ {{ inscription.tournament.price }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

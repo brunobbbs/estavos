@@ -1,0 +1,25 @@
+<h3 class="title-color heading-single text-center">O evento</h3>
+<p>O evento tem início no dia
+    <strong>
+    {{ inscription.tournament.start_date|date:"d/m/Y" }} às {{ inscription.tournament.start_date|date:"H:m" }},
+    </strong></p>
+    <p>Recomendamos que chegue com pelo menos 30 minutos de antecedência.</p>
+
+<p>Nosso evento acontece no {{ inscription.tournament.place }}.</p>
+
+{% if inscription.tournament.chess_results %}
+<p>Confira a lista completa de inscritos na página do torneio no
+    <a href="{{ inscription.tournament.chess_results }}"
+       target="_blank" title="Página do {{ inscription.tournament }} no chess-results">Chess-Results</a></p>
+{% endif %}
+
+<p>Qualquer dúvida estamos à disposição através de nossos <a href="http://estavos.com/contato/" title="contato">
+    canais de atendimento</a></p>
+
+<p><strong>Estamos esperando por você!</strong></p>
+
+<a class="btn btn-default"
+   href="{% url 'tournaments:list' %}"
+   title="Voltar para página do evento">
+    Voltar para página do evento
+</a>

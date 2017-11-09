@@ -1,0 +1,36 @@
+{% with competitors=inscription.competitors.all %}
+<h2>Inscrição confirmada!</h2>
+
+<p>Olá {{ inscription.name }}, tudo bem?</p>
+<p>A{{ competitors.count|pluralize }} inscriç{{ competitors.count|pluralize:"ão,ões" }} no {{ inscription.tournament }}
+     fo{{ competitors.count|pluralize:"i,ram" }} realizada{{ competitors.count|pluralize }} com sucesso e est{{ competitors.count|pluralize:"á,ão" }}
+     confirmada{{ competitors.count|pluralize }}!</p>
+
+     {% include 'tournaments/_inscription_info.html' %}
+
+<h3>O evento</h3>
+<p>O evento tem início no dia
+    <strong>
+    {{ inscription.tournament.start_date|date:"d/m/Y" }} às {{ inscription.tournament.start_date|date:"H:m" }},
+    </strong>
+    mas recomendamos que chegue com pelo menos 30 minutos de antecedência.</p>
+
+<p>Nosso evento acontece no {{ inscription.tournament.place }}.</p>
+
+{% if inscription.tournament.chess_results %}
+<p>Confira a lista completa de inscritos na página do torneio no
+    <a href="{{ inscription.tournament.chess_results }}"
+       target="_blank" title="Página do {{ inscription.tournament }} no chess-results">Chess-Results</a></p>
+{% endif %}
+
+<p>Qualquer dúvida estamos à disposição através de nossos <a href="http://estavos.com/contato/" title="contato">
+    canais de atendimento</a></p>
+
+<p><strong>Estamos esperando por você!</strong></p>
+
+<a class="btn btn-default"
+   href="{% url 'tournaments:list' %}"
+   title="Voltar para página do evento">
+    Voltar para página do evento
+</a>
+{% endwith %}

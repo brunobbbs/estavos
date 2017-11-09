@@ -29,7 +29,7 @@ class TournamentListView(ListView):
 
 
 class PagsguroPaymentDone(TemplateView):
-    template_name = 'tournaments/payment_done.html'
+    template_name = 'payments/payment_done.html'
 
     def get(self, request, *args, **kwargs):
         pid = self.request.GET.get('pid')
