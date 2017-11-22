@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% if inscription %}
+
+{% block meta_title %}Inscrição: {{ inscription.tournament }}{% endblock meta_title %}
+
+{% block main %}
+
+        {% if inscription.confirmed %}
+            {% include 'tournaments/_inscription_done.html' %}
+        {% else %}
+            {% include 'tournaments/_inscription_pending.html' %}
+            {% include 'tournaments/_event_info.html' %}
+        {% endif %}
+
+{% endblock main %}
+
+{% endif %}

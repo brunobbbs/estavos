@@ -1,0 +1,126 @@
+<div class="row">
+    <div class="col-md-12">
+        <p>Para confirmar sua inscrição você pode efetuar o pagamento da taxa via depósito/transferência, boleto ou utilizando
+        seu cartão de crédito em uma compra segura através da plataforma
+        <a href="https://pagseguro.uol.com.br/sobre_o_pagseguro.jhtml"
+           target="_blank">PagSeguro</a> do UOL.</p>
+
+        <h4 class="title-color text-center"><span>Checkout</span></h4>
+        <table class="table">
+            <tr>
+                <td>
+                    <dl>
+                        <dt>Responsável</dt>
+                        <dd>{{ inscription.name }}</dd>
+                    </dl>
+                </td>
+                <td>
+                    <dl>
+                        <dt>Email</dt>
+                        <dd>{{ inscription.email }}</dd>
+                    </dl>
+                </td>
+                <td>
+                    <dl>
+                        <dt>Telefone</dt>
+                        <dd>{{ inscription.phone }}</dd>
+                    </dl>
+                </td>
+                <td>
+                    <dl>
+                        <dt>Cod. Inscrição</dt>
+                        <dd>{{ inscription.slug }}</dd>
+                    </dl>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Competidor</th>
+                    <th>Data de Nascimento</th>
+                    <th>Categoria</th>
+                    <th>Clube</th>
+                    <th>Taxa de inscrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for insc in inscription.competitors.all %}
+                <tr>
+                    <td>{{ insc.name }}</td>
+                    <td>{{ insc.birth|date:'d/m/Y' }}</td>
+                    <td>{{ insc.category }}</td>
+                    <td>{{ insc.club }}</td>
+                    <td>R$ {{ inscription.tournament.price }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h4>Total: R$ {{ inscription.amount }}</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <a href="{% url 'tournaments:payment' inscription.slug %}" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Pagar online via PagSeguro</a>
+    </div>
+
+    <div class="col-md-4">
+
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#p_deposito">
+            Pagar via depósito em conta
+        </button>
+
+        <div class="modal fade" id="p_deposito" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Pagamento via depósito bancário</h4>
+                </div>
+                <div class="modal-body">
+                <p>Nesta modalidade de pagamento, o responsável deverá efetuar o depósito na conta
+                indicada abaixo e enviar uma cópia do comprovante de inscrição para <strong>torneios@estavos.com</strong></p>
+                <p>
+                    <strong>Caixa Econômica Federal</strong><br />
+                    <strong>Agência</strong>: 1803 <br />
+                    <strong>Operação</strong>: 003 <br />
+                    <strong>Conta corrente</strong>: 227-8<br />
+                    <strong>Cnpj</strong>: 18.157.637/0001-51
+                </p>
+                <p>ESTAVOS - Academia de Jogos e Esportes Mentais LTDA. - ME</p>
+                <p>Ao clicar em <strong>Confirmar</strong> no botão abaixo você
+                    será redirecionado para uma página de pré-confirmação</p>
+                <p>A inscrição só será confirmada após envio do comprovante de pagamento.</p>
+                <p>Em caso de dúvidas basta entrar em <a href="/contato">contato</a></p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-primary">Confirmar</a>
+                    <a href="#" class="btn btn-default" data-dismiss="modal">Cancelar</a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h4>Compra online protegida</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <img src="https://stc.pagseguro.uol.com.br/public/img/banners/pagamento/todos_estatico_550_100.gif"
+                     alt="Logotipos de meios de pagamento do PagSeguro"
+                     title="Este site aceita pagamentos com Visa, MasterCard, Diners, American Express, Hipercard,
+                     Aura, Elo, PLENOCard, PersonalCard, BrasilCard, FORTBRASIL, Cabal, Mais!, Avista, Grandcard,
+                     Sorocred, Bradesco, Itaú, Banco do Brasil, Banrisul, Banco HSBC, saldo em conta PagSeguro e boleto.">
+                <hr />
+            </div>
+        </div>
+    </div>
+</div>
