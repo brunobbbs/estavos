@@ -67,6 +67,9 @@ class Payment(models.Model):
     status = models.CharField(max_length=1, choices=STATUS, default='1')
     transaction = models.CharField(max_length=150, blank=True)
 
+    def __str__(self):
+        return self.get_status_display()
+
 
 class Competitor(models.Model):
     name = models.CharField('Nome do atleta', max_length=100)
@@ -84,6 +87,9 @@ class Competitor(models.Model):
         max_length=100
     )
     inscription = models.ForeignKey('tournaments.Inscription', related_name='competitors')
+
+    def __str__(self):
+        return self.name
 
     def category(self):
         if self.birth.year >= 2010:
