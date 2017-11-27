@@ -59,7 +59,7 @@ class Payment(models.Model):
         default='1'
     )
     receipt = models.FileField(
-        upload_to='tournaments/receipts/',
+        upload_to='payments/receipts/',
         verbose_name='Recibo',
         blank=True,
         null=True,
