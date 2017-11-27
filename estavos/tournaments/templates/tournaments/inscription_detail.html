@@ -3,22 +3,17 @@
 {% block meta_title %}Pré-inscrição: {{ inscription.tournament }}{% endblock meta_title %}
 
 {% block main %}
-
-    <div class="row">
-        <div class="col-md-12">
-            {% if not inscription.confirmed %}
+<div class="row">
+    <div class="col-md-12">
+        {% if not inscription.confirmed %}
             <h2>Pré-Inscrição realizada com sucesso.</h2>
-
             <p>Olá {{ inscription.name }}, tudo bem?</p>
             <p>Recebemos seu pedido de pré-inscrição no <strong>{{ inscription.tournament }}</strong>.</p>
-
             {% include 'payments/_payment_checkout.html' %}
-
             {% include 'tournaments/_event_info.html' %}
-
-    {% else %}
-
-        {% include 'tournaments/_inscription_done.html' %}
-
-    {% endif %}
+        {% else %}
+            {% include 'tournaments/_inscription_done.html' %}
+        {% endif %}
+    </div>
+</div>
 {% endblock main %}
