@@ -59,23 +59,6 @@
         <div class="container container-inner">
           <div class="row">
             <div class="col-md-8">
-{#              <h2 class="title-color heading-single text-center" id="inscricao"><span><strong>Inscreva-se</strong></span></h2>#}
-{#              <p>Para se inscrever, preencha o formulário abaixo:</p>#}
-{#                <form action="{% url 'tournaments:inscription_new' object.pk %}" method="post">#}
-{#                    {% include 'tournaments/inscription_form.html' %}#}
-{#                </form>#}
-{##}
-{#              <p>Após o preenchimento do formulário acima, você poderá escolher se deseja, efetuar o pagamento via#}
-{#              depósito, transferência bancária, cartão de crédito ou boleto.</p>#}
-{##}
-{#              <img src="https://stc.pagseguro.uol.com.br/public/img/banners/pagamento/avista_estatico_550_70.gif"#}
-{#                   alt="Logotipos de meios de pagamento do PagSeguro"#}
-{#                   title="Este site aceita pagamentos com Bradesco, Itaú, Banco do Brasil, Banrisul, Banco HSBC,#}
-{#                   saldo em conta PagSeguro e boleto.">#}
-{##}
-{#              <p><strong>No caso de pagamentos via depósito/transferência, para confirmar a inscrição, é necessário#}
-{#                  enviar o comprovante de depósito para torneios@estavos.com</strong>.</p>#}
-{#            </div>#}
             <h2 class="title-color heading-single text-center" id="inscricao"><span><strong>Inscrições Encerradas!</strong></span></h2>
 
             <h4 class="text-center">55 atletas disputando uma poderosa batalha mental rumo ao título!</h4>
@@ -605,13 +588,6 @@
 {% endblock all_content %}
 
 {% block extra_js %}
-
-<script type="text/javascript" src="{% static 'js/jquery.mask.js' %}"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#id_birth').mask('00/00/0000');
-    });
-</script>
 
   <!-- Timer -->
 	<script type="text/javascript" src="{% static 'js/themejs/TimeCircles.js' %}"></script>

@@ -175,11 +175,6 @@ class InscriptionCreate(SuccessMessageMixin, SingleObjectMixin, FormView):
 class TournamentDetail(DetailView):
     model = Tournament
 
-    def get_context_data(self, **kwargs):
-        kwargs = super(TournamentDetail, self).get_context_data(**kwargs)
-        kwargs['form'] = InscriptionForm()
-        return kwargs
-
 
 class InscriptionDetail(DetailView):
     model = Inscription
