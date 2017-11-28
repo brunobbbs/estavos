@@ -25,7 +25,7 @@ class CompetitorAdmin(ImportExportModelAdmin):
 
 
 class InscriptionAdmin(ImportExportModelAdmin):
-    list_display = ('name', 'email', 'phone', 'confirmed')
+    list_display = ('name', 'email', 'phone', 'confirmed', 'created')
     search_fields = ('name', 'email')
     list_filter = ('confirmed', 'tournament')
     inlines = [CompetitorInline]
