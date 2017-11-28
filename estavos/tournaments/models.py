@@ -123,7 +123,7 @@ class Inscription(models.Model):
     confirmed = models.BooleanField('Confirmado?', default=False)
     slug = models.SlugField('Cod. Inscrição', max_length=32, unique=True)
     payment = models.ForeignKey('tournaments.Payment', blank=True, null=True, related_name='inscription')
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Data/Hora inscrição')
+    created = models.DateTimeField(auto_now_add=True, verbose_name='Data/Hora inscrição')
 
     def __str__(self):
         return self.name
