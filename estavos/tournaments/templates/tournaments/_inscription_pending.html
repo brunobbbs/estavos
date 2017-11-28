@@ -1,8 +1,4 @@
 {% with competitors=inscription.competitors.all %}
 <h2>Sua{{ competitors.count|pluralize }} inscriç{{ competitors.count|pluralize:"ão,ões" }}
     ainda não est{{ competitors.count|pluralize:"á,ão" }} confirmada{{ competitors.count|pluralize }}</h2>
-
-<p>Olá {{ inscription.name }}, tudo bem?</p>
-
-
 {% endwith %}
