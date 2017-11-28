@@ -1,0 +1,17 @@
+{% with competitors=inscription.competitors.all %}
+<p>Olá {{ inscription.name }}, tudo bem?</p>
+<p>Você escolheu efetuar o pagamento via <strong>Depósito/Transferência</strong>.</p>
+<p>Pedimos que assim que efetuar o pagamento que nos envie um email para
+    <strong>torneios@estavos.com</strong> com o comprovante de pagamento em anexo.
+    Essa é a única forma de confirmarmos sua{{ competitors.count|pluralize }} inscriç{{ competitors.count|pluralize:"ão,ões" }}.
+</p>
+O depósito ou transferência deve ser feito para a conta a seguir:
+{% include 'payments/_bank_account_info.html' %}
+<p>Segue detalhes da inscrição:</p>
+{% include 'tournaments/_inscription_info.html' %}
+{% include 'payments/_payment_checkout.html' %}
+
+<p>A confirmação da{{ competitors.count|pluralize }} inscriç{{ competitors.count|pluralize:"ão,ões" }} ocorrer{{ competitors.count|pluralize:"á,ão" }} em até 48h após envio do comprovante.</p>
+
+<p>Em caso de dúvidas, entre em <a href="/contato">contato</a>!</p>
+{% endwith %}
