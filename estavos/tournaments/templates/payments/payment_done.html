@@ -10,6 +10,9 @@
             {% include 'tournaments/_inscription_done.html' %}
         {% else %}
             {% include 'tournaments/_inscription_pending.html' %}
+            {% if inscription.payment.payment_type == "2" %}
+                {% include 'payments/_deposit_payment.html' %}
+            {% endif %}
             {% include 'tournaments/_event_info.html' %}
         {% endif %}
 
