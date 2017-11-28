@@ -9,6 +9,7 @@
             <h2>Pré-Inscrição realizada com sucesso.</h2>
             <p>Olá {{ inscription.name }}, tudo bem?</p>
             <p>Recebemos seu pedido de pré-inscrição no <strong>{{ inscription.tournament }}</strong>.</p>
+            {% include 'tournaments/_inscription_info.html' %}
             {% include 'payments/_payment_checkout.html' %}
             {% include 'tournaments/_event_info.html' %}
         {% else %}
