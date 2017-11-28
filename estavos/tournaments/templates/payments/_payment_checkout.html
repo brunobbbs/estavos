@@ -51,7 +51,7 @@
                 <p>Em caso de dúvidas basta entrar em <a href="/contato">contato</a></p>
                 </div>
                 <div class="modal-footer">
-                    <a href="#" class="btn btn-primary">Confirmar</a>
+                    <a href="{% url 'tournaments:deposit_payment' inscription.slug  %}" class="btn btn-primary">Confirmar</a>
                     <a href="#" class="btn btn-default" data-dismiss="modal">Cancelar</a>
                 </div>
             </div>

@@ -28,6 +28,26 @@ class TournamentListView(ListView):
         return kwargs
 
 
+class DepositPaymentView(SingleObjectMixin, TemplateView):
+    model = Inscription
+    template_name = 'payments/payment_done.html'
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self._update_payment()
+        return super().get(request, *args, **kwargs)
+
+    def _update_payment(self):
+        if not self.object.payment:
+            payment = Payment.objects.create(
+                paid=False,
+                payment_type='2',
+                status='1'
+            )
+            self.object.payment = payment
+            self.object.save()
+
+
 class PagsguroPaymentDone(TemplateView):
     template_name = 'payments/payment_done.html'
 
