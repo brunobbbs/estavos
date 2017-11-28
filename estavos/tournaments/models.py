@@ -76,7 +76,7 @@ class Payment(models.Model):
 class Competitor(models.Model):
     name = models.CharField('Nome do atleta', max_length=100)
     birth = models.DateField('Data de nascimento')
-    id_lbx = models.CharField('ID LBX', max_length=7)
+    id_lbx = models.CharField('ID LBX', max_length=7, blank=True,)
     id_fide = models.CharField(
         'ID FIDE',
         max_length=10,
