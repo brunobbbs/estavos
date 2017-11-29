@@ -28,7 +28,7 @@ class Tournament(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return r('tournaments:detail', self.pk)
+        return r('tournaments:detail', self.slug)
 
     def save(self, **kwargs):
         unique_slugify(self, self.title)

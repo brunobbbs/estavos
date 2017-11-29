@@ -9,6 +9,7 @@ from estavos.tournaments.views import TournamentListView, InscriptionCreate, Pay
 
 urlpatterns = [
     url(r'^$', TournamentListView.as_view(), name='list'),
+    url(r'^(?P<slug>[\w-]+)/$', TournamentDetail.as_view(), name='detail'),
     url(r'^payment/(?P<slug>[a-f0-9]+)/$', PaymentView.as_view(), name='payment'),
     url(r'^payment/deposit/(?P<slug>[a-f0-9]+)/$', DepositPaymentView.as_view(), name='deposit_payment'),
     url(r'^(?P<tournament>[\d]+)/', include([

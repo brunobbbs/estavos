@@ -16,12 +16,7 @@
       <div class="row">
         <div class="col-md-12">
           <h1 class="page-title">{{ object.title }}</h1>
-          <h2 class="page-subtitle">{{ object.description }}</h2>
-          <ol class="breadcrumb">
-            {% spaceless %}
-              {% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
-            {% endspaceless %}
-          </ol>
+          <h2 class="page-subtitle">{{ object.short_description }}</h2>
         </div>
       </div>
     </div>
@@ -36,16 +31,6 @@
     <div class="row">
       <div class="col-md-12">
 
-        <div class="container container-inner">
-          <div class="row">
-            <div class="col-md-12">
-              <img src="{% static 'img/torneios/titulo-campeao-brasiliense-xadrez-amador-2016.jpg' %}"
-                   class="img-thumbnail img-responsive"
-                   alt="Valendo título de Campeão Brasiliense de Xadrez Amador 2016">
-            </div>
-          </div>
-        </div>
-
       {% if request.user.is_superuser %}
         <div class="container container-inner">
             <div class="row">
@@ -59,20 +44,22 @@
         <div class="container container-inner">
           <div class="row">
             <div class="col-md-8">
-            <h2 class="title-color heading-single text-center" id="inscricao"><span><strong>Inscrições Encerradas!</strong></span></h2>
 
-            <h4 class="text-center">55 atletas disputando uma poderosa batalha mental rumo ao título!</h4>
-
-            <p><strong>Aceitamos cartões</strong></p>
-            <img src="https://stc.pagseguro.uol.com.br/public/img/banners/pagamento/avista_estatico_550_70.gif"
-               alt="Logotipos de meios de pagamento do PagSeguro"
-               title="Este site aceita pagamentos com Bradesco, Itaú, Banco do Brasil, Banrisul, Banco HSBC,
-               saldo em conta PagSeguro e boleto.">
-
-            <a href="{% static 'img/torneios/premiacao-completa-irt-brasiliense-xadrez-amador-2016.jpg' %}" title="Premiação do IRT Brasiliense de Xadrez Amador 2016" data-lightbox="image" class="">
-                <img src="{% static 'img/torneios/premiacao-completa-irt-brasiliense-xadrez-amador-2016.jpg' %}" class="img-responsive thumbnail" alt="">
-            </a>
-
+            <div class="jumbotron">
+                <h1 class="display-3">{% if tournament.active %}Inscreva-se!{% else %}Inscrições Encerradas{% endif %}</h1>
+                <p class="lead">{{ object.description }}</p>
+                {% if tournament.active %}
+                <hr class="my-4">
+                <p class="lead">
+                    <a class="btn btn-primary btn-lg" href="{% url 'tournaments:inscription_new' object.id %}" role="button">Faça sua inscrição online!</a>
+                  </p>
+                <p>Aceitamos várias formas de pagamento</p>
+                <img src="https://stc.pagseguro.uol.com.br/public/img/banners/pagamento/avista_estatico_550_70.gif"
+                alt="Logotipos de meios de pagamento do PagSeguro"
+                title="Este site aceita pagamentos com Bradesco, Itaú, Banco do Brasil, Banrisul, Banco HSBC,
+                saldo em conta PagSeguro e boleto." />
+                {% endif %}
+              </div>
             </div>
 
             <div class="col-md-4">
@@ -89,19 +76,20 @@
                 </div>
 
                 <div class="sidebar-widget">
-                  <h4 class="box-icon-title margin-top20 margin-bottom20">
-                    <span class="icon-wrapper icon-border-round color-default"><i class="fa fa-calendar"></i></span>
-                    Quando?
-                  </h4>
-                  <p>O campeonato acontece nos dias <strong>17, 18 e 19 de Junho de 2016</strong></p>
+                  <h3 class="title-color">
+                    <i class="fa fa-calendar"></i>
+                    <strong>Quando?</strong>
+                  </h3>
+                  <p><strong>Início</strong>: {{ object.start_date }}</p>
+                  <p><strong>Fim</strong>: {{ object.end_date }}</p>
                 </div>
 
                 <div class="sidebar-widget">
-                  <h4 class="box-icon-title margin-top20 margin-bottom20">
-                    <span class="icon-wrapper icon-border-round color-default"><i class="fa fa-map-marker"></i></span>
-                    Onde?
-                  </h4>
-                  <p><a href="http://www.venancioshopping.com.br/" title="Venâncio Shopping">Venâncio Shopping</a> - Piso P2 (2ºSS)</p>
+                  <h3 class="title-color">
+                    <i class="fa fa-map-marker"></i>
+                    <strong>Onde?</strong>
+                  </h3>
+                  <p>{{ object.place }}</p>
                 </div>
 
                 <div class="sidebar-widget">
@@ -523,11 +511,6 @@
 		  <div class="col-md-8 col-md-offset-2">
         <div class="text-center"><img src="{% static 'img/logo-estavos-2.png' %}" alt="Academia ESTAVOS"></div>
         <div class="blank-spacer margin-bottom10"></div>
-      </div>
-    </div>
-		<div class="row">
-		  <div class="col-md-8 col-md-offset-2">
-        <h1 class="title-color text-center">Venha disputar o título de <strong>Campeão Brasiliense de Xadrez sub-2200</strong>. Faltam poucos dias!</h1>
       </div>
     </div>
 	</div>
