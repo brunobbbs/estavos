@@ -5,6 +5,16 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.shortcuts import resolve_url as r
 
 
+class Prize(models.Model):
+    title = models.CharField('Nome do prêmio', max_length=100)
+    description = models.TextField('Descrição', blank=True)
+    icon = models.CharField('Font-awesome icon. Ex.: "fa-trophy"', max_length=15, blank=True)
+    tournament = models.ForeignKey('tournaments.Tournament', related_name='prizes')
+
+    def __str__(self):
+        return self.title
+
+
 class Tournament(models.Model):
     title = models.CharField('Nome do evento', max_length=100)
     short_description = models.CharField('Descrição curta', max_length=250, blank=True)

@@ -1,12 +1,24 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.contrib import admin
-from estavos.tournaments.models import Inscription, Tournament, Payment, Competitor
+from estavos.tournaments.models import (
+    Inscription,
+    Tournament,
+    Payment,
+    Competitor,
+    Prize,
+)
 from import_export.admin import ImportExportModelAdmin
 
 
 class InscriptionInline(admin.StackedInline):
     model = Inscription
+
+
+class PrizeInline(admin.StackedInline):
+    model = Prize
+    extra = 0
+    min_num = 1
 
 
 class CompetitorInline(admin.StackedInline):
@@ -35,11 +47,16 @@ class TournamentAdmin(admin.ModelAdmin):
     list_display = ('title', 'start_date', 'end_date', 'inscriptions_date_limit',
                     'place', 'active')
     list_filter = ('start_date', 'end_date', 'active')
-    inlines = (InscriptionInline, )
+    inlines = (PrizeInline, InscriptionInline)
     prepopulated_fields = {'slug': ('title',), }
+
+
+class PrizeAdmin(admin.ModelAdmin):
+    list_display = ('title', 'description')
 
 
 admin.site.register(Inscription, InscriptionAdmin)
 admin.site.register(Payment, PaymentAdmin)
 admin.site.register(Competitor, CompetitorAdmin)
 admin.site.register(Tournament, TournamentAdmin)
+admin.site.register(Prize, PrizeAdmin)

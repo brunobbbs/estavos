@@ -107,83 +107,34 @@
           </div>
         </div>
 
+        {% with prizes=object.prizes.all %}
+        {% if prizes %}
         <div class="container container-inner">
-          <!-- Premiação -->
           <h2 class="title-color heading-single text-center"><span><strong>Premiação</strong></span></h2>
           <div class="row">
-              <div class="col-md-4">
-                <div class="service-block sb-orange">
-                  <div class="service-block-icon text-center">
-                    <div class="icon-wrapper icon-border-round fa-3x color-orange">
-                      <i class="fa fa-star"></i>
-                    </div>
-                  </div>
-                  <div class="service-block-title">
-                    <p class="text-center">Título de Campeão Brasiliense 2016 u2200</p>
-                  </div>
-                  <div class="service-block-content">
-                    <p class="text-center">Torneio válido para o título de <strong>Campeão Brasiliense de Xadrez Amador 2016</strong></p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
+            {% for prize in prizes %}
+            <div class="col-md-4">
                 <div class="service-block sb-default">
                   <div class="service-block-icon text-center">
                     <div class="icon-wrapper icon-border-round fa-3x color-default">
-                      <i class="fa fa-sitemap"></i>
+                      {% if prize.icon %}
+                        <i class="fa {{ prize.icon }}"></i>
+                      {% endif %}
                     </div>
                   </div>
                   <div class="service-block-title">
-                    <p class="text-center">2 Vagas para a semi-final do Campeonato Brasiliense Absoluto de Xadrez 2016</p>
+                    <p class="text-center">{{ prize.title }}</p>
                   </div>
                   <div class="service-block-content">
-                    <p class="text-center">Os dois primeiros colocados levam uma vaga cada para a Semi-Final do <strong>Campeonato Brasiliense de Xadrez Absoluto 2016</strong></p>
+                    <p class="text-center">{{ prize.description }}</p>
                   </div>
                 </div>
               </div>
-              <div class="col-md-4">
-                <div class="service-block sb-purple">
-                  <div class="service-block-icon text-center">
-                    <div class="icon-wrapper icon-border-round fa-3x color-purple">
-                      <i class="fa fa-trophy"></i>
-                    </div>
-                  </div>
-                  <div class="service-block-title">
-                    <p class="text-center">Troféus e Medalhas</p>
-                  </div>
-                  <div class="service-block-content">
-                    <p class="text-center">Premiação <strong>até o 10º colocado</strong> e ainda premiação especial para <strong>melhor feminino,
-                      sub-18, sub-12, melhor jogador com rating abaixo de 2000 e melhor jogador sem rating</strong>!</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-                <h3 class="title-color heading-single text-center"><span><strong>Veja o que preparamos para vocês!</strong></span></h3>
-                <div class="col-md-4">
-                    <a href="{% static 'img/torneios/trofeu-campeao-irt-brasiliense-2016.jpg' %}"
-                       title="Um lindo troféu de 35cm para o campeão, troféus semelhantes para os segundo e terceiro colocados além da melhor participação feminina!"
-                       data-lightbox="image" class="">
-                        <img src="{% static 'img/torneios/trofeu-campeao-irt-brasiliense-2016.jpg' %}" class="img-responsive thumbnail" alt="">
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="{% static 'img/torneios/medalhas-categorias-irt-brasiliense-2016.jpg' %}"
-                       title="Premiação especial para o melhor rating abaixo de 2000, sub-18, sub-12 e melhor jogador sem rating!"
-                       data-lightbox="image" class="">
-                        <img src="{% static 'img/torneios/medalhas-categorias-irt-brasiliense-2016.jpg' %}" class="img-responsive thumbnail" alt="">
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="{% static 'img/torneios/medalhas-irt-brasiliense-2016-4-10.jpg' %}"
-                       title="Premiação em medalhas até o décimo colocado."
-                       data-lightbox="image" class="">
-                        <img src="{% static 'img/torneios/medalhas-irt-brasiliense-2016-4-10.jpg' %}" class="img-responsive thumbnail" alt="">
-                    </a>
-                </div>
-            </div>
-          <!-- /Premiação -->
+            {% endfor %}
+          </div>
         </div>
+        {% endif %}
+        {% endwith %}
 
         <!-- Inscrições -->
         <div class="container container-inner">
