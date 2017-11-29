@@ -66,14 +66,16 @@
               <!-- sidebar -->
               <div class="sidebar">
 
+                {% if object.objective %}
                 <div class="sidebar-widget">
-                  <h3 class="title-color"><strong>Objetivos</strong></h3>
-                  <ul class="fa-ul">
-                    <li><i class="fa-li fa fa-check color-default"></i> Declarar o <strong>Campeão Brasiliense de Xadrez Amador 2016</strong>;</li>
-                    <li><i class="fa-li fa fa-check color-default"></i> Classificar <strong>02 jogadores</strong> (os dois melhores classificados federados pelo Distrito Federal) para a semi-final
-                    do <strong>Campeonato Brasiliense Absoluto de Xadrez 2016</strong>;</li>
-                  </ul>
+                  <h3 class="title-color">
+                    <i class="fa fa-check"></i>
+                    <strong>Objetivos</strong>
+                  </h3>
+                  <p>{{ object.objective }}</p>
                 </div>
+                {% endif %}
+
 
                 <div class="sidebar-widget">
                   <h3 class="title-color">

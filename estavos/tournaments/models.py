@@ -45,6 +45,7 @@ class Tournament(models.Model):
     title = models.CharField('Nome do evento', max_length=100)
     short_description = models.CharField('Descrição curta', max_length=250, blank=True)
     description = models.TextField('Descrição', blank=True)
+    objective = models.TextField('Objetivos', blank=True)
     start_date = models.DateTimeField('Início')
     end_date = models.DateTimeField('Previsão de término')
     inscriptions_date_limit = models.DateTimeField('Data limite para inscrições')
