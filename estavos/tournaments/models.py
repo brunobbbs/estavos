@@ -58,7 +58,7 @@ class Tournament(models.Model):
         'Valor da inscrição',
         max_digits=7,
         decimal_places=2,
-        default='20.00'
+        default='25.00'
     )
     chess_results = models.URLField('Link para o ChessResults', blank=True)
 
