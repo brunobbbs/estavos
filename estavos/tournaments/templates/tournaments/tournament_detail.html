@@ -136,70 +136,50 @@
         {% endif %}
         {% endwith %}
 
+        {% with prices=object.available_prices.all %}
+        {% if prices %}
         <!-- Inscrições -->
         <div class="container container-inner">
           <div class="row">
             <div class="col-md-12">
               <h2 class="title-color heading-single text-center"><span><strong>Inscrições</strong></span></h2>
-
-                <ul class="pricing-table pricing-columns-3">
-                  <li class="pricing-plan">
-                    <ul class="pricing-container">
-                      <li class="pricing-title">
-                        <div class="icon-wrapper icon-border-round fa-2x">
-                          <i class="fa fa-ticket"></i>
-                        </div>
-                        <p>1º Lote</p>
-                      </li>
-                      <li class="pricing-value">
-                        <p class="value"><span>R$</span>25 / <span>R$</span>50</p>
-                        <p class="period"><s>até 23h59 do dia 05/06/2016 (domingo)</s></p>
-                        <p class="period">Inscrições no 1º lote encerradas.</p>
-                      </li>
-                      <br />
-                      <p>Meia inscrição: Menores de 18 anos, mulheres e pessoas comprovadamente de baixa renda.</p>
-                    </ul>
-                  </li>
-                  <li class="pricing-plan">
-                    <ul class="pricing-container">
-                      <li class="pricing-title">
-                        <div class="icon-wrapper icon-border-round fa-2x">
-                          <i class="fa fa-ticket"></i>
-                        </div>
-                        <p>2º Lote</p>
-                      </li>
-                      <li class="pricing-value">
-                        <p class="value"><span>R$</span>30 / <span>R$</span>60</p>
-                        <p class="period"><s>até 20h30 do dia 16/06/2016</s></p>
-                        <p class="period">Inscrições no 2º lote encerradas.</p>
-                      </li>
-                      <br />
-                      <p>Meia inscrição: Menores de 18 anos, mulheres e pessoas comprovadamente de baixa renda.</p>
-{#                      <li class="pricing-btn"><a href="{% url 'tournaments:inscription_new' object.pk %}" class="btn btn-default btn-lg">Inscreva-se</a></li>#}
-                    </ul>
-                  </li>
-                  <li class="pricing-plan">
-                    <ul class="pricing-container">
-                      <li class="pricing-title bg-color-default">
-                        <div class="icon-wrapper icon-border-round fa-2x">
-                          <i class="fa fa-ticket"></i>
-                        </div>
-                        <p>No local</p>
-                      </li>
-                      <li class="pricing-value">
-                        <p class="value color-default"><span>R$</span>60</p>
-                        <p class="period"><s>até 18h30 do dia 17/06/2016</s></p>
-                        <p class="period">Inscrições Encerradas</p>
-                      </li>
-                      <br />
-                      <p>Inscrições no local não possuem "meia inscrição".</p>
-                    </ul>
-                  </li>
-                </ul> <!-- End ul#plans -->
+              <ul class="pricing-table pricing-columns-3">
+                {% for price in prices %}
+                <li class="pricing-plan">
+                  <ul class="pricing-container">
+                    <li class="pricing-title {% if price.active %}bg-color-default{% endif %}">
+                      <div class="icon-wrapper icon-border-round fa-2x">
+                        <i class="fa fa-ticket"></i>
+                      </div>
+                      <p>{{ price.title }}</p>
+                    </li>
+                    <li class="pricing-value">
+                      <p class="value">{% if price.half %}<span>R$</span>{{ price.half }} / {% endif %}<span>R$</span>{{ price.full }}</p>
+                      {% if price.active %}
+                        <p class="period">até {{ price.limit_date }}</p>
+                        {% if tournament.active %}
+                        <p class="lead">
+                          <a class="btn btn-primary btn-lg" href="{% url 'tournaments:inscription_new' object.id %}" role="button">Faça sua inscrição online!</a>
+                        </p>
+                        {% endif %}
+                        {% else %}
+                        <p class="period">Inscrições no {{ price.title }} encerradas.</p>
+                      {% endif %}
+                    </li>
+                    <br />
+                    {% if price.notes %}
+                    <p>{{ price.notes }}</p>
+                    {% endif %}
+                  </ul>
+                </li>
+                {% endfor %}
+              </ul>
             </div>
           </div>
         </div>
-
+        <!-- / Inscrições -->
+        {% endif %}
+        {% endwith %}
         <div class="container container-inner">
           <div class="row">
             <div class="col-md-6">

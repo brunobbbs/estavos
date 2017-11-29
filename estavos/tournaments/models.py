@@ -15,6 +15,32 @@ class Prize(models.Model):
         return self.title
 
 
+class InscriptionPrice(models.Model):
+    title = models.CharField('Identificador', help_text='Ex.: 1º Lote', max_length=50)
+    full = models.DecimalField(
+        'Valor da inteira',
+        max_digits=7,
+        decimal_places=2,
+        default='30.00'
+    )
+    half = models.DecimalField(
+        'Valor da meia',
+        max_digits=7,
+        decimal_places=2,
+        default='15.00',
+        blank=True,
+        null=True,
+        help_text='Opcional',
+    )
+    limit_date = models.DateTimeField('Válido para inscrições realizadas até')
+    active = models.BooleanField('Ativo?')
+    notes = models.TextField('Observações', blank=True)
+    tournament = models.ForeignKey('tournaments.Tournament', related_name='available_prices')
+
+    def __str__(self):
+        return self.title
+
+
 class Tournament(models.Model):
     title = models.CharField('Nome do evento', max_length=100)
     short_description = models.CharField('Descrição curta', max_length=250, blank=True)
