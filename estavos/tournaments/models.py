@@ -42,9 +42,21 @@ class InscriptionPrice(models.Model):
 
 
 class Tournament(models.Model):
+    MODALITIES = (
+        ('classic', 'Clássico'),
+        ('rapid', 'Rápido'),
+        ('blitz', 'Relâmpago'),
+    )
+
     title = models.CharField('Nome do evento', max_length=100)
     short_description = models.CharField('Descrição curta', max_length=250, blank=True)
     description = models.TextField('Descrição', blank=True)
+    modality = models.CharField(
+        'Modalidade',
+        max_length=7,
+        choices=MODALITIES,
+        default='rapid'
+    )
     objective = models.TextField('Objetivos', blank=True)
     start_date = models.DateTimeField('Início')
     end_date = models.DateTimeField('Previsão de término')
@@ -60,6 +72,18 @@ class Tournament(models.Model):
         default='25.00'
     )
     chess_results = models.URLField('Link para o ChessResults', blank=True)
+    pairing = models.CharField(
+        'Sistema de disputa',
+        max_length=30,
+        help_text='Ex.: Suíço em 6 rodadas.',
+        blank=True
+    )
+    game_time = models.CharField(
+        'Tempo de reflexão',
+        max_length=150,
+        help_text="Ex.: 60'K.O",
+        blank=True
+    )
 
     def __str__(self):
         return self.title
