@@ -144,7 +144,7 @@
           <div class="row">
             <div class="col-md-12">
               <h2 class="title-color heading-single text-center"><span><strong>Inscrições</strong></span></h2>
-              <ul class="pricing-table pricing-columns-3">
+              <ul class="pricing-table pricing-columns-{{ prices.count }}">
                 {% for price in prices %}
                 <li class="pricing-plan">
                   <ul class="pricing-container">
@@ -163,8 +163,6 @@
                           <a class="btn btn-primary btn-lg" href="{% url 'tournaments:inscription_new' object.id %}" role="button">Faça sua inscrição online!</a>
                         </p>
                         {% endif %}
-                        {% else %}
-                        <p class="period">Inscrições no {{ price.title }} encerradas.</p>
                       {% endif %}
                     </li>
                     <br />
