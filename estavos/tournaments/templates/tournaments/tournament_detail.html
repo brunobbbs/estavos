@@ -206,7 +206,6 @@
 
             <div class="col-md-6">
               <h2 class="title-color heading-single text-center"><span><strong>Informações gerais</strong></span></h2>
-
               <div id="accordion" class="panel-group accordion">
                 <div class="panel">
                   <div class="panel-heading">
@@ -330,114 +329,10 @@
               </div>
               {% endif %}
             </div>
-          </div>
-        </div>
-
-      </div>
-
-      </div>
-    </div>
-  </div>
-
-  <div class="container container-inner">
-		<div class="row">
-		  <div class="col-md-8 col-md-offset-2">
-        <div class="text-center"><img src="{% static 'img/logo-estavos-2.png' %}" alt="Academia ESTAVOS"></div>
-        <div class="blank-spacer margin-bottom10"></div>
-      </div>
-    </div>
-	</div>
-
-  <div class="fullsize padding-none"> <!-- Container Full Size -->
-    <div class="parallax-wrapper parallax-background-irt-brasiliense-amador" data-stellar-background-ratio="0.2" >
-      <div class="parallax-wrapper padding-medium">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="countdown-irt color-white" data-date="2016-06-17 18:30:00"></div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div><!-- /Container Full Size-->
-
-  <div class="container container-inner"><!-- Container -->
-
-    <div class="row">
-
-      <div class="col-md-4">
-        <div class="service-block sb-default">
-          <div class="service-block-icon text-center">
-            <img src="{% static 'img/logo-estavos-2.png' %}" height="150" alt="logo ESTAVOS" />
-          </div>
-          <div class="service-block-title">
-            <p class="text-center"><strong>Organização</strong></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="service-block sb-default">
-          <div class="service-block-icon text-center">
-            <img src="{% static 'img/torneios/logo-fbx.jpg' %}" height="150" alt="logo FBX" />
-          </div>
-          <div class="service-block-title">
-            <p class="text-center"><strong>Realização</strong></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="service-block sb-default">
-          <div class="service-block-icon text-center">
-            <img src="{% static 'img/torneios/venancio-logo.jpg' %}" height="150" alt="logo Venâncio Shopping" />
-          </div>
-          <div class="service-block-title">
-            <p class="text-center"><strong>Apoio</strong></p>
-          </div>
-        </div>
-      </div>
-      </div>
-    </div>
-
+  </div>
 {% endblock all_content %}
-
-{% block extra_js %}
-
-  <!-- Timer -->
-	<script type="text/javascript" src="{% static 'js/themejs/TimeCircles.js' %}"></script>
-  <script>
-    jQuery(".countdown-irt").TimeCircles({
-      start: true, // determines whether or not TimeCircles should start immediately.
-      refresh_interval: 0.1, // determines how frequently TimeCircles is updated.
-      count_past_zero: true, // This option is only really useful for when counting down. What it does is either give you the option to stop the timer, or start counting up after you've hit the predefined date (or your stopwatch hits zero).
-      circle_bg_color: "#fff", // determines the color of the background circle.
-      use_background: true, // sets whether any background circle should be drawn at all.
-      fg_width: 0.05, //  sets the width of the foreground circle.
-      bg_width: 0.1, // sets the width of the backgroundground circle.
-      time: { //  a group of options that allows you to control the options of each time unit independently.
-        Days: {
-          show: true,
-          text: "Dias",
-          color: "#20a5e8"
-        },
-        Hours: {
-          show: true,
-          text: "Horas",
-          color: "#20a5e8"
-        },
-        Minutes: {
-          show: true,
-          text: "Minutos",
-          color: "#20a5e8"
-        },
-        Seconds: {
-          show: true,
-          text: "Segundos",
-          color: "#20a5e8"
-        }
-      }
-    })
-  </script>
-{% endblock extra_js %}
