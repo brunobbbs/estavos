@@ -52,7 +52,6 @@ class Tournament(models.Model):
     active = models.BooleanField('Ativo?')
     place = models.CharField('Local', max_length=50)
     rule = models.URLField('Link para download do regulamento')
-    url = models.URLField('Link da página do evento', blank=True, null=True)
     slug = models.SlugField(unique=True)
     price = models.DecimalField(
         'Valor da inscrição',
