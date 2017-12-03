@@ -63,6 +63,11 @@ class Tournament(models.Model):
     inscriptions_date_limit = models.DateTimeField('Data limite para inscrições')
     active = models.BooleanField('Ativo?')
     place = models.CharField('Local', max_length=50)
+    google_maps = models.TextField(
+        'Mapa do local do evento',
+        blank=True,
+        help_text='Insira um iframe do Google maps'
+    )
     rule = models.URLField('Link para download do regulamento')
     slug = models.SlugField(unique=True)
     price = models.DecimalField(
@@ -83,6 +88,13 @@ class Tournament(models.Model):
         max_length=150,
         help_text="Ex.: 60'K.O",
         blank=True
+    )
+    notes = models.TextField('Observações gerais', blank=True)
+    flyer = models.ImageField(
+        'Folder do evento',
+        upload_to='tournaments/flyers/',
+        blank=True,
+        null=True
     )
 
     def __str__(self):

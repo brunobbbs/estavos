@@ -261,100 +261,76 @@
 
               <div id="accordion" class="panel-group accordion">
                 <div class="panel">
-                    <div class="panel-heading">
+                  <div class="panel-heading">
                     <h4 class="panel-title">
-                      <a href="#collapseOne" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed-icon">
-                        <small>Sistema de disputa</small>
+                      <a href="#collapseOne"
+                         data-parent="#accordion"
+                         data-toggle="collapse"
+                         class="accordion-toggle collapsed-icon">
+                        <small>Modalidade</small>
                       </a>
                     </h4>
                   </div>
                   <div class="panel-collapse in" id="collapseOne" style="height: auto;">
                     <div class="panel-body">
-                      <p>Sistema suíço em 6 rodadas</p>
+                      <p>{{ object.get_modality_display }}</p>
                     </div>
                   </div>
                 </div>
+                {% if object.game_time %}
+                <div class="panel">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a href="#collapseThree" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed-icon collapsed">
+                        <small>Tempo de reflexão</small>
+                      </a>
+                    </h4>
+                  </div>
+                  <div class="panel-collapse collapse" id="collapseThree" style="height: 0px;">
+                    <div class="panel-body">
+                      <p>{{ object.game_time }}</p>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+                {% if object.pairing %}
                 <div class="panel">
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a href="#collapseTwo" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed-icon collapsed">
-                        <small>Ritmo de jogo</small>
+                        <small>Sistema de disputa</small>
                       </a>
                     </h4>
                   </div>
                   <div class="panel-collapse collapse" id="collapseTwo" style="height: 0px;">
                     <div class="panel-body">
-                      <p><strong>60′ KO + 30″ de bonus por lance no relógio digital</strong> (preferência) ou
-                        <strong>90' KO no relógio mecânico</strong></p>
+                      <p>{{ object.pairing }}</p>
                     </div>
                   </div>
                 </div>
+                {% endif %}
+                {% if object.chess_results %}
                 <div class="panel">
                   <div class="panel-heading">
                     <h4 class="panel-title">
-                    <a href="#collapseSeven" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed collapsed-icon">
-                      <small>Participação</small>
-                    </a>
-                    </h4>
-                  </div>
-                  <div class="panel-collapse collapse" id="collapseSeven">
-                    <div class="panel-body">
-                      <p>Poderão participar <strong>todos os atletas com ou sem rating FIDE</strong> cadastrados na CBX. Os atletas
-                        deverão estar em dia com a
-                        <a href="http://www.cbx.org.br/Jogadores.aspx?nm=&no=&fi=&uf=DF"
-                           title="Consulta anuidade CBX" target="_blank">
-                          anuidade CBX
-                        </a>, e para os que possuem rating FIDE, este não pode ultrapassar
-                        a barreira dos 2200 pontos.</p>
-
-                        <p>
-                            <strong>
-                                <a href="http://estavos.com/blog/o-que-e-o-cadastro-de-jogadores-cbx-e-como-fazer/"
-                                   title="como fazer o cadastro de jogador CBX">
-                                    Saiba o que é ou como fazer o cadastro de jogador CBX
-                                </a>
-                            </strong>
-                        </p>
-                    </div>
-                  </div>
-              </div>
-                <div class="panel">
-                    <div class="panel-heading">
-                    <h4 class="panel-title">
-                    <a href="#collapseThree" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed collapsed-icon">
-                      <small>Equipe de arbitragem</small>
-                    </a>
-                    </h4>
-                  </div>
-                  <div class="panel-collapse collapse" id="collapseThree">
-                    <div class="panel-body">
-                      <ul>
-                        <li><strong>AN</strong> Westerley Batista Campos</li>
-                        <li><strong>AR</strong> Hugo Leonardo J. Ribeiro Alves</li>
-                        <li><strong>AA</strong> Bruno Barbosa Bernardo da Silva</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="panel">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                    <a href="#collapseFour" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed collapsed-icon">
-                      <small>Chess-Results</small>
-                    </a>
+                      <a href="#collapseFour" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed collapsed-icon">
+                        <small>Chess-Results</small>
+                      </a>
                     </h4>
                   </div>
                   <div class="panel-collapse collapse" id="collapseFour">
                     <div class="panel-body">
                       <p>
-                        <a href="http://chess-results.com/tnr224892.aspx?lan=10&wi=821&turdet=YES" target="_blank"
-                           title="IRT Brasiliense de Xadrez Amador 2016 - Chess-Results">
+                        <a href="{{ object.chess_results }}" target="_blank"
+                           title="{{ object.title }}">
                         <strong>Acompanhe a relação de inscritos e demais informações do torneio no Chess-Results.</strong>
-                        </a>
-                      </p>
-                    </div>
+                      </a>
+                    </p>
                   </div>
                 </div>
+              </div>
+              {% endif %}
+              {% if object.google_maps %}
               <div class="panel">
                 <div class="panel-heading">
                   <h4 class="panel-title">
@@ -365,69 +341,46 @@
                 </div>
                 <div class="panel-collapse collapse" id="collapseFive">
                   <div class="panel-body">
-                    <iframe style="border: 0;"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.160478293476!2d-47.89486528514481!3d-15.795489989050582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3aef5b363915%3A0x664043907f15a04d!2sShopping+Ven%C3%A2ncio+2000!5e0!3m2!1spt-BR!2sbr!4v1463539600363"
-                            width="600" height="450" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+                    {{ object.google_maps|safe }}
                   </div>
                 </div>
               </div>
+              {% endif %}
+              {% if object.notes %}
               <div class="panel">
                 <div class="panel-heading">
                   <h4 class="panel-title">
-                  <a href="#collapseRegister" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed collapsed-icon">
-                    <small>Registro</small>
+                  <a href="#collapseNotes" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed collapsed-icon">
+                    <small>Observações gerais</small>
                   </a>
                   </h4>
                 </div>
-                <div class="panel-collapse collapse" id="collapseRegister">
+                <div class="panel-collapse collapse" id="collapseNotes">
                   <div class="panel-body">
-                    <p><i class="fa fa-check-circle"></i> Torneio registrado sob ID CBX: 3338/16 e FIDE:
-                      <a href="https://ratings.fide.com/tournament_details.phtml?event=138317"
-                         title="registro FIDE" target="_blank">138317</a></p>
+                    {{ object.notes }}
                   </div>
                 </div>
               </div>
+              {% endif %}
+              {% if object.flyer %}
               <div class="panel">
                 <div class="panel-heading">
                   <h4 class="panel-title">
                   <a href="#collapseSix" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed collapsed-icon">
-                    <small>Observações</small>
+                    <small>Divulgue!</small>
                   </a>
                   </h4>
                 </div>
                 <div class="panel-collapse collapse" id="collapseSix">
                   <div class="panel-body">
-                    <ul>
-                      <li>A inscrição no torneio implica na aceitação do regulamento do mesmo.</li>
-                      <li>O atleta que não estiver em dia com sua anuidade CBX no dia do evento não poderá participar do IRT, não sendo devida qualquer devolução do valor pago na inscrição do torneio;</li>
-                      <li>Desistências não geram devolução de valor pago.</li>
-                      <li>Jogador que pagar e não enviar comprovante não será emparceirado na primeira rodada.</li>
-                      <li>Haverá possibilidade de BYE Ausente na primeira rodada.</li>
-                      <li>Jogadores com bandeira FIDE e/ou ID FIDE de outros países [que não o Brasil] ou federados
-                        em outros estados que não o Distrito Federal tem direito aos prêmios, mas não tem direito ao
-                        título de Campeão Brasiliense Amador.</li>
-                      <li>A partir do limite total de 80 atletas as inscrições estarão sujeitas a disponibilidade de espaço.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="panel">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                  <a href="#collapseEight" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed collapsed-icon">
-                    <small>Divulgue!</small>
-                  </a>
-                  </h4>
-                </div>
-                <div class="panel-collapse collapse" id="collapseEight">
-                  <div class="panel-body">
-                    <a href="https://drive.google.com/file/d/0Bw4yZQsk46i1Tkhpdl83anNnZHM/view?usp=sharing" target="_blank">
-                      <img src="{% static 'img/torneios/banner-irt-brasiliense-xadrez-amador-2016-500-707.jpg' %}"
+                    <a href="{{ object.flyer.url }}" target="_blank">
+                      <img src="{% static object.flyer.url %}"
                            alt="Banner IRT Brasiliense de Xadrez Amador 2016" width="500" height="707">
                     </a>
                   </div>
                 </div>
               </div>
+              {% endif %}
             </div>
           </div>
         </div>
