@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% load static pages_tags %}
+{% load static pages_tags itemsbycolumn %}
 
 {% block title %}{{ object.title }}{% endblock title %}
 
@@ -114,7 +114,7 @@
           <h2 class="title-color heading-single text-center"><span><strong>Premiação</strong></span></h2>
           <div class="row">
             {% for prize in prizes %}
-            <div class="col-md-4">
+            <div class="col-md-{{ prizes.count|colum_for_items }}">
                 <div class="service-block sb-default">
                   <div class="service-block-icon text-center">
                     <div class="icon-wrapper icon-border-round fa-3x color-default">
