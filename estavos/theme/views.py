@@ -1,5 +1,6 @@
 from django.views.generic import TemplateView
 from mezzanine.pages.models import RichTextPage
+from mezzanine.blog.models import BlogPost
 
 
 class GaleriaView(TemplateView):
@@ -25,3 +26,12 @@ class GaleriaView(TemplateView):
                 'keyword': gallery.keywords_string
             })
         return result
+
+
+class HomeView(TemplateView):
+    template_name = 'index.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs = super().get_context_data(**kwargs)
+        kwargs['blog_post_list'] = BlogPost.objects.all()[:3]
+        return kwargs

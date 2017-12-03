@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% load static %}
+{% load static mezzanine_tags %}
 
 {% block home %}
 
@@ -240,29 +240,10 @@
 		<div class=" container container-inner">
 
 		<div class="row">
-
-        	<div class="col-sm-6 col-md-3">
+        	<div class="col-md-6">
 				<div class="service-block sb-default">
                 	<div class="service-block-icon text-center animation bounceIn animation-active">
 						<div class="icon-wrapper icon-full-round fa-2x bg-color-default">
-							<i class="fa fa-th-large color-white"></i>
-						</div>
-                    </div>
-                    <div class="service-block-title text-center">
-            			<p>Curso de Xadrez para Iniciantes</p>
-                    </div>
-                    <div class="service-block-content text-center">
-                		<p>Aprenda Xadrez em apenas <strong>8 encontros</strong>! Muito mais do que o básico, conheça as técnicas usadas
-                            pelos campeões para sair na frente de seus adversários!</p>
-                    	<a class="link-icon" href="{% url 'courses:home' %}">Saiba mais <i class="fa fa-angle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-
-        	<div class="col-sm-6 col-md-3">
-				<div class="service-block sb-success">
-                	<div class="service-block-icon text-center animation bounceIn animation-active">
-						<div class="icon-wrapper icon-full-round fa-2x bg-color-success">
 							<i class="fa fa-flag-checkered color-white"></i>
 						</div>
                     </div>
@@ -273,32 +254,11 @@
                 		<p>Se você já sabe o básico de Xadrez e quer <strong>evoluir</strong>, aqui é o lugar!</p>
                         <p>Venha praticar e aprender com os melhores!</p>
                         <p>Encontros livres para prática e de estudo com campeões!</p>
-                    	<a class="link-icon success" href="/clube-de-xadrez/">Saiba mais <i class="fa fa-angle-right"></i></a>
+                    	<a class="btn btn-primary" href="/clube-de-xadrez/">Conheça nossas unidades <i class="fa fa-angle-right"></i></a>
                     </div>
                 </div>
             </div>
-
-         	<div class="col-sm-6 col-md-3">
-				<div class="service-block sb-orange">
-                	<div class="service-block-icon text-center animation bounceIn animation-active">
-						<div class="icon-wrapper icon-full-round fa-2x bg-color-orange">
-							<i class="fa fa-home color-white"></i>
-						</div>
-                    </div>
-                    <div class="service-block-title text-center">
-            			<p>Aulas Particulares</p>
-                    </div>
-                    <div class="service-block-content text-center">
-                		<p>Conheça nosso <strong><em>Coaching</em></strong> de Xadrez!</p>
-                        <p>Aqui nós vamos avaliar seu nível, selecionar o melhor instrutor de acordo com seus objetivos
-                            e montar um plano de estudo personalizado.</p>
-                        <p>Nosso compromisso é com seu aprendizado!</p>
-                    	<a class="link-icon orange" href="/aulas-particulares/">Saiba mais <i class="fa fa-angle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-
-         	<div class="col-sm-6 col-md-3">
+         	<div class="col-md-6">
 				<div class="service-block sb-purple">
                 	<div class="service-block-icon text-center animation bounceIn animation-active">
 						<div class="icon-wrapper icon-full-round fa-2x bg-color-purple">
@@ -309,13 +269,12 @@
             			<p>Xadrez na Escola</p>
                     </div>
                     <div class="service-block-content text-center">
-                		<p><strong>mais que você tente não consegue fazer o Xadrez "pegar" na sua escola?</strong></p>
+                		<p><strong>por mais que você tente não consegue fazer o Xadrez "pegar" na sua escola?</strong></p>
                         <p>Nós fazemos por você! A ESTAVOS possui um método exclusivo para implantar a cultura do Xadrez na sua escola!</p>
-                    	<a class="link-icon purple" href="/xadrez-na-escola/">Saiba mais <i class="fa fa-angle-right"></i></a>
+                    	<a class="btn btn-default" href="/contato">Entre em contato <i class="fa fa-angle-right"></i></a>
                     </div>
                 </div>
             </div>
-
 		</div>
 
         </div>
@@ -326,93 +285,42 @@
 
 			<div class="col-md-8 col-md-offset-2">
                 <div class="hr-icon"><hr><i class="fa fa-users icon-divider color-default animation fadeInUp"></i></div>
-                <h2 class="title-small text-center title-color animation fadeInDownBig">Xadrez para todos!</h2>
-                <p class="text-center lead">O Xadrez muda mentes, mentes transformam o mundo!</p>
-                <p class="text-center lead">Qual o seu perfil? Temos certeza que o Xadrez pode ajudar você!</p>
+                <h2 class="title-small text-center title-color animation fadeInDownBig">Fique atualizado!</h2>
+                <p class="text-center lead">Veja os últimos posts publicados em nosso blog</p>
 			</div>
 
             <div class="row">
-                <div class="col-md-6">
-                    <div class="service-block sb-border sb-success animation fadeInUp">
-                        <div class="service-block-icon text-center">
-                            <div class="icon-wrapper icon-border-round fa-3x color-success">
-                                <i class="fa fa-level-up"></i>
+                <div class="portfolio-container portfolio-active mansonry">
+                    <div id="portfolio-container-inner" class="variable-sizes clearfix portfolio-3-cols">
+                        <div class="element isotope-item">
+                            <div class="portfolio-inner">
+                                {% for blog_post in blog_post_list %}
+                                <div class="col-md-4">
+                                    <div class="blog-post post-format-standard post-grid">
+                                        <div class="post-media">
+                                            <div class="image-overlay">
+                                                <div class="overlay-fade">
+                                                    <a href="{{ blog_post.get_absolute_url }}" ><i class="icon-overlay fa fa-link"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="post-info">
+                                            <h3 class="post-title"><a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a></h3>
+                                            <ul class="list-inline post-meta-info">
+                                                <li class="meta-date">{{ blog_post.publish_date|date:"d/m/Y" }}</li>
+                                                <li class="meta-comments">{% with comments_count=blog_post.comments_count %}{{ comments_count }} comentário{{ comments_count|pluralize }}{% endwith %}</li>
+                                            </ul>
+                                        </div>
+                                        <hr class="hr-circle-center">
+                                        <div class="post-content">
+                                            {{ blog_post.description|safe }}
+                                        </div>
+                                        <hr class="hr-circle-center">
+                                        <a class="link-icon read-more" href="{{ blog_post.get_absolute_url }}">Leia mais<i class="fa fa-arrow-circle-right"></i></a>
+                                    </div>
+                                </div>
+                                {% endfor %}
                             </div>
-                        </div>
-                        <div class="service-block-title text-center">
-                            <p>Sou pai e quero desenvolver o potencial do meu filho</p>
-                        </div>
-                        <div class="service-block-content text-center">
-                            <p>Mesmo se dedicando aos estudos seu filho sofre com baixo rendimento escolar,
-                                déficit de atenção ou dificuldade de concentração?</p>
-                            <p>Ou seu filho possui um desempenho acima da média?</p>
-                            <p>Em ambos os casos o Xadrez pode ajudá-lo a desenvolver seu potencial</p>
-                            <!--<a href="#" class="link-icon success">Saiba mais <i class="fa fa-angle-right"></i></a>-->
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="service-block sb-border sb-warning animation fadeInUp">
-                        <div class="service-block-icon text-center">
-                            <div class="icon-wrapper icon-border-radius fa-3x color-warning">
-                                <i class="fa fa-book"></i>
-                            </div>
-                        </div>
-                        <div class="service-block-title text-center">
-                            <p>Sou jovem e quero estar preparado para o vestibular</p>
-                        </div>
-                        <div class="service-block-content text-center">
-                            <p>Durante uma prova de vestibular, nós lidamos com pressões de tempo, resultado, concentrarção,
-                            memória, dentre outros.</p>
-                            <p>O Xadrez pode ajudar você a se preparar para momentos como esse, em que é exigido de nosso cérebro
-                            grandes esforços para realização de uma tarefa.</p>
-                            <!--<a href="#" class="link-icon warning">Saiba mais <i class="fa fa-angle-right"></i></a>-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="service-block sb-border sb-orange animation fadeInUp">
-                        <div class="service-block-icon text-center">
-                            <div class="icon-wrapper icon-border-radius fa-3x color-orange">
-                                <i class="fa fa-star"></i>
-                            </div>
-                        </div>
-                        <div class="service-block-title text-center">
-                            <p>Sou adulto e quero destaque profissional ou passar em concursos</p>
-                        </div>
-                        <div class="service-block-content text-center">
-                            <p>Mesmo com muito estudo você ainda tem dificuldades para memorizar conteúdos,
-                                raciocionar com agilidade ou se concentrar?</p>
-                            <p>O Xadrez trabalha habilidades como atenção, concentração, raciocínio lógico, memória,
-                                organização de ideias, tomada de decisões, autocontrole, disciplina, perseverança, dentre outras.</p>
-                            <p>APRENDA conosco e mude sua vida!</p>
-                            <!--<a href="#" class="link-icon orange">Saiba mais <i class="fa fa-angle-right"></i></a>-->
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="service-block sb-border sb-default animation fadeInUp">
-                        <div class="service-block-icon text-center">
-                            <div class="icon-wrapper icon-border-radius fa-3x color-default">
-                                <i class="fa fa-heart"></i>
-                            </div>
-                        </div>
-                        <div class="service-block-title text-center">
-                            <p>Estou na terceira idade e quero manter minha mente ativa e me prevenir contra o Alzheimer</p>
-                        </div>
-                        <div class="service-block-content text-center">
-                            <p>
-                                <a href="https://www.nia.nih.gov/alzheimers/publication/2012-2013-alzheimers-disease-progress-report/assessing-risk-factors-cognitive/#cognitive"
-                                   target="_blank">Pesquisas apontam</a> que para manter o cérebro saudável é recomendável praticar atividades
-                            intelectualmente estimulantes tal como o Xadrez.</p>
-                            <p>A ESTAVOS conta com cursos regulares de Xadrez para Iniciantes, Clube para prática e Aulas particulares</p>
-                            <p><strong>O Xadrez é a ginástica da inteligência!</strong></p>
-                            <!--<a href="#" class="link-icon">Saiba mais <i class="fa fa-angle-right"></i></a>-->
                         </div>
                     </div>
                 </div>

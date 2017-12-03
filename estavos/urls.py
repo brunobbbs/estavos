@@ -10,7 +10,7 @@ from newsletter_subscription.backend import ModelBackend
 from newsletter_subscription.urls import newsletter_subscriptions_urlpatterns
 
 from estavos.subscriptions.models import Subscription
-from estavos.theme.views import GaleriaView
+from estavos.theme.views import GaleriaView, HomeView
 
 admin.autodiscover()
 
@@ -40,7 +40,7 @@ urlpatterns += [
     # one homepage pattern, so if you use a different one, comment this
     # one out.
 
-    url("^$", direct_to_template, {"template": "index.html"}, name="home"),
+    url("^$", HomeView.as_view(), name="home"),
 
     # HOMEPAGE AS AN EDITABLE PAGE IN THE PAGE TREE
     # ---------------------------------------------
