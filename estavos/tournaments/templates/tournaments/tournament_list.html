@@ -21,7 +21,7 @@
         <tbody>
             {% for object in object_list %}
             <tr>
-                <td><a href="{{ object.url }}" title="{{ object.title }}"><strong>{{ object.title }}</strong></a></td>
+                <td><a href="{{ object.get_absolute_url }}" title="{{ object.title }}"><strong>{{ object.title }}</strong></a></td>
                 <td>{{ object.start_date|date:"d/m/Y" }} a {{ object.end_date|date:"d/m/Y" }}</td>
                 <td>{{ object.place }}</td>
                 <td>
@@ -42,15 +42,33 @@
     </table>
 
     <h2>Encerrados</h2>
-    {% for tournament in inactive_tournaments %}
-        <h5>
-            <a href="{{ tournament.url }}" title="{{ tournament.title }}">
-                {{ tournament.title }}
-            </a>
-        </h5>
-        <p>{{ tournament.description }}</p>
-    {% empty %}
+    {% if inactive_tournaments %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Evento</th>
+                <th>Data</th>
+                <th>Local</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tournament in inactive_tournaments %}
+            <tr>
+                <td><a href="{{ tournament.get_absolute_url }}" title="{{ tournament.title }}"><strong>{{ tournament.title }}</strong></a></td>
+                <td>{{ tournament.start_date|date:"d/m/Y" }} a {{ tournament.end_date|date:"d/m/Y" }}</td>
+                <td>{{ tournament.place }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">
+                    Nenhum torneio ativo no momento.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
         <p>Nenhum torneio para exibir</p>
-    {% endfor %}
+    {% endif %}
 
 {% endblock main %}
