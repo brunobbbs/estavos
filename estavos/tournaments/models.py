@@ -41,6 +41,20 @@ class InscriptionPrice(models.Model):
         return self.title
 
 
+class TournamentSchedule(models.Model):
+    tournament = models.ForeignKey('tournaments.Tournament')
+    date = models.DateField('Data')
+    hour = models.TimeField('Hora')
+    activity = models.CharField('Atividade', max_length=140)
+
+    class Meta:
+        verbose_name = 'programação'
+        verbose_name_plural = 'programações'
+
+    def __str__(self):
+        return '{0} - {1}: {2}'.format(self.date.strftime('%d/%m/%Y'), self.hour, self.activity)
+
+
 class Tournament(models.Model):
     MODALITIES = (
         ('classic', 'Clássico'),

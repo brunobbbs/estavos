@@ -10,7 +10,8 @@ from django.core.urlresolvers import reverse, reverse_lazy
 from django.shortcuts import redirect, get_object_or_404
 from django.views.generic import ListView, DetailView, FormView, TemplateView, RedirectView
 from estavos.tournaments.forms import InscriptionForm, CompetitorFormSet
-from estavos.tournaments.models import Tournament, Inscription, Competitor, Payment
+from itertools import groupby
+from estavos.tournaments.models import Tournament, Inscription, Competitor, Payment, TournamentSchedule
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.detail import SingleObjectMixin
 from pagseguro.api import PagSeguroItem, PagSeguroApi
@@ -174,6 +175,19 @@ class InscriptionCreate(SuccessMessageMixin, SingleObjectMixin, FormView):
 
 class TournamentDetail(DetailView):
     model = Tournament
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        schedules = TournamentSchedule.objects.filter(tournament=self.object).values('date', 'hour', 'activity')
+        schedules = groupby(schedules, key=lambda s: s['date'])
+        result = []
+        for date, activities in schedules:
+            result.append({
+                'date': date,
+                'activities': [{'hour': act['hour'], 'activity': act['activity']} for act in activities]
+            })
+        context['schedules'] = result
+        return context
 
 
 class InscriptionDetail(DetailView):

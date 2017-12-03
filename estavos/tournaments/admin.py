@@ -7,7 +7,8 @@ from estavos.tournaments.models import (
     Payment,
     Competitor,
     Prize,
-    InscriptionPrice
+    InscriptionPrice,
+    TournamentSchedule
 )
 from import_export.admin import ImportExportModelAdmin
 
@@ -24,6 +25,12 @@ class PrizeInline(admin.StackedInline):
 
 class InscriptionPriceInline(admin.StackedInline):
     model = InscriptionPrice
+    extra = 0
+    min_num = 1
+
+
+class TournamentScheduleInline(admin.StackedInline):
+    model = TournamentSchedule
     extra = 0
     min_num = 1
 
@@ -54,8 +61,12 @@ class TournamentAdmin(admin.ModelAdmin):
     list_display = ('title', 'start_date', 'end_date', 'inscriptions_date_limit',
                     'place', 'active')
     list_filter = ('start_date', 'end_date', 'active')
-    inlines = (PrizeInline, InscriptionPriceInline, InscriptionInline)
+    inlines = (PrizeInline, InscriptionPriceInline, TournamentScheduleInline, InscriptionInline)
     prepopulated_fields = {'slug': ('title',), }
+
+
+class TournamentScheduleAdmin(admin.ModelAdmin):
+    list_display = ('date', 'hour', 'activity')
 
 
 class PrizeAdmin(admin.ModelAdmin):
@@ -72,3 +83,4 @@ admin.site.register(Competitor, CompetitorAdmin)
 admin.site.register(Tournament, TournamentAdmin)
 admin.site.register(Prize, PrizeAdmin)
 admin.site.register(InscriptionPrice, InscriptionPriceAdmin)
+admin.site.register(TournamentSchedule, TournamentScheduleAdmin)

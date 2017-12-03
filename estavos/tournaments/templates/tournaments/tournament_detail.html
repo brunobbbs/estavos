@@ -183,78 +183,28 @@
         {% endwith %}
         <div class="container container-inner">
           <div class="row">
+            {% if schedules %}
             <div class="col-md-6">
               <h2 class="title-color heading-single text-center"><span><strong>Programação</strong></span></h2>
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th colspan="2">17 de Junho de 2016</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>18h30</td>
-                    <td>Congresso Técnico</td>
-                  </tr>
-                  <tr>
-                    <td>18h45</td>
-                    <td>Emparceiramento da 1º rodada</td>
-                  </tr>
-                  <tr>
-                    <td>19h00</td>
-                    <td>1º rodada</td>
-                  </tr>
-                </tbody>
+              {% for schedule in schedules %}
+              <table class="table table-striped table-hover">
+                  <thead>
+                      <tr>
+                          <th colspan="2">{{ schedule.date }}</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% for activity in schedule.activities %}
+                      <tr>
+                          <td class="col-xs-1">{{ activity.hour }}</td>
+                          <td>{{ activity.activity }}</td>
+                      </tr>
+                      {% endfor %}
+                  </tbody>
               </table>
-              <div class="blank-spacer padding-small"></div>
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th colspan="2">18 de Junho de 2016</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>10h00</td>
-                    <td>2º rodada</td>
-                  </tr>
-                  <tr>
-                    <td>15h00</td>
-                    <td>3º rodada</td>
-                  </tr>
-                  <tr>
-                    <td>19h00</td>
-                    <td>4º rodada</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div class="blank-spacer padding-small"></div>
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th colspan="2">19 de Junho de 2016</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>09h00</td>
-                    <td>5º rodada</td>
-                  </tr>
-                  <tr>
-                    <td>13h00</td>
-                    <td>6º rodada</td>
-                  </tr>
-                  <tr>
-                    <td>16h20</td>
-                    <td>Premiação</td>
-                  </tr>
-                  <tr>
-                    <td>16h45</td>
-                    <td>Encerramento</td>
-                  </tr>
-                </tbody>
-              </table>
+              {% endfor %}
             </div>
+            {% endif %}
 
             <div class="col-md-6">
               <h2 class="title-color heading-single text-center"><span><strong>Informações gerais</strong></span></h2>
