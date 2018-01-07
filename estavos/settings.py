@@ -372,6 +372,7 @@ FABRIC = {
     "HOSTS": ["45.55.197.249"],  # The IP address of your VPS
     "DOMAINS": [".estavos.com", ".estavos.com.br"],
     "REQUIREMENTS_PATH": "requirements.txt",  # Project's pip requirements
+    "GUNICORN_PORT": 8000,
     "LOCALE": "en_US.UTF-8",  # Should end with ".UTF-8"
     "DB_PASS": config("DB_PASS"),  # Live database password
     "ADMIN_PASS": config("ADMIN_PASS"),  # Live admin user password
