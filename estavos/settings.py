@@ -123,6 +123,7 @@ LANGUAGES = (
 
 # secret_key
 SECRET_KEY = config('SECRET_KEY')
+NEVERCACHE_KEY = config('NEVERCACHE_KEY')
 
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
 # are displayed for error pages. Should always be set to ``False`` in
@@ -361,6 +362,22 @@ ACCOUNTS_APPROVAL_REQUIRED = True
 ##########
 ADMINS = (('Bruno Barbosa', 'bruno@estavos.com'), )
 
+
+##########
+# FABRIC #
+##########
+FABRIC = {
+    "DEPLOY_TOOL": "git",  # Deploy with "git", "hg", or "rsync"
+    "SSH_USER": config("SSH_USER"),  # VPS SSH username
+    "HOSTS": ["45.55.197.249"],  # The IP address of your VPS
+    "DOMAINS": [".estavos.com", ".estavos.com.br"],
+    "REQUIREMENTS_PATH": "requirements.txt",  # Project's pip requirements
+    "LOCALE": "pt_BR.UTF-8",  # Should end with ".UTF-8"
+    "DB_PASS": config("DB_PASS"),  # Live database password
+    "ADMIN_PASS": config("ADMIN_PASS"),  # Live admin user password
+    "SECRET_KEY": SECRET_KEY,
+    "NEVERCACHE_KEY": NEVERCACHE_KEY,
+}
 
 ####################
 # DYNAMIC SETTINGS #
