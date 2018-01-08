@@ -21,8 +21,6 @@
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.min.3.0.3.css' %}" rel="stylesheet">
 
-    <!-- Font Awesome -->
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Revolution Slider CSS -->
     <link href="{% static 'css/themecss/revolution-slider.css' %}" rel="stylesheet">
@@ -44,7 +42,6 @@
 
 
     <!-- Google Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
 
     <!-- Fav and touch icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'ico/apple-touch-icon-144-precomposed.png' %}">
@@ -53,25 +50,28 @@
     <link rel="apple-touch-icon-precomposed" href="{% static 'ico/apple-touch-icon-57-precomposed.png' %}">
     <link rel="shortcut icon" href="{% static 'ico/favicon.png' %}">
 
-{% if LANGUAGE_BIDI %}
-<link rel="stylesheet" href="{% static "css/bootstrap-rtl.css" %}">
-{% endif %}
-{% ifinstalled cartridge.shop %}
-<link rel="stylesheet" href="{% static "css/cartridge.css" %}">
-{% if LANGUAGE_BIDI %}
-<link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">
-{% endif %}
-{% endifinstalled %}
-{% block extra_css %}{% endblock %}
-{% endcompress %}
+    {% if LANGUAGE_BIDI %}
+    <link rel="stylesheet" href="{% static "css/bootstrap-rtl.css" %}">
+    {% endif %}
+    {% ifinstalled cartridge.shop %}
+    <link rel="stylesheet" href="{% static "css/cartridge.css" %}">
+    {% if LANGUAGE_BIDI %}
+    <link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">
+    {% endif %}
+    {% endifinstalled %}
+    {% block extra_css %}{% endblock %}
+    {% endcompress %}
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    <!-- Font Awesome -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 
-<!-- jQuery and bootstrap -->
-<script src="{% static 'js/jquery.1.10.2.js' %}"></script>
-<script src="{% static 'js/bootstrap.min.3.0.3.js' %}"></script>
+    <!-- jQuery and bootstrap -->
+    <script src="{% static 'js/jquery.1.10.2.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.3.0.3.js' %}"></script>
 
-<!--[if lt IE 9]>
-<script src="{% static "js/html5shiv.js" %}"></script>
-<script src="{% static "js/respond.min.js" %}"></script>
+    <!--[if lt IE 9]>
+        <script src="{% static "js/html5shiv.js" %}"></script>
+        <script src="{% static "js/respond.min.js" %}"></script>
 <![endif]-->
 
 {% block extra_head %}{% endblock %}
