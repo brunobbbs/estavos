@@ -354,7 +354,7 @@ def backup(filename):
     # We cd to / because user "postgres" might not have read permissions
     # elsewhere.
     with cd("/"):
-        postgres("pg_dump -Fc %s > %s" % (env.proj_name, tmp_file))
+        postgres("pg_dump -Fc %s_portal > %s" % (env.proj_name, tmp_file))
     run("cp %s ." % tmp_file)
     sudo("rm -f %s" % tmp_file)
 
