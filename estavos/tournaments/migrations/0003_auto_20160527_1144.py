@@ -2,7 +2,6 @@
 from __future__ import unicode_literals
 import uuid
 from django.db import migrations, models
-from estavos.tournaments.models import Inscription
 
 
 class Migration(migrations.Migration):
@@ -12,6 +11,7 @@ class Migration(migrations.Migration):
     ]
 
     def gen_uuid(apps, schema_editor):
+        Inscription = apps.get_model("tournaments", "Inscription")
         for row in Inscription.objects.all():
             row.slug = uuid.uuid4().hex
             row.save()
