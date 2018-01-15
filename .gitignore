@@ -5,8 +5,7 @@
 .estavos/
 .idea
 .env
-public/
-uploads/
 media/
-dev.db
+./static/
+*.db
 .vscode
