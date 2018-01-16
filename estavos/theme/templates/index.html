@@ -3,359 +3,308 @@
 {% load static mezzanine_tags %}
 
 {% block home %}
-
-
-<!-- Slider Container -->
-<div class="slider-wrapper">
-
-    <div class="fullwidthbanner-container">
-            <div class="fullwidthbanner">
-                <ul>
-                    <li data-transition="slotslide-horizontal" data-slotamount="5" data-masterspeed="700" >
-                        <img src="{% static 'img/theme/revolution/dummy.png' %}"
-                             alt="slider1-bg"
-                             data-lazyload="{% static 'img/clube/galeria/plano_piloto_estavos (8).jpg' %}"
-                             data-bgposition="bottom center"
-                             data-kenburns="on"
-                             data-duration="9000"
-                             data-ease="Linear.easeNone"
-                             data-bgfit="110"
-                             data-bgfitend="100"
-                             data-bgpositionend="top center">
-                        <div class="caption very-large-strong color-default bg-color-white customin customout start"
-                             data-x="center"
-                             data-y="200"
-                             data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-                             data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                             data-speed="1000"
-                             data-start="500"
-                             data-easing="Back.easeInOut"
-                             data-endspeed="300" >
-                            Aulas de Xadrez para Crianças
-                        </div>
-                        <div class="caption big-light color-white customin customout"
-                            data-x="center"
-                            data-y="290"
-                            data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                            data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                            data-start="1200"
-                            data-speed="600"
-                            data-easing="Linear.easeNone"
-                            data-endspeed="600"
-                            data-endeasing="Linear.easeNone">
-                            <strong>Turmas no Plano Piloto, Águas Claras e Samambaia</strong>
-                        </div>
-                        <div class="caption big-light color-white bg-color-default customin customout"
-                            data-x="center"
-                            data-y="360"
-                            data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                            data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                            data-start="1800"
-                            data-speed="600"
-                            data-easing="Linear.easeNone"
-                            data-endspeed="600"
-                            data-endeasing="Linear.easeNone">
-                            Venha para o Clube de Xadrez da ESTAVOS!
-                        </div>
-                        <div class="caption customin customout start"
-                             data-x="center"
-                             data-y="450"
-                             data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-                             data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                             data-speed="1000"
-                             data-start="2000"
-                             data-easing="Back.easeInOut"
-                             data-endspeed="300">
-                            <a class="btn btn-primary btn-lg margin-top20" href="/clube-de-xadrez/">
-                                QUERO SABER MAIS! <i class="fa fa-share fa-margin-left"></i>
-                            </a>
-                        </div>
-                    </li>
-                    <!--<li data-transition="slotslide-vertical" data-slotamount="5" data-masterspeed="700" >
-                        <img src="{% static 'img/theme/revolution/dummy.png' %}"
-                             alt="slider3-bg"
-                             data-lazyload="{% static 'img/slider/home-slider-2.jpg' %}"
-                             data-bgposition="center right"
-                             data-kenburns="on"
-                             data-duration="9000"
-                             data-ease="Linear.easeNone"
-                             data-bgfit="116"
-                             data-bgfitend="100"
-                             data-bgpositionend="center left">
-                        <div class="caption very-large-strong color-white randomrotate"
-                             data-x="center"
-                             data-y="230"
-                             data-speed="900"
-                             data-start="800"
-                             data-easing="Power4.easeOut"
-                             data-endspeed="600"
-                             data-endeasing="Power0.easeIn">
-                            CLUBE DE XADREZ
-                        </div>
-                        <div class="caption medium-light text-center bg-color-default color-white randomrotate"
-                             data-x="center"
-                             data-y="310"
-                             data-speed="900"
-                             data-start="1000"
-                             data-easing="Power4.easeOut"
-                             data-endspeed="600"
-                             data-endeasing="Power0.easeIn">
-                            Para atletas de todos os níveis que desejam praticar<br/>
-                            e evoluir com um de nossos experientes instrutores!
-                        </div>
-                        <div class="caption customin customout start"
-                             data-x="center"
-                             data-y="400"
-                             data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-                             data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                             data-speed="1000"
-                             data-start="2000"
-                             data-easing="Back.easeInOut"
-                             data-endspeed="300">
-                            <a class="btn btn-primary btn-lg margin-top20" href="/clube-de-xadrez/">
-                                QUERO SABER MAIS! <i class="fa fa-share fa-margin-left"></i>
-                            </a>
-                        </div>
-                        <div class="caption very-large-strong color-white fade"
-                             data-x="center"
-                             data-y="100"
-                             data-speed="900"
-                             data-start="1200"
-                             data-easing="Power4.easeOut"
-                             data-endspeed="600"
-                             data-endeasing="Power0.easeIn">
-                            <img src="{% static 'img/slider/knight-chess-icon.png' %}" width="130" height="130" alt="ESTAVOS">
-                        </div>
-                    </li>-->
-                    <li data-transition="parallaxtotop" data-slotamount="5" data-masterspeed="700">
-                        <img src="{% static 'img/theme/revolution/dummy.png' %}"
-                             alt="slider2-bg"
-                             data-lazyload="{% static 'img/slider/home-slider-3.jpg' %}"
-                             data-bgposition="center center"
-                             data-kenburns="on"
-                             data-duration="8000"
-                             data-ease="Linear.easeNone"
-                             data-bgfit="110"
-                             data-bgfitend="100"
-                             data-bgpositionend="center center">
-                        <div class="caption very-large-light color-white customin customout start"
-                            data-x="center"
-                            data-y="center"
-                            data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-                            data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                            data-speed="1000"
-                            data-start="800"
-                            data-easing="Back.easeInOut"
-                            data-endspeed="300">
-                            <strong>Especialistas no Esporte dos Reis</strong>
-                        </div>
-                        <div class="caption medium-strong color-white skewfromtop"
-                            data-x="center"
-                            data-y="390"
-                            data-speed="400"
-                            data-start="3800"
-                            data-easing="Cube.easeOut"
-                            data-endspeed="300"
-                            data-endeasing="Power1.easeIn">
-                            Nós amamos Xadrez e você também vai amar!
-                        </div>
-                        <div class="caption medium-strong color-white text-center bg-color-default skewfromleft"
-                            data-x="200"
-                            data-y="150"
-                            data-speed="400"
-                            data-start="1200"
-                            data-easing="Cube.easeOut"
-                            data-endspeed="300"
-                            data-endeasing="Power1.easeIn">
-                            Escolas
-                        </div>
-                        <div class="caption medium-strong color-white bg-color-purple lft"
-                            data-x="center"
-                            data-y="100"
-                            data-speed="400"
-                            data-start="1600"
-                            data-easing="Cube.easeOut"
-                            data-endspeed="300"
-                            data-endeasing="Power1.easeIn">
-                            Condomínios
-                        </div>
-                        <div class="caption medium-strong color-white bg-color-orange skewfromright"
-                            data-x="right"
-                            data-hoffset="-204"
-                            data-y="150"
-                            data-speed="400"
-                            data-start="2000"
-                            data-easing="Cube.easeOut"
-                            data-endspeed="300"
-                            data-endeasing="Power1.easeIn">
-                            Aulas particulares
-                        </div>
-                        <div class="caption medium-strong color-white bg-color-info skewfromright"
-                            data-x="right"
-                            data-hoffset="-204"
-                            data-y="bottom"
-                            data-voffset="-150"
-                            data-speed="400"
-                            data-start="2400"
-                            data-easing="Cube.easeOut"
-                            data-endspeed="300"
-                            data-endeasing="Power1.easeIn">
-                            Torneios
-                        </div>
-                        <div class="caption medium-strong color-white bg-color-success lfb"
-                            data-x="center"
-                            data-y="bottom"
-                            data-voffset="-75"
-                            data-speed="400"
-                            data-start="2800"
-                            data-easing="Cube.easeOut"
-                            data-endspeed="300"
-                            data-endeasing="Power1.easeIn">
-                            Arbitragem
-                        </div>
-                        <div class="caption medium-strong color-white bg-color-danger skewfromleft"
-                            data-x="200"
-                            data-y="bottom"
-                            data-voffset="-150"
-                            data-speed="400"
-                            data-start="3200"
-                            data-easing="Cube.easeOut"
-                            data-endspeed="300"
-                            data-endeasing="Power1.easeIn">
-                            Consultoria
-                        </div>
-                    </li>
-                </ul>
-                <div class="tp-bannertimer tp-bottom"></div>
+<div class="banner carousel slide" id="recommended-item-carousel" data-ride="carousel">
+  <div class="slides carousel-inner">
+    <div class="item active">
+      <img src="{% static 'img/home/slider/default-slider.jpg' %}" alt="" />
+      <div class="banner_caption">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="caption_inner animated fadeInUp">
+                <h1>Especialistas no Esporte dos Reis</h1>
+                <p>Para melhor aproveitamento do esporte, conte com especialistas!</p>
+                <p>Mente saudável, vida saudável!</p>
+                <a href="/contato">Fale conosco</a>
+              </div><!--end caption_inner-->
             </div>
+          </div><!--end row-->
+        </div><!--end container-->
+      </div><!--end banner_caption-->
     </div>
+  </div>
+  <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+    <img src="{% static 'img/home/slider/prev.png' %}"></a>
+  <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+    <img src="{% static 'img/home/slider/next.png' %}"/></a>
+</div><!--end banner-->
 
-</div>
-<!-- /Slider Container -->
+<div class="aboutArea">
+  <div class="container">
+      <div class="row clearfix">
+      <div class="col-xs-12">
+          <div class="aboutTitle">
+          <h2>Nossos principais serviços</h2>
+          </div><!-- aboutTitle -->
+      </div><!-- col-sm-3 col-xs-12 -->
+      </div><!-- row clearfix -->
 
-<!-- Main Container -->
-<div class="main-wrapper">
+      <div class="about_inner clearfix">
+      <div class="row">
+          <div class="col-xs-6 col-sm-3">
+          <div class="aboutImage">
+              <a href="single-course-right-sidebar.html">
+              <img src="{% static 'img/home/learn/learn_1.jpg' %}" alt="" class="img-responsive" />
+              <div class="overlay">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur ante volutpat sem aliquam lobortis.</p>
+              </div>
+              <span class="captionLink">Clube de Xadrez<span></span></span>
+              </a>
+          </div><!-- aboutImage -->
+          </div>
 
-    <div class="fullsize fullsize-background"> <!-- Full Size Container -->
-		<div class=" container container-inner">
+          <div class="col-xs-6 col-sm-3">
+          <div class="aboutImage">
+              <a href="single-course-right-sidebar.html">
+              <img src="{% static 'img/home/learn/learn_2.jpg' %}" alt="" class="img-responsive" />
+              <div class="overlay">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur ante volutpat sem aliquam lobortis.</p>
+              </div>
+              <span class="captionLink">Torneios de Xadrez<span></span></span>
+              </a>
+          </div><!-- aboutImage -->
+          </div>
 
-		<div class="row">
-        	<div class="col-md-6">
-				<div class="service-block sb-default">
-                	<div class="service-block-icon text-center animation bounceIn animation-active">
-						<div class="icon-wrapper icon-full-round fa-2x bg-color-default">
-							<i class="fa fa-flag-checkered color-white"></i>
-						</div>
-                    </div>
-                    <div class="service-block-title text-center">
-            			<p>Clube de Xadrez</p>
-                    </div>
-                    <div class="service-block-content text-center">
-                		<p>Se você já sabe o básico de Xadrez e quer <strong>evoluir</strong>, aqui é o lugar!</p>
-                        <p>Venha praticar e aprender com os melhores!</p>
-                        <p>Encontros livres para prática e de estudo com campeões!</p>
-                    	<a class="btn btn-primary" href="/clube-de-xadrez/">Conheça nossas unidades <i class="fa fa-angle-right"></i></a>
-                    </div>
+          <div class="col-xs-6 col-sm-3">
+          <div class="aboutImage">
+              <a href="single-course-right-sidebar.html">
+              <img src="{% static 'img/home/learn/learn_3.jpg' %}" alt="" class="img-responsive" />
+              <div class="overlay">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur ante volutpat sem aliquam lobortis.</p>
+              </div>
+              <span class="captionLink">Xadrez nas Escolas<span></span></span>
+              </a>
+          </div><!-- aboutImage -->
+          </div>
+
+          <div class="col-xs-6 col-sm-3">
+          <div class="aboutImage">
+              <a href="single-course-right-sidebar.html">
+              <img src="{% static 'img/home/learn/learn_4.jpg' %}" alt="" class="img-responsive" />
+              <div class="overlay">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur ante volutpat sem aliquam lobortis.</p>
+              </div>
+              <span class="captionLink">Xadrez Recreativo<span></span></span>
+              </a>
+          </div><!-- aboutImage -->
+          </div>
+      </div><!-- row -->
+      </div><!-- about_inner -->
+
+  </div><!-- container -->
+</div><!-- aboutArea -->
+
+  <div class="mainContent clearfix">
+    <div class="container">
+      <div class="row clearfix">
+
+        <div class="col-sm-8 col-xs-12">
+          <div class="videoNine clearfix">
+
+            <div class="videoArea clearfix">
+              <h3>Bem vindo à ESTAVOS</h3>
+              <div class="row">
+                <div class="col-lg-5 col-md-4 col-xs-12">
+                  <img src="{% static 'img/home/bem-vindo-a-estavos.jpg' %}">
                 </div>
-            </div>
-         	<div class="col-md-6">
-				<div class="service-block sb-purple">
-                	<div class="service-block-icon text-center animation bounceIn animation-active">
-						<div class="icon-wrapper icon-full-round fa-2x bg-color-purple">
-							<i class="fa fa-puzzle-piece color-white"></i>
-						</div>
-                    </div>
-                    <div class="service-block-title text-center">
-            			<p>Xadrez na Escola</p>
-                    </div>
-                    <div class="service-block-content text-center">
-                		<p><strong>por mais que você tente não consegue fazer o Xadrez "pegar" na sua escola?</strong></p>
-                        <p>Nós fazemos por você! A ESTAVOS possui um método exclusivo para implantar a cultura do Xadrez na sua escola!</p>
-                    	<a class="btn btn-default" href="/contato">Entre em contato <i class="fa fa-angle-right"></i></a>
-                    </div>
+                <div class="col-lg-7 col-md-8 col-xs-12">
+                  <p>A palavra <strong>ESTAVOS</strong> é um acrônimo entre as palavras, <strong>Es</strong>tratégia, <strong>Tá</strong>tica e objeti<strong>vos</strong>. Esses três conceitos são estudados por jogadores de Xadrez de diversos níveis. Conceitos estes que se pararmos para pensar, são essenciais no cotidiano. E onde isso se aplica? Na vida!</p>
+                  <p>Afinal, Xadrez é como a vida e a vida imita o Xadrez. Diversas são as relações que podemos fazer entre uma partida de Xadrez e a vida real. No método de ensino da ESTAVOS, a todo momento trabalhamos essas relações com os alunos e ensinamos a aplicar os conceitos enxadrísticos da melhor maneira em sua própria vida...</p>
+                  <a href="/blog/o-que-significa-estavos" class="btn btn-block learnBtn">Leia mais</a>
                 </div>
+              </div>
             </div>
-		</div>
 
+            <div class="related_post_sec single_post">
+              <h3>Os posts mais quentes do blog</h3>
+              <ul>
+                <li>
+                  <span class="rel_thumb">
+                    <a href="single-post-right-sidebar.html"><img src="{% static 'img/news/related_thumb_01.png' %}" alt=""></a>
+                  </span><!--end rel_thumb-->
+                  <div class="rel_right">
+                    <h4><a href="single-post-right-sidebar.html">Lorem Ipsum dolar simt Amet simply dummy Text Lorem Ipsum dolar</a></h4>
+                    <div class="meta">
+                      <span class="author">Posted in: <a href="#">Update</a></span>
+                      <span class="date">on: <a href="#">January 24, 2015</a></span>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                  </div><!--end rel right-->
+                </li>
+                <li>
+                  <span class="rel_thumb">
+                    <a href="single-post-right-sidebar.html"><img src="{% static 'img/news/related_thumb_02.jpg' %}" alt=""></a>
+                  </span><!--end rel_thumb-->
+                  <div class="rel_right">
+                    <h4><a href="single-post-right-sidebar.html">Lorem Ipsum dolar simt Amet simply dummy Text Lorem Ipsum dolar</a></h4>
+                    <div class="meta">
+                      <span class="author">Posted in: <a href="#">Exam</a></span>
+                      <span class="date">on: <a href="#">January 24, 2015</a></span>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                  </div><!--end rel right-->
+                </li>
+              </ul>
+            </div><!--related_post_sec-->
+
+          </div><!--videoNine-->
+        </div><!-- col-sm-8 col-xs-12 -->
+
+        <div class="col-sm-4 col-xs-12">
+          <div class="formArea clearfix">
+            <div class="formTitle">
+              <h3>Encontre a ESTAVOS mais perto de você!</h3>
+              <p>Estamos localizados em Brasília e outras cidades satélites em parceria com instituições de renome facilitando o acesso ao Esporte dos Reis para você!</p>
+            </div><!-- formTitle -->
+            <form action="#" method="post">
+              <div class="selectBox clearfix">
+                <select name="guiest_id1" id="guiest_id1">
+                  <option value="0">Plano Piloto</option>
+                  <option value="1">Sudoeste</option>
+                  <option value="2">Samambaia</option>
+                </select>
+              </div><!-- selectBox -->
+              <button type="submit" class="btn btn-default btn-block commonBtn">Buscar</button>
+            </form>
+          </div><!-- formArea -->
+          <div class="list_block related_post_sec">
+            <div class="upcoming_events">
+              <h3>Calendário ESTAVOS</h3>
+              <ul>
+                <li class="related_post_sec single_post">
+                  <span class="date-wrapper">
+                    <span class="date"><span>24</span>January</span>
+                  </span>
+                  <div class="rel_right">
+                    <h4><a href="single-events.html">Offered in small class sizes with great emphasis...</a></h4>
+                    <div class="meta">
+                      <span class="place"><i class="fa fa-map-marker"></i>Main Campus</span>
+                      <span class="event-time"><i class="fa fa-clock-o"></i>11.00 pm</span>
+                    </div>
+                  </div>
+                </li>
+                <li class="related_post_sec single_post">
+                  <span class="date-wrapper">
+                    <span class="date"><span>24</span>January</span>
+                  </span>
+                  <div class="rel_right">
+                    <h4><a href="single-events.html">Offered in small class sizes with great emphasis...</a></h4>
+                    <div class="meta">
+                      <span class="place"><i class="fa fa-map-marker"></i>Main Campus</span>
+                      <span class="event-time"><i class="fa fa-clock-o"></i>11.00 pm</span>
+                    </div>
+                  </div>
+                </li>
+                <li class="related_post_sec single_post">
+                  <span class="date-wrapper">
+                    <span class="date"><span>24</span>January</span>
+                  </span>
+                  <div class="rel_right">
+                    <h4><a href="single-events.html">Offered in small class sizes with great emphasis...</a></h4>
+                    <div class="meta">
+                      <span class="place"><i class="fa fa-map-marker"></i>Main Campus</span>
+                      <span class="event-time"><i class="fa fa-clock-o"></i>11.00 pm</span>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <a href="events-3col.html" class="btn btn-default btn-block commonBtn">Mais eventos</a>
+            </div>
+          </div><!-- end list_block -->
+        </div><!-- col-sm-4 col-xs-12 -->
+
+      </div><!-- row clearfix -->
+    </div><!-- container -->
+  </div><!-- mainContent -->
+
+  <!-- Paralax -->
+  <div class="padding clearfix paralax" style="background-image: url({% static 'img/home/paralax/paralax05.jpg' %});">
+    <div class="container">
+      <div class="paralax-text text-center paralaxInner">
+        <h2>ESTAVOS na rede!</h2>
+        <p>Nos acompanhe nas redes sociais e saiba onde tem Xadrez perto de você!</p>
+        <ul class="list-inline">
+          <li><a target="_blank" href="https://www.facebook.com/EstavosOficial"><i class="fa fa-facebook"></i></a></li>
+            <li><a target="_blank" href="https://twitter.com/AcademiaEstavos"><i class="fa fa-twitter"></i></a></li>
+            <li><a target="_blank" href="https://www.instagram.com/academiaestavos/"><i class="fa fa-instagram"></i></a></li>
+            <li><a target="_blank" href="http://estavos.com/blog/feeds/rss/"><i class="fa fa-rss"></i></a></li>
+        </ul>
+      </div><!-- row -->
+    </div>
+  </div><!-- padding clearfix paralax -->
+
+  <div class="clearfix">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="carousal_title">
+            <h1 style="margin-top: 1em;">Conheça alguns de nossos clientes e parceiros</h1>
+            <p>O Xadrez é o esporte do futuro! Nunca antes na história a modalidade tem ganhado tanto destaque e adeptos à prática do esporte da mente.</p>
+            <p>Saiba quem são os responsáveis por contribuir com o desenvolvimento e crescimento intelectual da população:</p>
+          </div>
         </div>
-    </div>
+      </div>
+    </div><!--end container-->
+  </div><!--end content_bottom-->
 
-	<div class="container container-inner">
-		<div class="row">
-
-			<div class="col-md-8 col-md-offset-2">
-                <div class="hr-icon"><hr><i class="fa fa-users icon-divider color-default animation fadeInUp"></i></div>
-                <h2 class="title-small text-center title-color animation fadeInDownBig">Fique atualizado!</h2>
-                <p class="text-center lead">Veja os últimos posts publicados em nosso blog</p>
-			</div>
-
-            <div class="row">
-                <div class="portfolio-container portfolio-active mansonry">
-                    <div id="portfolio-container-inner" class="variable-sizes clearfix portfolio-3-cols">
-                        <div class="element isotope-item">
-                            <div class="portfolio-inner">
-                                {% for blog_post in blog_post_list %}
-                                <div class="col-md-4">
-                                    <div class="blog-post post-format-standard post-grid">
-                                        <div class="post-media">
-                                            <div class="image-overlay">
-                                                <div class="overlay-fade">
-                                                    <a href="{{ blog_post.get_absolute_url }}" ><i class="icon-overlay fa fa-link"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="post-info">
-                                            <h3 class="post-title"><a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a></h3>
-                                            <ul class="list-inline post-meta-info">
-                                                <li class="meta-date">{{ blog_post.publish_date|date:"d/m/Y" }}</li>
-                                                <li class="meta-comments">{% with comments_count=blog_post.comments_count %}{{ comments_count }} comentário{{ comments_count|pluralize }}{% endwith %}</li>
-                                            </ul>
-                                        </div>
-                                        <hr class="hr-circle-center">
-                                        <div class="post-content">
-                                            {{ blog_post.description|safe }}
-                                        </div>
-                                        <hr class="hr-circle-center">
-                                        <a class="link-icon read-more" href="{{ blog_post.get_absolute_url }}">Leia mais<i class="fa fa-arrow-circle-right"></i></a>
-                                    </div>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
+  <div class="brandSection clearfix">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="owl-carousel partnersLogoSlider">
+              <div class="slide">
+                <div class="partnersLogo clearfix">
+                  <a href="#"><img src="{% static 'img/home/brand1.png' %}" /></a>
                 </div>
+              </div>
+              <div class="slide">
+                <div class="partnersLogo clearfix">
+                  <a href="#"><img src="{% static 'img/home/brand2.png' %}" /></a>
+                </div>
+              </div>
+              <div class="slide">
+                <div class="partnersLogo clearfix">
+                  <a href="#"><img src="{% static 'img/home/brand3.png' %}" /></a>
+                </div>
+              </div>
+              <div class="slide">
+                <div class="partnersLogo clearfix">
+                  <a href="#"><img src="{% static 'img/home/brand4.png' %}" /></a>
+                </div>
+              </div>
+              <div class="slide">
+                <div class="partnersLogo clearfix">
+                  <a href="#"><img src="{% static 'img/home/brand5.png' %}" /></a>
+                </div>
+              </div>
+              <div class="slide">
+                <div class="partnersLogo clearfix">
+                  <a href="#"><img src="{% static 'img/home/brand1.png' %}" /></a>
+                </div>
+              </div>
+              <div class="slide">
+                <div class="partnersLogo clearfix">
+                  <a href="#"><img src="{% static 'img/home/brand2.png' %}" /></a>
+                </div>
+              </div>
+              <div class="slide">
+                <div class="partnersLogo clearfix">
+                  <a href="#"><img src="{% static 'img/home/brand3.png' %}" /></a>
+                </div>
+              </div>
+              <div class="slide">
+                <div class="partnersLogo clearfix">
+                  <a href="#"><img src="{% static 'img/home/brand4.png' %}" /></a>
+                </div>
+              </div>
+              <div class="slide">
+                <div class="partnersLogo clearfix">
+                  <a href="#"><img src="{% static 'img/home/brand5.png' %}" /></a>
+                </div>
+              </div>
             </div>
-
-
-		</div>
-    </div>
-
-    <div class="container container-inner"> <!-- Container -->
-
-		<div class="row">
-			<div class="col-md-12">
-				<h2 class="title-color heading-single text-center"><span>Nossos parceiros <br><small>Gente como a gente, que ama e luta pelo Xadrez!</small></span></h2>
-
-			    <div class="col-md-offset-1 col-md-10">
-                    <div id="gallery-container" class="simple-gallery">
-                        <a href="http://www.sistemafibra.org.br/sesi/" target="_blank" class="am-wrapper" style="width: 154px; height: 118px; margin: 0px;"><img src="{% static 'img/partners/logo-sesi.jpg' %}" alt="SESI - Serviço Social da Indústria" style="display: inline; width: 154px; height: 118px; left: 0px; top: 0px;" class="montage"></a>
-                        <a href="http://ascadexadrez.wix.com/ascade" target="_blank" class="am-wrapper" style="width: 154px; height: 118px; margin: 0px;"><img src="{% static 'img/partners/logo-ascade.jpg' %}" alt="" style="display: inline; width: 154px; height: 118px; left: 0px; top: 0px;" class="montage"></a>
-                        <a href="http://www.cci401.com.br/" target="_blank" class="am-wrapper" style="width: 154px; height: 118px; margin: 0px;"><img src="{% static 'img/partners/logo-colegio-cci.jpg' %}" alt="" style="display: inline; width: 154px; height: 118px; left: 0px; top: 0px;" class="montage"></a>
-                        <a href="http://www.cecan.com.br/" target="_blank" class="am-wrapper" style="width: 154px; height: 118px; margin: 0px;"><img src="{% static 'img/partners/logo-cecan.png' %}" alt="" style="display: inline; width: 154px; height: 118px; left: 0px; top: 0px;" class="montage"></a>
-                        <a href="http://escolacasadebrinquedos.com.br/" target="_blank" class="am-wrapper" style="width: 154px; height: 118px; margin: 0px;"><img src="{% static 'img/partners/logo-casa-de-brinquedos.jpg' %}" alt="" style="display: inline; width: 154px; height: 118px; left: 0px; top: 0px;" class="montage"></a>
-                        <a href="http://www.ligabrasileiradexadrez.com.br/" target="_blank" class="am-wrapper" style="width: 154px; height: 118px; margin: 0px;"><img src="{% static 'img/partners/logo-lbx.jpg' %}" alt="" style="display: inline; width: 154px; height: 118px; left: 0px; top: 0px;" class="montage"></a>
-                        <a href="http://www.fbx.org.br/" target="_blank" class="am-wrapper" style="width: 154px; height: 118px; margin: 0px;"><img src="{% static 'img/partners/logo-fbx.jpg' %}" alt="" style="display: inline; width: 154px; height: 118px; left: 0px; top: 0px;" class="montage"></a>
-                        <a href="http://venancioshopping.com.br/" target="_blank" class="am-wrapper" style="width: 154px; height: 118px; margin: 0px;"><img src="{% static 'img/partners/logo-venancio-shopping.jpg' %}" alt="" style="display: inline; width: 154px; height: 118px; left: 0px; top: 0px;" class="montage"></a>
-                        <a href="http://gilbertosalomao.com.br/" target="_blank" class="am-wrapper" style="width: 154px; height: 118px; margin: 0px;"><img src="{% static 'img/partners/logo-gilberto-salomao.jpg' %}" alt="" style="display: inline; width: 154px; height: 118px; left: 0px; top: 0px;" class="montage"></a>
-                    </div>
-                </div>
-
-			</div>
+          </div>
         </div>
-
-    </div>
-
-</div>
-<!-- /Main Container -->
-
+      </div>
+    </div><!-- Brand-section -->
 {% endblock %}
