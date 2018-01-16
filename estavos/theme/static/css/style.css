@@ -685,7 +685,7 @@ li.language.dropdown > a:hover, li.language.dropdown > a:focus {
 }
 
 .nav.navbar-nav.navbar-right {
-  padding: 10px 0;
+  padding: 27px 0;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -1393,6 +1393,10 @@ li.language.dropdown > a:hover, li.language.dropdown > a:focus {
 
 .header-v3 .navbar-brand.logo img {
   margin: 0;
+}
+
+.navbar-brand {
+  height: 92px;
 }
 
 .header-v3 .topbar-right {
