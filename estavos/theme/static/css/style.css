@@ -93,7 +93,7 @@ a {
 }
 
 a, a:hover {
-  color: #0060b1;
+  color: #006142;
   text-decoration: none;
 }
 
@@ -316,8 +316,8 @@ body.static .bb-fixed-header {
 .topbar {
   height: auto;
   padding: 10px 0;
-  border-top: 1px solid #0060b1;
-  background-color: #0060b1;
+  border-top: 1px solid #006142;
+  background-color: #006142;
 }
 
 .topbar i {
@@ -551,7 +551,7 @@ li.language.dropdown ul.dropdown-menu li a:hover, li.language.dropdown ul.dropdo
 
 li.language.dropdown ul.dropdown-menu li.active a {
   background: transparent;
-  color: #0060b1;
+  color: #006142;
   transition: color 0.3s;
 }
 
@@ -739,12 +739,12 @@ li.language.dropdown > a:hover, li.language.dropdown > a:focus {
 }
 
 .header .navbar-default .navbar-nav li a:hover {
-  color: #0060b1;
+  color: #006142;
 }
 
 .header .navbar-default .navbar-nav .active a, .header .navbar-default .navbar-nav .active a:hover, .header .navbar-default .navbar-nav .active a:focus {
   background: none;
-  color: #0060b1;
+  color: #006142;
 }
 
 @media (max-width: 767px) {
@@ -753,7 +753,7 @@ li.language.dropdown > a:hover, li.language.dropdown > a:focus {
     color: #545454;
   }
   .header .navbar-default .navbar-nav li.apply_now > a:hover {
-    color: #0060b1;
+    color: #006142;
   }
 }
 
@@ -871,7 +871,7 @@ li.language.dropdown > a:hover, li.language.dropdown > a:focus {
 .header .navbar-nav li.open .dropdown-menu li a:hover, .header .navbar-nav li.open .dropdown-menu li a:focus,
 .header .navbar-nav li.dropdown .dropdown-menu li a:hover,
 .header .navbar-nav li.dropdown .dropdown-menu li a:focus {
-  color: #0060b1;
+  color: #006142;
   background: none;
 }
 
@@ -883,7 +883,7 @@ li.language.dropdown > a:hover, li.language.dropdown > a:focus {
   .header .navbar-nav li.open .dropdown-menu li a:hover, .header .navbar-nav li.open .dropdown-menu li a:focus,
   .header .navbar-nav li.dropdown .dropdown-menu li a:hover,
   .header .navbar-nav li.dropdown .dropdown-menu li a:focus {
-    color: #0060b1;
+    color: #006142;
     background: none;
   }
 }
@@ -917,7 +917,7 @@ li.language.dropdown > a:hover, li.language.dropdown > a:focus {
 .header .navbar-nav li.open .dropdown-menu li.active > a,
 .header .navbar-nav li.dropdown .dropdown-menu li.active > a {
   background: none;
-  color: #0060b1;
+  color: #006142;
 }
 
 .header .navbar-nav li.open .dropdown-menu li:last-child a,
@@ -1337,7 +1337,7 @@ li.language.dropdown > a:hover, li.language.dropdown > a:focus {
 }
 
 .version3 .header .navbar, .header-v3 .header .navbar {
-  background-color: #0060b1;
+  background-color: #006142;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
   border-radius: 0;
   padding: 0;
@@ -2236,7 +2236,7 @@ li.language.dropdown > a:hover, li.language.dropdown > a:focus {
   text-transform: uppercase;
   line-height: 44px;
   text-indent: 13px;
-  background-color: #0060b1;
+  background-color: #006142;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -2395,8 +2395,8 @@ li.language.dropdown > a:hover, li.language.dropdown > a:focus {
 .btn.learnBtn {
   padding: 0;
   height: 42px;
-  border: 1px solid #0060b1;
-  background: #0060b1;
+  border: 1px solid #006142;
+  background: #006142;
   border-radius: 0;
   line-height: 42px;
   color: #ffffff;
@@ -3465,13 +3465,13 @@ li.language.dropdown > a:hover, li.language.dropdown > a:focus {
 }
 
 .feature-section .commonBtn.secondaryBtn {
-  background-color: #0060b1;
-  border-color: #0060b1;
+  background-color: #006142;
+  border-color: #006142;
 }
 
 .feature-section .commonBtn.secondaryBtn:hover, .feature-section .commonBtn.secondaryBtn:focus {
-  background-color: #0060b1;
-  border-color: #0060b1;
+  background-color: #006142;
+  border-color: #006142;
 }
 
 /*=== 5. SUCCESS SECTION ===*/
@@ -4694,7 +4694,7 @@ li.language.dropdown > a:hover, li.language.dropdown > a:focus {
 }
 
 .flex-control-paging li a.flex-active {
-  background: #0060b1;
+  background: #006142;
 }
 
 #about_banner .flex-direction-nav a {
@@ -5234,7 +5234,7 @@ li.language.dropdown > a:hover, li.language.dropdown > a:focus {
   text-transform: uppercase;
   text-decoration: none;
   line-height: 44px;
-  border: 1px solid #0060b1;
+  border: 1px solid #006142;
   text-align: center;
   color: #000;
   display: block;
@@ -5875,7 +5875,7 @@ p.reduceMargin {
   text-transform: uppercase;
   padding: 5px 10px 11px 5px;
   border-bottom: none;
-  background: #0060b1;
+  background: #006142;
   vertical-align: middle;
   cursor: pointer;
   position: relative;
@@ -5934,7 +5934,7 @@ p.reduceMargin {
 .courses_right_inner td ul li.active a {
   font-weight: 700;
   text-decoration: underline;
-  color: #0060b1;
+  color: #006142;
   font-size: 10px;
 }
 
@@ -5958,7 +5958,7 @@ p.reduceMargin {
 }
 
 .courses_right_inner td a:hover {
-  color: #0060b1;
+  color: #006142;
 }
 
 .courses_right_inner td ul li.active a:hover {
@@ -6019,7 +6019,7 @@ p.reduceMargin {
   text-transform: uppercase;
   color: #000;
   font-weight: normal;
-  border: 1px solid #0060b1;
+  border: 1px solid #006142;
 }
 
 .pagination > .active > a,
@@ -6028,16 +6028,16 @@ p.reduceMargin {
 .pagination > .active > span:hover,
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
-  border-color: #0060b1;
-  background: #0060b1;
+  border-color: #006142;
+  background: #006142;
 }
 
 .pagination > li > a:hover,
 .pagination > li > span:hover,
 .pagination > li > a:focus,
 .pagination > li > span:focus {
-  border-color: #0060b1;
-  background: #0060b1;
+  border-color: #006142;
+  background: #006142;
   color: #fff;
 }
 
@@ -6181,11 +6181,11 @@ p.reduceMargin {
 }
 
 .courses_left_inner ul li a:hover, .courses_left_inner ul li a:focus {
-  color: #0060b1;
+  color: #006142;
 }
 
 .courses_left_inner ul li.active a {
-  color: #0060b1;
+  color: #006142;
 }
 
 .courses_left_inner ul li:last-child {
@@ -6288,7 +6288,7 @@ p.reduceMargin {
 }
 
 #single_banner .flex-control-paging li a.flex-active {
-  background: #0060b1;
+  background: #006142;
 }
 
 #single_banner p {
@@ -6313,7 +6313,7 @@ p.reduceMargin {
   margin: 0;
   width: 35px;
   height: 30px;
-  border: 1px solid #0060b1;
+  border: 1px solid #006142;
 }
 
 .flex-direction-nav a.flex-next {
@@ -6348,7 +6348,7 @@ p.reduceMargin {
 }
 
 .item_inner.question a {
-  color: #0060b1;
+  color: #006142;
   text-decoration: underline;
 }
 
@@ -6411,9 +6411,9 @@ p.reduceMargin {
 }
 
 .single_content .tab_menu > ul li a:hover {
-  background: #0060b1;
+  background: #006142;
   color: #fff;
-  border-color: #0060b1;
+  border-color: #006142;
 }
 
 .single_content .tab_menu > ul li:first-child a {
@@ -6425,16 +6425,16 @@ p.reduceMargin {
 }
 
 .single_content .tab_menu > ul li.active a {
-  background: #0060b1;
+  background: #006142;
   color: #fff;
-  border-color: #0060b1;
+  border-color: #006142;
 }
 
 .tab_menu > ul li.active a::after, .tab_menu > ul li a:hover::after {
   content: " ";
   border-right: 10px solid transparent;
   border-left: 10px solid transparent;
-  border-top: 10px solid #0060b1;
+  border-top: 10px solid #006142;
   position: absolute;
   left: 50%;
   margin-left: -10px;
@@ -6532,7 +6532,7 @@ p.reduceMargin {
   font-family: 'Open Sans', sans-serif;
   font-weight: 700;
   font-size: 14px;
-  color: #0060b1;
+  color: #006142;
   text-decoration: none;
 }
 
@@ -6816,7 +6816,7 @@ p.reduceMargin {
 .fc-center h2 {
   font-weight: 400;
   font-size: 35px;
-  color: #0060b1;
+  color: #006142;
   margin: 0;
   line-height: 34px;
 }
@@ -6900,7 +6900,7 @@ p.reduceMargin {
 
 .fc-event-container a.more {
   background: none;
-  color: #0060b1;
+  color: #006142;
 }
 
 .fc-event-container {
@@ -7182,7 +7182,7 @@ ul.list h5 {
 }
 
 .carousel-indicators li.active {
-  background: #0060b1;
+  background: #006142;
   width: 10px;
   height: 10px;
   border: none;
@@ -7644,7 +7644,7 @@ ul.contact_info li {
 }
 
 ul.contact_info li .fa {
-  color: #0060b1;
+  color: #006142;
   display: inline-block;
   font-size: 16px;
   margin-right: 5px;
@@ -7657,7 +7657,7 @@ ul.contact_info li a {
 }
 
 ul.contact_info li a:hover {
-  color: #0060b1;
+  color: #006142;
 }
 
 .list_block.custom {
@@ -7740,7 +7740,7 @@ ul.contact_info li a:hover {
   padding: 20px 0;
   text-align: center;
   width: 100%;
-  background: #0060b1;
+  background: #006142;
   margin-bottom: 25px;
 }
 
@@ -7795,7 +7795,7 @@ ul.contact_info li a:hover {
 .error-content a {
   font-weight: 400;
   font-size: 20px;
-  color: #0060b1;
+  color: #006142;
   text-decoration: none;
 }
 
@@ -8018,14 +8018,14 @@ ul.contact_info li a:hover {
   padding: 0;
   line-height: 47px;
   color: #fff;
-  background-color: #0060b1;
-  border-color: #0060b1;
+  background-color: #006142;
+  border-color: #006142;
   width: 165px;
 }
 
 .cartListInner .updateArea .btn:hover {
-  background-color: #0060b1;
-  border-color: #0060b1;
+  background-color: #006142;
+  border-color: #006142;
   color: #fff;
 }
 
