@@ -202,116 +202,74 @@
 
 </div> <!-- / Main Container -->
 
-<!-- Footer Container -->
-<div class="footer-wrapper">
+  <footer class="footer-v2 footer-v3">
+    <div class="menuFooter clearfix">
+      <div class="container">
+        <div class="row clearfix">
 
-	<!-- Footer Top Container -->
-    <div class="footer-top">
-
-	</div>
-	<!-- /Footer Top Container -->
-
-	<!-- Footer Middle Container -->
-    <div class="footer-middle">
-
-    <div class="container"> <!-- Container -->
-
-		<div class="row">
-
-        	<div class="col-md-3">
-            	<div class="footer-widget">
-            		<h3>Sobre nós</h3>
-                    <p class="lead">"<em>Conheça nossa <a href="http://estavos.com/quem-somos/" style="color: #4B9948;" title="missão da ESTAVOS">missão</a> e saiba um pouco mais sobre nós!</em>"</p>
-                	<p>ESTAVOS Academia de Jogos e Esportes Mentais LTDA. - ME</p>
-                    <p>CNPJ: 18.157.637/0001-51</p>
-       			</div>
+          <div class="col-sm-3 col-xs-6">
+            <div class="footer-about">
+              <a class="footer-logo" href="{% url 'home' %}">
+                <img src="{% static 'img/logo-footer.png' %}" alt="logo" class="img-responsive" />
+              </a>
+              <p>A ESTAVOS surgiu com o intuito de profissionalizar e democratizar o acesso ao Xadrez.</p>
+              <p>Veja nossa <strong>missão, visão e valores</strong> e conheça um pouco mais sobre nós!</p>
+              <a href="/quem-somos">Leia mais ></a>
             </div>
+          </div><!-- col-sm-3 col-xs-6 -->
 
-            <div class="col-md-3">
-            	<div class="footer-widget">
-            		<h3>Contato</h3>
-                	<p>Entre em contato agora mesmo conosco! Estamos à disposição para lhe atender.</p>
-					<ul class="fa-ul">
-  						<li><i class="fa-li fa fa-map-marker color-white"></i>SCES Trecho 2, Conjunto 10, Lote 18 - Asa Sul, Brasília - DF</li>
-                        <li><i class="fa-li fa fa-phone color-white"></i>(61) 9 9193-0933</li>
-                        <li><i class="fa-li fa fa-phone color-white"></i>(61) 9 8143-2175</li>
-  						<li><i class="fa-li fa fa-envelope color-white"></i>contato@estavos.com</li>
-					</ul>
-       			</div>
+          <div class="col-sm-3 col-xs-6">
+            <h5>Nossos principais serviços</h5>
+            <ul class="menuLink">
+              <li><a href="/clube-de-xadrez">Aulas de Xadrez para Crianças</a></li>
+              <li><a href="/">Xadrez nas Escolas</a></li>
+              <li><a href="/torneios">Torneios de Xadrez</a></li>
+              <li><a href="/">Xadrez Recreativo</a></li>
+              <li><a href="/">Venda de material</a></li>
+            </ul>
+          </div><!-- col-sm-3 col-xs-6 -->
+
+          <div class="col-sm-3 col-xs-6">
+            <h5>Navegação</h5>
+            <ul class="menuLink">
+                {% page_menu "pages/menus/footer.html" %}
+                <li><a href="/blog/category/aprenda-xadrez/">Aprenda Xadrez Online</a></li>
+            </ul>
+          </div>
+
+          <div class="col-sm-3 col-xs-6">
+            <h5>Entre em contato</h5>
+            <p>Entre em contato agora mesmo! Estamos à disposição para lhe atender.</p>
+            <div class="footer-contact">
+              <ul>
+              <li> <i class="fa fa-home" aria-hidden="true"></i>SCES Trecho 2, Conjunto 10, Lote 18 - Asa Sul, Brasília - DF</li>
+              <li><i class="fa fa-phone" aria-hidden="true"></i>(61) 9 9193-0933</li>
+              <li><i class="fa fa-phone" aria-hidden="true"></i>(61) 9 8143-2175</li>
+              <li><a href="mailto:contato@estavos.com"><i class="fa fa-envelope-o" aria-hidden="true"></i>contato@estavos.com</a></li>
+              </ul>
             </div>
+          </div>
 
-            <div class="col-md-3">
-            	<div class="footer-widget">
-            		<h3>ESTAVOS na Rede!</h3>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="fb-page"
-                                 data-href="https://facebook.com/EstavosOficial"
-                                 data-tabs=""
-                                 data-small-header="true"
-                                 data-adapt-container-width="true"
-                                 data-hide-cover="true"
-                                 data-show-facepile="true">
-                                <div class="fb-xfbml-parse-ignore">
-                                    <blockquote cite="https://facebook.com/EstavosOficial">
-                                        <a href="https://facebook.com/EstavosOficial">Academia Estavos</a>
-                                    </blockquote>
-                                </div>
-                            </div>
+        </div>
+      </div>
+    </div>
 
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top: 1em;">
-                        <div class="col-md-12">
-                            <ul class="footer-social list-inline">
-                                <li><a href="https://www.facebook.com/EstavosOficial" target="_blank"><div class="icon-wrapper icon-border-round fa-2x"><i class="fa fa-facebook"></i></div></a></li>
-                                <li><a href="https://twitter.com/AcademiaEstavos" target="_blank"><div class="icon-wrapper icon-border-round fa-2x"><i class="fa fa-twitter"></i></div></a></li>
-                                <li><a href="https://plus.google.com/+EstavosOficial" target="_blank"><div class="icon-wrapper icon-border-round fa-2x"><i class="fa fa-google-plus"></i></div></a></li>
-                                <li><a href="https://www.instagram.com/academiaestavos/" target="_blank"><div class="icon-wrapper icon-border-round fa-2x"><i class="fa fa-instagram"></i></div></a></li>
-                            </ul>
-                        </div>
-                    </div>
-            	</div>
+    <div class="footer clearfix">
+        <div class="container">
+          <div class="footer-bottom">
+            <div class="row clearfix">
+              <div class="col-sm-8 col-xs-12 copyRight">
+                <p>© 2013-2018 Copyright - ESTAVOS Academia de Jogos e Esportes Mentais LTDA. - ME - CNPJ: 18.157.637/0001-51</p>
+              </div>
+              <div class="col-sm-4 col-xs-12 privacy_policy">
+                <a href="/contato">Contato </a>
+                <a href="/quem-somos">Quem somos</a>
+              </div>
             </div>
-
-            <div class="col-md-3">
-            	<div class="footer-widget">
-            		<h3>Navegação</h3>
-                    <ul class="fa-ul footer-navigation">
-                        {% page_menu "pages/menus/footer.html" %}
-                    </ul>
-            	</div>
-            </div>
-
-		</div>
-
-	</div> <!-- /Container -->
-
-	</div>
-	<!-- /Footer Middle Container -->
-
-	<!-- Footer Bottom Container -->
-    <div class="footer-bottom">
-
-    <div class="container"> <!-- Container -->
-
-        <div class="row">
-  			<div class="col-md-6 col-md-push-6">
-                {% page_menu "pages/menus/footer-list.html" %}
-            </div>
-  			<div class="col-md-6 col-md-pull-6">
-				<div class="copyright">© 2013-2017 Academia ESTAVOS. All Rights Reserved.</div>
-			</div>
-		</div>
-     	<a id="footer-view"></a>
-
-	</div> <!-- /Container -->
-
-	</div>
-	<!-- /Footer Bottom Container -->
-
-</div>
-<!-- /Footer Container -->
+          </div>
+        </div>
+      </div>
+  </footer>
 
 {% include "includes/footer_scripts.html" %}
 
