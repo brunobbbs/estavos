@@ -53,154 +53,135 @@
   }(document, 'script', 'facebook-jssdk'));</script>
   <!-- /fb plugins -->
 
-  <div class="main_wrapper">
+<div class="main_wrapper">
 
-    <header class="header-wrapper">
-      <div class="topbar clearfix">
-        <div class="container">
-          <ul class="topbar-left">
-            <li class="phoneNo"><i class="fa fa-phone"></i>(61) 99193-0933 / (61) 98143-2175</li>
-            <li class="email-id hidden-xs hidden-sm"><i class="fa fa-envelope"></i>
-              <a href="mailto:contato@estavos.com">contato@estavos.com</a>
-            </li>
-          </ul>
-          <ul class="topbar-right">
-            <li class="hidden-xs"><a target="_blank" href="https://www.facebook.com/EstavosOficial"><i class="fa fa-facebook"></i></a></li>
-            <li class="hidden-xs"><a target="_blank" href="https://twitter.com/AcademiaEstavos"><i class="fa fa-twitter"></i></a></li>
-            <li class="hidden-xs"><a target="_blank" href="https://www.instagram.com/academiaestavos/"><i class="fa fa-instagram"></i></a></li>
-            <li class="hidden-xs"><a target="_blank" href="http://estavos.com/blog/feeds/rss/"><i class="fa fa-rss"></i></a></li>
-            <li class="top-search list-inline">
-              <a href="#"><i class="fa fa-search"></i></a>
-              <ul class="dropdown-menu dropdown-menu-right">
-                <li>
-                  <span class="input-group">
-                      {% search_form "all" %}
-                  </span>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
+  <header class="header-wrapper">
+    <div class="topbar clearfix">
+      <div class="container">
+        <ul class="topbar-left">
+          <li class="phoneNo"><i class="fa fa-phone"></i>(61) 99193-0933 / (61) 98143-2175</li>
+          <li class="email-id hidden-xs hidden-sm"><i class="fa fa-envelope"></i>
+            <a href="mailto:contato@estavos.com">contato@estavos.com</a>
+          </li>
+        </ul>
+        <ul class="topbar-right">
+          <li class="hidden-xs"><a target="_blank" href="https://www.facebook.com/EstavosOficial"><i class="fa fa-facebook"></i></a></li>
+          <li class="hidden-xs"><a target="_blank" href="https://twitter.com/AcademiaEstavos"><i class="fa fa-twitter"></i></a></li>
+          <li class="hidden-xs"><a target="_blank" href="https://www.instagram.com/academiaestavos/"><i class="fa fa-instagram"></i></a></li>
+          <li class="hidden-xs"><a target="_blank" href="http://estavos.com/blog/feeds/rss/"><i class="fa fa-rss"></i></a></li>
+          <li class="top-search list-inline">
+            <a href="#"><i class="fa fa-search"></i></a>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li>
+                <span class="input-group">
+                    {% search_form "all" %}
+                </span>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
+    </div>
 
-      <div class="header clearfix">
-        <nav class="navbar navbar-main navbar-default">
-          <div class="container">
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="header_inner">
-                  <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand logo clearfix img-responsive" href="{% url "home" %}"><img src="{% static 'img/logo.png' %}" alt="Logo ESTAVOS" /></a>
-                  </div>
+    <div class="header clearfix">
+      <nav class="navbar navbar-main navbar-default">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="header_inner">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand logo clearfix img-responsive" href="{% url "home" %}"><img src="{% static 'img/logo.png' %}" alt="Logo ESTAVOS" /></a>
+                </div>
 
-                  <div class="collapse navbar-collapse" id="main-nav">
-                    {% page_menu "pages/menus/dropdown.html" %}
-                  </div>
+                <div class="collapse navbar-collapse" id="main-nav">
+                  {% page_menu "pages/menus/dropdown.html" %}
                 </div>
               </div>
             </div>
-          </div><!-- /.container -->
-        </nav><!-- navbar -->
-      </div>
-    </header>
+          </div>
+        </div><!-- /.container -->
+      </nav><!-- navbar -->
+    </div>
+  </header><!-- header-wrapper -->
 
 {% block home %}
 
-{% block special_header %}
-<!-- Container Tile & Breadcrumbs -->
-<div class="fullsize">
-
-    <div class="page-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
+  {% block special_header %}
+  <div class="fullsize">
+      <div class="page-header">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-6">
                     <h1 class="page-title">{% block title %}{% endblock %}</h1>
-                </div>
-                <div class="col-md-6">
-
-                    <ol class="breadcrumb">
+                  </div>
+                  <div class="col-md-6">
+                      <ol class="breadcrumb">
                         {% spaceless %}
                         {% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
                         {% endspaceless %}
-                    </ol>
+                      </ol>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div> <!-- fullsize -->
+  {% endblock special_header %}
 
-                </div>
-            </div>
-        </div>
-    </div>
+  <div class="custom_content clearfix">
+      {% nevercache %}
+      {% if messages %}
+      <div class="row">
+          <div class="col-md-12">
+              <div class="messages">
+                  {% for message in messages %}
+                  <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      {{ message }}
+                  </div>
+                  {% endfor %}
+              </div>
+          </div>
+      </div>
+      {% endif %}
+      {% endnevercache %}
+  </div> <!-- custom_content clearfix -->
 
-</div> <!-- /Container Tile & Breadcrumbs -->
-{% endblock special_header %}
+  {% block all_content %}
+  <div class="custom_content clearfix">
+      <div class="row">
+          {% block left_wrapper %}
+          <div class="col-md-{% block left_column_size %}2{% endblock %} left">
+              {% block left_panel %}
+              <div class="sidebar">
+                  <div class="sidebar-widget animation fadeInUp">
+                      <ul class="fa-ul list-divider">
+                      {% page_menu "pages/menus/tree.html" %}
+                      </ul>
+                  </div>
+              </div>
+              {% endblock %}
+          </div>
+          {% endblock %}
 
-</div> <!-- / page-wrapper -->
+          {% block main_wrapper %}
+          <div class="col-md-{% block main_column_size %}10{% endblock %} middle">
+              {% block main %}{% endblock %}
+          </div>
+          {% endblock %}
 
-<!-- Main Container -->
-<div class="main-wrapper">
-
-<div class="blank-spacer padding-top20 padding-bottom20"></div>
-
-<!-- Messages -->
-<div class="container">
-    {% nevercache %}
-    {% if messages %}
-    <div class="row">
-        <div class="col-md-12">
-            <div class="messages">
-                {% for message in messages %}
-                <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    {{ message }}
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-    {% endif %}
-    {% endnevercache %}
-</div> <!-- / Messages -->
-
-{% block all_content %}
-<div class="container">
-
-    <div class="row">
-
-        {% block left_wrapper %}
-        <div class="col-md-{% block left_column_size %}2{% endblock %} left">
-            {% block left_panel %}
-            <div class="sidebar">
-                <div class="sidebar-widget animation fadeInUp">
-                    <ul class="fa-ul list-divider">
-                    {% page_menu "pages/menus/tree.html" %}
-                    </ul>
-                </div>
-            </div>
-            {% endblock %}
-        </div>
-        {% endblock %}
-
-        {% block main_wrapper %}
-        <div class="col-md-{% block main_column_size %}10{% endblock %} middle">
-            {% block main %}{% endblock %}
-        </div>
-        {% endblock %}
-
-        {% block right_wrapper %}
-        {% endblock %}
-
-    </div>
-
-</div>
-{% endblock %}
+          {% block right_wrapper %}
+          {% endblock %}
+      </div>
+  </div><!-- custom_content clearfix -->
+  {% endblock %}
 
 {% endblock home %}
-
-</div> <!-- / Main Container -->
 
   <footer class="footer-v2 footer-v3">
     <div class="menuFooter clearfix">
@@ -292,6 +273,6 @@
 <script src="{% static 'js/custom.js' %}"></script>
 {% block extra_js %}{% endblock %}
 {% endcompress %}
-
+</div>
 </body>
 </html>
