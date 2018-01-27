@@ -1,7 +1,6 @@
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 from django.views.generic import TemplateView
-from mezzanine.blog.models import BlogPost
 from mezzanine.pages.models import RichTextPage
 
 from estavos.theme.gapi_calendar import GApiCalendar
@@ -41,7 +40,6 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
-        kwargs['blog_post_list'] = BlogPost.objects.all()[:3]
         gapi = GApiCalendar()
         kwargs['upcoming_events'] = gapi.get_upcoming_events()
         return kwargs
