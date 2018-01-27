@@ -363,6 +363,12 @@ PAGSEGURO_LOG_IN_MODEL = config('PAGSEGURO_LOG_IN_MODEL', cast=bool) # se o valo
 
 GOOGLE_ANALYTICS_ID = config('GOOGLE_ANALYTICS_ID', default='')
 
+#####################
+#    GOOGLE API     #
+#####################
+
+SERVICE_ACCOUNT_FILE = config('GAPI_SERVICE_ACCOUNT_FILE')
+
 
 #####################
 # ACCOUNTS SETTINGS #
