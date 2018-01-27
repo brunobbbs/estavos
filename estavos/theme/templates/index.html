@@ -174,44 +174,24 @@
             <div class="upcoming_events">
               <h3>Calendário ESTAVOS</h3>
               <ul>
+                {% for event in upcoming_events %}
                 <li class="related_post_sec single_post">
                   <span class="date-wrapper">
-                    <span class="date"><span>24</span>January</span>
+                    <span class="date"><span>{{ event.datetime|date:"d" }}</span>{{ event.datetime|date:"F" }}</span>
                   </span>
                   <div class="rel_right">
-                    <h4><a href="single-events.html">Offered in small class sizes with great emphasis...</a></h4>
+                    <h4><a href="#">{{ event.summary }}</a></h4>
                     <div class="meta">
-                      <span class="place"><i class="fa fa-map-marker"></i>Main Campus</span>
-                      <span class="event-time"><i class="fa fa-clock-o"></i>11.00 pm</span>
+                      <span class="place"><i class="fa fa-map-marker"></i>{{ event.location }}</span>
+                      {% if event.time %}<span class="event-time"><i class="fa fa-clock-o"></i>{{ event.time }}</span>{% endif %}
                     </div>
                   </div>
                 </li>
-                <li class="related_post_sec single_post">
-                  <span class="date-wrapper">
-                    <span class="date"><span>24</span>January</span>
-                  </span>
-                  <div class="rel_right">
-                    <h4><a href="single-events.html">Offered in small class sizes with great emphasis...</a></h4>
-                    <div class="meta">
-                      <span class="place"><i class="fa fa-map-marker"></i>Main Campus</span>
-                      <span class="event-time"><i class="fa fa-clock-o"></i>11.00 pm</span>
-                    </div>
-                  </div>
-                </li>
-                <li class="related_post_sec single_post">
-                  <span class="date-wrapper">
-                    <span class="date"><span>24</span>January</span>
-                  </span>
-                  <div class="rel_right">
-                    <h4><a href="single-events.html">Offered in small class sizes with great emphasis...</a></h4>
-                    <div class="meta">
-                      <span class="place"><i class="fa fa-map-marker"></i>Main Campus</span>
-                      <span class="event-time"><i class="fa fa-clock-o"></i>11.00 pm</span>
-                    </div>
-                  </div>
-                </li>
+                {% endfor %}
               </ul>
-              <a href="events-3col.html" class="btn btn-default btn-block commonBtn">Mais eventos</a>
+              <a target="_blank"
+                 href="https://calendar.google.com/calendar/embed?src=vckp8teebn16mo8ak7g5l2m8v0%40group.calendar.google.com&ctz=America%2FSao_Paulo"
+                 class="btn btn-default btn-block commonBtn">Mais eventos</a>
             </div>
           </div><!-- end list_block -->
         </div><!-- col-sm-4 col-xs-12 -->
