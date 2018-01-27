@@ -130,9 +130,6 @@ NEVERCACHE_KEY = config('NEVERCACHE_KEY')
 # production. Best set to ``True`` in local_settings.py
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-# Whether a user's session cookie expires when the Web browser is closed.
-SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-
 SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
@@ -313,6 +310,24 @@ OPTIONAL_APPS = (
     PACKAGE_NAME_FILEBROWSER,
     PACKAGE_NAME_GRAPPELLI,
 )
+
+######################
+#   CACHE SETTINGS   #
+######################
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 ######################
 # DISQUS INTEGRATION #

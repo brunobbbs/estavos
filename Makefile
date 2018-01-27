@@ -40,3 +40,6 @@ migrate:
 deploy:
 	fab deploy
 
+## Start redis server
+redis-server:
+	redis-server
