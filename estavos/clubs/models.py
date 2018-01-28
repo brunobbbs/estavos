@@ -5,3 +5,4 @@ from mezzanine.pages.models import Page
 
 class Club(Page):
     name = models.CharField('Nome do clube', max_length=150)
+    city = models.CharField('Cidade', max_length=100)
