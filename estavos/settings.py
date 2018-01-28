@@ -225,7 +225,6 @@ INSTALLED_APPS = (
     'import_export',
     # "mezzanine.mobile",
     'estavos.courses.apps.CoursesAppConfig',
-    'estavos.activities.apps.ActivitiesAppConfig',
     'estavos.categorylink',
     'estavos.subscriptions',
     'estavos.tournaments',

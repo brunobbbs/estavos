@@ -79,16 +79,12 @@ urlpatterns += [
         ))
     ),
 
-    # SPECIFIC THEME URLS
-    # ===================
+    # CUSTOM APPS
+    # ===========
     url(r'^galeria/$', GaleriaView.as_view(), name='galeria'),
     url(r'^curso-de-xadrez/', include('estavos.courses.urls', namespace='courses')),
     url(r'^torneios/', include('estavos.tournaments.urls', namespace='tournaments')),
     url(r'^pagseguro-integracao/', include('estavos.tournaments.pagseguro_integration_urls', namespace='pagseguro_integration')),
-
-    # CUSTOM APPS
-    # ===========
-    url(r'^area-do-instrutor/', include('estavos.activities.urls', namespace='activities')),
 
     # MEZZANINE'S URLS
     # ----------------
