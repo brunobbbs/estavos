@@ -84,6 +84,7 @@ urlpatterns += [
     url(r'^galeria/$', GaleriaView.as_view(), name='galeria'),
     url(r'^curso-de-xadrez/', include('estavos.courses.urls', namespace='courses')),
     url(r'^torneios/', include('estavos.tournaments.urls', namespace='tournaments')),
+    url(r'^clube-de-xadrez/', include('estavos.clubs.urls', namespace='clubs')),
     url(r'^pagseguro-integracao/', include('estavos.tournaments.pagseguro_integration_urls', namespace='pagseguro_integration')),
 
     # MEZZANINE'S URLS

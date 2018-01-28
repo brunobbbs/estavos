@@ -228,6 +228,7 @@ INSTALLED_APPS = (
     'estavos.categorylink',
     'estavos.subscriptions',
     'estavos.tournaments',
+    'estavos.clubs',
 )
 
 # List of middleware classes to use. Order is important; in the request phase,
