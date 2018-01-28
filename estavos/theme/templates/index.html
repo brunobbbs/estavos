@@ -161,13 +161,13 @@
             </div><!-- formTitle -->
             <form action="#" method="post">
               <div class="selectBox clearfix">
-                <select name="guiest_id1" id="guiest_id1">
-                  <option value="0">Plano Piloto</option>
-                  <option value="1">Sudoeste</option>
-                  <option value="2">Samambaia</option>
+                <select name="find-next-estavos" id="find-estavos">
+                  <option value="">Selecione</option>
+                  {% for club in clubs %}
+                  <option value="{{ club.get_absolute_url }}">{{ club.title }}</option>
+                  {% endfor %}
                 </select>
               </div><!-- selectBox -->
-              <button type="submit" class="btn btn-default btn-block commonBtn">Buscar</button>
             </form>
           </div><!-- formArea -->
           <div class="list_block related_post_sec">
@@ -290,4 +290,8 @@
         </div>
       </div>
     </div><!-- Brand-section -->
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/index.js' %}"></script>
 {% endblock %}
