@@ -25,3 +25,20 @@ class Banner(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Partner(models.Model):
+    name = models.CharField('Nome', max_length=150)
+    site = models.URLField('Site', blank=True, null=True)
+    image = models.ImageField(
+        upload_to='home/partners/',
+        verbose_name='Logo do parceiro',
+        help_text='Use uma imagem com tamanho de 212x65'
+    )
+    active = models.BooleanField('Ativo', default=True)
+
+    objects = models.Manager()
+    actives = BannerManager()
+
+    def __str__(self):
+        return self.name

@@ -253,56 +253,15 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="owl-carousel partnersLogoSlider">
+              {% for partner in partners %}
               <div class="slide">
                 <div class="partnersLogo clearfix">
-                  <a href="#"><img src="{% static 'img/home/brand1.png' %}" /></a>
+                  <a href="{{ partner.site }}" title="{{ partner.name }}" target="_blank">
+                    <img src="{{ partner.image.url }}" alt="{{ partner.name }}" />
+                  </a>
                 </div>
               </div>
-              <div class="slide">
-                <div class="partnersLogo clearfix">
-                  <a href="#"><img src="{% static 'img/home/brand2.png' %}" /></a>
-                </div>
-              </div>
-              <div class="slide">
-                <div class="partnersLogo clearfix">
-                  <a href="#"><img src="{% static 'img/home/brand3.png' %}" /></a>
-                </div>
-              </div>
-              <div class="slide">
-                <div class="partnersLogo clearfix">
-                  <a href="#"><img src="{% static 'img/home/brand4.png' %}" /></a>
-                </div>
-              </div>
-              <div class="slide">
-                <div class="partnersLogo clearfix">
-                  <a href="#"><img src="{% static 'img/home/brand5.png' %}" /></a>
-                </div>
-              </div>
-              <div class="slide">
-                <div class="partnersLogo clearfix">
-                  <a href="#"><img src="{% static 'img/home/brand1.png' %}" /></a>
-                </div>
-              </div>
-              <div class="slide">
-                <div class="partnersLogo clearfix">
-                  <a href="#"><img src="{% static 'img/home/brand2.png' %}" /></a>
-                </div>
-              </div>
-              <div class="slide">
-                <div class="partnersLogo clearfix">
-                  <a href="#"><img src="{% static 'img/home/brand3.png' %}" /></a>
-                </div>
-              </div>
-              <div class="slide">
-                <div class="partnersLogo clearfix">
-                  <a href="#"><img src="{% static 'img/home/brand4.png' %}" /></a>
-                </div>
-              </div>
-              <div class="slide">
-                <div class="partnersLogo clearfix">
-                  <a href="#"><img src="{% static 'img/home/brand5.png' %}" /></a>
-                </div>
-              </div>
+              {% endfor %}
             </div>
           </div>
         </div>
