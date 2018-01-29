@@ -3,6 +3,7 @@ from django.views.decorators.cache import cache_page
 from django.views.generic import TemplateView
 from mezzanine.pages.models import RichTextPage
 
+from estavos.theme.models import Banner
 from estavos.clubs.models import Club
 from estavos.theme.gapi_calendar import GApiCalendar
 
@@ -44,4 +45,5 @@ class HomeView(TemplateView):
         gapi = GApiCalendar()
         kwargs['upcoming_events'] = gapi.get_upcoming_events()
         kwargs['clubs'] = Club.objects.all()
+        kwargs['banners'] = Banner.actives.all()
         return kwargs
