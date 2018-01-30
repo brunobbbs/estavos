@@ -6507,6 +6507,10 @@ p.reduceMargin {
   padding-right: 20px;
 }
 
+.children-menu {
+  padding-left: 10px;
+}
+
 @media (max-width: 767px) {
   .sidebar {
     margin: 30px 0 0;

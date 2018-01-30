@@ -133,9 +133,9 @@
   </div> <!-- fullsize -->
   {% endblock special_header %}
 
+  {% nevercache %}
+  {% if messages %}
   <div class="custom_content clearfix">
-      {% nevercache %}
-      {% if messages %}
       <div class="row">
           <div class="col-md-12">
               <div class="messages">
@@ -148,36 +148,38 @@
               </div>
           </div>
       </div>
-      {% endif %}
-      {% endnevercache %}
-  </div> <!-- custom_content clearfix -->
+    </div> <!-- custom_content clearfix -->
+    {% endif %}
+    {% endnevercache %}
 
   {% block all_content %}
   <div class="custom_content clearfix">
+    <div class="container">
+
       <div class="row">
-          {% block left_wrapper %}
-          <div class="col-md-{% block left_column_size %}2{% endblock %} left">
-              {% block left_panel %}
-              <div class="sidebar">
-                  <div class="sidebar-widget animation fadeInUp">
-                      <ul class="fa-ul list-divider">
-                      {% page_menu "pages/menus/tree.html" %}
-                      </ul>
-                  </div>
-              </div>
-              {% endblock %}
+        {% block main_wrapper %}
+        <div class="col-xs-12 col-sm-9 col-lg-10 courses_right pull-right">
+          <div class="courses_right_inner padding-border-left">
+            {% block main %}{% endblock %}
           </div>
-          {% endblock %}
+        </div>
+        {% endblock %}
 
-          {% block main_wrapper %}
-          <div class="col-md-{% block main_column_size %}10{% endblock %} middle">
-              {% block main %}{% endblock %}
+        {% block left_wrapper %}
+        <div class="col-xs-12 col-sm-3 col-lg-2 courses_left hidden-xs pull-left">
+          <div class="courses_left_inner">
+            {% block left_panel %}
+            {% page_menu "pages/menus/tree.html" %}
+            {% endblock %}
           </div>
-          {% endblock %}
+        </div>
+        {% endblock %}
 
-          {% block right_wrapper %}
-          {% endblock %}
+
+        {% block right_wrapper %}
+        {% endblock %}
       </div>
+    </div>
   </div><!-- custom_content clearfix -->
   {% endblock %}
 
