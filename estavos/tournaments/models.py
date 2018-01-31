@@ -88,7 +88,7 @@ class Tournament(models.Model):
     google_maps = models.TextField(
         'Mapa do local do evento',
         blank=True,
-        help_text='Insira um iframe do Google maps'
+        help_text='Insira um iframe do Google maps. Tamanho recomendado: 330x300'
     )
     rule = models.URLField('Link para download do regulamento')
     slug = models.SlugField(unique=True)
