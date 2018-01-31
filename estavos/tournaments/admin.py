@@ -74,7 +74,7 @@ class PrizeAdmin(admin.ModelAdmin):
 
 
 class InscriptionPriceAdmin(admin.ModelAdmin):
-    list_display = ('title', 'full', 'half', 'limit_date', 'active')
+    list_display = ('title', 'full', 'limit_date', 'active')
 
 
 admin.site.register(Inscription, InscriptionAdmin)

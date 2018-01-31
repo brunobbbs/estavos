@@ -24,15 +24,6 @@ class InscriptionPrice(models.Model):
         decimal_places=2,
         default='30.00'
     )
-    half = models.DecimalField(
-        'Valor da meia',
-        max_digits=7,
-        decimal_places=2,
-        default='15.00',
-        blank=True,
-        null=True,
-        help_text='Opcional',
-    )
     limit_date = models.DateTimeField('Válido para inscrições realizadas até')
     active = models.BooleanField('Ativo?')
     notes = models.TextField('Observações', blank=True)
