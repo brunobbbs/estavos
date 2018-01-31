@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% load static pages_tags itemsbycolumn %}
+{% load static pages_tags itemsbycolumn  mezzanine_tags %}
 
 {% block title %}{{ object.title }}{% endblock title %}
 {% block meta_title %}{{ object.title }}{% endblock meta_title %}
@@ -11,7 +11,7 @@
 <div class="single_banner">
     <div class="container">
       <div class="single_banner_inner">
-        <img src="{{ object.cover.url }}" alt="" />
+        <img src="{{ MEDIA_URL }}{% thumbnail object.cover 1170 500 %}" alt="" />
         <div class="single_caption">
           <h1>{{ object.title }}</h1>
           <h2>{{ object.short_description }}</h2>
@@ -38,311 +38,196 @@
 
 {% block all_content %}
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
+  <div class="single_content">
+    <div class="container">
+      <div class="row">
 
-      {% if request.user.is_superuser %}
-        <div class="container container-inner">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="well well-sm"><a href="{% url 'tournaments:inscriptions_control_list' object.pk %}"><strong>Gerenciar inscritos</strong></a></div>
-                </div>
-            </div>
-        </div>
-      {% endif %}
-
-        <div class="container container-inner">
-          <div class="row">
-            <div class="col-md-8">
-
-            <div class="jumbotron">
-                <h1 class="display-3">{% if tournament.active %}Inscreva-se!{% else %}Inscrições Encerradas{% endif %}</h1>
-                <p class="lead">{{ object.description }}</p>
-                {% if tournament.active %}
-                <hr class="my-4">
-                <p class="lead">
-                    <a class="btn btn-primary btn-lg" href="{% url 'tournaments:inscription_new' object.id %}" role="button">Faça sua inscrição online!</a>
-                  </p>
-                <p>Aceitamos várias formas de pagamento</p>
-                <img src="https://stc.pagseguro.uol.com.br/public/img/banners/pagamento/avista_estatico_550_70.gif"
-                alt="Logotipos de meios de pagamento do PagSeguro"
-                title="Este site aceita pagamentos com Bradesco, Itaú, Banco do Brasil, Banrisul, Banco HSBC,
-                saldo em conta PagSeguro e boleto." />
-                {% endif %}
+        {% if request.user.is_superuser %}
+          <div class="container container-inner">
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="well well-sm"><a href="{% url 'tournaments:inscriptions_control_list' object.pk %}"><strong>Gerenciar inscritos</strong></a></div>
+                  </div>
               </div>
-            </div>
-
-            <div class="col-md-4">
-              <!-- sidebar -->
-              <div class="sidebar">
-
-                {% if object.objective %}
-                <div class="sidebar-widget">
-                  <h3 class="title-color">
-                    <i class="fa fa-check"></i>
-                    <strong>Objetivos</strong>
-                  </h3>
-                  <p>{{ object.objective }}</p>
-                </div>
-                {% endif %}
-
-
-                <div class="sidebar-widget">
-                  <h3 class="title-color">
-                    <i class="fa fa-calendar"></i>
-                    <strong>Quando?</strong>
-                  </h3>
-                  <p><strong>Início</strong>: {{ object.start_date }}</p>
-                  <p><strong>Fim</strong>: {{ object.end_date }}</p>
-                </div>
-
-                <div class="sidebar-widget">
-                  <h3 class="title-color">
-                    <i class="fa fa-map-marker"></i>
-                    <strong>Onde?</strong>
-                  </h3>
-                  <p>{{ object.place }}</p>
-                </div>
-
-                <div class="sidebar-widget">
-                  <h3 class="title-color">
-                    <i class="fa fa-file-text-o"></i>
-                    <strong>Regulamento</strong>
-                  </h3>
-                  <a href="{{ object.rule }}" target="_blank">Faça download do regulamento</a>
-                </div>
-
-              </div>
-              <!-- /sidebar -->
-            </div>
           </div>
-        </div>
+        {% endif %}
 
-        {% with prizes=object.prizes.all %}
-        {% if prizes %}
-        <div class="container container-inner">
-          <h2 class="title-color heading-single text-center"><span><strong>Premiação</strong></span></h2>
-          <div class="row">
-            {% for prize in prizes %}
-            <div class="col-md-{{ prizes.count|colum_for_items }}">
-                <div class="service-block sb-default">
-                  <div class="service-block-icon text-center">
-                    <div class="icon-wrapper icon-border-round fa-3x color-default">
-                      {% if prize.icon %}
-                        <i class="fa {{ prize.icon }}"></i>
+        <div class="col-xs-12 col-sm-8 col-md-8 custom_right">
+          <div class="single_content_left padding-border-right-twenty">
+            <div class="tab_menu">
+              <ul>
+                <li class="active"><a href="#inscriptions" data-toggle="tab">Inscrições</a></li>
+                <li><a href="#prizes" data-toggle="tab">Premiação</a></li>
+                <li><a href="#schedule" data-toggle="tab">Programação</a></li>
+              </ul>
+            </div><!--end tab_menu-->
+            <div class="tab-content single_tab_content">
+              <div role="tabpanel" class="tab-pane active" id="inscriptions">
+                <h1>{% if tournament.accept_inscriptions %}Inscreva-se!{% else %}Inscrições Encerradas{% endif %}</h1>
+                <p class="lead">{{ object.description }}</p>
+                {% if tournament.accept_inscriptions %}
+                <hr />
+                <p><a class="btn btn-primary btn-lg" href="{% url 'tournaments:inscription_new' object.id %}" role="button">Faça sua inscrição online!</a></p>
+                <h4>Você pode pagar a taxa de inscrição no boleto, cartão de crédito, depósito ou transferência bancária.</h4>
+                <p><img src="https://stc.pagseguro.uol.com.br/public/img/banners/pagamento/avista_estatico_550_70.gif"
+                        alt="Logotipos de meios de pagamento do PagSeguro"
+                        title="Este site aceita pagamentos com Bradesco, Itaú, Banco do Brasil, Banrisul, Banco HSBC,
+                saldo em conta PagSeguro e boleto." /></p>
+                {% endif %}
+                {% with prices=object.available_prices.all %}
+                {% if prices %}
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                    <!-- Inscrições -->
+                    <h1>Taxa de inscrição</h1>
+                    <div class="row price-table">
+                    {% for price in prices %}
+                      {% if price.active %}
+                      <div class="col-md-{{ prices.count|colum_for_items }}">
+                        <div class="price-table-inner">
+                          <div class="price-title">
+                            <h3>{% if price.valid_value %}{{ price.title }}{% else %}<strike>{{ price.title }}{% endif %}</strike></h3>
+                          </div>
+                          <div class="course-price">
+                            <h2>{% if price.valid_value %}R$ {{ price.full }}{% else %}<strike>R$ {{ price.full }}</strike>{% endif %}</h2>
+                          </div>
+                          <span>até {{ price.limit_date }}</span>
+                          {% if price.notes %}
+                          <span>{{ price.notes }}</span>
+                          {% endif %}
+                        </div>
+                      </div>
                       {% endif %}
+                    {% endfor %}
                     </div>
                   </div>
-                  <div class="service-block-title">
-                    <p class="text-center">{{ prize.title }}</p>
-                  </div>
-                  <div class="service-block-content">
-                    <p class="text-center">{{ prize.description }}</p>
+                </div>
+                {% endif %}
+                {% endwith %}
+                {% if object.objective or object.notes %}
+                <div class="row">
+                    {% if object.objective %}
+                    <div class="col-xs-12 col-sm-8 col-md-6">
+                      <h2>Objetivos do evento</h2>
+                      {{ object.objective }}
+                    </div>
+                    {% endif %}
+                    {% if object.notes %}
+                    <div class="col-xs-12 col-sm-8 col-md-6">
+                      <h2>Observações gerais</h2>
+                      {{ object.notes }}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endif %}
+              </div><!--end tab-pane-->
+              <div role="tabpanel" class="tab-pane" id="prizes">
+                <h1>Premiação</h1>
+                {% with prizes=object.prizes.all %}
+                {% if prizes %}
+                <div class="info-section">
+                  <div class="row">
+                    {% for prize in prizes %}
+                    <div class="col-md-{{ prizes.count|colum_for_items }}">
+                      <div class="box text-center">
+                        {% if prize.icon %}
+                          <i class="fa {{ prize.icon }}" aria-hidden="true"></i>
+                          <div class="separator"></div>
+                        {% endif %}
+                        <h4>{{ prize.title }}</h4>
+                        <span>{{ prize.description }}</span>
+                      </div>
+                    </div>
+                    {% endfor %}
                   </div>
                 </div>
-              </div>
-            {% endfor %}
-          </div>
-        </div>
-        {% endif %}
-        {% endwith %}
-
-        {% with prices=object.available_prices.all %}
-        {% if prices %}
-        <!-- Inscrições -->
-        <div class="container container-inner">
-          <div class="row">
-            <div class="col-md-12">
-              <h2 class="title-color heading-single text-center"><span><strong>Inscrições</strong></span></h2>
-              <ul class="pricing-table pricing-columns-{{ prices.count }}">
-                {% for price in prices %}
-                <li class="pricing-plan">
-                  <ul class="pricing-container">
-                    <li class="pricing-title {% if price.active %}bg-color-default{% endif %}">
-                      <div class="icon-wrapper icon-border-round fa-2x">
-                        <i class="fa fa-ticket"></i>
-                      </div>
-                      <p>{{ price.title }}</p>
-                    </li>
-                    <li class="pricing-value">
-                      <p class="value">{% if price.half %}<span>R$</span>{{ price.half }} / {% endif %}<span>R$</span>{{ price.full }}</p>
-                      {% if price.active %}
-                        <p class="period">até {{ price.limit_date }}</p>
-                        {% if tournament.active %}
-                        <p class="lead">
-                          <a class="btn btn-primary btn-lg" href="{% url 'tournaments:inscription_new' object.id %}" role="button">Faça sua inscrição online!</a>
-                        </p>
-                        {% endif %}
-                      {% endif %}
-                    </li>
-                    <br />
-                    {% if price.notes %}
-                    <p>{{ price.notes }}</p>
-                    {% endif %}
-                  </ul>
-                </li>
-                {% endfor %}
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- / Inscrições -->
-        {% endif %}
-        {% endwith %}
-        <div class="container container-inner">
-          <div class="row">
-            {% if schedules %}
-            <div class="col-md-6">
-              <h2 class="title-color heading-single text-center"><span><strong>Programação</strong></span></h2>
-              {% for schedule in schedules %}
-              <table class="table table-striped table-hover">
+                {% endif %}
+                {% endwith %}
+              </div><!--end tab-pane-->
+              <div role="tabpanel" class="tab-pane" id="schedule">
+              {% if schedules %}
+                <h1>Programação</h1>
+                {% for schedule in schedules %}
+                <table class="table table-striped table-hover">
                   <thead>
-                      <tr>
-                          <th colspan="2">{{ schedule.date }}</th>
-                      </tr>
+                    <tr>
+                        <th colspan="2">{{ schedule.date }}</th>
+                    </tr>
                   </thead>
                   <tbody>
-                      {% for activity in schedule.activities %}
-                      <tr>
-                          <td class="col-xs-1">{{ activity.hour }}</td>
-                          <td>{{ activity.activity }}</td>
-                      </tr>
-                      {% endfor %}
+                    {% for activity in schedule.activities %}
+                    <tr>
+                        <td class="col-xs-1">{{ activity.hour }}</td>
+                        <td>{{ activity.activity }}</td>
+                    </tr>
+                    {% endfor %}
                   </tbody>
-              </table>
-              {% endfor %}
-            </div>
-            {% endif %}
+                </table>
+                {% endfor %}
+              {% endif %}
+              </div><!--end tab-pane-->
+            </div><!--end tab-content-->
+          </div><!--end single content left-->
+        </div><!--end custom_right-->
 
-            <div class="col-md-6">
-              <h2 class="title-color heading-single text-center"><span><strong>Informações gerais</strong></span></h2>
-              <div id="accordion" class="panel-group accordion">
-                <div class="panel">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a href="#collapseOne"
-                         data-parent="#accordion"
-                         data-toggle="collapse"
-                         class="accordion-toggle collapsed-icon">
-                        <small>Modalidade</small>
-                      </a>
-                    </h4>
-                  </div>
-                  <div class="panel-collapse in" id="collapseOne" style="height: auto;">
-                    <div class="panel-body">
-                      <p>{{ object.get_modality_display }}</p>
-                    </div>
-                  </div>
-                </div>
-                {% if object.game_time %}
-                <div class="panel">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a href="#collapseThree" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed-icon collapsed">
-                        <small>Tempo de reflexão</small>
-                      </a>
-                    </h4>
-                  </div>
-                  <div class="panel-collapse collapse" id="collapseThree" style="height: 0px;">
-                    <div class="panel-body">
-                      <p>{{ object.game_time }}</p>
-                    </div>
-                  </div>
-                </div>
-                {% endif %}
-                {% if object.pairing %}
-                <div class="panel">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a href="#collapseTwo" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed-icon collapsed">
-                        <small>Sistema de disputa</small>
-                      </a>
-                    </h4>
-                  </div>
-                  <div class="panel-collapse collapse" id="collapseTwo" style="height: 0px;">
-                    <div class="panel-body">
-                      <p>{{ object.pairing }}</p>
-                    </div>
-                  </div>
-                </div>
-                {% endif %}
-                {% if object.chess_results %}
-                <div class="panel">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a href="#collapseFour" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed collapsed-icon">
-                        <small>Chess-Results</small>
-                      </a>
-                    </h4>
-                  </div>
-                  <div class="panel-collapse collapse" id="collapseFour">
-                    <div class="panel-body">
-                      <p>
-                        <a href="{{ object.chess_results }}" target="_blank"
-                           title="{{ object.title }}">
-                        <strong>Acompanhe a relação de inscritos e demais informações do torneio no Chess-Results.</strong>
-                      </a>
-                    </p>
-                  </div>
-                </div>
+        <div class="col-xs-12 col-sm-4 col-md-4 custom_left">
+          <div class="sidebar">
+            <div class="sidebar_item">
+              <div class="item_inner program">
+                <h4>Dados do evento</h4>
+                <ul>
+                  {% if object.start_date|date:'d/m/Y' == object.end_date|date:'d/m/Y' %}
+                  <li>
+                    <span>Quando acontece:</span>{{ object.start_date }}
+                  </li>
+                  {% else %}
+                  <li><span>Início:</span>{{ object.start_date|date:'d/m/Y - H:i' }}</li>
+                  <li><span>Fim:</span>{{ object.end_date|date:'d/m/Y - H:i' }}</li>
+                  {% endif %}
+                  <li><span>Local:</span>{{ object.place }}</li>
+                  <li><span>Regulamento:</span><a href="{{ object.rule }}" target="_blank">Download</a></li>
+                </ul>
               </div>
-              {% endif %}
-              {% if object.google_maps %}
-              <div class="panel">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                  <a href="#collapseFive" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed collapsed-icon">
-                    <small>Como chegar</small>
-                  </a>
-                  </h4>
-                </div>
-                <div class="panel-collapse collapse" id="collapseFive">
-                  <div class="panel-body">
-                    {{ object.google_maps|safe }}
-                  </div>
-                </div>
+            </div><!--end sidebar item-->
+            <div class="sidebar_item">
+              <div class="item_inner program">
+                <h4>Sobre o torneio</h4>
+                <ul>
+                  <li><span>Modalidade:</span>{{ object.get_modality_display }}</li>
+                  {% if object.game_time %}<li><span>Tempo de reflexão:</span>{{ object.game_time }}</li>{% endif %}
+                  {% if object.pairing %}<li><span>Sistema de disputa:</span>{{ object.pairing }}</li>{% endif %}
+                  {% if object.chess_results %}
+                  <li>
+                    <span>Resultados:</span>
+                    <a href="{{ object.chess_results }}" target="_blank"
+                       title="{{ object.title }}">Chess-Results</a>
+                  </li>
+                  {% endif %}
+                </ul>
               </div>
-              {% endif %}
-              {% if object.notes %}
-              <div class="panel">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                  <a href="#collapseNotes" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed collapsed-icon">
-                    <small>Observações gerais</small>
-                  </a>
-                  </h4>
-                </div>
-                <div class="panel-collapse collapse" id="collapseNotes">
-                  <div class="panel-body">
-                    {{ object.notes }}
-                  </div>
-                </div>
+            </div><!--end sidebar item-->
+            {% if object.google_maps %}
+            <div class="sidebar_item">
+              <div class="item_inner">
+                <h4>Como chegar</h4>
+                {{ object.google_maps|safe }}
               </div>
-              {% endif %}
-              {% if object.flyer %}
-              <div class="panel">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                  <a href="#collapseSix" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed collapsed-icon">
-                    <small>Divulgue!</small>
-                  </a>
-                  </h4>
-                </div>
-                <div class="panel-collapse collapse" id="collapseSix">
-                  <div class="panel-body">
-                    <a href="{{ object.flyer.url }}" target="_blank">
-                      <img src="{% static object.flyer.url %}"
-                           alt="Banner IRT Brasiliense de Xadrez Amador 2016" width="500" height="707">
-                    </a>
-                  </div>
-                </div>
+            </div><!--end sidebar item-->
+            {% endif %}
+            {% if object.flyer %}
+            <div class="sidebar_item">
+              <div class="item_inner">
+                <h4>Divulgue!</h4>
+                <a href="{{ object.flyer.url }}" target="_blank">
+                  <img src="{{ MEDIA_URL }}{% thumbnail object.flyer 330 450 %}"
+                       alt="{{ object.title }}">
+                </a>
               </div>
-              {% endif %}
-            </div>
-            </div>
-          </div>
+            </div><!--end sidebar item-->
+            {% endif %}
+          </div><!--end sidebar-->
         </div>
+
       </div>
     </div>
   </div>
