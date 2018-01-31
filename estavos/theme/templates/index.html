@@ -7,7 +7,7 @@
   <div class="slides carousel-inner">
     {% for banner in banners %}
     <div class="item{% if forloop.first %} active{% endif %}">
-      <img src="{{ banner.image.url }}" alt="" />
+      <img src="{{ MEDIA_URL }}{% thumbnail banner.image 1600 575 %}" alt="" />
       <div class="banner_caption">
         <div class="container">
           <div class="row">
@@ -257,7 +257,7 @@
               <div class="slide">
                 <div class="partnersLogo clearfix">
                   <a href="{{ partner.site }}" title="{{ partner.name }}" target="_blank">
-                    <img src="{{ partner.image.url }}" alt="{{ partner.name }}" />
+                    <img src="{{ MEDIA_URL }}{% thumbnail partner.image 212 65 %}" alt="{{ partner.name }}" />
                   </a>
                 </div>
               </div>
