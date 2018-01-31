@@ -32,6 +32,15 @@ class InscriptionPrice(models.Model):
     def __str__(self):
         return self.title
 
+    def valid_value(self):
+        now = timezone.now()
+        if self.limit_date < now:
+            return False
+        return True
+
+    class Meta:
+        ordering = ['limit_date']
+
 
 class TournamentSchedule(models.Model):
     tournament = models.ForeignKey('tournaments.Tournament')
