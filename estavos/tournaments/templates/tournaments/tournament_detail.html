@@ -3,15 +3,25 @@
 {% load static pages_tags itemsbycolumn %}
 
 {% block title %}{{ object.title }}{% endblock title %}
-
 {% block meta_title %}{{ object.title }}{% endblock meta_title %}
 
 
 {% block special_header %}
+{% if object.cover %}
+<div class="single_banner">
+    <div class="container">
+      <div class="single_banner_inner">
+        <img src="{{ object.cover.url }}" alt="" />
+        <div class="single_caption">
+          <h1>{{ object.title }}</h1>
+          <h2>{{ object.short_description }}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+{% else %}
 <div class="fullsize">
-  <div data-stellar-background-ratio="0.2"
-       class="page-header fancy-header parallax-wrapper parallax-background-irt-brasiliense-amador"
-       style="background-position: 0% -195.84px;">
+  <div class="page-header">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -22,6 +32,7 @@
     </div>
   </div>
 </div>
+{% endif %}
 {% endblock special_header %}
 
 

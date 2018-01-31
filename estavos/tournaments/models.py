@@ -71,6 +71,13 @@ class Tournament(models.Model):
         choices=MODALITIES,
         default='rapid'
     )
+    cover = models.ImageField(
+        upload_to='tournaments/cover/',
+        verbose_name='Capa da página',
+        help_text='Use uma imagem no tamanho 1170x500',
+        blank=True,
+        null=True
+    )
     objective = models.TextField('Objetivos', blank=True)
     start_date = models.DateTimeField('Início')
     end_date = models.DateTimeField('Previsão de término')
