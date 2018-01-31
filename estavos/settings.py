@@ -166,11 +166,6 @@ DATABASES = {
     "default": config('DATABASE_URL', default=default_dburl, cast=dburl),
 }
 
-# Every cache key will get prefixed with this value - here we set it to
-# the name of the directory the project is in to try and use something
-# project specific.
-CACHE_MIDDLEWARE_KEY_PREFIX = PROJECT_APP
-
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = "/static/"
@@ -315,13 +310,19 @@ OPTIONAL_APPS = (
 #   CACHE SETTINGS   #
 ######################
 
+# Every cache key will get prefixed with this value - here we set it to
+# the name of the directory the project is in to try and use something
+# project specific.
+CACHE_MIDDLEWARE_KEY_PREFIX = PROJECT_APP
+
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": "redis://127.0.0.1:6379/1",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        }
+        },
+        "TIMEOUT": config("CACHE_TIMEOUT", default=300, cast=int),
     }
 }
 
