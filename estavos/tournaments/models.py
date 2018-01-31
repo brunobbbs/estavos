@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.utils import timezone
 from django.db import models
 from estavos.utils.slug import unique_slugify
 from django.utils.encoding import python_2_unicode_compatible
@@ -127,6 +128,12 @@ class Tournament(models.Model):
     def save(self, **kwargs):
         unique_slugify(self, self.title)
         super(Tournament, self).save(**kwargs)
+
+    def accept_inscriptions(self):
+        now = timezone.now()
+        if self.inscriptions_date_limit < now:
+            return False
+        return True
 
 
 class Payment(models.Model):
