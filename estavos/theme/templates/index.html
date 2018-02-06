@@ -182,7 +182,7 @@
                 <select name="find-next-estavos" id="find-estavos">
                   <option value="">Selecione</option>
                   {% for club in clubs %}
-                  <option value="{{ club.get_absolute_url }}">{{ club.city }}</option>
+                  <option value="{{ club.get_absolute_url }}">{{ club.district }}</option>
                   {% endfor %}
                 </select>
               </div><!-- selectBox -->
