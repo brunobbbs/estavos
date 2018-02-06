@@ -1,5 +1,100 @@
 {% extends 'base.html' %}
+{% load static mezzanine_tags %}
 
-{% block main %}
-Clube List!
-{% endblock main %}
+{% block meta_title %}Clube de Xadrez em Brasília - DF{% endblock %}
+{% block title %}Clube de Xadrez{% endblock title %}
+
+{% block special_header %}
+<div class="single_banner">
+  <div class="container">
+    <div class="single_banner_inner">
+      <img src="{% static 'img/clubs/aula-xadrez-criancas-estavos-brasilia-df.jpg' %}" alt="" />
+      <div class="single_caption">
+        <h1>Aulas de Xadrez para crianças em Brasília - DF</h1>
+        <h2>Prepare-se para as competições! Treine com nossos campeões e seja um deles!</h2>
+      </div><!--end single caption-->
+    </div>
+  </div><!--end container-->
+</div>
+{% endblock special_header %}
+
+
+{% block all_content %}
+
+<div class="content_top clearfix">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="content_left features">
+          <h1>Clube de Xadrez da ESTAVOS</h1>
+          <p>O Clube de Xadrez da ESTAVOS é um espaço para as crianças desenvolverem suas habilidades mentais enquanto se divertem com o milenar Esporte dos Reis.</p>
+          <p>Nossos instrutores são preparados para ensinar as crianças não apenas os movimentos e regras básicas, mas também estratégias, táticas e objetivos para que seja possível tirar o máximo proveito dos benefícios que o jogo oferece.</p>
+          <p>Porque escolher a ESTAVOS?</p>
+          <ul>
+            <li><i class="fa fa-check-circle-o"></i>Pioneira na utilização do sistema de graduação enxadrística</li>
+            <li><i class="fa fa-check-circle-o"></i>Formamos campeões</li>
+            <li><i class="fa fa-check-circle-o"></i>Profissionais capacitados e de alto nível</li>
+            <li><i class="fa fa-check-circle-o"></i>Descontos em torneios e eventos organizados pela ESTAVOS</li>
+            <li><i class="fa fa-check-circle-o"></i>Fazemos bem feito porque amamos o que fazemos</li>
+          </ul>
+        </div><!--end content left-->
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="content_right">
+          <div class="banner" id="about_banner">
+            <ul class="slides">
+              <li>
+                <img src="{% static 'img/clubs/clube-de-xadrez-estavos-1.jpg' %}" alt="" />
+                <div class="about_caption">
+                  <h2>Aulas dinâmicas e divertidas</h2>
+                </div><!--end banner_caption-->
+              </li>
+
+              <li style="display:none;">
+                <img src="{% static 'img/clubs/clube-de-xadrez-estavos-2.jpg' %}" alt="" />
+                <div class="about_caption">
+                  <h2>Instrutores didáticos e bem treinados</h2>
+                </div><!--end banner_caption-->
+              </li>
+
+              <li style="display:none;">
+                <img src="{% static 'img/clubs/clube-de-xadrez-estavos-3.jpg' %}" alt="" />
+                <div class="about_caption">
+                  <h2>Para crianças a partir de 6 anos</h2>
+                </div><!--end banner_caption-->
+              </li>
+            </ul>
+          </div><!--end banner-->
+        </div><!--end content left-->
+      </div>
+    </div><!--end row-->
+  </div><!--end container-->
+</div><!--end content top-->
+
+<div class="container">
+  <div class="course-grid course-3col">
+    <div class="about_inner clearfix">
+      <h2>Consulte nossas unidades</h2>
+      <hr />
+      <div class="row">
+        {% for object in object_list %}
+        <div class="col-xs-6 col-sm-4">
+          <div class="aboutImage">
+            <a href="{{ object.get_absolute_url }}">
+              <img src="{{ MEDIA_URL }}{% thumbnail object.cover 360 227 %}" alt="{{ object.name }}" class="img-responsive" />
+              <div class="overlay">
+                <p>{{ object.short_description }}</p>
+              </div>
+              <span class="captionLink">Mais informações<span></span></span>
+            </a>
+          </div><!-- aboutImage -->
+          <h3>
+            <a href="{{ object.get_absolute_url }}">{{ object.district }} ({{ object.name }})</a>
+          </h3>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock all_content %}
