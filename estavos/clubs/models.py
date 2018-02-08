@@ -20,7 +20,7 @@ class ClubPrice(models.Model):
 
 
 class ClubClass(models.Model):
-    club = models.ForeignKey('clubs.Club')
+    club = models.ForeignKey('clubs.Club', related_name='classes')
     klass = models.CharField('Turma', max_length=140)
     date = models.DateField('Data')
     hour = models.TimeField('Hora')
