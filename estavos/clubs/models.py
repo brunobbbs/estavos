@@ -1,6 +1,7 @@
 from django.db import models
 from django.shortcuts import resolve_url as r
 from mezzanine.pages.models import Page
+from mezzanine.core.models import RichTextField
 
 
 class ClubPrice(models.Model):
@@ -36,6 +37,7 @@ class ClubClass(models.Model):
 class Club(Page):
     name = models.CharField('Nome do clube', max_length=150)
     short_description = models.CharField('Descrição curta', max_length=350, blank=True)
+    howto = RichTextField('Como funciona')
     city = models.CharField('Cidade', max_length=100)
     district = models.CharField('Bairro', max_length=100)
     address = models.CharField('Endereço', max_length=100)
@@ -52,4 +54,5 @@ class Club(Page):
         blank=True,
         help_text='Insira um iframe do Google maps. Tamanho recomendado: 330x300'
     )
+    inscription_details = RichTextField('Como se inscrever')
     inscription_link = models.URLField('Link para página de inscrição', blank=True, null=True)
