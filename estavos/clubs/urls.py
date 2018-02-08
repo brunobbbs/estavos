@@ -1,8 +1,7 @@
 from django.conf.urls import url
-from estavos.clubs.views import ClubDetail, ClubList
+from estavos.clubs.views import ClubList
 
 
 urlpatterns = [
     url(r'^$', ClubList.as_view(), name='list'),
-    url(r'^(?P<slug>[\w-]+)/$', ClubDetail.as_view(), name='detail'),
 ]

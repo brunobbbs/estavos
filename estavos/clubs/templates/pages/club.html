@@ -1,5 +1,155 @@
 {% extends 'base.html' %}
 
-{% block main %}
-Clube!
-{% endblock main %}
+{% load static pages_tags itemsbycolumn  mezzanine_tags %}
+
+{% block title %}{{ page.title }}{% endblock title %}
+{% block meta_title %}{{ page.title }}{% endblock meta_title %}
+
+
+{% block special_header %}
+{% if page.club.cover %}
+<div class="single_banner">
+    <div class="container">
+      <div class="single_banner_inner">
+        <img src="{{ MEDIA_URL }}{% thumbnail page.club.cover 1170 500 %}" alt="{{ page.title }}" />
+        <div class="single_caption">
+          <h1>Clube de Xadrez: {{ page.club.name }}</h1>
+          <h2>{{ page.club.short_description }}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+{% else %}
+<div class="fullsize">
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                  <h1>Clube de Xadrez: {{ page.club.name }}</h1>
+                  <p class="lead">{{ page.club.short_description }}</h2>
+                </div>
+                <div class="col-md-6">
+                    <ol class="breadcrumb">
+                      {% spaceless %}
+                      {% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
+                      {% endspaceless %}
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- fullsize -->
+{% endif %}
+{% endblock special_header %}
+
+
+{% block all_content %}
+
+  <div class="single_content">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-xs-12 col-sm-8 col-md-8 custom_right">
+          <div class="single_content_left padding-border-right-twenty">
+            <div class="tab_menu">
+              <ul>
+                <li class="active"><a href="#how-to-works" data-toggle="tab">Como funciona</a></li>
+                <li><a href="#classes" data-toggle="tab">Turmas</a></li>
+                <li><a href="#subscriptions" data-toggle="tab">Inscrição</a></li>
+                <li><a href="#plans" data-toggle="tab">Planos</a></li>
+              </ul>
+            </div><!--end tab_menu-->
+            <div class="tab-content single_tab_content">
+              <div role="tabpanel" class="tab-pane active" id="how-to-works">
+                <h1>Como funciona</h1>
+                {{ page.club.howto|safe }}
+              </div><!--end tab-pane-->
+              <div role="tabpanel" class="tab-pane" id="classes">
+                <h1>Turmas</h1>
+                {% for class in classes %}
+                <table class="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                        <th colspan="2">{{ class.name }} - {{ class.weekday }}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for schedule in class.schedules %}
+                    <tr>
+                        <td class="col-xs-1">{{ schedule.start }}</td>
+                        <td>{{ schedule.end }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+                {% endfor %}
+              </div><!--end tab-pane-->
+              <div role="tabpanel" class="tab-pane" id="subscriptions">
+                <h1>Inscrição</h1>
+                {{ page.club.inscription_details|safe }}
+                {% if page.club.inscription_link %}
+                <a href="{{ page.club.inscription_link }}" class="btn btn-lg btn-primary">Efetuar inscrição</a>
+                {% endif %}
+              </div><!--end tab-pane-->
+              <div role="tabpanel" class="tab-pane" id="plans">
+                  {% with prices=page.club.prices.all %}
+                  {% if prices %}
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                      <!-- Como funciona -->
+                      <h1>Planos</h1>
+                      <div class="row price-table">
+                      {% for price in prices %}
+                        {% if price.active %}
+                        <div class="col-md-{{ prices.count|colum_for_items }}">
+                          <div class="price-table-inner">
+                            <div class="price-title">
+                              <h3>{{ price.title }}</h3>
+                            </div>
+                            <div class="course-price">
+                              <h2>R$ {{ price.value }}</h2>
+                            </div>
+                            {% if price.notes %}
+                            <span>{{ price.notes }}</span>
+                            {% endif %}
+                          </div>
+                        </div>
+                        {% endif %}
+                      {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                  {% endif %}
+                  {% endwith %}
+                </div><!--end tab-pane-->
+            </div><!--end tab-content-->
+          </div><!--end single content left-->
+        </div><!--end custom_right-->
+
+        <div class="col-xs-12 col-sm-4 col-md-4 custom_left">
+          <div class="sidebar">
+            <div class="sidebar_item">
+              <div class="item_inner program">
+                <h4>Sobre o clube</h4>
+                <ul>
+                  <li><span>Nome:</span>{{ page.club.name }}</li>
+                  <li><span>Endereço:</span>{{ page.club.address }} - {{ page.club.district }} - {{ page.club.city }}</li>
+                  {% if page.club.phone %}<li><span>Contato:</span>{{ page.club.phone }}</li>{% endif %}
+                </ul>
+              </div>
+            </div><!--end sidebar item-->
+            {% if page.club.google_maps %}
+            <div class="sidebar_item">
+              <div class="item_inner">
+                <h4>Como chegar</h4>
+                {{ page.club.google_maps|safe }}
+              </div>
+            </div><!--end sidebar item-->
+            {% endif %}
+          </div><!--end sidebar-->
+        </div>
+
+      </div>
+    </div>
+  </div>
+{% endblock all_content %}
