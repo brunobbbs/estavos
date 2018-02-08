@@ -5,7 +5,7 @@ from mezzanine.pages.models import Page
 
 class ClubPrice(models.Model):
     title = models.CharField('Identificador', help_text='Ex.: Mensal', max_length=50)
-    price = models.DecimalField(
+    value = models.DecimalField(
         'Valor mensalidade',
         max_digits=7,
         decimal_places=2,
