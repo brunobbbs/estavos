@@ -20,18 +20,26 @@ class ClubPrice(models.Model):
         return self.title
 
 
+class ClubClassTime(models.Model):
+    start_time = models.TimeField('Início')
+    end_time = models.TimeField('Fim')
+    cclass = models.ForeignKey('clubs.ClubClass', related_name='schedules')
+
+    def __str__(self):
+        return '{} - {}'.format(self.start_time, self.end_time)
+
+
 class ClubClass(models.Model):
     club = models.ForeignKey('clubs.Club', related_name='classes')
-    klass = models.CharField('Turma', max_length=140)
-    date = models.DateField('Data')
-    hour = models.TimeField('Hora')
+    name = models.CharField('Turma', max_length=140)
+    weekday = models.CharField('Dia(s) da semana', max_length=140)
 
     class Meta:
         verbose_name = 'turma'
         verbose_name_plural = 'turmas'
 
     def __str__(self):
-        return '{0}: {1} - {2}'.format(self.klass, self.date.strftime('%d/%m/%Y'), self.hour)
+        return '{0}: {1}'.format(self.name, self.weekday)
 
 
 class Club(Page):
