@@ -1,8 +1,7 @@
 {% load blog_tags keyword_tags mezzanine_tags i18n %}
 
-    <!-- sidebar widget -->
-    <div class="sidebar-widget animation fadeInUp">
-        <h4 class="widget-title"><span>Lista VIP</span></h4>
+    <div class="list_block">
+        <h3>Lista VIP</h3>
         <p>Cadastre-se na lista VIP e receba gratuitamente dicas e novidades exclusivas sobre Xadrez e saúde da mente!</p>
         <!-- Begin MailChimp Signup Form -->
         <link href="//cdn-images.mailchimp.com/embedcode/slim-10_7.css" rel="stylesheet" type="text/css">
@@ -22,62 +21,40 @@
             </div>
         </form>
         </div>
-
-        <!--End mc_embed_signup-->
     </div>
-    <!-- /sidebar widget -->
 
-{% block blog_recent_posts %}
-{% blog_recent_posts 5 as recent_posts %}
-{% if recent_posts %}
-
-    <div class="sidebar-widget animation fadeInUp">
-    <h4 class="widget-title"><span>{% trans "Recent Posts" %}</span></h4>
-    <!-- tabs top -->
-    <div class="tabs sidebar-tabs">
-        <ul id="tab" class="nav nav-tabs">
-            <li class="active"><a href="#recents" data-toggle="tab">Últimos</a></li>
-            <!--<li><a href="#comments" data-toggle="tab">Comments</a></li>-->
-        </ul>
-        <div id="tab-content" class="tab-content">
-            <div id="recents" class="tab-pane active in">
-                <ul class="recent-posts">
-                    {% for recent_post in recent_posts %}
-                    <li class="clearfix">
-                    {% spaceless %}
-                        {% if settings.BLOG_USE_FEATURED_IMAGE and recent_post.featured_image %}
-                        <div class="recent-post-image">
-                            <img src="{{ MEDIA_URL }}{% thumbnail recent_post.featured_image 70 50 %}">
-                        </div>
-                        {% endif %}
-                        <div class="recent-post-content">
-                            <div class="recent-post-title">
-                                <a href="{{ recent_post.get_absolute_url }}">{{ recent_post.title }}</a>
-                            </div>
-                            <div class="recent-post-meta">
-                                <span class="meta-date">{{ recent_post.publish_date|date:"d/m/Y" }}</span>
-                            </div>
-                        </div>
-                    {% endspaceless %}
-                    </li>
-                    {% endfor %}
-                </ul>
+    {% block blog_recent_posts %}
+    {% blog_recent_posts 5 as recent_posts %}
+    {% if recent_posts %}
+    <div class="list_block">
+        <h3>Últimos posts</h3>
+        <ul>
+        {% for recent_post in recent_posts %}
+        <li>
+            {% if settings.BLOG_USE_FEATURED_IMAGE and recent_post.featured_image %}
+            <span class="rel_thumb">
+                <img src="{{ MEDIA_URL }}{% thumbnail recent_post.featured_image 100 67 %}" alt="" />
+            </span>
+            {% endif %}
+            <div class="rel_right">
+                <a href="{{ recent_post.get_absolute_url }}"><h4>{{ recent_post.title }}</h4></a>
+                <span class="date">Publicado: <a href="{{ recent_post.get_absolute_url }}">{{ recent_post.publish_date|date:"d/m/Y" }}</a></span>
             </div>
-        </div>
+        </li>
+        {% endfor %}
+        </ul>
+        <a href="{% url 'home' %}">Ir para página inicial</a>
     </div>
-    </div>
-    <!-- /tabs -->
-
-{% endif %}
-{% endblock %}
+    {% endif %}
+    {% endblock %}
 
 {% block blog_categories %}
 {% blog_categories as categories %}
 {% if categories %}
 
     <!-- sidebar widget -->
-    <div class="sidebar-widget animation fadeInUp">
-        <h4 class="widget-title"><span>{% trans "Categories" %}</span></h4>
+    <div class="list_block">
+        <h3><span>{% trans "Categories" %}</span></h3>
         <ul class="fa-ul list-divider">
             {% for category in categories %}
                 <li><a href="{% url "blog_post_list_category" category.slug %}">
@@ -96,8 +73,8 @@
 {% if tags %}
 
     <!-- sidebar widget -->
-    <div class="sidebar-widget animation fadeInUp">
-        <h4 class="widget-title"><span>{% trans "Tags" %}</span></h4>
+    <div class="list_block">
+        <h3><span>{% trans "Tags" %}</span></h3>
         <div class="tags">
             {% for tag in tags %}
                 <a href="{% url "blog_post_list_tag" tag.slug %}"
@@ -110,34 +87,10 @@
 {% endif %}
 {% endblock %}
 
-{% block blog_months %}
-{% blog_months as months %}
-{% if months %}
-
-    <!-- sidebar widget -->
-    <div class="sidebar-widget animation fadeInUp">
-        <h4 class="widget-title"><span>{% trans "Archive" %}</span></h4>
-        <ul class="fa-ul list-divider">
-            {% for month in months %}
-                {% ifchanged month.date.year %}
-                    {% if not forloop.first %}</ul>{% endif %}
-                    <h6>{{ month.date.year }}</h6><ul class="list-unstyled">
-                {% endifchanged %}
-                <li><a href="{% url "blog_post_list_month" year=month.date.year month=month.date.month %}">
-                    <i class="fa-li fa fa-chevron-circle-right"></i>{{ month.date|date:"F" }} <span>({{ month.post_count }})</span></a>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
-    <!-- /sidebar widget -->
-
-{% endif %}
-{% endblock %}
-
 {% block blog_feeds %}
     <!-- sidebar widget -->
-    <div class="sidebar-widget animation fadeInUp">
-        <h4 class="widget-title"><span>{% trans "Feeds" %}</span></h4>
+    <div class="list_block">
+        <h3>{% trans "Feeds" %}</h3>
         {% if tag %}
             <a href="{% url "blog_post_feed_tag" tag.slug "rss" %}">{% trans "RSS" %}</a> /
             <a href="{% url "blog_post_feed_tag" tag.slug "atom" %}">{% trans "Atom" %}</a>
