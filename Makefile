@@ -20,6 +20,10 @@ help:
 	{ lastLine = $$0 }' $(MAKEFILE_LIST) | sort
 	printf "\n"
 
+## Install project dependencies
+setup:
+	pip install -r requirements.txt
+
 ## Runs the project
 run:
 	python ./manage.py runserver
