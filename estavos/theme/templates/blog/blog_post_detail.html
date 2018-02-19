@@ -22,226 +22,142 @@
 <li class="active">{{ blog_post.title }}</li>
 {% endblock %}
 
-{% block left_wrapper %}{% endblock left_wrapper %}
+{% block all_content %}
 
-{% block main_wrapper %}
-
-<div class="col-md-9">
-
-    <div class="blog-post post-format-standard">
-
-        {% block blog_post_detail_featured_image %}
-            {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
-                <div class="post-media">
-                    <div class="image-overlay">
-                        <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 1225 550 %}">
-                        <div class="overlay-fade">
-                            <a href="{{ MEDIA_URL }}{{ blog_post.featured_image }}" data-lightbox="image"><i class="icon-overlay fa fa-search-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-            {% endif %}
-        {% endblock %}
-
-        <div class="post-format"></div>
-
-        <div class="post-info">
-            <h3 class="post-title"><a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a></h3>
-            {% block blog_post_detail_postedby %}
-            {% editable blog_post.publish_date %}
-            <ul class="list-inline post-meta-info">
-                {% with blog_post.user as author %}
-                <li class="meta-author">
-                    <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
-                </li>
-                {% endwith %}
-                <li class="meta-date">
-                    {{ blog_post.publish_date|date:"d/m/Y" }}
-                </li>
-                <li class="meta-comments">
-                    {% if settings.COMMENTS_DISQUS_SHORTNAME %}
-                        <a href="{{ blog_post.get_absolute_url }}#disqus_thread"
-                            data-disqus-identifier="{% disqus_id_for blog_post %}">
-                            {% trans "Comments" %}
-                        </a>
-                        {% else %}
-                        <a href="{{ blog_post.get_absolute_url }}#comments">
-                            {% blocktrans count comments_count=blog_post.comments_count %}{{ comments_count }} comentário{% plural %}{{ comments_count }} comentários{% endblocktrans %}
-                        </a>
-                    {% endif %}
-                </li>
-            </ul>
-            {% endeditable %}
-            {% endblock %}
-        </div>
-
-        <div class="post-content">
-            {% block blog_post_detail_content %}
-            {% editable blog_post.content %}
-                {{ blog_post.content|richtext_filters|safe }}
-            {% endeditable %}
-            {% endblock %}
-        </div>
-
-        <hr />
-        <p><strong>Aviso legal</strong></p>
-        <p>Todos os artigos deste blog são publicados sob a licença
-          <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/br/"
-             title="Atribuição-NãoComercial-CompartilhaIgual 3.0 Brasil (CC BY-NC-SA 3.0 BR)">
-            <strong>Creative Commons CC BY-NC-SA 3.0 BR</strong>
-          </a>
-        </p>
-        <p>Você pode ler, compartilhar, adaptar e re-publicar para fins não-comerciais desde que citado a fonte
-          acrescido com link da publicação original.</p>
-
-        <hr />
-
-        {% block blog_post_detail_keywords %}
-        {% keywords_for blog_post as tags %}
-        {% if tags %}
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="tags">
-                        {% spaceless %}
-                            {% for tag in tags %}
-                            <a href="{% url "blog_post_list_tag" tag.slug %}">{{ tag }}</a>
-                            {% endfor %}
-                        {% endspaceless %}
-                    </div>
-                </div>
-            </div>
-        {% endif %}
-        {% endblock %}
-
-        <br />
-
-        <div class="author-box">
-            <div class="panel">
-                <div class="panel-body">
-                    {# The custom profile doesn't works correctly, then it is temporarily hardcoded #}
-                    {% with blog_post.user as author %}
-                        {% with "img/blog/"|add:author.username|add:"-estavos.jpg" as author_photo %}
-                            <div class="author-avatar">
-                                <img src="{% static author_photo %}" alt="">
-                            </div>
-                        {% endwith %}
-                    <div class="author-info">
-                        <h4 class="heading-single"><span>{{ author.get_full_name|default:author.username }}</span></h4>
-                        {% if author.username == 'hugo' %}
-                        <p>Hugo Leonardo Ribeiro joga Xadrez desde as categorias de base. Professor, Treinador,
-                            Árbitro Regional e competidor, dedica sua vida a retribuir pelo Xadrez tudo de bom que o
-                            Xadrez trouxe a sua vida. Acredita que o Xadrez pode ser mais que uma ferramenta pedagógica,
-                            é um agente transformador de vidas e mentes humanas</p>
-                        <div class="author-social">
-                            <ul class="list-inline">
-
-                            </ul>
-                        </div>
+<div class="post_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 post_left">
+                <div class="post_left_section post_left_border">
+                    <div class="post single_post">
+                        {% block blog_post_detail_featured_image %}
+                        {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
+                        <div class="post_thumb">
+                            {% block blog_post_list_post_featured_image %}
+                            <img src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 770 450 %}" alt="" />
+                            {% endblock %}
+                        </div><!--end post thumb-->
                         {% endif %}
-                        {% if author.username == 'bruno' %}
-                        <p>Bruno Barbosa é Analista de Sistemas, blogueiro, amante do Xadrez e empreendedor no ramo
-                            esportivo. Apaixonado por tecnologia, pretende facilitar o acesso do milenar Esporte dos
-                            Reis para todas as pessoas, fato que inspirou a <a href="/quem-somos/">missão da Academia
-                                ESTAVOS</a>.</p>
-                        <div class="author-social">
-                            <ul class="list-inline">
-
-                            </ul>
-                        </div>
-                        {% endif %}
-                    </div>
-                    {% endwith %}
-                </div>
-            </div>
-        </div>
-
-        {% block blog_post_detail_sharebuttons %}
-        {% set_short_url_for blog_post %}
-        <h3 class="heading-single"><span>Compartilhe com seus amigos!</span></h3>
-        <ul class="list-inline">
-            <li>
-                <a class="tooltip-on white"
-                   title="{% trans "Share on Facebook" %}"
-                   href="http://facebook.com/sharer.php?u={{ request.build_absolute_uri }}&amp;t={{ blog_post.title|urlencode }}">
-                    <div class="icon-wrapper icon-full-radius bg-color-default"><i class="fa fa-facebook"></i></div>
-                </a>
-            </li>
-            <li>
-                <a class="tooltip-on white"
-                   title="{% trans "Share on Twitter" %}"
-                   href="http://twitter.com/home?status={{ blog_post.short_url|urlencode }}%20{{ blog_post.title|urlencode }}">
-                    <div class="icon-wrapper icon-full-radius bg-color-info"><i class="fa fa-twitter"></i></div>
-                </a>
-            </li>
-        </ul>
-        {% endblock %}
-
-        {% block blog_post_detail_related_posts %}
-        {% if related_posts %}
-        <!-- related posts -->
-        <div class="related-posts">
-            <div class="related-icon"></div>
-            <h3 class="heading-single"><span>{% trans 'Related posts' %}</span></h3>
-            <div class="row">
-                {% for post in related_posts %}
-                <div class="col-md-4 col-sm-4">
-                    {% if settings.BLOG_USE_FEATURED_IMAGE and post.featured_image %}
-                        <div class="related-post-media">
-                            <img alt="" class="img-thumbnail" src="{{ MEDIA_URL }}{% thumbnail post.featured_image 550 403 %}" width="550" height="403">
-                        </div>
-                    {% endif %}
-                    <div class="related-post-content">
-                        <div class="related-post-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></div>
-                        <div class="related-post-meta"><span class="meta-date">{{ post.publish_date|date:"d/m/Y" }}</span></div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-        <!-- /related posts -->
-        {% endif %}
-        {% endblock %}
-
-        {% block blog_post_detail_commentlink %}
-        {% if blog_post.allow_comments %}
-        <div class="comments-post">
-            <div class="comments-icon"></div>
-            <h3 class="heading-single"><span>Participe de nossa comunidade</span></h3>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="comments-list">
-                        <p>
-                            {% if settings.COMMENTS_DISQUS_SHORTNAME %}
-                                (<a href="{{ blog_post.get_absolute_url }}#disqus_thread"
-                                    data-disqus-identifier="{% disqus_id_for blog_post %}">{% spaceless %}
-                                    {% trans "Comments" %}
-                                {% endspaceless %}</a>)
-                            {% else %}(<a href="#comments">{% spaceless %}
-                                {% blocktrans count comments_count=blog_post.comments_count %}{{ comments_count }} comment{% plural %}{{ comments_count }} comments{% endblocktrans %}
-                                {% endspaceless %}</a>)
-                            {% endif %}
-                        </p>
-                        {% block blog_post_detail_comments %}
-                        {% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
                         {% endblock %}
+                        <div class="meta">
+                            <span class="author">
+                                {% with blog_post.user as author %}
+                                    Por: <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
+                                {% endwith %}
+                            </span>
+                            {% with blog_post.categories.all as categories %}
+                            {% if categories %}
+                            {% trans "in" %}
+                            {% for category in categories %}
+                            <span class="category"> <a href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %}, {% endif %}</span>
+                            {% endfor %}
+                            {% endif %}
+                            {% endwith %}
+                            <span class="date">Posted: <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.publish_date|date:"d/m/Y" }}</a></span>
+                        </div><!--end meta-->
+                        <h1><a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a></h1>
+                        <div class="post_desc">
+                            {% block blog_post_detail_content %}
+                            {% editable blog_post.content %}
+                                {{ blog_post.content|richtext_filters|safe }}
+                            {% endeditable %}
+                            {% endblock %}
+                        </div><!--end post desc-->
+                        <div class="post_bottom">
+                            <hr />
+                            <h3>Aviso legal</h3>
+                            <p>
+                                <span>Todos os artigos deste blog são publicados sob a licença
+                                    <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/br/"
+                                        title="Atribuição-NãoComercial-CompartilhaIgual 3.0 Brasil (CC BY-NC-SA 3.0 BR)">
+                                    <strong>Creative Commons CC BY-NC-SA 3.0 BR</strong>.
+                                    </a>
+                                </span>
+                                <span> Você pode ler, compartilhar, adaptar e re-publicar para fins não-comerciais desde que citado a fonte
+                                        junto com link da publicação original.</span>
+                            </p>
+                        </div><!--end post bottom-->
+                    </div> <!-- end post -->
+                    {% block blog_post_detail_related_posts %}
+                    {% if related_posts %}
+                    <div class="related_post_sec single_post">
+                        <h3>{% trans 'Related posts' %}</h3>
+                        <ul>
+                            {% for post in related_posts %}
+                            <li>
+                                {% if settings.BLOG_USE_FEATURED_IMAGE and post.featured_image %}
+                                <span class="rel_thumb">
+                                    <a href=""><img src="{{ MEDIA_URL }}{% thumbnail post.featured_image 224 170 %}" alt=""></a>
+                                </span><!--end rel_thumb-->
+                                {% endif %}
+                                <div class="rel_right">
+                                    <h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+                                    <div class="meta">
+                                        <span class="author">
+                                            {% with post.user as author %}
+                                                Por: <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
+                                            {% endwith %}
+                                        </span>
+                                        {% with post.categories.all as categories %}
+                                        {% if categories %}
+                                        {% trans "in" %}
+                                        {% for category in categories %}
+                                        <span class="category"> <a href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %}, {% endif %}</span>
+                                        {% endfor %}
+                                        {% endif %}
+                                        {% endwith %}
+                                    </div>
+                                    <p>{{ post.description }}</p>
+                                </div><!--end rel right-->
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div><!--end related post-->
+                    {% endif %}
+                    {% endblock %}
+                    {% block blog_post_detail_commentlink %}
+                    {% if blog_post.allow_comments %}
+                    <div class="comments-post">
+                        <div class="comments-icon"></div>
+                        <h3 class="heading-single"><span>Participe de nossa comunidade</span></h3>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="comments-list">
+                                    <p>
+                                        {% if settings.COMMENTS_DISQUS_SHORTNAME %}
+                                            (<a href="{{ blog_post.get_absolute_url }}#disqus_thread"
+                                                data-disqus-identifier="{% disqus_id_for blog_post %}">{% spaceless %}
+                                                {% trans "Comments" %}
+                                            {% endspaceless %}</a>)
+                                        {% else %}(<a href="#comments">{% spaceless %}
+                                            {% blocktrans count comments_count=blog_post.comments_count %}{{ comments_count }} comment{% plural %}{{ comments_count }} comments{% endblocktrans %}
+                                            {% endspaceless %}</a>)
+                                        {% endif %}
+                                    </p>
+                                    {% block blog_post_detail_comments %}
+                                    {% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
+                                    {% endblock %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endblock %}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 post_right">
+                <div class="post_right_inner">
+                    <div class="related_post_sec">
+                        {% include "blog/includes/filter_panel.html" %}
                     </div>
                 </div>
             </div>
         </div>
-        {% endif %}
-        {% endblock %}
-
     </div>
+</div><!--end post section-->
 
-</div>
 
-{% endblock main_wrapper %}
-
-{% block right_wrapper %}
-    <div class="col-md-3">
-    {% include "blog/includes/filter_panel.html" %}
-    </div>
-{% endblock right_wrapper %}
+{% endblock all_content %}
 
 {% block extra_js %}
 {% if settings.COMMENTS_DISQUS_SHORTNAME %}
