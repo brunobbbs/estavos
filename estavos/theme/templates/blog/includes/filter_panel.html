@@ -33,7 +33,9 @@
         <li>
             {% if settings.BLOG_USE_FEATURED_IMAGE and recent_post.featured_image %}
             <span class="rel_thumb">
-                <img src="{{ MEDIA_URL }}{% thumbnail recent_post.featured_image 100 67 %}" alt="" />
+                <a href="{{ recent_post.get_absolute_url }}">
+                    <img src="{{ MEDIA_URL }}{% thumbnail recent_post.featured_image 100 67 %}" alt="{{ recent_post.title }}" />
+                </a>
             </span>
             {% endif %}
             <div class="rel_right">

@@ -87,7 +87,7 @@
                             <li>
                                 {% if settings.BLOG_USE_FEATURED_IMAGE and post.featured_image %}
                                 <span class="rel_thumb">
-                                    <a href=""><img src="{{ MEDIA_URL }}{% thumbnail post.featured_image 224 170 %}" alt=""></a>
+                                    <a href="{{ post.get_absolute_url }}"><img src="{{ MEDIA_URL }}{% thumbnail post.featured_image 224 170 %}" alt="{{ post.title }}"></a>
                                 </span><!--end rel_thumb-->
                                 {% endif %}
                                 <div class="rel_right">
