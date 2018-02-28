@@ -392,7 +392,7 @@ FABRIC = {
     "DEPLOY_TOOL": "git",  # Deploy with "git", "hg", or "rsync"
     "SSH_USER": config("SSH_USER"),  # VPS SSH username
     "HOSTS": ["45.55.197.249"],  # The IP address of your VPS
-    "DOMAINS": ["estavos.com", "estavos.com.br"],
+    "DOMAINS": ["estavos.com", "estavos.com.br", "www.estavos.com", "www.estavos.com.br"],
     "REQUIREMENTS_PATH": "requirements.txt",  # Project's pip requirements
     "GUNICORN_PORT": 8000,
     "LOCALE": "en_US.UTF-8",  # Should end with ".UTF-8"
