@@ -260,7 +260,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = config('SECURE_SSL_REDIRECT', cast=bool, default=False)
 SESSION_COOKIE_SECURE = config('SESSION_COOKIE_SECURE', cast=bool, default=False)
 CSRF_COOKIE_SECURE = config('CSRF_COOKIE_SECURE', cast=bool, default=False)
-# SECURE_HSTS_SECONDS = 3600
+SECURE_HSTS_SECONDS = config('SECURE_HSTS_SECONDS', cast=int, default=0)
 
 # Templates
 TEMPLATES = [
