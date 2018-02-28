@@ -28,6 +28,10 @@ setup:
 run:
 	python ./manage.py runserver
 
+## Runs the project with ssl activated
+runssl:
+	python ./manage.py runsslserver
+
 ## Runs the project unit tests
 test:
 	python ./manage.py test
