@@ -100,7 +100,9 @@
                 </div>
 
                 <div class="collapse navbar-collapse" id="main-nav">
+                  {% nevercache %}
                   {% page_menu "pages/menus/dropdown.html" %}
+                  {% endnevercache %}
                 </div>
               </div>
             </div>

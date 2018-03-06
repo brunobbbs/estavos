@@ -334,6 +334,8 @@ CACHES = {
     }
 }
 
+CACHE_ANONYMOUS_ONLY = True
+
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "default"
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
