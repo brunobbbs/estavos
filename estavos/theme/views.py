@@ -2,6 +2,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 from django.views.generic import TemplateView
 from mezzanine.pages.models import RichTextPage
+from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
 
 from estavos.theme.models import Banner, Partner
 from estavos.clubs.models import Club
@@ -44,7 +45,7 @@ class HomeView(TemplateView):
         kwargs = super().get_context_data(**kwargs)
         gapi = GApiCalendar()
         kwargs['upcoming_events'] = gapi.get_upcoming_events()
-        kwargs['clubs'] = Club.objects.all()
+        kwargs['clubs'] = Club.objects.filter(status=CONTENT_STATUS_PUBLISHED)
         kwargs['banners'] = Banner.actives.all()
         kwargs['partners'] = Partner.actives.all()
         return kwargs
