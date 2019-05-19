@@ -18,7 +18,18 @@ class Migration(migrations.Migration):
                 ('description', models.CharField(verbose_name='Descrição', max_length=300, blank=True)),
                 ('action_name', models.CharField(verbose_name='Nome do botão de ação', max_length=50)),
                 ('target', models.URLField(verbose_name='Link do botão')),
-                ('image', models.ImageField(upload_to='home/banners/')),
+                ('image', models.ImageField(verbose_name='Imagem', help_text='Use uma imagem com tamanho de 1600x575', upload_to='home/banners/')),
+                ('active', models.BooleanField(verbose_name='Ativo', default=True)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Partner',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
+                ('name', models.CharField(verbose_name='Nome', max_length=150)),
+                ('site', models.URLField(verbose_name='Site', blank=True, null=True)),
+                ('image', models.ImageField(verbose_name='Logo do parceiro', help_text='Use uma imagem com tamanho de 212x65', upload_to='home/partners/')),
+                ('active', models.BooleanField(verbose_name='Ativo', default=True)),
             ],
         ),
     ]
