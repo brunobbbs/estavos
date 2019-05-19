@@ -401,7 +401,7 @@ ADMINS = (('Bruno Barbosa', 'bruno@estavos.com'), )
 FABRIC = {
     "DEPLOY_TOOL": "git",  # Deploy with "git", "hg", or "rsync"
     "SSH_USER": config("SSH_USER"),  # VPS SSH username
-    "HOSTS": ["45.55.197.249"],  # The IP address of your VPS
+    "HOSTS": ["68.183.107.20"],  # The IP address of your VPS
     "DOMAINS": ["estavos.com", "estavos.com.br", "www.estavos.com", "www.estavos.com.br"],
     "REQUIREMENTS_PATH": "requirements.txt",  # Project's pip requirements
     "GUNICORN_PORT": 8000,
