@@ -34,7 +34,7 @@
   <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
 
   {% if LANGUAGE_BIDI %}
-  <link rel="stylesheet" href="{% static "css/bootstrap-rtl.css" %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-rtl.css' %}">
   {% endif %}
 
   {% block extra_head %}{% endblock %}
@@ -59,7 +59,7 @@
     <div class="topbar clearfix">
       <div class="container">
         <ul class="topbar-left">
-          <li class="phoneNo"><i class="fa fa-phone"></i>(61) 99193-0933 / (61) 98143-2175</li>
+          <li class="phoneNo"><i class="fa fa-phone"></i>(61) 98227-5485 / (61) 98143-2175</li>
           <li class="email-id hidden-xs hidden-sm"><i class="fa fa-envelope"></i>
             <a href="mailto:contato@estavos.com">contato@estavos.com</a>
           </li>
@@ -136,21 +136,21 @@
   {% nevercache %}
   {% if messages %}
   <div class="custom_content clearfix">
-      <div class="row">
-          <div class="col-md-12">
-              <div class="messages">
-                  {% for message in messages %}
-                  <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
-                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                      {{ message }}
-                  </div>
-                  {% endfor %}
-              </div>
-          </div>
-      </div>
-    </div> <!-- custom_content clearfix -->
-    {% endif %}
-    {% endnevercache %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="messages">
+                {% for message in messages %}
+                <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    {{ message }}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+  </div> <!-- custom_content clearfix -->
+  {% endif %}
+  {% endnevercache %}
 
   {% block all_content %}
   <div class="custom_content clearfix">
@@ -224,8 +224,8 @@
             <p>Entre em contato agora mesmo! Estamos à disposição para lhe atender.</p>
             <div class="footer-contact">
               <ul>
-              <li> <i class="fa fa-home" aria-hidden="true"></i>SCES Trecho 2, Conjunto 10, Lote 18 - Asa Sul, Brasília - DF</li>
-              <li><i class="fa fa-phone" aria-hidden="true"></i>(61) 9 9193-0933</li>
+              <li> <i class="fa fa-home" aria-hidden="true"></i>SHC/SW EQSW, Rua 1, 303/304 - Sudoeste, Brasília - DF</li>
+              <li><i class="fa fa-phone" aria-hidden="true"></i>(61) 9 8227-5485</li>
               <li><i class="fa fa-phone" aria-hidden="true"></i>(61) 9 8143-2175</li>
               <li><a href="mailto:contato@estavos.com"><i class="fa fa-envelope-o" aria-hidden="true"></i>contato@estavos.com</a></li>
               </ul>
@@ -241,7 +241,7 @@
           <div class="footer-bottom">
             <div class="row clearfix">
               <div class="col-sm-8 col-xs-12 copyRight">
-                <p>© 2013-2018 Copyright - ESTAVOS Academia de Jogos e Esportes Mentais LTDA. - ME - CNPJ: 18.157.637/0001-51</p>
+                <p>© 2013-{% now 'Y' %} Copyright - ESTAVOS Academia de Jogos e Esportes Mentais LTDA. - ME - CNPJ: 18.157.637/0001-51</p>
               </div>
               <div class="col-sm-4 col-xs-12 privacy_policy">
                 <a href="/contato">Contato </a>
