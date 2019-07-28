@@ -1,7 +1,7 @@
 Mezzanine==4.2.3
 dj-database-url==0.3.0
 python-decouple==3.0
-gunicorn==19.4.5
+gunicorn>=19.5.0
 psycopg2==2.6.1
 django-extensions==1.6.1
 django-test-without-migrations==0.4
