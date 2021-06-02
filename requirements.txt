@@ -10,7 +10,7 @@ django-pagseguro2==2.0.0
 django-braces==1.8.1
 django-newsletter-subscription==0.3.0
 django-import-export==0.4.5
-Pillow==4.1.1
+Pillow==8.1.1
 django-redis==4.8.0
 google-auth
 google-auth-httplib2
